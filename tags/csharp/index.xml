@@ -4,7 +4,18 @@
         <link>http://lluisfranco.com/tags/csharp/</link>
         <description>csharp - Tag - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 15 Nov 2010 17:20:51 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/tags/csharp/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Tue, 16 Apr 2019 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/tags/csharp/" rel="self" type="application/rss+xml" /><item>
+    <title>Extract extra large icon from a file, folder or drive</title>
+    <link>http://lluisfranco.com/extract-icons-win32/</link>
+    <pubDate>Tue, 16 Apr 2019 11:51:50 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>http://lluisfranco.com/extract-icons-win32/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/extra-large-icons.png" referrerpolicy="no-referrer">
+            </div>Extracting system icons from Win32 Overwiew Hi, everyone! :)
+In a recent project I was required to show a list of files with their associated icons. It doesn&rsquo;t sounds quite difficult, and in fact it is not. Except if you have to deal with files in network paths or you want to get different icons sizes, apart the typical 32×32. And well, that was the case <i class="fas fa-grin-beam-sweat"></i>
+If you only need local files and sizes of 32x32 píxels you can achieve this using the static method ExtractAssociatedIcon in the class System.]]></description>
+</item><item>
     <title>Retrieve all controls using generics (II)</title>
     <link>http://lluisfranco.com/retrieve-all-controls-using-generics-ii/</link>
     <pubDate>Mon, 15 Nov 2010 17:20:51 &#43;0200</pubDate>
