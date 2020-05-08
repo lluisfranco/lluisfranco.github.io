@@ -36,5 +36,19 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
             </div>Gettings all controls from a container That&rsquo;s the question How many times have you ever heard something similar? :)
  How to clear the content of all the textboxes in a form?
  The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.]]></description>
+</item><item>
+    <title>Samples post</title>
+    <link>http://lluisfranco.com/samples/</link>
+    <pubDate>Tue, 02 May 2000 11:51:50 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>http://lluisfranco.com/samples/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/01.jpg" referrerpolicy="no-referrer">
+            </div>Title 2 Samples <sup>99</sup>/<sub>100</sub>
+Gone camping! <i class="fas fa-campground fa-fw"></i>&nbsp;Be back soon.
+That is so funny! <i class="far fa-grin-tears"></i>
+Hi, everyone! :)
+Shortcodes Figure / image   Mountains (figure)   Gist  Code 1 2 3 4 5 6 7 8  &lt;section id=&#34;main&#34;&gt; &lt;div&gt; &lt;h1 id=&#34;title&#34;&gt;{{ .Title }}&lt;/h1&gt; {{ range .Pages }} {{ .Render &#34;summary&#34;}} {{ end }} &lt;/div&gt; &lt;/section&gt;  
+Instagram example:    View this post on Instagram         A post shared by Bjørn Erik Pedersen (@bepsays) on Jul 6, 2017 at 9:27am PDT]]></description>
 </item></channel>
 </rss>
