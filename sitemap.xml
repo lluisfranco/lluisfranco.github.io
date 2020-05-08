@@ -1,0 +1,17 @@
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    ><url>
+            <loc>http://lluisfranco.com/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/categories/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/tags/csharp/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/categories/development/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/tags/generics/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/categories/how-to/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/tags/linq/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/tags/net-framework/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/posts/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/retrieve-all-controls-using-generics-ii/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/tags/</loc><lastmod>2010-11-15T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/retrieve-all-controls-using-generics-i/</loc><lastmod>2010-11-09T17:20:51&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>http://lluisfranco.com/samples/</loc><lastmod>2000-05-02T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

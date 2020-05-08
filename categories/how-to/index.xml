@@ -1,0 +1,44 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>How To - Category - &gt;_lluis franco</title>
+        <link>http://lluisfranco.com/categories/how-to/</link>
+        <description>How To - Category - &gt;_lluis franco</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 15 Nov 2010 17:20:51 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/categories/how-to/" rel="self" type="application/rss+xml" /><item>
+    <title>Retrieve all controls using generics (II)</title>
+    <link>http://lluisfranco.com/retrieve-all-controls-using-generics-ii/</link>
+    <pubDate>Mon, 15 Nov 2010 17:20:51 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>http://lluisfranco.com/retrieve-all-controls-using-generics-ii/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/tshirt2.png" referrerpolicy="no-referrer">
+            </div>Gettings all controls from a container v2 A better approach In my previous post I created a recursive function to retrieve all controls inside a form and its containers. Today, my colleague and friend Eduard Tomàs sent me another solution to the same topic based on LINQ. It’s simply and really, really pretty ❤️
+The power of LINQ Before starting, we need to solve this: LINQ works over IEnumerable, but Control.]]></description>
+</item><item>
+    <title>Retrieve all controls using generics (I)</title>
+    <link>http://lluisfranco.com/retrieve-all-controls-using-generics-i/</link>
+    <pubDate>Tue, 09 Nov 2010 17:20:51 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>http://lluisfranco.com/retrieve-all-controls-using-generics-i/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/tshirt.png" referrerpolicy="no-referrer">
+            </div>Gettings all controls from a container That&rsquo;s the question How many times have you ever heard something similar? :)
+ How to clear the content of all the textboxes in a form?
+ The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.]]></description>
+</item><item>
+    <title>Samples post</title>
+    <link>http://lluisfranco.com/samples/</link>
+    <pubDate>Tue, 02 May 2000 11:51:50 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>http://lluisfranco.com/samples/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/01.jpg" referrerpolicy="no-referrer">
+            </div>draft: true
+Title 2 Samples <sup>99</sup>/<sub>100</sub>
+Gone camping! <i class="fas fa-campground fa-fw"></i>&nbsp;Be back soon.
+That is so funny! <i class="far fa-grin-tears"></i>
+Hi, everyone! :)
+Shortcodes Figure / image   Lighthouse (figure)   Gist  Code 1 2 3 4 5 6 7 8  &lt;section id=&#34;main&#34;&gt; &lt;div&gt; &lt;h1 id=&#34;title&#34;&gt;{{ .Title }}&lt;/h1&gt; {{ range .Pages }} {{ .Render &#34;summary&#34;}} {{ end }} &lt;/div&gt; &lt;/section&gt;  
+Instagram example:    View this post on Instagram         A post shared by Bjørn Erik Pedersen (@bepsays) on Jul 6, 2017 at 9:27am PDT]]></description>
+</item></channel>
+</rss>
