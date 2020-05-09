@@ -99,146 +99,57 @@
         alt="Posts"
         title="Posts" /></a></div><h2 class="home-subtitle"><div id="id-1" class="typeit"></div></h2><div class="social-links"><a href="https://github.com/lluisfranco" title="GitHub" target="_blank" rel="noopener noreffer me"><i class="fab fa-github-alt fa-fw"></i></a><a href="https://linkedin.com/in/lluisfranco" title="LinkedIn" target="_blank" rel="noopener noreffer me"><i class="fab fa-linkedin fa-fw"></i></a><a href="https://twitter.com/lluisfranco" title="Twitter" target="_blank" rel="noopener noreffer me"><i class="fab fa-twitter fa-fw"></i></a><a href="https://www.instagram.com/francolluis" title="Instagram" target="_blank" rel="noopener noreffer me"><i class="fab fa-instagram fa-fw"></i></a><a href="https://t.me/lluisfranco" title="Telegram" target="_blank" rel="noopener noreffer me"><i class="fab fa-telegram-plane fa-fw"></i></a><a href="https://open.spotify.com/user/1155685256" title="Spotify" target="_blank" rel="noopener noreffer me"><i class="fab fa-spotify fa-fw"></i></a><a href="https://mastodon.social/@lluisfranco" title="Mastodon" target="_blank" rel="noopener noreffer me"><i class="fab fa-mastodon fa-fw"></i></a><a href="mailto:hello@lluisfranco.com" title="Email" rel=" me"><i class="far fa-envelope fa-fw"></i></a><a href="/index.xml" title="RSS" target="_blank" rel="noopener noreffer me"><i class="fas fa-rss fa-fw"></i></a></div></div>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/remove-diacritics-in-strings/"><img
+            <a href="/retrieve-all-controls-using-generics-ii/"><img
         class="lazyload"
         src="/svg/loading/normal.min.svg"
-        data-src="/images/posts/note.png"
-        data-srcset="/images/posts/note.png, /images/posts/note.png 1.5x, /images/posts/note.png 2x"
+        data-src="/images/posts/tshirt2.png"
+        data-srcset="/images/posts/tshirt2.png, /images/posts/tshirt2.png 1.5x, /images/posts/tshirt2.png 2x"
         data-sizes="auto"
-        alt="/images/posts/note.png"
-        title="/images/posts/note.png" /></a>
+        alt="/images/posts/tshirt2.png"
+        title="/images/posts/tshirt2.png" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/remove-diacritics-in-strings/">Remove diacritics (accents) in strings</a>
+        <a href="/retrieve-all-controls-using-generics-ii/">Retrieve all controls using generics (II)</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-publish">
-            published on&nbsp;<time datetime=2014-06-26>2014-06-26</time>
+            published on&nbsp;<time datetime=2010-11-15>2010-11-15</time>
         </span>&nbsp;
             <span class="post-category">included in<a href="/categories/development/">
                         <i class="far fa-folder fa-fw"></i>Development
                     </a>&nbsp;<a href="/categories/how-to/">
                         <i class="far fa-folder fa-fw"></i>How To
-                    </a></span></div><div class="content">Quick note How to remove diacritics (accents) from a C# string?
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public static string RemoveDiacritics(this string input) { var stFormD = input.Normalize(NormalizationForm.FormD); var len = stFormD.Length; var sb = new StringBuilder(); for (int i = 0; i &lt; len; i++) { var uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[i]); if (uc != System.Globalization.UnicodeCategory.NonSpacingMark) { sb.Append(stFormD[i]); } } return (sb.</div><div class="post-footer">
-        <a href="/remove-diacritics-in-strings/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/csharp/">csharp</a>,&nbsp;<a href="/tags/net-framework/">net framework</a>,&nbsp;<a href="/tags/tip/">Tip</a>,&nbsp;<a href="/tags/sql/">SQL</a></div></div>
+                    </a></span></div><div class="content">Gettings all controls from a container v2 A better approach In my previous post I created a recursive function to retrieve all controls inside a form and its containers. Today, my colleague and friend Eduard Tomàs sent me another solution to the same topic based on LINQ. It’s simply and really, really pretty ❤️
+The power of LINQ Before starting, we need to solve this: LINQ works over IEnumerable, but Control.</div><div class="post-footer">
+        <a href="/retrieve-all-controls-using-generics-ii/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/csharp/">csharp</a>,&nbsp;<a href="/tags/net-framework/">net framework</a>,&nbsp;<a href="/tags/generics/">generics</a>,&nbsp;<a href="/tags/linq/">LINQ</a></div></div>
 </article>
 <article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/extract-icons-win32/"><img
+            <a href="/retrieve-all-controls-using-generics-i/"><img
         class="lazyload"
         src="/svg/loading/normal.min.svg"
-        data-src="/images/posts/extra-large-icons.png"
-        data-srcset="/images/posts/extra-large-icons.png, /images/posts/extra-large-icons.png 1.5x, /images/posts/extra-large-icons.png 2x"
+        data-src="/images/posts/tshirt.png"
+        data-srcset="/images/posts/tshirt.png, /images/posts/tshirt.png 1.5x, /images/posts/tshirt.png 2x"
         data-sizes="auto"
-        alt="/images/posts/extra-large-icons.png"
-        title="/images/posts/extra-large-icons.png" /></a>
+        alt="/images/posts/tshirt.png"
+        title="/images/posts/tshirt.png" /></a>
         </div><h1 class="single-title" itemprop="name headline">
-        <a href="/extract-icons-win32/">Extract extra large icon from a file, folder or drive</a>
+        <a href="/retrieve-all-controls-using-generics-i/">Retrieve all controls using generics (I)</a>
     </h1><div class="post-meta"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-publish">
-            published on&nbsp;<time datetime=2014-04-16>2014-04-16</time>
+            published on&nbsp;<time datetime=2010-11-09>2010-11-09</time>
         </span>&nbsp;
             <span class="post-category">included in<a href="/categories/development/">
                         <i class="far fa-folder fa-fw"></i>Development
                     </a>&nbsp;<a href="/categories/how-to/">
                         <i class="far fa-folder fa-fw"></i>How To
-                    </a></span></div><div class="content">Extracting system icons from Win32 Overwiew Hi, everyone! :)
-In a recent project I was required to show a list of files with their associated icons. It doesn&rsquo;t sounds quite difficult, and in fact it is not. Except if you have to deal with files in network paths or you want to get different icons sizes, apart the typical 32×32. And well, that was the case <i class="fas fa-grin-beam-sweat"></i>
-If you only need local files and sizes of 32x32 píxels you can achieve this using the static method ExtractAssociatedIcon in the class System.</div><div class="post-footer">
-        <a href="/extract-icons-win32/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/csharp/">csharp</a>,&nbsp;<a href="/tags/net-framework/">net framework</a>,&nbsp;<a href="/tags/api/">API</a>,&nbsp;<a href="/tags/win32/">Win32</a></div></div>
+                    </a></span></div><div class="content">Gettings all controls from a container That&rsquo;s the question How many times have you ever heard something similar? :)
+ How to clear the content of all the textboxes in a form?
+ The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.</div><div class="post-footer">
+        <a href="/retrieve-all-controls-using-generics-i/">Read More</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/csharp/">csharp</a>,&nbsp;<a href="/tags/net-framework/">net framework</a>,&nbsp;<a href="/tags/generics/">generics</a></div></div>
 </article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/mvp-site-interview/"><img
-        class="lazyload"
-        src="/svg/loading/normal.min.svg"
-        data-src="/images/posts/mvpoftheyear.png"
-        data-srcset="/images/posts/mvpoftheyear.png, /images/posts/mvpoftheyear.png 1.5x, /images/posts/mvpoftheyear.png 2x"
-        data-sizes="auto"
-        alt="/images/posts/mvpoftheyear.png"
-        title="/images/posts/mvpoftheyear.png" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/mvp-site-interview/">MVP site interview</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-publish">
-            published on&nbsp;<time datetime=2012-10-31>2012-10-31</time>
-        </span>&nbsp;
-            <span class="post-category">included in<a href="/categories/awards/">
-                        <i class="far fa-folder fa-fw"></i>Awards
-                    </a></span></div><div class="content">My 5 minutes of glory 😂 Yesterday was published my brief interview in the MVP site. However, it is not the full version, that I copy here.
-About Lluís Franco Born in Barcelona (Spain) with more than 20 years of experience in the software development sector, now lives in Andorra for the past 15 years with his family. Lluis holds a number of Microsoft official certifications such as MCP and MCTS and has been recognized as MVP for the past 10 years due to his active participation and moderation in the MSDN forums since 1997.</div><div class="post-footer">
-        <a href="/mvp-site-interview/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/microsoft/">Microsoft</a>,&nbsp;<a href="/tags/mvp/">MVP</a>,&nbsp;<a href="/tags/interview/">Interview</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/amazing.-mvp-of-the-year-2011/"><img
-        class="lazyload"
-        src="/svg/loading/normal.min.svg"
-        data-src="/images/posts/mvp2011.png"
-        data-srcset="/images/posts/mvp2011.png, /images/posts/mvp2011.png 1.5x, /images/posts/mvp2011.png 2x"
-        data-sizes="auto"
-        alt="/images/posts/mvp2011.png"
-        title="/images/posts/mvp2011.png" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/amazing.-mvp-of-the-year-2011/">Amazing: Awarded MVP of the Year!</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-publish">
-            published on&nbsp;<time datetime=2012-02-16>2012-02-16</time>
-        </span>&nbsp;
-            <span class="post-category">included in<a href="/categories/awards/">
-                        <i class="far fa-folder fa-fw"></i>Awards
-                    </a></span></div><div class="content">MVP of the year 2011 Surprised. Puzzled. Amazed. These are the words that define better my current feelings.
-However, while writing these lines I’m just realizing I have a blissful smile, or maybe just a stupid smile. Why? Because I just received an email from Lisa Feigenbaum (Microsoft Community Program Manager) with this message:
- “Congratulations on being awarded C# MVP of the Year based on your contributions in 2011!”</div><div class="post-footer">
-        <a href="/amazing.-mvp-of-the-year-2011/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/microsoft/">Microsoft</a>,&nbsp;<a href="/tags/mvp/">MVP</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/macbook-pro-series-3400-series-chipset-problems/"><img
-        class="lazyload"
-        src="/svg/loading/normal.min.svg"
-        data-src="/images/posts/apple.png"
-        data-srcset="/images/posts/apple.png, /images/posts/apple.png 1.5x, /images/posts/apple.png 2x"
-        data-sizes="auto"
-        alt="/images/posts/apple.png"
-        title="/images/posts/apple.png" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/macbook-pro-series-3400-series-chipset-problems/">Macbook Pro - Series 3400 series chipset problems?</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-publish">
-            published on&nbsp;<time datetime=2011-04-07>2011-04-07</time>
-        </span>&nbsp;
-            <span class="post-category">included in<a href="/categories/software/">
-                        <i class="far fa-folder fa-fw"></i>Software
-                    </a></span></div><div class="content">The issue After a long time&hellip; here we go again!
-Today a quick post, just a note:
-If you bought a MacBook Pro and using Boot Camp for running Windows, you may be possible experiment some chipset problems. In my particular case with USB and bluetooth devices (Wireless Notebook Presenter 8000), and a couple of window-freezed.
-Also, in some ocasions Windows threw an error: &ldquo;Intel 5 Series/3400 Series Chipset Family USB Universal Host Controller – 3B3B (and 3B36) has a driver problem&rdquo;.</div><div class="post-footer">
-        <a href="/macbook-pro-series-3400-series-chipset-problems/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/apple/">Apple</a>,&nbsp;<a href="/tags/boot-camp/">Boot Camp</a>,&nbsp;<a href="/tags/macbook-pro/">MacBook Pro</a>,&nbsp;<a href="/tags/drivers/">Drivers</a>,&nbsp;<a href="/tags/chipset/">Chipset</a>,&nbsp;<a href="/tags/windows/">Windows</a></div></div>
-</article>
-<article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/check-current-user-is-domain-admin/"><img
-        class="lazyload"
-        src="/svg/loading/normal.min.svg"
-        data-src="/images/posts/sysadmin.png"
-        data-srcset="/images/posts/sysadmin.png, /images/posts/sysadmin.png 1.5x, /images/posts/sysadmin.png 2x"
-        data-sizes="auto"
-        alt="/images/posts/sysadmin.png"
-        title="/images/posts/sysadmin.png" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/check-current-user-is-domain-admin/">Check if current user is domain administrator</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-publish">
-            published on&nbsp;<time datetime=2010-12-13>2010-12-13</time>
-        </span>&nbsp;
-            <span class="post-category">included in<a href="/categories/development/">
-                        <i class="far fa-folder fa-fw"></i>Development
-                    </a>&nbsp;<a href="/categories/how-to/">
-                        <i class="far fa-folder fa-fw"></i>How To
-                    </a></span></div><div class="content">The scenario In business applications it’s very common checking if the current user is member of the ‘domain administrators’ role of your company. For example, recently I had to check if the current user has administrative privileges in order to show some advanced configuration options.
-IsInRole To acomplish this we could use the IsInRole method from the WindowsPrincipal class. This method checks if an user is member of a Windows role and returns a bool value.</div><div class="post-footer">
-        <a href="/check-current-user-is-domain-admin/">Read More</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/csharp/">csharp</a>,&nbsp;<a href="/tags/net-framework/">net framework</a>,&nbsp;<a href="/tags/api/">API</a>,&nbsp;<a href="/tags/win32/">Win32</a>,&nbsp;<a href="/tags/active-directory/">Active Directory</a>,&nbsp;<a href="/tags/domain/">Domain</a>,&nbsp;<a href="/tags/administrator/">Administrator</a></div></div>
-</article>
-<ul class="pagination"><li class="page-item active">
+<ul class="pagination"><li class="page-item ">
                     <span class="page-link">
                         <a href="/">1</a>
                     </span>
-                </li><li class="page-item ">
+                </li><li class="page-item active">
                     <span class="page-link">
                         <a href="/page/2/">2</a>
                     </span>

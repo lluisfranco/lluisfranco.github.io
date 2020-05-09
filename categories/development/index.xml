@@ -4,7 +4,17 @@
         <link>http://lluisfranco.com/categories/development/</link>
         <description>Development - Category - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 16 Apr 2014 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/categories/development/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Thu, 26 Jun 2014 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/categories/development/" rel="self" type="application/rss+xml" /><item>
+    <title>Remove diacritics (accents) in strings</title>
+    <link>http://lluisfranco.com/remove-diacritics-in-strings/</link>
+    <pubDate>Thu, 26 Jun 2014 11:51:50 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>http://lluisfranco.com/remove-diacritics-in-strings/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/note.png" referrerpolicy="no-referrer">
+            </div>Quick note How to remove diacritics (accents) from a C# string?
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public static string RemoveDiacritics(this string input) { var stFormD = input.Normalize(NormalizationForm.FormD); var len = stFormD.Length; var sb = new StringBuilder(); for (int i = 0; i &lt; len; i++) { var uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[i]); if (uc != System.Globalization.UnicodeCategory.NonSpacingMark) { sb.Append(stFormD[i]); } } return (sb.]]></description>
+</item><item>
     <title>Extract extra large icon from a file, folder or drive</title>
     <link>http://lluisfranco.com/extract-icons-win32/</link>
     <pubDate>Wed, 16 Apr 2014 11:51:50 &#43;0200</pubDate>
