@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Functional Programming For The Rest of Us - &gt;_lluis franco</title>
+        <meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Functional Programming For The Rest of Us" />
+<meta property="og:description" content="Introduction Programmers are procrastinators. Get in, get some coffee, check the mailbox, read the RSS feeds, read the news, check out latest articles on techie websites, browse through political discussions on the designated sections of the programming forums. Rinse and repeat to make sure nothing is missed. Go to lunch. Come back, stare at the IDE for a few minutes. Check the mailbox. Get some coffee. Before you know it, the day is over." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lluisfranco.com/functional-programming-for-the-rest-of-us/" />
+<meta property="article:published_time" content="2012-02-08T11:51:50+02:00" />
+<meta property="article:modified_time" content="2012-02-08T11:51:50+02:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Functional Programming For The Rest of Us"/>
+<meta name="twitter:description" content="Introduction Programmers are procrastinators. Get in, get some coffee, check the mailbox, read the RSS feeds, read the news, check out latest articles on techie websites, browse through political discussions on the designated sections of the programming forums. Rinse and repeat to make sure nothing is missed. Go to lunch. Come back, stare at the IDE for a few minutes. Check the mailbox. Get some coffee. Before you know it, the day is over."/>
+<meta name="application-name" content="&gt;_lluis franco">
+<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://lluisfranco.com/functional-programming-for-the-rest-of-us/" /><link rel="prev" href="http://lluisfranco.com/macbook-pro-series-3400-series-chipset-problems/" /><link rel="next" href="http://lluisfranco.com/amazing.-mvp-of-the-year-2011/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Functional Programming For The Rest of Us",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/lluisfranco.com\/functional-programming-for-the-rest-of-us\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "http:\/\/lluisfranco.com\/images\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "Functional, Programming, Lambda, History","wordcount":  2046 ,
+        "url": "http:\/\/lluisfranco.com\/functional-programming-for-the-rest-of-us\/","datePublished": "2012-02-08T11:51:50+02:00","dateModified": "2012-02-08T11:51:50+02:00","publisher": {
+                "@type": "Organization",
+                "name": "Lluis Franco",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "http:\/\/lluisfranco.com\/images\/myAvatar200.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "lluís"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="&gt;_lluis franco"><span class="header-title-pre"><i class='fas fa-terminal'></i></span>lluis franco</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="&gt;_lluis franco"><span class="header-title-pre"><i class='fas fa-terminal'></i></span>lluis franco</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Functional Programming For The Rest of Us</h1><h2 class="single-subtitle">(Fragment)</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;
+                    <span class="post-category">included in<a href="/categories/development/">
+                                <i class="far fa-folder fa-fw"></i>Development
+                            </a>&nbsp;<a href="/categories/fundamentals/">
+                                <i class="far fa-folder fa-fw"></i>Fundamentals
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2012-02-08>2012-02-08</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 2046 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>10 min&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading/normal.min.svg"
+        data-src="/images/posts/functionalprogramming.png"
+        data-srcset="/images/posts/functionalprogramming.png, /images/posts/functionalprogramming.png 1.5x, /images/posts/functionalprogramming.png 2x"
+        data-sizes="auto"
+        alt="/images/posts/functionalprogramming.png"
+        title="/images/posts/functionalprogramming.png" /></div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#a-walk-in-the-park">A Walk In The Park</a></li>
+    <li><a href="#a-bit-of-history">A Bit of History</a></li>
+    <li><a href="#functional-programming">Functional Programming</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="introduction">Introduction</h2>
+<p>Programmers are procrastinators. Get in, get some coffee, check the mailbox, read the RSS feeds, read the news, check out latest articles on techie websites, browse through political discussions on the designated sections of the programming forums. Rinse and repeat to make sure nothing is missed. Go to lunch. Come back, stare at the IDE for a few minutes. Check the mailbox. Get some coffee. Before you know it, the day is over.</p>
+<p>The only thing, every once in a while challenging articles actually do pop up. If you&rsquo;re looking at the right places you&rsquo;ll find at least one of these every couple of days. These articles are hard to get through and take some time, so they start piling up. Before you know it, you have a list of links and a folder full of PDF files and you wish you had a year in a small hut in the middle of the forest with nobody around for miles so you could catch up. Would be nice if someone came in every morning while you&rsquo;re taking a walk down the river to bring some food and take out the garbage.</p>
+<p>I don&rsquo;t know about your list, but a large chunk of the articles in mine are about functional programming. These generally are the hardest to get through. Written in a dry academic language, even the &ldquo;ten year Wall Street industry veterans&rdquo; don&rsquo;t understand what functional programming (also referred to as FP) articles are all about. If you ask a project manager in Citi Group or in Deutsche Bank1 why they chose to use JMS instead of Erlang they&rsquo;ll say they can&rsquo;t use academic languages for industrial strength applications. The problem is, some of the most complex systems with the most rigid requirements are written using functional programming elements. Something doesn&rsquo;t add up.</p>
+<p>It&rsquo;s true that FP articles and papers are hard to understand, but they don&rsquo;t have to be. The reasons for the knowledge gap are purely historical. There is nothing inherently hard about FP concepts. Consider this article &ldquo;an accessible guide to FP&rdquo;, a bridge from our imperative minds into the world of FP. Grab a coffee and keep on reading. With any luck your coworkers will start making fun of you for your FP comments in no time.</p>
+<p>So what is FP? How did it come about? Is it edible? If it&rsquo;s as useful as its advocates claim, why isn&rsquo;t it being used more often in the industry? Why is it that only people with PhDs tend to use it? Most importantly, why is it so damn hard to learn? What is all this closure, continuation, currying, lazy evaluation and no side effects business? How can it be used in projects that don&rsquo;t involve a university? Why does it seem to be so different from everything good, and holy, and dear to our imperative hearts? We&rsquo;ll clear this up very soon. Let&rsquo;s start with explaining the reasons for the huge gap between the real world and academic articles. The answer is as easy as taking a walk in the park.</p>
+<h2 id="a-walk-in-the-park">A Walk In The Park</h2>
+<p>Fire up the time machine. Our walk in the park took place more than two thousand years ago, on a beautiful sunny day of a long forgotten spring in 380 B.C. Outside the city walls of Athens, under the pleasant shade of olive trees Plato was walking towards the Academy with a beautiful slave boy. The weather was lovely, the dinner was filling, and the conversation turned to philosophy.</p>
+<p>&ldquo;Look at these two students&rdquo;, said Plato carefully picking words to make the question educational. &ldquo;Who do you think is taller?&rdquo; The slave boy looked towards the basin of water where two men were standing. &ldquo;They&rsquo;re about the same height&rdquo;, he said. &ldquo;What do you mean &lsquo;about the same&rsquo;?&quot;, asked Plato. &ldquo;Well, they look the same from here but I&rsquo;m sure if I were to get closer I&rsquo;d see that there is some difference.&rdquo;</p>
+<p>Plato smiled. He was leading the boy in the right direction. &ldquo;So you would say that there is nothing perfectly equal in our world?&rdquo; After some thinking the boy replied: &ldquo;I don&rsquo;t think so. Everything is at least a little different, even if we can&rsquo;t see it.&rdquo; The point hit home! &ldquo;Then if nothing is perfectly equal in this world, how do you think you understand the concept of &lsquo;perfect&rsquo; equality?&rdquo; The slave boy looked puzzled. &ldquo;I don&rsquo;t know&rdquo;, he replied.</p>
+<p>So was born the first attempt to understand the nature of mathematics. Plato suggested that everything in our world is just an approximation of perfection. He also realized that we understand the concept of perfection even though we never encountered it. He came to conclusion that perfect mathematical forms must live in another world and that we somehow know about them by having a connection to that &ldquo;alternative&rdquo; universe. It&rsquo;s fairly clear that there is no perfect circle that we can observe. But we also understand what a perfect circle is and can describe it via equations. What is mathematics, then? Why is the universe described with mathematical laws? Can all of the phenomena of our universe be described by mathematics?2</p>
+<p><a href="http://en.wikipedia.org/wiki/Philosophy_of_mathematics" target="_blank" rel="noopener noreffer">Philosophy of mathematics</a> is a very complex subject. Like most philosophical disciplines it is far more adept at posing questions rather than providing answers. Much of the consensus revolves around the fact that mathematics is really a puzzle: we set up a set of basic non-conflicting principles and a set of rules on how to operate with these principles. We can then stack these rules together to come up with more complex rules. Mathematicians call this method a &ldquo;formal system&rdquo; or a &ldquo;calculus&rdquo;. We can effectively write a formal system for Tetris if we wanted to. In fact, a working implementation of Tetris is a formal system, just specified using an unusual representation.</p>
+<p>A civilization of furry creatures on Alpha Centauri would not be able to read our formalisms of Tetris and circles because their only sensory input might be an organ that senses smells. They likely will never find out about the Tetris formalism, but they very well might have a formalism for circles. We probably wouldn&rsquo;t be able to read it because our sense of smell isn&rsquo;t that sophisticated, but once you get past the representation of the formalism (via various sensory instruments and standard code breaking techniques to understand the language), the concepts underneath are understandable to any intelligent civilization.</p>
+<p>Interestingly if no intelligent civilization ever existed in the universe the formalisms for Tetris and circles would still hold water, it&rsquo;s just that nobody would be around to find out about them. If an intelligent civilization popped up, it would likely discover some formalisms that help describe the laws of our universe. They also would be very unlikely to ever find out about Tetris because there is nothing in the universe that resembles it. Tetris is one of countless examples of a formal system, a puzzle, that has nothing to do with the real world. We can&rsquo;t even be sure that natural numbers have full resemblance to the real world, after all one can easily think of a number so big that it cannot describe anything in our universe since it might actually turn out to be finite.</p>
+<h2 id="a-bit-of-history">A Bit of History</h2>
+<p>Let&rsquo;s shift gears in our time machine. This time we&rsquo;ll travel a lot closer, to the 1930s. The Great Depression was ravaging the New and the Old worlds. Almost every family from every social class was affected by the tremendous economic downturn. Very few sanctuaries remained where people were safe from the perils of poverty. Few people were fortunate enough to be in these sanctuaries, but they did exist. Our interest lies in mathematicians in Princeton University.</p>
+<p>The new offices constructed in gothic style gave Princeton an aura of a safe haven. Logicians from all over the world were invited to Princeton to build out a new department. While most of America couldn&rsquo;t find a piece of bread for dinner, high ceilings, walls covered with elaborately carved wood, daily discussions by a cup of tea, and walks in the forest were some of the conditions in Princeton.</p>
+<p>One mathematician living in such lavish lifestyle was a young man named Alonzo Church. Alonzo received a B.S. degree from Princeton and was persuaded to stay for graduate school. Alonzo felt the architecture was fancier than necessary. He rarely showed up to discuss mathematics with a cup of tea and he didn&rsquo;t enjoy the walks in the woods. Alonzo was a loner: he was most productive when working on his own. Nevertheless Alonzo had regular contacts with other Princeton inhabitants. Among them were Alan Turing, John von Neumann, and Kurt Gödel.</p>
+<p>The four men were interested in formal systems. They didn&rsquo;t pay much heed to the physical world, they were interested in dealing with abstract mathematical puzzles instead. Their puzzles had something in common: the men were working on answering questions about computation. If we had machines that had infinite computational power, what problems would we be able to solve? Could we solve them automatically? Could some problems remain unsolved and why? Would various machines with different designs be equal in power?</p>
+<p>In cooperation with other men Alonzo Church developed a formal system called lambda calculus. The system was essentially a programming language for one of these imaginary machines. It was based on functions that took other functions as parameters and returned functions as results. The function was identified by a Greek letter lambda, hence the system&rsquo;s name4. Using this formalism Alonzo was able to reason about many of the above questions and provide conclusive answers.</p>
+<p>Independently of Alonzo Church, Alan Turing was performing similar work. He developed a different formalism (now referred to as the Turing machine), and used it to independently come to similar conclusions as Alonzo. Later it was shown that Turing machines and lambda calculus were equivalent in power.</p>
+<p>This is where the story would stop, I&rsquo;d wrap up the article, and you&rsquo;d navigate to another page, if not for the beginning of World War II. The world was in flames. The U.S. Army and Navy used artillery more often than ever. In attempts to improve accuracy the Army employed a large group of mathematicians to continuously calculate differential equations required for solving ballistic firing tables. It was becoming obvious that the task was too great for being solved manually and various equipment was developed in order to overcome this problem. The first machine to solve ballistic tables was a Mark I built by IBM - it weighed five tons, had 750,000 parts and could do three operations per second.</p>
+<p>The race, of course, wasn&rsquo;t over. In 1949 an Electronic Discrete Variable Automatic Computer (EDVAC) was unveiled and had tremendous success. It was a first example of von Neumann&rsquo;s architecture and was effectively a real world implementation of a Turing machine. For the time being Alonzo Church was out of luck.</p>
+<p>In late 1950s an MIT professor John McCarthy (also a Princeton graduate) developed interest in Alonzo Church&rsquo;s work. In 1958 he unveiled a List Processing language (Lisp). Lisp was an implementation of Alonzo&rsquo;s lambda calculus that worked on von Neumann computers! Many computer scientists recognized the expressive power of Lisp. In 1973 a group of programmers at MIT&rsquo;s Artificial Intelligence Lab developed hardware they called a Lisp machine - effectively a native hardware implementation of Alonzo&rsquo;s lambda calculus!</p>
+<h2 id="functional-programming">Functional Programming</h2>
+<p>Functional programming is a practical implementation of Alonzo Church&rsquo;s ideas. Not all lambda calculus ideas transform to practice because lambda calculus was not designed to work under physical limitations. Therefore, like object oriented programming, functional programming is a set of ideas, not a set of strict guidelines. There are many functional programming languages, and most of them do many things very differently. In this article I will explain the most widely used ideas from functional languages using examples written in Java (yes, you could write functional programs in Java if you felt particularly masochistic). In the next couple of sections we&rsquo;ll take Java as is, and will make modifications to it to transform it into a useable functional language. Let&rsquo;s begin our quest.</p>
+<p>Like this post? Continue reading the original post in <a href="http://www.defmacro.org/2006/06/19/fp.html" target="_blank" rel="noopener noreffer">Slava Akhmechet&rsquo;s blog</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2012-02-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/functional-programming-for-the-rest-of-us/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://lluisfranco.com/functional-programming-for-the-rest-of-us/" data-title="Functional Programming For The Rest of Us" data-via="lluisfranco" data-hashtags="Functional,Programming,Lambda,History"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://lluisfranco.com/functional-programming-for-the-rest-of-us/" data-hashtag="Functional"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="http://lluisfranco.com/functional-programming-for-the-rest-of-us/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://lluisfranco.com/functional-programming-for-the-rest-of-us/" data-title="Functional Programming For The Rest of Us" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="http://lluisfranco.com/functional-programming-for-the-rest-of-us/" data-image="/images/posts/functionalprogramming.png"><i class="fab fa-pinterest fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="http://lluisfranco.com/functional-programming-for-the-rest-of-us/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Instapaper" data-sharer="instapaper" data-url="http://lluisfranco.com/functional-programming-for-the-rest-of-us/" data-title="Functional Programming For The Rest of Us" data-description=""><i data-svg-src="/lib/simple-icons/icons/instapaper.min.svg"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="http://lluisfranco.com/functional-programming-for-the-rest-of-us/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://lluisfranco.com/functional-programming-for-the-rest-of-us/" data-title="Functional Programming For The Rest of Us"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/functional/">Functional</a>,&nbsp;<a href="/tags/programming/">Programming</a>,&nbsp;<a href="/tags/lambda/">Lambda</a>,&nbsp;<a href="/tags/history/">History</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/macbook-pro-series-3400-series-chipset-problems/" class="prev" rel="prev" title="Macbook Pro - Series 3400 series chipset problems?"><i class="fas fa-angle-left fa-fw"></i>Macbook Pro - Series 3400 series chipset problems?</a>
+            <a href="/amazing.-mvp-of-the-year-2011/" class="next" rel="next" title="Amazing: Awarded MVP of the Year!">Amazing: Awarded MVP of the Year!<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"Copy to clipboard","maxShownLines":20},"comment":{},"headerMode":{"desktop":"fixed","mobile":"auto"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
