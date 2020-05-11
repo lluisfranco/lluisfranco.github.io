@@ -4,7 +4,18 @@
         <link>http://lluisfranco.com/tags/csharp/</link>
         <description>csharp - Tag - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Tue, 12 Dec 2017 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/tags/csharp/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/tags/csharp/" rel="self" type="application/rss+xml" /><item>
+    <title>Retrieving events from SQL Server</title>
+    <link>http://lluisfranco.com/retrieving-events-from-sql-server/</link>
+    <pubDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>http://lluisfranco.com/retrieving-events-from-sql-server/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/sqlserver.png" referrerpolicy="no-referrer">
+            </div>Overview When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.
+In the past I’ve used different techniques to archive this, from SQL Assemblies for calling a SignalR server, to execute xp_cmdshell, and so many other esoteric ways.
+None of that solved the problem in an elegant way, but well, it worked… more or less…]]></description>
+</item><item>
     <title>Getting data from OLAP cubes</title>
     <link>http://lluisfranco.com/getting-data-from-olap-cubes/</link>
     <pubDate>Tue, 12 Dec 2017 11:51:50 &#43;0200</pubDate>

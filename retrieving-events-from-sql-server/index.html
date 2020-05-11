@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Retrieving events from SQL Server - &gt;_lluis franco</title>
+        <meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Retrieving events from SQL Server" />
+<meta property="og:description" content="Overview When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.
+In the past I’ve used different techniques to archive this, from SQL Assemblies for calling a SignalR server, to execute xp_cmdshell, and so many other esoteric ways.
+None of that solved the problem in an elegant way, but well, it worked… more or less…" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://lluisfranco.com/retrieving-events-from-sql-server/" />
+<meta property="article:published_time" content="2019-09-30T11:51:50+02:00" />
+<meta property="article:modified_time" content="2019-09-30T11:51:50+02:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Retrieving events from SQL Server"/>
+<meta name="twitter:description" content="Overview When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.
+In the past I’ve used different techniques to archive this, from SQL Assemblies for calling a SignalR server, to execute xp_cmdshell, and so many other esoteric ways.
+None of that solved the problem in an elegant way, but well, it worked… more or less…"/>
+<meta name="application-name" content="&gt;_lluis franco">
+<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://lluisfranco.com/retrieving-events-from-sql-server/" /><link rel="prev" href="http://lluisfranco.com/getting-data-from-olap-cubes/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Retrieving events from SQL Server",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/lluisfranco.com\/retrieving-events-from-sql-server\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "http:\/\/lluisfranco.com\/images\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "csharp, net framework, SQL, SQL Server, Events","wordcount":  965 ,
+        "url": "http:\/\/lluisfranco.com\/retrieving-events-from-sql-server\/","datePublished": "2019-09-30T11:51:50+02:00","dateModified": "2019-09-30T11:51:50+02:00","publisher": {
+                "@type": "Organization",
+                "name": "Lluis Franco",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "http:\/\/lluisfranco.com\/images\/myAvatar200.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "lluís"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="&gt;_lluis franco"><span class="header-title-pre"><i class='fas fa-terminal'></i></span>lluis franco</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="&gt;_lluis franco"><span class="header-title-pre"><i class='fas fa-terminal'></i></span>lluis franco</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Retrieving events from SQL Server</h1><h2 class="single-subtitle">Through the active connection</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;
+                    <span class="post-category">included in<a href="/categories/development/">
+                                <i class="far fa-folder fa-fw"></i>Development
+                            </a>&nbsp;<a href="/categories/how-to/">
+                                <i class="far fa-folder fa-fw"></i>How To
+                            </a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-09-30>2019-09-30</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 965 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>5 min&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading/normal.min.svg"
+        data-src="/images/posts/sqlserver.png"
+        data-srcset="/images/posts/sqlserver.png, /images/posts/sqlserver.png 1.5x, /images/posts/sqlserver.png 2x"
+        data-sizes="auto"
+        alt="/images/posts/sqlserver.png"
+        title="/images/posts/sqlserver.png" /></div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#changing-the-point-of-view">Changing the point of view</a></li>
+    <li><a href="#show-me-the-code">Show me the code</a>
+      <ul>
+        <li><a href="#sql-script">SQL Script</a></li>
+        <li><a href="#c-code">C# code</a></li>
+        <li><a href="#one-more-thing">One more thing</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="overview">Overview</h2>
+<p>When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.</p>
+<p>In the past I’ve used different techniques to archive this, from SQL Assemblies for calling a SignalR server, to execute <a href="https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql?view=sql-server-2017" target="_blank" rel="noopener noreffer">xp_cmdshell</a>, and so many other esoteric ways.</p>
+<p>None of that solved the problem in an elegant way, but well, it worked… more or less…</p>
+<h2 id="changing-the-point-of-view">Changing the point of view</h2>
+<p>Today I noticed the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection?view=netframework-4.8" target="_blank" rel="noopener noreffer">SqlConnection</a> class has an <a href="https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.infomessage?view=netframework-4.8" target="_blank" rel="noopener noreffer">InfoMessage</a> event, and it can be used for “Clients that want to process warnings or informational messages sent by the server” which is EXACTLY what I was looking for.</p>
+<figure>
+    <img src="/images/posts/sqlevents.gif"/> <figcaption>
+            <h4>Processing SQL events</h4>
+        </figcaption>
+</figure>
+
+<p>It looks promising but, how can I trigger an error from my SQL?</p>
+<p>If you are a TSQL programmer you surely know <a href="https://docs.microsoft.com/en-us/sql/t-sql/language-elements/raiserror-transact-sql?view=sql-server-2017" target="_blank" rel="noopener noreffer">RAISERROR</a>, which generates an error message in a similar way the <strong>throw</strong> C# keyword does.</p>
+<p>The trick here is its severity argument: It indicates the type of problem encountered by SQL Server, and <a href="https://docs.microsoft.com/en-us/sql/relational-databases/errors-events/database-engine-error-severities?view=sql-server-2017" target="_blank" rel="noopener noreffer">values under 10</a> indicate that these errors are not severe. Just warnings or information that SQL server sends to anyone is listening.</p>
+<p>And who’s listening? You can imagine 😄</p>
+<h2 id="show-me-the-code">Show me the code</h2>
+<p>Let’s imagine we’ve this long-running stored procedure in our database. We&rsquo;re using WAITFOR DELAY for simulating intensive processing.</p>
+<h3 id="sql-script">SQL Script</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">TestLongRunningSP</span><span class="p">]</span>
+<span class="k">AS</span>
+<span class="k">BEGIN</span>
+<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;1) Starting&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
+<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
+</span><span class="c1"></span> 
+<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;2) Fetching data&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
+<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:05&#39;</span><span class="p">;</span> <span class="c1">--Wait for 5 seconds
+</span><span class="c1"></span> 
+<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;3) Some other actions&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
+<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
+</span><span class="c1"></span> 
+<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;4) Calculating&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
+<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:02&#39;</span><span class="p">;</span> <span class="c1">--Wait for 2 seconds
+</span><span class="c1"></span> 
+<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;5) Finishing&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
+<span class="k">END</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Thanks to RAISEERROR when executing this stored procedure we will show this output.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-systemd" data-lang="systemd"><span class="err">1)</span> <span class="err">Starting</span>
+<span class="err">2)</span> <span class="err">Fetching</span> <span class="err">data</span>
+<span class="err">3)</span> <span class="err">Some</span> <span class="err">other</span> <span class="err">actions</span>
+<span class="err">4)</span> <span class="err">Calculating</span>
+<span class="err">5)</span> <span class="err">Finishing</span>
+
+<span class="err">Completion</span> <span class="err">time:</span> <span class="err">2019-09-30T09:33:28.4952150+02:00</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Now let’s create some C# code:</p>
+<h3 id="c-code">C# code</h3>
+<p>First: A class to send the received messages from our repository to its consumer, which in this case the UI will be just a Windows Form (good old boys never die).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">SqlMessageEventArgs</span> 
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Message</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Progress</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>Notice the Progress property. We will use it later in the last part of the post, be patient 😏</p>
+<p>Second: A repository class that open a connection, execute the stored procedure and send messages using a ProcessMessage event. We must explicitly enable the connection to receive these errors and raise handling the InfoMessage event:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">SqlServerRepo</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">event</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">SqlMessageEventArgs</span><span class="p">&gt;</span> <span class="n">ProcessMessage</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">internal</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">SynchronizationContext</span> <span class="n">SyncContext</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">internal</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">GetDataAsync</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">con</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnectionString</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">con</span><span class="p">.</span><span class="n">FireInfoMessageEventOnUserErrors</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="n">con</span><span class="p">.</span><span class="n">InfoMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span>
+                <span class="n">SyncContext</span><span class="p">.</span><span class="n">Post</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">ProcessMessage</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span>
+                <span class="n">s</span><span class="p">,</span> <span class="k">new</span> <span class="n">SqlMessageEventArgs</span>
+                <span class="p">{</span>
+                    <span class="n">Message</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">,</span>
+                <span class="p">}),</span> <span class="k">null</span><span class="p">);</span>
+            <span class="n">con</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+            <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">&#34;EXEC dbo.TestLongRunningSP&#34;</span><span class="p">;</span>
+            <span class="kt">var</span> <span class="n">commandDefinition</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+            <span class="k">await</span> <span class="n">con</span><span class="p">.</span><span class="n">ExecuteAsync</span><span class="p">(</span><span class="n">commandDefinition</span><span class="p">);</span>
+            <span class="n">con</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>When using async pattern the received messages come from a different thread and cannot be used to update the UI directly. For this reason I always recommend send to the Repo the current synchronization context and use this Context to post to the main thread.</p>
+<figure>
+    <img src="/images/posts/threaderror.png"/> <figcaption>
+            <h4>Cross thread exception when updating UI from a different thread.</h4>
+        </figcaption>
+</figure>
+
+<p>Third: Finally let’s create a simple Windows Form with just a button, a progress bar and a list box).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">const</span> <span class="kt">string</span> <span class="n">connectionstring</span> <span class="p">=</span>
+    <span class="s">&#34;Data Source=YOUR_SERVER;&#34;</span> <span class="p">+</span>
+    <span class="s">&#34;Initial Catalog=YOUR_DATABASE;&#34;</span> <span class="p">+</span>
+    <span class="s">&#34;Integrated Security=True;&#34;</span><span class="p">;</span>
+
+<span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="n">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">repo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlServerRepo</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">ConnectionString</span> <span class="p">=</span> <span class="n">connectionstring</span><span class="p">,</span>
+        <span class="n">SyncContext</span> <span class="p">=</span> <span class="n">SynchronizationContext</span><span class="p">.</span><span class="n">Current</span>
+    <span class="p">};</span>
+    <span class="n">repo</span><span class="p">.</span><span class="n">ProcessMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">ms</span><span class="p">,</span> <span class="n">me</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="n">listBoxLog</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&#34;{DateTime.Now} - {me.Message}&#34;</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="k">await</span> <span class="n">repo</span><span class="p">.</span><span class="n">GetDataAsync</span><span class="p">();</span>
+    <span class="n">listBoxLog</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&#34;Finished Process!&#34;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>This code creates the repo, pass the connection string and the current synchronization context, handles the ProcessMessage event and invoke the GetDataAsync method.</p>
+<p>Simply and elegant. No dependent assemblies or external resources.</p>
+<h3 id="one-more-thing">One more thing</h3>
+<p>What about the progress bar? Just use the state argument of the RAISERROR method on the SP like this:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">TestLongRunningSP</span><span class="p">]</span>
+<span class="k">AS</span>
+<span class="k">BEGIN</span>
+<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;1) Starting&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
+<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
+</span><span class="c1"></span> 
+<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;2) Fetching data&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
+<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:05&#39;</span><span class="p">;</span> <span class="c1">--Wait for 5 seconds
+</span><span class="c1"></span> 
+<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;3) Some other actions&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
+<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
+</span><span class="c1"></span> 
+<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;4) Calculating&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
+<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:02&#39;</span><span class="p">;</span> <span class="c1">--Wait for 2 seconds
+</span><span class="c1"></span> 
+<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;5) Finishing&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
+<span class="k">END</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>Then update the GetDataAsync method:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="hl"><span class="lnt">11
+</span></span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">GetDataAsync</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">con</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnectionString</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">con</span><span class="p">.</span><span class="n">FireInfoMessageEventOnUserErrors</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="n">con</span><span class="p">.</span><span class="n">InfoMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="n">SyncContext</span><span class="p">.</span><span class="n">Post</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">ProcessMessage</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span>
+            <span class="n">s</span><span class="p">,</span> <span class="k">new</span> <span class="n">SqlMessageEventArgs</span>
+            <span class="p">{</span>
+                <span class="n">Message</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">,</span>
+<span class="hl">                <span class="n">Progress</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Errors</span><span class="p">[</span><span class="m">0</span><span class="p">]?.</span><span class="n">State</span> <span class="p">??</span> <span class="m">0</span>
+</span>            <span class="p">}),</span> <span class="k">null</span><span class="p">);</span>
+        <span class="n">con</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">&#34;EXEC dbo.TestLongRunningSP&#34;</span><span class="p">;</span>
+        <span class="kt">var</span> <span class="n">commandDefinition</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+        <span class="k">await</span> <span class="n">con</span><span class="p">.</span><span class="n">ExecuteAsync</span><span class="p">(</span><span class="n">commandDefinition</span><span class="p">);</span>
+        <span class="n">con</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>And finally the code in the form:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">repo</span><span class="p">.</span><span class="n">ProcessMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">ms</span><span class="p">,</span> <span class="n">me</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="n">listBoxLog</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&#34;{DateTime.Now} - {me.Message}&#34;</span><span class="p">);</span>
+    <span class="n">progressBar</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">me</span><span class="p">.</span><span class="n">Progress</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>And that’s all!</p>
+<p>Hope you enjoy it, and please, send me your thoughts about this solution.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2019-09-30</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/retrieving-events-from-sql-server/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://lluisfranco.com/retrieving-events-from-sql-server/" data-title="Retrieving events from SQL Server" data-via="lluisfranco" data-hashtags="csharp,net framework,SQL,SQL Server,Events"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://lluisfranco.com/retrieving-events-from-sql-server/" data-hashtag="csharp"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="http://lluisfranco.com/retrieving-events-from-sql-server/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://lluisfranco.com/retrieving-events-from-sql-server/" data-title="Retrieving events from SQL Server" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="http://lluisfranco.com/retrieving-events-from-sql-server/" data-image="/images/posts/sqlserver.png"><i class="fab fa-pinterest fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="http://lluisfranco.com/retrieving-events-from-sql-server/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Instapaper" data-sharer="instapaper" data-url="http://lluisfranco.com/retrieving-events-from-sql-server/" data-title="Retrieving events from SQL Server" data-description=""><i data-svg-src="/lib/simple-icons/icons/instapaper.min.svg"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="http://lluisfranco.com/retrieving-events-from-sql-server/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://lluisfranco.com/retrieving-events-from-sql-server/" data-title="Retrieving events from SQL Server"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/csharp/">csharp</a>,&nbsp;<a href="/tags/net-framework/">net framework</a>,&nbsp;<a href="/tags/sql/">SQL</a>,&nbsp;<a href="/tags/sql-server/">SQL Server</a>,&nbsp;<a href="/tags/events/">Events</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/getting-data-from-olap-cubes/" class="prev" rel="prev" title="Getting data from OLAP cubes"><i class="fas fa-angle-left fa-fw"></i>Getting data from OLAP cubes</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"Copy to clipboard","maxShownLines":20},"comment":{},"headerMode":{"desktop":"fixed","mobile":"auto"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
