@@ -88,5 +88,17 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
             </div>Gettings all controls from a container That&rsquo;s the question How many times have you ever heard something similar? :)
  How to clear the content of all the textboxes in a form?
  The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.]]></description>
+</item><item>
+    <title>Extended shortcodes</title>
+    <link>http://lluisfranco.com/ztemplate-copy/</link>
+    <pubDate>Sat, 26 Jun 1999 11:51:50 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>http://lluisfranco.com/ztemplate-copy/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/note.png" referrerpolicy="no-referrer">
+            </div>Admonition This is a tip  A tip banner   Or This is a tip  A tip banner  
+Mermaid Flow  Gaant  git  pie  eCharts Line chart
+ Map
+ ]]></description>
 </item></channel>
 </rss>
