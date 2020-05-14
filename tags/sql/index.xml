@@ -33,9 +33,9 @@ None of that solved the problem in an elegant way, but well, it worked… more o
     <guid>http://lluisfranco.com/ztemplate-copy/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/note.png" referrerpolicy="no-referrer">
-            </div>Admonition This is a tip  A tip banner   Or This is a tip  A tip banner  
-Mermaid Flow  Gaant  git  pie  eCharts Line chart
- Map
- ]]></description>
+            </div>Tables    Tables Are Cool     col 1 is left-aligned $1600   col 2 is centered $12   col 3 is right-aligned $1    Gist  Admonition admon samples
+This is a bug  A tip banner   Or This is a tip  A tip banner  
+Mermaid mermaid samples
+Flow  Gaant  git  pie  eCharts echarts samples]]></description>
 </item></channel>
 </rss>
