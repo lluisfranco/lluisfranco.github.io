@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Parallel - Tag - &gt;_lluis franco</title>
+        <link>http://lluisfranco.com/tags/parallel/</link>
+        <description>Parallel - Tag - &gt;_lluis franco</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 10 Jan 2011 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/tags/parallel/" rel="self" type="application/rss+xml" /><item>
+    <title>Parallel Series</title>
+    <link>http://lluisfranco.com/parallel-series-1/</link>
+    <pubDate>Mon, 10 Jan 2011 11:51:50 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>http://lluisfranco.com/parallel-series-1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/parallel01.png" referrerpolicy="no-referrer">
+            </div>Prologue There are news in each .NET framework version and each one of us fall in love with -at lest- one of these. It happened to me with Generics in version 2.0, extension methods in version 3.0 and LINQ in version 3.5. Now with version 4.0 it&rsquo;s time to fall in love again, this time with the Task Parallel Library.
+When I got the first preview, one of the first things I did was to learn about that new Task Parallel Library.]]></description>
+</item></channel>
+</rss>
