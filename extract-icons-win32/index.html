@@ -20,7 +20,7 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
 In a recent project I was required to show a list of files with their associated icons. It doesn&rsquo;t sounds quite difficult, and in fact it is not. Except if you have to deal with files in network paths or you want to get different icons sizes, apart the typical 32×32. And well, that was the case :(fas fa-grin-beam-sweat):
 If you only need local files and sizes of 32x32 píxels you can achieve this using the static method ExtractAssociatedIcon in the class System."/>
 <meta name="application-name" content="&gt;_lluis franco">
-<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://lluisfranco.com/extract-icons-win32/" /><link rel="prev" href="http://lluisfranco.com/mvp-site-interview/" /><link rel="next" href="http://lluisfranco.com/remove-diacritics-in-strings/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://lluisfranco.com/extract-icons-win32/" /><link rel="prev" href="http://lluisfranco.com/mvp-site-interview/" /><link rel="next" href="http://lluisfranco.com/remove-diacritics-in-strings/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.en.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -58,7 +58,9 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
             <a href="/" title="&gt;_lluis franco"><span class="header-title-pre"><i class='fas fa-terminal'></i></span>lluis franco</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/extract-icons-win32/" selected>English</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw"></i>
@@ -103,7 +105,9 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
                     </a>
                 </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
-            </a></div>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/extract-icons-win32/" selected>English</option></select>
+                </a></div>
     </div>
 </header>
 <div class="search-dropdown desktop">
