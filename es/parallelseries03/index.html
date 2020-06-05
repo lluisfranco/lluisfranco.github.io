@@ -34,7 +34,7 @@ Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo exis
                 "url": "https:\/\/lluisfranco.github.io\/images\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "csharp, net framework, Task, Parallel, Async","wordcount":  1236 ,
+            },"genre": "posts","keywords": "csharp, net framework, Task, Parallel, Async","wordcount":  1251 ,
         "url": "https:\/\/lluisfranco.github.io\/es\/parallelseries03\/","datePublished": "2011-03-03T11:51:50+02:00","dateModified": "2011-03-03T11:51:50+02:00","publisher": {
                 "@type": "Organization",
                 "name": "Lluis Franco",
@@ -128,7 +128,7 @@ Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo exis
                                 <i class="far fa-folder fa-fw"></i>Parallel Series
                             </a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2011-03-03>2011-03-03</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>unas 1236 palabras&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>unas 1251 palabras&nbsp;
                 <i class="far fa-clock fa-fw"></i>6 min&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -154,6 +154,7 @@ Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo exis
       </ul>
     </li>
     <li><a href="#antes-de-terminar-un-consejo">Antes de terminar, un consejo</a></li>
+    <li><a href="#video">Video</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p><a href="/es/parallelseriesindex" rel="">Ir al índice de la serie</a></p>
@@ -225,6 +226,13 @@ Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo exis
 <p>Evidentemente esta afirmación es un poco exagerada, ya que siempre va a haber un arduo trabajo de sincronización entre los diferentes monos… perdón threads. Con todo, la ganancia es espectacular, llegando fácilmente a multiplicar x5 o x6 en un entorno con 8 cores. Algo nada despreciable en según qué procesos. De modo que viendo el número de cores hacia dónde nos movemos, a mi juicio se hace imperativo conocer -si no dominar- la TPL.</p>
 <h2 id="antes-de-terminar-un-consejo">Antes de terminar, un consejo</h2>
 <p>Como hemos visto, por el momento sólo puede existir paralelismo real en una estación con varios cores. De otro modo el código funcionará sin errores pero solo utilizando el único core de la máquina. Así que un error bastante común entre los desarrolladores es utilizar máquinas virtuales para desarrollar, y olvidarnos que la mayoría no permiten especificar varios cores. De modo que es bastante probable que alguna vez nos encontremos refunfuñando porque un código bien escrito no obtiene ninguna ganancia cuando lo ejecutemos dentro de una maquina virtual 😠</p>
+<h2 id="video">Video</h2>
+<p>Aquí tienes un vídeo corto (15 minutos) sobre lo que acabamos de contar ;)</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://player.vimeo.com/video/32230725" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+ </div>
+
 <p>A continución&hellip;</p>
 <p>En el <a href="/es/parallelseries04/" rel="">próximo post</a> veremos cómo extender LINQ con Paralel LINQ, y de este modo dotar a nuestras consultas sobre listas enumerables de paralelismo, sin apenas impacto en el código actual.</p>
 <p><a href="/es/parallelseriesindex" rel="">Ir al índice de la serie</a></p>

@@ -44,6 +44,6 @@ Prologo Cada versión del .NET framework nos sorprende con una serie de novedade
     <guid>https://lluisfranco.github.io/es/parallelseriesindex/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/parallelindex.png" referrerpolicy="no-referrer">
-            </div>Índice de contenidos  01 - El Alfa (Prólogo) 02 - Un poco de historia 03 - Aclarando conceptos base 04 - Video: 01 Bases 05 -PLINQ: Parallel LINQ 06 - Video: 02 PLINQ 07 - Parallel static class 08 - Tasks, la 8ª maravilla 09 - Problemas de concurrencia 10 - Materiales y presentaciones de mis eventos  Relacionados  Programación funcional para el resto de nosotros Luces, cámara… Action!]]></description>
+            </div>Índice de contenidos  01 - El Alfa (Prólogo) 02 - Un poco de historia 03 - Aclarando conceptos base 04 - PLINQ: Parallel LINQ 05 - Parallel static class 06 - Tasks, la 8ª maravilla 07 - Problemas de concurrencia 08 - Materiales y presentaciones de mis eventos  Relacionados  Programación funcional para el resto de nosotros Luces, cámara… Action!  ]]></description>
 </item></channel>
 </rss>
