@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Fundamentals - Category - &gt;_lluis franco</title>
-        <link>http://lluisfranco.com/categories/fundamentals/</link>
+        <link>https://lluisfranco.github.io/categories/fundamentals/</link>
         <description>Fundamentals - Category - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 08 Feb 2012 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/categories/fundamentals/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 08 Feb 2012 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/categories/fundamentals/" rel="self" type="application/rss+xml" /><item>
     <title>Functional Programming For The Rest of Us</title>
-    <link>http://lluisfranco.com/functional-programming-for-the-rest-of-us/</link>
+    <link>https://lluisfranco.github.io/functional-programming-for-the-rest-of-us/</link>
     <pubDate>Wed, 08 Feb 2012 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/functional-programming-for-the-rest-of-us/</guid>
+    <guid>https://lluisfranco.github.io/functional-programming-for-the-rest-of-us/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/functionalprogramming.png" referrerpolicy="no-referrer">
             </div>Introduction Programmers are procrastinators. Get in, get some coffee, check the mailbox, read the RSS feeds, read the news, check out latest articles on techie websites, browse through political discussions on the designated sections of the programming forums. Rinse and repeat to make sure nothing is missed. Go to lunch. Come back, stare at the IDE for a few minutes. Check the mailbox. Get some coffee. Before you know it, the day is over.]]></description>

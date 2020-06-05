@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - &gt;_lluis franco</title>
-        <link>http://lluisfranco.com/posts/</link>
+        <link>https://lluisfranco.github.io/posts/</link>
         <description>All Posts | &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Retrieving events from SQL Server</title>
-    <link>http://lluisfranco.com/retrieving-events-from-sql-server/</link>
+    <link>https://lluisfranco.github.io/retrieving-events-from-sql-server/</link>
     <pubDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/retrieving-events-from-sql-server/</guid>
+    <guid>https://lluisfranco.github.io/retrieving-events-from-sql-server/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/sqlserver.png" referrerpolicy="no-referrer">
             </div>Overview When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.
@@ -17,10 +17,10 @@ In the past I’ve used different techniques to archive this, from SQL Assemblie
 None of that solved the problem in an elegant way, but well, it worked… more or less…]]></description>
 </item><item>
     <title>Getting data from OLAP cubes</title>
-    <link>http://lluisfranco.com/getting-data-from-olap-cubes/</link>
+    <link>https://lluisfranco.github.io/getting-data-from-olap-cubes/</link>
     <pubDate>Tue, 12 Dec 2017 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/getting-data-from-olap-cubes/</guid>
+    <guid>https://lluisfranco.github.io/getting-data-from-olap-cubes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/olap.png" referrerpolicy="no-referrer">
             </div>Overview Recently I had to read some data from different OLAP cubes and show this information in our application. This could be accomplished using ADOMD.NET client library, which is the multidimensional equivalent to the ADO.NET libraries.
@@ -28,30 +28,30 @@ This library provides a set of classes (Connections, Commands and Readers) that 
 Maybe the easiest way to read data is using the class AdomdDataReader.]]></description>
 </item><item>
     <title>Connect via SFTP using SSH.NET</title>
-    <link>http://lluisfranco.com/connect-via-sftp-using-ssh.net/</link>
+    <link>https://lluisfranco.github.io/connect-via-sftp-using-ssh.net/</link>
     <pubDate>Wed, 29 Nov 2017 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/connect-via-sftp-using-ssh.net/</guid>
+    <guid>https://lluisfranco.github.io/connect-via-sftp-using-ssh.net/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/ftp.png" referrerpolicy="no-referrer">
             </div>Overview In these times of APIs-everywhere, it may sound like an anachronism the use SFTP to connect to a remote server and get a list of files for exchanging information, but in the financial world (sadly) it’s more common than you think.
 In my current project I’ve to connect to a remote server via Secure File Transfer Protocol (aka SFTP) using a user name, a RSA private key and a phassphrase.]]></description>
 </item><item>
     <title>Remove diacritics (accents) in strings</title>
-    <link>http://lluisfranco.com/remove-diacritics-in-strings/</link>
+    <link>https://lluisfranco.github.io/remove-diacritics-in-strings/</link>
     <pubDate>Thu, 26 Jun 2014 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/remove-diacritics-in-strings/</guid>
+    <guid>https://lluisfranco.github.io/remove-diacritics-in-strings/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/note.png" referrerpolicy="no-referrer">
             </div>Quick note How to remove diacritics (accents) from a C# string?
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public static string RemoveDiacritics(this string input) { var stFormD = input.Normalize(NormalizationForm.FormD); var len = stFormD.Length; var sb = new StringBuilder(); for (int i = 0; i &lt; len; i++) { var uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[i]); if (uc != System.Globalization.UnicodeCategory.NonSpacingMark) { sb.Append(stFormD[i]); } } return (sb.]]></description>
 </item><item>
     <title>Extract extra large icon from a file, folder or drive</title>
-    <link>http://lluisfranco.com/extract-icons-win32/</link>
+    <link>https://lluisfranco.github.io/extract-icons-win32/</link>
     <pubDate>Wed, 16 Apr 2014 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/extract-icons-win32/</guid>
+    <guid>https://lluisfranco.github.io/extract-icons-win32/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/extra-large-icons.png" referrerpolicy="no-referrer">
             </div>Extracting system icons from Win32 Overwiew Hi, everyone! :)
@@ -59,20 +59,20 @@ In a recent project I was required to show a list of files with their associated
 If you only need local files and sizes of 32x32 píxels you can achieve this using the static method ExtractAssociatedIcon in the class System.]]></description>
 </item><item>
     <title>MVP site interview</title>
-    <link>http://lluisfranco.com/mvp-site-interview/</link>
+    <link>https://lluisfranco.github.io/mvp-site-interview/</link>
     <pubDate>Wed, 31 Oct 2012 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/mvp-site-interview/</guid>
+    <guid>https://lluisfranco.github.io/mvp-site-interview/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/mvpoftheyear.png" referrerpolicy="no-referrer">
             </div>My 5 minutes of glory 😂 Yesterday the guys of MS published my brief interview MVP site. However, it is not the full version, that I copy here.
 About Lluís Franco Born in Barcelona (Spain) with more than 20 years of experience in the software development sector, now lives in Andorra for the past 15 years with his family. Lluis holds a number of Microsoft official certifications such as MCP and MCTS and has been recognized as MVP for the past 10 years due to his active participation and moderation in the MSDN forums since 1997.]]></description>
 </item><item>
     <title>Amazing: Awarded MVP of the Year!</title>
-    <link>http://lluisfranco.com/amazing.-mvp-of-the-year-2011/</link>
+    <link>https://lluisfranco.github.io/amazing.-mvp-of-the-year-2011/</link>
     <pubDate>Thu, 16 Feb 2012 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/amazing.-mvp-of-the-year-2011/</guid>
+    <guid>https://lluisfranco.github.io/amazing.-mvp-of-the-year-2011/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/mvp2011.png" referrerpolicy="no-referrer">
             </div>MVP of the year 2011 Surprised. Puzzled. Amazed. These are the words that define better my current feelings.
@@ -80,19 +80,19 @@ However, while writing these lines I’m just realizing I have a blissful smile,
  “Congratulations on being awarded C# MVP of the Year based on your contributions in 2011!”]]></description>
 </item><item>
     <title>Functional Programming For The Rest of Us</title>
-    <link>http://lluisfranco.com/functional-programming-for-the-rest-of-us/</link>
+    <link>https://lluisfranco.github.io/functional-programming-for-the-rest-of-us/</link>
     <pubDate>Wed, 08 Feb 2012 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/functional-programming-for-the-rest-of-us/</guid>
+    <guid>https://lluisfranco.github.io/functional-programming-for-the-rest-of-us/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/functionalprogramming.png" referrerpolicy="no-referrer">
             </div>Introduction Programmers are procrastinators. Get in, get some coffee, check the mailbox, read the RSS feeds, read the news, check out latest articles on techie websites, browse through political discussions on the designated sections of the programming forums. Rinse and repeat to make sure nothing is missed. Go to lunch. Come back, stare at the IDE for a few minutes. Check the mailbox. Get some coffee. Before you know it, the day is over.]]></description>
 </item><item>
     <title>Macbook Pro - Series 3400 series chipset problems?</title>
-    <link>http://lluisfranco.com/macbook-pro-series-3400-series-chipset-problems/</link>
+    <link>https://lluisfranco.github.io/macbook-pro-series-3400-series-chipset-problems/</link>
     <pubDate>Thu, 07 Apr 2011 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/macbook-pro-series-3400-series-chipset-problems/</guid>
+    <guid>https://lluisfranco.github.io/macbook-pro-series-3400-series-chipset-problems/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/apple.png" referrerpolicy="no-referrer">
             </div>The issue After a long time&hellip; here we go again!
@@ -101,10 +101,10 @@ If you bought a MacBook Pro and using Boot Camp for running Windows, you may be 
 Also, in some ocasions Windows threw an error: &ldquo;Intel 5 Series/3400 Series Chipset Family USB Universal Host Controller – 3B3B (and 3B36) has a driver problem&rdquo;.]]></description>
 </item><item>
     <title>Check if current user is domain administrator</title>
-    <link>http://lluisfranco.com/check-current-user-is-domain-admin/</link>
+    <link>https://lluisfranco.github.io/check-current-user-is-domain-admin/</link>
     <pubDate>Mon, 13 Dec 2010 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/check-current-user-is-domain-admin/</guid>
+    <guid>https://lluisfranco.github.io/check-current-user-is-domain-admin/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/sysadmin.png" referrerpolicy="no-referrer">
             </div>The scenario In business applications it’s very common checking if the current user is member of the ‘domain administrators’ role of your company. For example, recently I had to check if the current user has administrative privileges in order to show some advanced configuration options.

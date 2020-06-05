@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>SQL - Tag - &gt;_lluis franco</title>
-        <link>http://lluisfranco.com/tags/sql/</link>
+        <link>https://lluisfranco.github.io/tags/sql/</link>
         <description>SQL - Tag - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/tags/sql/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/tags/sql/" rel="self" type="application/rss+xml" /><item>
     <title>Retrieving events from SQL Server</title>
-    <link>http://lluisfranco.com/retrieving-events-from-sql-server/</link>
+    <link>https://lluisfranco.github.io/retrieving-events-from-sql-server/</link>
     <pubDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/retrieving-events-from-sql-server/</guid>
+    <guid>https://lluisfranco.github.io/retrieving-events-from-sql-server/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/sqlserver.png" referrerpolicy="no-referrer">
             </div>Overview When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.
@@ -17,20 +17,20 @@ In the past I’ve used different techniques to archive this, from SQL Assemblie
 None of that solved the problem in an elegant way, but well, it worked… more or less…]]></description>
 </item><item>
     <title>Remove diacritics (accents) in strings</title>
-    <link>http://lluisfranco.com/remove-diacritics-in-strings/</link>
+    <link>https://lluisfranco.github.io/remove-diacritics-in-strings/</link>
     <pubDate>Thu, 26 Jun 2014 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/remove-diacritics-in-strings/</guid>
+    <guid>https://lluisfranco.github.io/remove-diacritics-in-strings/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/note.png" referrerpolicy="no-referrer">
             </div>Quick note How to remove diacritics (accents) from a C# string?
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public static string RemoveDiacritics(this string input) { var stFormD = input.Normalize(NormalizationForm.FormD); var len = stFormD.Length; var sb = new StringBuilder(); for (int i = 0; i &lt; len; i++) { var uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[i]); if (uc != System.Globalization.UnicodeCategory.NonSpacingMark) { sb.Append(stFormD[i]); } } return (sb.]]></description>
 </item><item>
     <title>Extended shortcodes</title>
-    <link>http://lluisfranco.com/ztemplate-copy/</link>
+    <link>https://lluisfranco.github.io/ztemplate-copy/</link>
     <pubDate>Sat, 26 Jun 1999 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/ztemplate-copy/</guid>
+    <guid>https://lluisfranco.github.io/ztemplate-copy/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/note.png" referrerpolicy="no-referrer">
             </div>Tables    Tables Are Cool     col 1 is left-aligned $1600   col 2 is centered $12   col 3 is right-aligned $1    Gist  Admonition admon samples

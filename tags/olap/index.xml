@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>OLAP - Tag - &gt;_lluis franco</title>
-        <link>http://lluisfranco.com/tags/olap/</link>
+        <link>https://lluisfranco.github.io/tags/olap/</link>
         <description>OLAP - Tag - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Tue, 12 Dec 2017 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/tags/olap/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Tue, 12 Dec 2017 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/tags/olap/" rel="self" type="application/rss+xml" /><item>
     <title>Getting data from OLAP cubes</title>
-    <link>http://lluisfranco.com/getting-data-from-olap-cubes/</link>
+    <link>https://lluisfranco.github.io/getting-data-from-olap-cubes/</link>
     <pubDate>Tue, 12 Dec 2017 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/getting-data-from-olap-cubes/</guid>
+    <guid>https://lluisfranco.github.io/getting-data-from-olap-cubes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/olap.png" referrerpolicy="no-referrer">
             </div>Overview Recently I had to read some data from different OLAP cubes and show this information in our application. This could be accomplished using ADOMD.NET client library, which is the multidimensional equivalent to the ADO.NET libraries.

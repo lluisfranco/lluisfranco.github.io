@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>net framework - Tag - &gt;_lluis franco</title>
-        <link>http://lluisfranco.com/tags/net-framework/</link>
+        <link>https://lluisfranco.github.io/tags/net-framework/</link>
         <description>net framework - Tag - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/tags/net-framework/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/tags/net-framework/" rel="self" type="application/rss+xml" /><item>
     <title>Retrieving events from SQL Server</title>
-    <link>http://lluisfranco.com/retrieving-events-from-sql-server/</link>
+    <link>https://lluisfranco.github.io/retrieving-events-from-sql-server/</link>
     <pubDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/retrieving-events-from-sql-server/</guid>
+    <guid>https://lluisfranco.github.io/retrieving-events-from-sql-server/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/sqlserver.png" referrerpolicy="no-referrer">
             </div>Overview When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.
@@ -17,10 +17,10 @@ In the past I’ve used different techniques to archive this, from SQL Assemblie
 None of that solved the problem in an elegant way, but well, it worked… more or less…]]></description>
 </item><item>
     <title>Getting data from OLAP cubes</title>
-    <link>http://lluisfranco.com/getting-data-from-olap-cubes/</link>
+    <link>https://lluisfranco.github.io/getting-data-from-olap-cubes/</link>
     <pubDate>Tue, 12 Dec 2017 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/getting-data-from-olap-cubes/</guid>
+    <guid>https://lluisfranco.github.io/getting-data-from-olap-cubes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/olap.png" referrerpolicy="no-referrer">
             </div>Overview Recently I had to read some data from different OLAP cubes and show this information in our application. This could be accomplished using ADOMD.NET client library, which is the multidimensional equivalent to the ADO.NET libraries.
@@ -28,30 +28,30 @@ This library provides a set of classes (Connections, Commands and Readers) that 
 Maybe the easiest way to read data is using the class AdomdDataReader.]]></description>
 </item><item>
     <title>Connect via SFTP using SSH.NET</title>
-    <link>http://lluisfranco.com/connect-via-sftp-using-ssh.net/</link>
+    <link>https://lluisfranco.github.io/connect-via-sftp-using-ssh.net/</link>
     <pubDate>Wed, 29 Nov 2017 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/connect-via-sftp-using-ssh.net/</guid>
+    <guid>https://lluisfranco.github.io/connect-via-sftp-using-ssh.net/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/ftp.png" referrerpolicy="no-referrer">
             </div>Overview In these times of APIs-everywhere, it may sound like an anachronism the use SFTP to connect to a remote server and get a list of files for exchanging information, but in the financial world (sadly) it’s more common than you think.
 In my current project I’ve to connect to a remote server via Secure File Transfer Protocol (aka SFTP) using a user name, a RSA private key and a phassphrase.]]></description>
 </item><item>
     <title>Remove diacritics (accents) in strings</title>
-    <link>http://lluisfranco.com/remove-diacritics-in-strings/</link>
+    <link>https://lluisfranco.github.io/remove-diacritics-in-strings/</link>
     <pubDate>Thu, 26 Jun 2014 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/remove-diacritics-in-strings/</guid>
+    <guid>https://lluisfranco.github.io/remove-diacritics-in-strings/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/note.png" referrerpolicy="no-referrer">
             </div>Quick note How to remove diacritics (accents) from a C# string?
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public static string RemoveDiacritics(this string input) { var stFormD = input.Normalize(NormalizationForm.FormD); var len = stFormD.Length; var sb = new StringBuilder(); for (int i = 0; i &lt; len; i++) { var uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[i]); if (uc != System.Globalization.UnicodeCategory.NonSpacingMark) { sb.Append(stFormD[i]); } } return (sb.]]></description>
 </item><item>
     <title>Extract extra large icon from a file, folder or drive</title>
-    <link>http://lluisfranco.com/extract-icons-win32/</link>
+    <link>https://lluisfranco.github.io/extract-icons-win32/</link>
     <pubDate>Wed, 16 Apr 2014 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/extract-icons-win32/</guid>
+    <guid>https://lluisfranco.github.io/extract-icons-win32/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/extra-large-icons.png" referrerpolicy="no-referrer">
             </div>Extracting system icons from Win32 Overwiew Hi, everyone! :)
@@ -59,30 +59,30 @@ In a recent project I was required to show a list of files with their associated
 If you only need local files and sizes of 32x32 píxels you can achieve this using the static method ExtractAssociatedIcon in the class System.]]></description>
 </item><item>
     <title>Check if current user is domain administrator</title>
-    <link>http://lluisfranco.com/check-current-user-is-domain-admin/</link>
+    <link>https://lluisfranco.github.io/check-current-user-is-domain-admin/</link>
     <pubDate>Mon, 13 Dec 2010 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/check-current-user-is-domain-admin/</guid>
+    <guid>https://lluisfranco.github.io/check-current-user-is-domain-admin/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/sysadmin.png" referrerpolicy="no-referrer">
             </div>The scenario In business applications it’s very common checking if the current user is member of the ‘domain administrators’ role of your company. For example, recently I had to check if the current user has administrative privileges in order to show some advanced configuration options.
 IsInRole To acomplish this we could use the IsInRole method from the WindowsPrincipal class. This method checks if an user is member of a Windows role and returns a bool value.]]></description>
 </item><item>
     <title>Retrieve all controls using generics (II)</title>
-    <link>http://lluisfranco.com/retrieve-all-controls-using-generics-ii/</link>
+    <link>https://lluisfranco.github.io/retrieve-all-controls-using-generics-ii/</link>
     <pubDate>Mon, 15 Nov 2010 17:20:51 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/retrieve-all-controls-using-generics-ii/</guid>
+    <guid>https://lluisfranco.github.io/retrieve-all-controls-using-generics-ii/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/tshirt2.png" referrerpolicy="no-referrer">
             </div>Gettings all controls from a container v2 A better approach In my previous post I created a recursive function to retrieve all controls inside a form and its containers. Today, my colleague and friend Eduard Tomàs sent me another solution to the same topic based on LINQ. It’s simply and really, really pretty ❤️
 The power of LINQ Before starting, we need to solve this: LINQ works over IEnumerable, but Control.]]></description>
 </item><item>
     <title>Retrieve all controls using generics (I)</title>
-    <link>http://lluisfranco.com/retrieve-all-controls-using-generics-i/</link>
+    <link>https://lluisfranco.github.io/retrieve-all-controls-using-generics-i/</link>
     <pubDate>Tue, 09 Nov 2010 17:20:51 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/retrieve-all-controls-using-generics-i/</guid>
+    <guid>https://lluisfranco.github.io/retrieve-all-controls-using-generics-i/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/tshirt.png" referrerpolicy="no-referrer">
             </div>Gettings all controls from a container That&rsquo;s the question How many times have you ever heard something similar? :)
@@ -90,10 +90,10 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
  The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.]]></description>
 </item><item>
     <title>Extended shortcodes</title>
-    <link>http://lluisfranco.com/ztemplate-copy/</link>
+    <link>https://lluisfranco.github.io/ztemplate-copy/</link>
     <pubDate>Sat, 26 Jun 1999 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/ztemplate-copy/</guid>
+    <guid>https://lluisfranco.github.io/ztemplate-copy/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/note.png" referrerpolicy="no-referrer">
             </div>Tables    Tables Are Cool     col 1 is left-aligned $1600   col 2 is centered $12   col 3 is right-aligned $1    Gist  Admonition admon samples

@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>How To - Categoría - &gt;_lluis franco</title>
-        <link>http://lluisfranco.com/es/categories/how-to/</link>
+        <link>https://lluisfranco.github.io/es/categories/how-to/</link>
         <description>How To - Categoría - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Tue, 02 May 2000 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/es/categories/how-to/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Tue, 02 May 2000 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/es/categories/how-to/" rel="self" type="application/rss+xml" /><item>
     <title>OUI Samples post</title>
-    <link>http://lluisfranco.com/es/samples/</link>
+    <link>https://lluisfranco.github.io/es/samples/</link>
     <pubDate>Tue, 02 May 2000 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>http://lluisfranco.com/es/samples/</guid>
+    <guid>https://lluisfranco.github.io/es/samples/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/01.jpg" referrerpolicy="no-referrer">
             </div>Title 2 Samples <sup>99</sup>/<sub>100</sub>

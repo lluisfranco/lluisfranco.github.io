@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>SQL Server - Tag - &gt;_lluis franco</title>
-        <link>http://lluisfranco.com/tags/sql-server/</link>
+        <link>https://lluisfranco.github.io/tags/sql-server/</link>
         <description>SQL Server - Tag - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</lastBuildDate><atom:link href="http://lluisfranco.com/tags/sql-server/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/tags/sql-server/" rel="self" type="application/rss+xml" /><item>
     <title>Retrieving events from SQL Server</title>
-    <link>http://lluisfranco.com/retrieving-events-from-sql-server/</link>
+    <link>https://lluisfranco.github.io/retrieving-events-from-sql-server/</link>
     <pubDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>http://lluisfranco.com/retrieving-events-from-sql-server/</guid>
+    <guid>https://lluisfranco.github.io/retrieving-events-from-sql-server/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/sqlserver.png" referrerpolicy="no-referrer">
             </div>Overview When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.
