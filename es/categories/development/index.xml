@@ -4,44 +4,55 @@
         <link>https://lluisfranco.github.io/es/categories/development/</link>
         <description>Development - Categoría - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Thu, 03 Mar 2011 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/es/categories/development/" rel="self" type="application/rss+xml" /><item>
-    <title>Parallel Series 03</title>
-    <link>https://lluisfranco.github.io/es/parallelseries03/</link>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Tue, 31 May 2011 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/es/categories/development/" rel="self" type="application/rss+xml" /><item>
+    <title>Parallel Series 04 - PLINQ</title>
+    <link>https://lluisfranco.github.io/es/parallelseries04-plinq/</link>
+    <pubDate>Tue, 31 May 2011 11:51:50 &#43;0200</pubDate>
+    <author>Autor</author>
+    <guid>https://lluisfranco.github.io/es/parallelseries04-plinq/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/PLINQ.png" referrerpolicy="no-referrer">
+            </div>Ir al índice de la serie
+LINQ power! Creo que estaremos todos de acuerdo en que LINQ ha supuesto una revolución en la forma de desarrollar, y ha hecho que muchos desarrolladores de otros lenguajes nos miren con cierto tono de envidia… E incluso que otras plataformas estén haciendo serios esfuerzos para incorporarlo en sus Frameworks :-)
+Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilidades gracias a PLINQ, que permite -de forma extremadamente sencilla- convertir cualquier consulta LINQ secuencial en una consulta paralelizable, permitiendo su segmentación y ejecución en los distintos cores en paralelo.]]></description>
+</item><item>
+    <title>Parallel Series 03 - Conceptos base</title>
+    <link>https://lluisfranco.github.io/es/parallelseries03-conceptos-base/</link>
     <pubDate>Thu, 03 Mar 2011 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/parallelseries03/</guid>
+    <guid>https://lluisfranco.github.io/es/parallelseries03-conceptos-base/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/ProcessesThreds.png" referrerpolicy="no-referrer">
             </div>Ir al índice de la serie
 Elementos del sistema opertivo Cuando hablamos de programación paralela conviene tener bastante claros algunos conceptos a nivel de sistema operativo. En este apartado trataremos de aclarar estos términos, ya que más adelante los usaremos frecuentemente.
 Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo existe dentro del contexto de un proceso, aunque no todos los procesos se corresponden con aplicaciones visibles. Basta abrir el administrador de tareas para comprobar que la lista de procesos es bastante mayor a la de aplicaciones.]]></description>
 </item><item>
-    <title>Parallel Series 02</title>
-    <link>https://lluisfranco.github.io/es/parallelseries02/</link>
+    <title>Parallel Series 02 - Un poco de historia</title>
+    <link>https://lluisfranco.github.io/es/parallelseries02-un-poco-de-historia/</link>
     <pubDate>Fri, 21 Jan 2011 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/parallelseries02/</guid>
+    <guid>https://lluisfranco.github.io/es/parallelseries02-un-poco-de-historia/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/parallelhistory.png" referrerpolicy="no-referrer">
             </div>Ir al índice de la serie
 Un poco de historia La programación paralela no es nada nuevo. Ya estaba presente allá en mis tiempos de estudiante hace más de 20 años 😢 y hoy en día, desde la aparición del .Net Framework 4.0 está más viva que nunca gracias a la Task Parallel Library o TPL.
 No obstante, decir que la TPL sólo sirve para realizar tareas asíncronas es como decir que un smartphone sólo sirve para llamar por teléfono.]]></description>
 </item><item>
-    <title>Parallel Series 01</title>
-    <link>https://lluisfranco.github.io/es/parallelseries01/</link>
+    <title>Parallel Series 01 - El Alfa</title>
+    <link>https://lluisfranco.github.io/es/parallelseries01-el-alfa/</link>
     <pubDate>Tue, 11 Jan 2011 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/parallelseries01/</guid>
+    <guid>https://lluisfranco.github.io/es/parallelseries01-el-alfa/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/parallel01.png" referrerpolicy="no-referrer">
             </div>Ir al índice de la serie
 Prologo Cada versión del .NET framework nos sorprende con una serie de novedades, y para cada uno de nosotros hay -al menos- una que nos roba el corazón. A mi me sucedió con la aparición de Generics con el framework 2.0, los métodos extensores y LINQ en las versiones 3.0 y 3.5 y me ha pasado de nuevo con la Task Parallel Library en la versión 4.]]></description>
 </item><item>
-    <title>Parallel Series - Index</title>
-    <link>https://lluisfranco.github.io/es/parallelseriesindex/</link>
+    <title>Parallel Series - Indice</title>
+    <link>https://lluisfranco.github.io/es/parallelseries00-index/</link>
     <pubDate>Mon, 10 Jan 2011 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/parallelseriesindex/</guid>
+    <guid>https://lluisfranco.github.io/es/parallelseries00-index/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/parallelindex.png" referrerpolicy="no-referrer">
             </div>Índice de contenidos  01 - El Alfa (Prólogo) 02 - Un poco de historia 03 - Aclarando conceptos base 04 - PLINQ: Parallel LINQ 05 - Parallel static class 06 - Tasks, la 8ª maravilla 07 - Problemas de concurrencia 08 - Materiales y presentaciones de mis eventos  Relacionados  Programación funcional para el resto de nosotros Luces, cámara… Action!  ]]></description>
