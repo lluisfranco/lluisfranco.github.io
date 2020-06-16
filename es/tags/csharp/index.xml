@@ -4,7 +4,17 @@
         <link>https://lluisfranco.github.io/es/tags/csharp/</link>
         <description>csharp - Etiqueta - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Tue, 31 May 2011 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/es/tags/csharp/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 08 Feb 2012 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/es/tags/csharp/" rel="self" type="application/rss+xml" /><item>
+    <title>Luces, cámara... action!</title>
+    <link>https://lluisfranco.github.io/es/luces-camara-action/</link>
+    <pubDate>Wed, 08 Feb 2012 11:51:50 &#43;0200</pubDate>
+    <author>Autor</author>
+    <guid>https://lluisfranco.github.io/es/luces-camara-action/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/LightsCameraAction.png" referrerpolicy="no-referrer">
+            </div>Ir al índice de la serie
+Magia sin delegados Los delegados de tipo Action son una de las pequeñas maravillas traídas a .NET desde la programación funcional. Pueden definirse como un método que tiene un sólo parámetro (en su sobrecarga más simple) y que no devuelve ningún valor. Habitualmente suelen usarse para almacenar referencias a métodos o para pasar un método como parámetro sin tener que declarar explícitamente un delegado. Basta definir el parámetro con la misma firma que se espera recibir y la magia empieza a actuar.]]></description>
+</item><item>
     <title>Parallel Series 04 - PLINQ</title>
     <link>https://lluisfranco.github.io/es/parallelseries04-plinq/</link>
     <pubDate>Tue, 31 May 2011 11:51:50 &#43;0200</pubDate>
