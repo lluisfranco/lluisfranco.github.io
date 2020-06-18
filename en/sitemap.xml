@@ -97,12 +97,60 @@
             <loc>https://lluisfranco.github.io/tags/mvp/</loc><lastmod>2012-10-31T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/mvp-site-interview/</loc><lastmod>2012-10-31T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/amazing.-mvp-of-the-year-2011/</loc><lastmod>2012-02-16T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.github.io/tags/functional/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.github.io/functional-programming-for-the-rest-of-us/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.github.io/categories/fundamentals/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.github.io/tags/history/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.github.io/tags/lambda/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.github.io/tags/programming/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.github.io/tags/functional/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.github.io/es/tags/functional/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.github.io/tags/functional/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/functional-programming-for-the-rest-of-us/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.github.io/es/functional-programming-for-the-rest-of-us/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.github.io/functional-programming-for-the-rest-of-us/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/categories/fundamentals/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.github.io/es/categories/fundamentals/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.github.io/categories/fundamentals/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/tags/history/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.github.io/es/tags/history/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.github.io/tags/history/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/tags/lambda/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.github.io/es/tags/lambda/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.github.io/tags/lambda/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/tags/programming/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.github.io/es/tags/programming/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.github.io/tags/programming/"
+                    /></url><url>
             <loc>https://lluisfranco.github.io/tags/apple/</loc><lastmod>2011-04-07T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/tags/boot-camp/</loc><lastmod>2011-04-07T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/tags/chipset/</loc><lastmod>2011-04-07T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

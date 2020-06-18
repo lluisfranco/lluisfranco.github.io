@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Programming - Etiqueta - &gt;_lluis franco</title>
+        <link>https://lluisfranco.github.io/es/tags/programming/</link>
+        <description>Programming - Etiqueta - &gt;_lluis franco</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 08 Feb 2012 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/es/tags/programming/" rel="self" type="application/rss+xml" /><item>
+    <title>Programación funcional para el resto de nosotros</title>
+    <link>https://lluisfranco.github.io/es/functional-programming-for-the-rest-of-us/</link>
+    <pubDate>Wed, 08 Feb 2012 11:51:50 &#43;0200</pubDate>
+    <author>Autor</author>
+    <guid>https://lluisfranco.github.io/es/functional-programming-for-the-rest-of-us/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/functionalprogramming.png" referrerpolicy="no-referrer">
+            </div>Ir al índice de la serie
+Mi idea inicial Originalmente, en mi serie sobre la Task Parallel Library estaba pensando en incluir algún post sobre programación funcional, pero cuando encontré esta pequeña joya decidí pedir permiso a Luis para poder incluir una copia en mi blog, ya que ni en sueños podría yo haber escrito algo tan completo. Mis felicitaciones!
+Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo al excelente trabajo y consulta la versión traducida de Luis Mendoza, basado en el post original de Slava Akhmechet.]]></description>
+</item></channel>
+</rss>
