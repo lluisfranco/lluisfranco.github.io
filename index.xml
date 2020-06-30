@@ -4,7 +4,9 @@
         <link>https://lluisfranco.github.io/</link>
         <description>home/lluisfranco/code/tips/</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Fri, 01 May 2020 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Fri, 01 May 2020 11:51:50 &#43;0200</lastBuildDate>
+            <atom:link href="https://lluisfranco.github.io/index.xml" rel="self" type="application/rss+xml" />
+        <item>
     <title>Retrieving events from SQL Server</title>
     <link>https://lluisfranco.github.io/retrieving-events-from-sql-server/</link>
     <pubDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</pubDate>
