@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Programación funcional para el resto de nosotros - &gt;_lluis franco</title>
-        <meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Programación funcional para el resto de nosotros" />
+        <title>Programación funcional para el resto de nosotros - &gt;_lluis franco</title><meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Programación funcional para el resto de nosotros" />
 <meta property="og:description" content="Ir al índice de la serie
 Mi idea inicial Originalmente, en mi serie sobre la Task Parallel Library estaba pensando en incluir algún post sobre programación funcional, pero cuando encontré esta pequeña joya decidí pedir permiso a Luis para poder incluir una copia en mi blog, ya que ni en sueños podría yo haber escrito algo tan completo. Mis felicitaciones!
 Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo al excelente trabajo y consulta la versión traducida de Luis Mendoza, basado en el post original de Slava Akhmechet." />
@@ -20,7 +19,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 Mi idea inicial Originalmente, en mi serie sobre la Task Parallel Library estaba pensando en incluir algún post sobre programación funcional, pero cuando encontré esta pequeña joya decidí pedir permiso a Luis para poder incluir una copia en mi blog, ya que ni en sueños podría yo haber escrito algo tan completo. Mis felicitaciones!
 Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo al excelente trabajo y consulta la versión traducida de Luis Mendoza, basado en el post original de Slava Akhmechet."/>
 <meta name="application-name" content="&gt;_lluis franco">
-<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.github.io/es/functional-programming-for-the-rest-of-us/" /><link rel="prev" href="https://lluisfranco.github.io/es/luces-camara-action/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.es.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.github.io/es/functional-programming-for-the-rest-of-us/" /><link rel="prev" href="https://lluisfranco.github.io/es/luces-camara-action/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,28 +28,16 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/lluisfranco.github.io\/es\/functional-programming-for-the-rest-of-us\/"
-        },"image": {
-                "@type": "ImageObject",
-                "url": "https:\/\/lluisfranco.github.io\/images\/cover.png",
-                "width":  800 ,
-                "height":  600 
-            },"genre": "posts","keywords": "Functional, Programming, Lambda, History","wordcount":  9708 ,
+        },"genre": "posts","keywords": "Functional, Programming, Lambda, History","wordcount":  9708 ,
         "url": "https:\/\/lluisfranco.github.io\/es\/functional-programming-for-the-rest-of-us\/","datePublished": "2012-02-10T11:51:50+02:00","dateModified": "2012-02-10T11:51:50+02:00","publisher": {
-                "@type": "Organization",
-                "name": "Lluis Franco",
-                "logo": {
-                "@type": "ImageObject",
-                "url": "https:\/\/lluisfranco.github.io\/images\/myAvatar200.png",
-                "width":  127 ,
-                "height":  40 
-                }
-            },"author": {
+            "@type": "Organization",
+            "name": "Lluis Franco"},"author": {
                 "@type": "Person",
                 "name": "lluís"
             },"description": ""
     }
     </script></head>
-    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -120,6 +107,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contenido</h2>
             <div class="toc-content" id="toc-content-auto"></div>
+<<<<<<< HEAD
         </div><article class="page single"><h1 class="single-title animated flipInX">Programación funcional para el resto de nosotros</h1><h2 class="single-subtitle">El mejor artículo que vas a leer hoy (no es mío) xD</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;
                     <span class="post-category">incluido en<a href="/es/categories/development/">
@@ -130,14 +118,20 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2012-02-10>2012-02-10</time>&nbsp;
                 <i class="fas fa-pencil-alt fa-fw"></i>unas 9708 palabras&nbsp;
                 <i class="far fa-clock fa-fw"></i>46 min&nbsp;</div>
+=======
+        </div><article class="page single"><h1 class="single-title animated flipInX">Programación funcional para el resto de nosotros</h1><h2 class="single-subtitle">El mejor artículo que leerás hoy :)</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-category">incluido en <a href="/es/categories/development/"><i class="far fa-folder fa-fw"></i>Development</a>&nbsp;<a href="/es/categories/fundamentals/"><i class="far fa-folder fa-fw"></i>Fundamentals</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2012-02-10">2012-02-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;9708 palabras&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;46 minutos&nbsp;</div>
+>>>>>>> 4aaf832dc516ea2da570efbcb8f7bc0fce9d90a3
         </div><div class="featured-image"><img
         class="lazyload"
-        src="/svg/loading/normal.min.svg"
+        src="/svg/loading.min.svg"
         data-src="/images/posts/functionalprogramming.png"
         data-srcset="/images/posts/functionalprogramming.png, /images/posts/functionalprogramming.png 1.5x, /images/posts/functionalprogramming.png 2x"
         data-sizes="auto"
         alt="/images/posts/functionalprogramming.png"
-        title="/images/posts/functionalprogramming.png" /></div><div class="details toc" id="toc-static">
+        title="/images/posts/functionalprogramming.png" /></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contenido</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -877,7 +871,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>El artículo fue actualizado el 2012-02-10</span>
+                <span>Actualizado el 2012-02-10</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -911,7 +905,5 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
             </a><a href="#" id="view-comments" class="fixed-button" title="Ver comentarios">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript">
-    window.config = {"code":{"copyTitle":"Copiar al portapapeles","maxShownLines":20},"comment":{},"headerMode":{"desktop":"fixed","mobile":"auto"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/es/index.json","lunrLanguageCode":"es","maxResultLength":10,"noResultsFound":"No se encontraron resultados","snippetLength":30,"type":"lunr"}};
-</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.es.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.es.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copiar al portapapeles","maxShownLines":20},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/es/index.json","lunrLanguageCode":"es","maxResultLength":10,"noResultsFound":"No se encontraron resultados","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

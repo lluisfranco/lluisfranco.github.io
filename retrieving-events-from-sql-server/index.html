@@ -5,8 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Retrieving events from SQL Server - &gt;_lluis franco</title>
-        <meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Retrieving events from SQL Server" />
+        <title>Retrieving events from SQL Server - &gt;_lluis franco</title><meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Retrieving events from SQL Server" />
 <meta property="og:description" content="Overview When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.
 In the past I’ve used different techniques to archive this, from SQL Assemblies for calling a SignalR server, to execute xp_cmdshell, and so many other esoteric ways.
 None of that solved the problem in an elegant way, but well, it worked… more or less…" />
@@ -20,7 +19,7 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 In the past I’ve used different techniques to archive this, from SQL Assemblies for calling a SignalR server, to execute xp_cmdshell, and so many other esoteric ways.
 None of that solved the problem in an elegant way, but well, it worked… more or less…"/>
 <meta name="application-name" content="&gt;_lluis franco">
-<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.github.io/retrieving-events-from-sql-server/" /><link rel="prev" href="https://lluisfranco.github.io/getting-data-from-olap-cubes/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.en.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.github.io/retrieving-events-from-sql-server/" /><link rel="prev" href="https://lluisfranco.github.io/getting-data-from-olap-cubes/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -29,28 +28,16 @@ None of that solved the problem in an elegant way, but well, it worked… more o
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/lluisfranco.github.io\/retrieving-events-from-sql-server\/"
-        },"image": {
-                "@type": "ImageObject",
-                "url": "https:\/\/lluisfranco.github.io\/images\/cover.png",
-                "width":  800 ,
-                "height":  600 
-            },"genre": "posts","keywords": "csharp, net framework, SQL, SQL Server, Events","wordcount":  965 ,
+        },"genre": "posts","keywords": "csharp, net framework, SQL, SQL Server, Events","wordcount":  965 ,
         "url": "https:\/\/lluisfranco.github.io\/retrieving-events-from-sql-server\/","datePublished": "2019-09-30T11:51:50+02:00","dateModified": "2019-09-30T11:51:50+02:00","publisher": {
-                "@type": "Organization",
-                "name": "Lluis Franco",
-                "logo": {
-                "@type": "ImageObject",
-                "url": "https:\/\/lluisfranco.github.io\/images\/myAvatar200.png",
-                "width":  127 ,
-                "height":  40 
-                }
-            },"author": {
+            "@type": "Organization",
+            "name": "Lluis Franco"},"author": {
                 "@type": "Person",
                 "name": "lluís"
             },"description": ""
     }
     </script></head>
-    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -121,23 +108,17 @@ None of that solved the problem in an elegant way, but well, it worked… more o
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Retrieving events from SQL Server</h1><h2 class="single-subtitle">Through the active connection</h2><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;
-                    <span class="post-category">included in<a href="/categories/development/">
-                                <i class="far fa-folder fa-fw"></i>Development
-                            </a>&nbsp;<a href="/categories/how-to/">
-                                <i class="far fa-folder fa-fw"></i>How To
-                            </a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-09-30>2019-09-30</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 965 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>5 min&nbsp;</div>
+            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-category">included in <a href="/categories/development/"><i class="far fa-folder fa-fw"></i>Development</a>&nbsp;<a href="/categories/how-to/"><i class="far fa-folder fa-fw"></i>How To</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2019-09-30">2019-09-30</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;965 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
-        src="/svg/loading/normal.min.svg"
+        src="/svg/loading.min.svg"
         data-src="/images/posts/sqlserver.png"
         data-srcset="/images/posts/sqlserver.png, /images/posts/sqlserver.png 1.5x, /images/posts/sqlserver.png 2x"
         data-sizes="auto"
         alt="/images/posts/sqlserver.png"
-        title="/images/posts/sqlserver.png" /></div><div class="details toc" id="toc-static">
+        title="/images/posts/sqlserver.png" /></div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -475,7 +456,7 @@ None of that solved the problem in an elegant way, but well, it worked… more o
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>The article was updated on 2019-09-30</span>
+                <span>Updated on 2019-09-30</span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -509,7 +490,5 @@ None of that solved the problem in an elegant way, but well, it worked… more o
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript">
-    window.config = {"code":{"copyTitle":"Copy to clipboard","maxShownLines":20},"comment":{},"headerMode":{"desktop":"fixed","mobile":"auto"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};
-</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":20},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>
