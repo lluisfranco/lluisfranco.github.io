@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://lluisfranco.github.io/es/</loc><lastmod>2020-05-01T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://lluisfranco.github.io/es/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://lluisfranco.github.io/"
@@ -10,6 +10,37 @@
                     rel="alternate"
                     hreflang="es"
                     href="https://lluisfranco.github.io/es/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/es/categories/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://lluisfranco.github.io/categories/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="es"
+                    href="https://lluisfranco.github.io/es/categories/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/es/posts/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://lluisfranco.github.io/posts/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="es"
+                    href="https://lluisfranco.github.io/es/posts/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/es/tags/prox/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/categories/review/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/tags/slimbook/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/slimbook-prox-review/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/tags/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://lluisfranco.github.io/tags/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="es"
+                    href="https://lluisfranco.github.io/es/tags/"
                     /></url><url>
             <loc>https://lluisfranco.github.io/es/about/</loc><lastmod>2020-05-01T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
@@ -19,15 +50,6 @@
                     rel="alternate"
                     hreflang="es"
                     href="https://lluisfranco.github.io/es/about/"
-                    /></url><url>
-            <loc>https://lluisfranco.github.io/es/categories/</loc><lastmod>2012-02-10T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://lluisfranco.github.io/categories/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="es"
-                    href="https://lluisfranco.github.io/es/categories/"
                     /></url><url>
             <loc>https://lluisfranco.github.io/es/categories/development/</loc><lastmod>2012-02-10T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
@@ -74,15 +96,6 @@
                     hreflang="es"
                     href="https://lluisfranco.github.io/es/tags/lambda/"
                     /></url><url>
-            <loc>https://lluisfranco.github.io/es/posts/</loc><lastmod>2012-02-10T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://lluisfranco.github.io/posts/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="es"
-                    href="https://lluisfranco.github.io/es/posts/"
-                    /></url><url>
             <loc>https://lluisfranco.github.io/es/functional-programming-for-the-rest-of-us/</loc><lastmod>2012-02-10T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
@@ -100,15 +113,6 @@
                     rel="alternate"
                     hreflang="es"
                     href="https://lluisfranco.github.io/es/tags/programming/"
-                    /></url><url>
-            <loc>https://lluisfranco.github.io/es/tags/</loc><lastmod>2012-02-10T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://lluisfranco.github.io/tags/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="es"
-                    href="https://lluisfranco.github.io/es/tags/"
                     /></url><url>
             <loc>https://lluisfranco.github.io/es/tags/async/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/es/tags/csharp/</loc><lastmod>2012-02-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
