@@ -2,6 +2,15 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://lluisfranco.github.io/</loc><lastmod>2020-05-01T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.github.io/es/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.github.io/"
+                    /></url><url>
             <loc>https://lluisfranco.github.io/about/</loc><lastmod>2020-05-01T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="es"
@@ -10,15 +19,6 @@
                     rel="alternate"
                     hreflang="en"
                     href="https://lluisfranco.github.io/about/"
-                    /></url><url>
-            <loc>https://lluisfranco.github.io/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://lluisfranco.github.io/es/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://lluisfranco.github.io/"
                     /></url><url>
             <loc>https://lluisfranco.github.io/categories/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
