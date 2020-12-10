@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-	<meta name="generator" content="Hugo 0.74.3" />
+	<meta name="generator" content="Hugo 0.79.0" />
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
@@ -117,6 +117,22 @@ Y no me refiero a que técnicamente haya sido un reto ni mucho menos.</div><div 
         <a href="/es/slimbook-prox-review/">Leer más</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/es/tags/slimbook/">slimbook</a>,&nbsp;<a href="/es/tags/prox/">prox</a></div></div>
 </article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
+            <a href="/es/parallelseries06-task-class/"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/posts/Task01.png"
+        data-srcset="/images/posts/Task01.png, /images/posts/Task01.png 1.5x, /images/posts/Task01.png 2x"
+        data-sizes="auto"
+        alt="/images/posts/Task01.png"
+        title="/images/posts/Task01.png" /></a>
+        </div><h1 class="single-title" itemprop="name headline">
+        <a href="/es/parallelseries06-task-class/">Parallel Series 06 - Tasks, la 8ª maravilla</a>
+    </h1><div class="post-meta"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-publish">publicado el <time datetime="2012-09-24">2012-09-24</time></span>&nbsp;<span class="post-category">incluido en <a href="/es/categories/development/"><i class="far fa-folder fa-fw"></i>Development</a>&nbsp;<a href="/es/categories/parallel-series/"><i class="far fa-folder fa-fw"></i>Parallel Series</a></span></div><div class="content">Ir al índice de la serie
+The show must go on En los posts previos hemos hablado de PLINQ y de la clase Parallel, dos características que facilitan mucho la ejecución de datos en paralelo, sin embargo si alguien me preguntase cual es la característica que más me gusta de la Task Parallel Library lo tendría muy claro: El manejo de tareas asíncronas mediante la clase Task.
+Durante muchos años los desarrolladores hemos tenido que lidiar -más ben pelearnos- con la multitarea y la ejecución de código asíncrono.</div><div class="post-footer">
+        <a href="/es/parallelseries06-task-class/">Leer más</a><div class="post-tags">
+                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/es/tags/csharp/">csharp</a>,&nbsp;<a href="/es/tags/net-framework/">net framework</a>,&nbsp;<a href="/es/tags/task/">Task</a>,&nbsp;<a href="/es/tags/parallel/">Parallel</a>,&nbsp;<a href="/es/tags/async/">Async</a></div></div>
+</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
             <a href="/es/functional-programming-for-the-rest-of-us/"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -177,22 +193,6 @@ Parallel Static Class Hoy quiero hablaros de la clase estática Parallel. Esta c
 LINQ power! Creo que estaremos todos de acuerdo en que LINQ ha supuesto una revolución en la forma de desarrollar, y ha hecho que muchos desarrolladores de otros lenguajes nos miren con cierto tono de envidia… E incluso que otras plataformas estén haciendo serios esfuerzos para incorporarlo en sus Frameworks :-)
 Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilidades gracias a PLINQ, que permite -de forma extremadamente sencilla- convertir cualquier consulta LINQ secuencial en una consulta paralelizable, permitiendo su segmentación y ejecución en los distintos cores en paralelo.</div><div class="post-footer">
         <a href="/es/parallelseries04-plinq/">Leer más</a><div class="post-tags">
-                <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/es/tags/csharp/">csharp</a>,&nbsp;<a href="/es/tags/net-framework/">net framework</a>,&nbsp;<a href="/es/tags/task/">Task</a>,&nbsp;<a href="/es/tags/parallel/">Parallel</a>,&nbsp;<a href="/es/tags/async/">Async</a></div></div>
-</article><article class="single summary" itemscope itemtype="http://schema.org/Article"><div class="featured-image-preview">
-            <a href="/es/parallelseries03-conceptos-base/"><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="/images/posts/ProcessesThreds.png"
-        data-srcset="/images/posts/ProcessesThreds.png, /images/posts/ProcessesThreds.png 1.5x, /images/posts/ProcessesThreds.png 2x"
-        data-sizes="auto"
-        alt="/images/posts/ProcessesThreds.png"
-        title="/images/posts/ProcessesThreds.png" /></a>
-        </div><h1 class="single-title" itemprop="name headline">
-        <a href="/es/parallelseries03-conceptos-base/">Parallel Series 03 - Conceptos base</a>
-    </h1><div class="post-meta"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-publish">publicado el <time datetime="2011-03-03">2011-03-03</time></span>&nbsp;<span class="post-category">incluido en <a href="/es/categories/development/"><i class="far fa-folder fa-fw"></i>Development</a>&nbsp;<a href="/es/categories/parallel-series/"><i class="far fa-folder fa-fw"></i>Parallel Series</a></span></div><div class="content">Ir al índice de la serie
-Elementos del sistema opertivo Cuando hablamos de programación paralela conviene tener bastante claros algunos conceptos a nivel de sistema operativo. En este apartado trataremos de aclarar estos términos, ya que más adelante los usaremos frecuentemente.
-Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo existe dentro del contexto de un proceso, aunque no todos los procesos se corresponden con aplicaciones visibles. Basta abrir el administrador de tareas para comprobar que la lista de procesos es bastante mayor a la de aplicaciones.</div><div class="post-footer">
-        <a href="/es/parallelseries03-conceptos-base/">Leer más</a><div class="post-tags">
                 <i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/es/tags/csharp/">csharp</a>,&nbsp;<a href="/es/tags/net-framework/">net framework</a>,&nbsp;<a href="/es/tags/task/">Task</a>,&nbsp;<a href="/es/tags/parallel/">Parallel</a>,&nbsp;<a href="/es/tags/async/">Async</a></div></div>
 </article><ul class="pagination"><li class="page-item active">
                     <span class="page-link">

@@ -15,6 +15,17 @@
             </div>Mi nuevo juguete No solía trabajar en casa desde antes del año 2000 (ha llovido :p), pero -como a muchos- todo eso cambió a partir del mes de marzo de 2020. Y la verdad, tengo que decir que fue todo un reto volver a tener la disciplina mental apropiada para trabajar en casa de nuevo después de tantos años.
 Y no me refiero a que técnicamente haya sido un reto ni mucho menos.]]></description>
 </item><item>
+    <title>Parallel Series 06 - Tasks, la 8ª maravilla</title>
+    <link>https://lluisfranco.github.io/es/parallelseries06-task-class/</link>
+    <pubDate>Mon, 24 Sep 2012 11:51:50 &#43;0200</pubDate>
+    <author>Autor</author>
+    <guid>https://lluisfranco.github.io/es/parallelseries06-task-class/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/Task01.png" referrerpolicy="no-referrer">
+            </div>Ir al índice de la serie
+The show must go on En los posts previos hemos hablado de PLINQ y de la clase Parallel, dos características que facilitan mucho la ejecución de datos en paralelo, sin embargo si alguien me preguntase cual es la característica que más me gusta de la Task Parallel Library lo tendría muy claro: El manejo de tareas asíncronas mediante la clase Task.
+Durante muchos años los desarrolladores hemos tenido que lidiar -más ben pelearnos- con la multitarea y la ejecución de código asíncrono.]]></description>
+</item><item>
     <title>Programación funcional para el resto de nosotros</title>
     <link>https://lluisfranco.github.io/es/functional-programming-for-the-rest-of-us/</link>
     <pubDate>Fri, 10 Feb 2012 11:51:50 &#43;0200</pubDate>
