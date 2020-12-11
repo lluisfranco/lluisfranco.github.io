@@ -17,6 +17,51 @@
             </div>Mi nuevo juguete No solía trabajar en casa desde antes del año 2000 (ha llovido :p), pero -como a muchos- todo eso cambió a partir del mes de marzo de 2020. Y la verdad, tengo que decir que fue todo un reto volver a tener la disciplina mental apropiada para trabajar en casa de nuevo después de tantos años.
 Y no me refiero a que técnicamente haya sido un reto ni mucho menos.]]></description>
 </item><item>
+    <title>Video de mi sesión en la DotNet Spain 2016</title>
+    <link>https://lluisfranco.github.io/es/video-sesion-dotnet-spain-2016/</link>
+    <pubDate>Tue, 29 Mar 2016 11:51:50 &#43;0200</pubDate>
+    <author>Autor</author>
+    <guid>https://lluisfranco.github.io/es/video-sesion-dotnet-spain-2016/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/DotNet2016Video.png" referrerpolicy="no-referrer">
+            </div>Video de mi sesión Hola de nuevo,
+Lo prometido es deuda, he subido a Channel9 un video sobre mi sesión de ‘async Best practices’ de la pasada #DotNetSpain2016 :)
+En mi Canal de Youtube   En la página de Microsoft Channel9   Channel 9   
+El vídeo dura una hora y veinte minutos aproximadamente y trata todos los contenidos de la sesión y la última demo con un poco más de profundidad.]]></description>
+</item><item>
+    <title>Materiales de mi sesión en la DotNet Spain 2016</title>
+    <link>https://lluisfranco.github.io/es/materiales-sesion-dotnet-spain-2016/</link>
+    <pubDate>Fri, 04 Mar 2016 11:51:50 &#43;0200</pubDate>
+    <author>Autor</author>
+    <guid>https://lluisfranco.github.io/es/materiales-sesion-dotnet-spain-2016/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/DotNet2016Materials.png" referrerpolicy="no-referrer">
+            </div>Materiales de mi sesión Hola de nuevo,
+Durante los últimos días me ha contactado bastante gente haciéndome preguntas sobre mi sesión en la pasada DotNet Spain Conference.
+Aquí van un par de ellas con sus respuestas, por si son de vuestro interés ;)
+1 - Sobre la Consola  “Las demos eran un proyecto de consola, pero qué consola era esa? No es el clásico cmd de Windows, verdad?”
+ Pues no, desde hace tiempo he sustituido el cmd por la estupenda ConEmu, que permite abrir distintos shells (PowerShell, PuTTY, mintty, GViM, etc) y distribuirlos como tabs o mosaicos.]]></description>
+</item><item>
+    <title>DotNet Spain Conference 2016</title>
+    <link>https://lluisfranco.github.io/es/dotnet-spain-conference-2016/</link>
+    <pubDate>Fri, 26 Feb 2016 11:51:50 &#43;0200</pubDate>
+    <author>Autor</author>
+    <guid>https://lluisfranco.github.io/es/dotnet-spain-conference-2016/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/DotNetSpainConf2016.png" referrerpolicy="no-referrer">
+            </div>LA conferencia del año El pasado miércoles se celebró en Madrid el mayor evento del año en tecnologías de desarrollo Microsoft. Un evento al que han asistido más de 1.700 personas de forma presencial y otros 5.000 más por streaming. Y sólo puedo decir una cosa: ha sido una experiencia cojonuda a todos los niveles.
+Me he rencontrado con viejos amigos y he conocido otros nuevos, he podido asistir a algunas sesiones ‘pata negra’ de otros colegas, he visto y oído al nuevo jefe Satya Nadella, y para rematarlo he tenido la oportunidad de poner mi granito de arena con una sesión sobre ‘async best practices’ la cual, por el feedback recibido parece ser que ha gustado a mucha gente, así pues… ¿qué más se puede pedir?]]></description>
+</item><item>
+    <title>Parallel Series 07 - Problemas de concurrencia</title>
+    <link>https://lluisfranco.github.io/es/parallelseries07-problemas-de-concurrencia/</link>
+    <pubDate>Fri, 01 Mar 2013 11:51:50 &#43;0200</pubDate>
+    <author>Autor</author>
+    <guid>https://lluisfranco.github.io/es/parallelseries07-problemas-de-concurrencia/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/Concurrence.png" referrerpolicy="no-referrer">
+            </div>Ir al índice de la serie
+Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son secuenciales sino paralelos, es cada vez más posible encontrarnos con problemas de concurrencia al acceder a recursos compartidos. Conceptualmente hablando, esto es algo a los que los desarrolladores ya estamos acostumbrados cuando trabajamos con gestores de bases de datos como Oracle o SQL Server, ya que varios usuarios pueden acceder o modificar la información al mismo.]]></description>
+</item><item>
     <title>Parallel Series 06 - Tasks, la 8ª maravilla</title>
     <link>https://lluisfranco.github.io/es/parallelseries06-task-class/</link>
     <pubDate>Mon, 24 Sep 2012 11:51:50 &#43;0200</pubDate>
@@ -69,46 +114,5 @@ Parallel Static Class Hoy quiero hablaros de la clase estática Parallel. Esta c
             </div>Ir al índice de la serie
 LINQ power! Creo que estaremos todos de acuerdo en que LINQ ha supuesto una revolución en la forma de desarrollar, y ha hecho que muchos desarrolladores de otros lenguajes nos miren con cierto tono de envidia… E incluso que otras plataformas estén haciendo serios esfuerzos para incorporarlo en sus Frameworks :-)
 Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilidades gracias a PLINQ, que permite -de forma extremadamente sencilla- convertir cualquier consulta LINQ secuencial en una consulta paralelizable, permitiendo su segmentación y ejecución en los distintos cores en paralelo.]]></description>
-</item><item>
-    <title>Parallel Series 03 - Conceptos base</title>
-    <link>https://lluisfranco.github.io/es/parallelseries03-conceptos-base/</link>
-    <pubDate>Thu, 03 Mar 2011 11:51:50 &#43;0200</pubDate>
-    <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/parallelseries03-conceptos-base/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/posts/ProcessesThreds.png" referrerpolicy="no-referrer">
-            </div>Ir al índice de la serie
-Elementos del sistema opertivo Cuando hablamos de programación paralela conviene tener bastante claros algunos conceptos a nivel de sistema operativo. En este apartado trataremos de aclarar estos términos, ya que más adelante los usaremos frecuentemente.
-Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo existe dentro del contexto de un proceso, aunque no todos los procesos se corresponden con aplicaciones visibles. Basta abrir el administrador de tareas para comprobar que la lista de procesos es bastante mayor a la de aplicaciones.]]></description>
-</item><item>
-    <title>Parallel Series 02 - Un poco de historia</title>
-    <link>https://lluisfranco.github.io/es/parallelseries02-un-poco-de-historia/</link>
-    <pubDate>Fri, 21 Jan 2011 11:51:50 &#43;0200</pubDate>
-    <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/parallelseries02-un-poco-de-historia/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/posts/parallelhistory.png" referrerpolicy="no-referrer">
-            </div>Ir al índice de la serie
-Un poco de historia La programación paralela no es nada nuevo. Ya estaba presente allá en mis tiempos de estudiante hace más de 20 años 😢 y hoy en día, desde la aparición del .Net Framework 4.0 está más viva que nunca gracias a la Task Parallel Library o TPL.
-No obstante, decir que la TPL sólo sirve para realizar tareas asíncronas es como decir que un smartphone sólo sirve para llamar por teléfono.]]></description>
-</item><item>
-    <title>Parallel Series 01 - El Alfa</title>
-    <link>https://lluisfranco.github.io/es/parallelseries01-el-alfa/</link>
-    <pubDate>Tue, 11 Jan 2011 11:51:50 &#43;0200</pubDate>
-    <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/parallelseries01-el-alfa/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/posts/parallel01.png" referrerpolicy="no-referrer">
-            </div>Ir al índice de la serie
-Prologo Cada versión del .NET framework nos sorprende con una serie de novedades, y para cada uno de nosotros hay -al menos- una que nos roba el corazón. A mi me sucedió con la aparición de Generics con el framework 2.0, los métodos extensores y LINQ en las versiones 3.0 y 3.5 y me ha pasado de nuevo con la Task Parallel Library en la versión 4.]]></description>
-</item><item>
-    <title>Parallel Series - Indice</title>
-    <link>https://lluisfranco.github.io/es/parallelseries00-index/</link>
-    <pubDate>Mon, 10 Jan 2011 11:51:50 &#43;0200</pubDate>
-    <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/parallelseries00-index/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/posts/parallelindex.png" referrerpolicy="no-referrer">
-            </div>Índice de contenidos  01 - El Alfa (Prólogo) 02 - Un poco de historia 03 - Aclarando conceptos base 04 - PLINQ: Parallel LINQ 05 - Parallel static class 06 - Tasks, la 8ª maravilla 07 - Problemas de concurrencia 08 - Materiales y presentaciones de mis eventos  Relacionados  Programación funcional para el resto de nosotros Luces, cámara… Action!  ]]></description>
 </item></channel>
 </rss>
