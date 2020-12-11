@@ -51,6 +51,50 @@
                     hreflang="es"
                     href="https://lluisfranco.github.io/es/about/"
                     /></url><url>
+            <loc>https://lluisfranco.github.io/es/tags/community/</loc><lastmod>2016-09-27T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://lluisfranco.github.io/tags/community/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="es"
+                    href="https://lluisfranco.github.io/es/tags/community/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/es/despedida-del-programa-mvp/</loc><lastmod>2016-09-27T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/categories/mvp/</loc><lastmod>2016-09-27T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://lluisfranco.github.io/categories/mvp/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="es"
+                    href="https://lluisfranco.github.io/es/categories/mvp/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/es/categories/off-topic/</loc><lastmod>2016-09-27T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://lluisfranco.github.io/categories/off-topic/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="es"
+                    href="https://lluisfranco.github.io/es/categories/off-topic/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/es/categories/development/</loc><lastmod>2016-07-04T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://lluisfranco.github.io/categories/development/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="es"
+                    href="https://lluisfranco.github.io/es/categories/development/"
+                    /></url><url>
+            <loc>https://lluisfranco.github.io/es/tags/dotnet/</loc><lastmod>2016-07-04T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/categories/event/</loc><lastmod>2016-07-04T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/gapand-2016-is-over/</loc><lastmod>2016-07-04T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/tags/ios/</loc><lastmod>2016-07-04T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/tags/robotics/</loc><lastmod>2016-07-04T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/tags/security/</loc><lastmod>2016-07-04T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/tags/web/</loc><lastmod>2016-07-04T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/es/tags/async/</loc><lastmod>2016-03-29T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/es/tags/csharp/</loc><lastmod>2016-03-29T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
@@ -61,16 +105,6 @@
                     hreflang="es"
                     href="https://lluisfranco.github.io/es/tags/csharp/"
                     /></url><url>
-            <loc>https://lluisfranco.github.io/es/categories/development/</loc><lastmod>2016-03-29T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://lluisfranco.github.io/categories/development/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="es"
-                    href="https://lluisfranco.github.io/es/categories/development/"
-                    /></url><url>
-            <loc>https://lluisfranco.github.io/es/categories/event/</loc><lastmod>2016-03-29T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/es/tags/net-framework/</loc><lastmod>2016-03-29T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
@@ -85,6 +119,7 @@
             <loc>https://lluisfranco.github.io/es/video-sesion-dotnet-spain-2016/</loc><lastmod>2016-03-29T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/es/materiales-sesion-dotnet-spain-2016/</loc><lastmod>2016-03-04T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/es/dotnet-spain-conference-2016/</loc><lastmod>2016-02-26T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.github.io/es/dotnet-spain-conference-2015/</loc><lastmod>2015-03-03T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/es/categories/parallel-series/</loc><lastmod>2013-03-01T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/es/parallelseries07-problemas-de-concurrencia/</loc><lastmod>2013-03-01T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.github.io/es/parallelseries06-task-class/</loc><lastmod>2012-09-24T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

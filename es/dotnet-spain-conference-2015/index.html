@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>DotNet Spain Conference 2015 - &gt;_lluis franco</title><meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="DotNet Spain Conference 2015" />
+<meta property="og:description" content="DotNet Conference 2015 Este fin de semana he tenido la oportunidad de participar en el mayor evento de la comunidad .NET en España hasta la fecha.
+Se ha realizado en la Universidad de Alcalá, con record de asistentes. Cosa que no me extraña viendo la cantidad de charlas y hands on lab que se han realizado en varios tracks en paralelo. La verdad es que ha sido un éxito a todos los niveles, y sólo puedo decir que va a ser difícil superarlo en futuras ediciones." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/" />
+<meta property="article:published_time" content="2015-03-03T11:51:50+02:00" />
+<meta property="article:modified_time" content="2015-03-03T11:51:50+02:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="DotNet Spain Conference 2015"/>
+<meta name="twitter:description" content="DotNet Conference 2015 Este fin de semana he tenido la oportunidad de participar en el mayor evento de la comunidad .NET en España hasta la fecha.
+Se ha realizado en la Universidad de Alcalá, con record de asistentes. Cosa que no me extraña viendo la cantidad de charlas y hands on lab que se han realizado en varios tracks en paralelo. La verdad es que ha sido un éxito a todos los niveles, y sólo puedo decir que va a ser difícil superarlo en futuras ediciones."/>
+<meta name="application-name" content="&gt;_lluis franco">
+<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/" /><link rel="prev" href="https://lluisfranco.github.io/es/parallelseries07-problemas-de-concurrencia/" /><link rel="next" href="https://lluisfranco.github.io/es/dotnet-spain-conference-2016/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "DotNet Spain Conference 2015",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/lluisfranco.github.io\/es\/dotnet-spain-conference-2015\/"
+        },"genre": "posts","keywords": "csharp, net framework, Task, Parallel, Async","wordcount":  349 ,
+        "url": "https:\/\/lluisfranco.github.io\/es\/dotnet-spain-conference-2015\/","datePublished": "2015-03-03T11:51:50+02:00","dateModified": "2015-03-03T11:51:50+02:00","publisher": {
+            "@type": "Organization",
+            "name": "Lluis Franco"},"author": {
+                "@type": "Person",
+                "name": "lluís"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/es/" title="&gt;_lluis franco"><span class="header-title-pre"><i class='fas fa-terminal'></i></span>lluis franco</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/es/about/"> About </a><a class="menu-item" href="/es/posts/"> Posts </a><a class="menu-item" href="/es/tags/"> Tags </a><a class="menu-item" href="/es/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="Selecciona el lenguage">Spanish<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/es/dotnet-spain-conference-2015/" selected>Spanish</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Busca títulos o contenido..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Buscar">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Limpiar">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Cambia el tema">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/es/" title="&gt;_lluis franco"><span class="header-title-pre"><i class='fas fa-terminal'></i></span>lluis franco</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Busca títulos o contenido..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Buscar">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Limpiar">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancelar
+                    </a>
+                </div><a class="menu-item" href="/es/about/" title="">About</a><a class="menu-item" href="/es/posts/" title="">Posts</a><a class="menu-item" href="/es/tags/" title="">Tags</a><a class="menu-item" href="/es/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Cambia el tema">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Selecciona el lenguage">Spanish<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/es/dotnet-spain-conference-2015/" selected>Spanish</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contenido</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">DotNet Spain Conference 2015</h1><h2 class="single-subtitle">En la Universidad de Alcalá</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-category">incluido en <a href="/es/categories/development/"><i class="far fa-folder fa-fw"></i>Development</a>&nbsp;<a href="/es/categories/event/"><i class="far fa-folder fa-fw"></i>Event</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2015-03-03">2015-03-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;349 palabras&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutos&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/posts/DotNetSpainConf2016.png"
+        data-srcset="/images/posts/DotNetSpainConf2016.png, /images/posts/DotNetSpainConf2016.png 1.5x, /images/posts/DotNetSpainConf2016.png 2x"
+        data-sizes="auto"
+        alt="/images/posts/DotNetSpainConf2016.png"
+        title="/images/posts/DotNetSpainConf2016.png" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contenido</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#dotnet-conference-2015">DotNet Conference 2015</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="dotnet-conference-2015">DotNet Conference 2015</h2>
+<p>Este fin de semana he tenido la oportunidad de participar en el mayor evento de la comunidad .NET en España hasta la fecha.</p>
+<p>Se ha realizado en la Universidad de Alcalá, con record de asistentes. Cosa que no me extraña viendo la cantidad de charlas y hands on lab que se han realizado en varios tracks en paralelo. La verdad es que ha sido un éxito a todos los niveles, y sólo puedo decir que va a ser difícil superarlo en futuras ediciones. Se ha puesto el listón muy alto! :D</p>
+<figure>
+    <img src="/images/posts/dotnetspain.jpg"/> <figcaption>
+            <h4>Más de 1.200 asistentes :O</h4>
+        </figcaption>
+</figure>
+
+<p>En lo que respecta a mi, tuve la gran suerte de presentar -y que me aprobaran- una charla conjunta con mi colega <a href="https://twitter.com/acasquete" target="_blank" rel="noopener noreffer">Alex Casquete</a> sobre buenas prácticas sobre async, algo que precisamente no es mainstream pero que curiosamente ha tenido una aceptación muy buena. De hecho ha sido mejor de la que yo pensaba que podía tener en un principio, así que muchas gracias a todos por tanto feedback positivo!</p>
+<figure>
+    <img src="/images/posts/DotNet2015.jpg"/> <figcaption>
+            <h4>A punto de empezar la sesión</h4>
+        </figcaption>
+</figure>
+
+<p>Visto el éxito igual nos planteamos repetir en la próxima DotNet Conference :D</p>
+<p><blockquote class="twitter-tweet" data-dnt="true"><p lang="es" dir="ltr">Y no he dicho nada, pero la charla de Async ha sido genial. Y la camiseta de <a href="https://twitter.com/lluisfranco?ref_src=twsrc%5Etfw">@lluisfranco</a> masmolaba.</p>&mdash; Rubén Fernández (@_rubenfa) <a href="https://twitter.com/_rubenfa/status/571770741605187584?ref_src=twsrc%5Etfw">February 28, 2015</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="es" dir="ltr">Si tengo que elegir me quedo con las charlas de <a href="https://twitter.com/luisruizpavon?ref_src=twsrc%5Etfw">@luisruizpavon</a>, <a href="https://twitter.com/lluisfranco?ref_src=twsrc%5Etfw">@lluisfranco</a>  y <a href="https://twitter.com/fernandoescolar?ref_src=twsrc%5Etfw">@fernandoescolar</a>. A otro nivel <a href="https://twitter.com/hashtag/dotNetSpain2015?src=hash&amp;ref_src=twsrc%5Etfw">#dotNetSpain2015</a></p>&mdash; Jose Dongil (@jdonsan) <a href="https://twitter.com/jdonsan/status/571761558260465664?ref_src=twsrc%5Etfw">February 28, 2015</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">In memoriam Leonard Nimoy by <a href="https://twitter.com/lluisfranco?ref_src=twsrc%5Etfw">@lluisfranco</a> &amp; <a href="https://twitter.com/acasquete?ref_src=twsrc%5Etfw">@acasquete</a> <a href="http://t.co/FjLC3yjDNr">pic.twitter.com/FjLC3yjDNr</a></p>&mdash; Fernando Escolar (@fernandoescolar) <a href="https://twitter.com/fernandoescolar/status/571681047194284032?ref_src=twsrc%5Etfw">February 28, 2015</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="es" dir="ltr">Unas 150 personas en la charla de Async Best Practices de <a href="https://twitter.com/acasquete?ref_src=twsrc%5Etfw">@acasquete</a> y <a href="https://twitter.com/lluisfranco?ref_src=twsrc%5Etfw">@lluisfranco</a></p>&mdash; Psharp (do wear a f😷ing mask!) 💻🎮☕ 🎸🤘🏼 🕗 (@_psharp) <a href="https://twitter.com/_psharp/status/571605386215743488?ref_src=twsrc%5Etfw">February 28, 2015</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="es" dir="ltr">In Memoria a <a href="https://twitter.com/LeonardNimoy?ref_src=twsrc%5Etfw">@LeonardNimoy</a> por <a href="https://twitter.com/lluisfranco?ref_src=twsrc%5Etfw">@lluisfranco</a> <a href="https://twitter.com/acasquete?ref_src=twsrc%5Etfw">@acasquete</a> durante el  <a href="https://twitter.com/hashtag/dotnetspain2015?src=hash&amp;ref_src=twsrc%5Etfw">#dotnetspain2015</a>! Muy grandes! <a href="https://twitter.com/hashtag/StarTrek?src=hash&amp;ref_src=twsrc%5Etfw">#StarTrek</a> <a href="http://t.co/qvJaV0tLBx">pic.twitter.com/qvJaV0tLBx</a></p>&mdash; Rodrigo Liberoff (@rliberoff) <a href="https://twitter.com/rliberoff/status/571613621148635136?ref_src=twsrc%5Etfw">February 28, 2015</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="es" dir="ltr">Geniales <a href="https://twitter.com/lluisfranco?ref_src=twsrc%5Etfw">@lluisfranco</a> y <a href="https://twitter.com/acasquete?ref_src=twsrc%5Etfw">@acasquete</a> en Async Best Practices, tips útiles de verdad. <a href="https://twitter.com/hashtag/dotNETSpain2015?src=hash&amp;ref_src=twsrc%5Etfw">#dotNETSpain2015</a></p>&mdash; Daniel Rozo (@DanielRoz0) <a href="https://twitter.com/DanielRoz0/status/571611994568179712?ref_src=twsrc%5Etfw">February 28, 2015</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="es" dir="ltr">Entretenida y practica charla de <a href="https://twitter.com/lluisfranco?ref_src=twsrc%5Etfw">@lluisfranco</a> y <a href="https://twitter.com/acasquete?ref_src=twsrc%5Etfw">@acasquete</a> en la <a href="https://twitter.com/hashtag/dotNetSpain2015?src=hash&amp;ref_src=twsrc%5Etfw">#dotNetSpain2015</a> sobre buenas prácticas con asincronía en .NET</p>&mdash; Rafael Arroyo (@rarroyov) <a href="https://twitter.com/rarroyov/status/571620302133841920?ref_src=twsrc%5Etfw">February 28, 2015</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Actualizado el 2015-03-03</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/es/dotnet-spain-conference-2015/index.md" target="_blank">Leer Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Compartir en Twitter" data-sharer="twitter" data-url="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/" data-title="DotNet Spain Conference 2015" data-via="lluisfranco" data-hashtags="csharp,net framework,Task,Parallel,Async"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Compartir en Facebook" data-sharer="facebook" data-url="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/" data-hashtag="csharp"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Compartir en Linkedin" data-sharer="linkedin" data-url="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Compartir en WhatsApp" data-sharer="whatsapp" data-url="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/" data-title="DotNet Spain Conference 2015" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Compartir en Pinterest" data-sharer="pinterest" data-url="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/" data-image="/images/posts/DotNetSpainConf2016.png"><i class="fab fa-pinterest fa-fw"></i></a><a href="javascript:void(0);" title="Compartir en Reddit" data-sharer="reddit" data-url="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Compartir en Instapaper" data-sharer="instapaper" data-url="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/" data-title="DotNet Spain Conference 2015" data-description=""><i data-svg-src="/lib/simple-icons/icons/instapaper.min.svg"></i></a><a href="javascript:void(0);" title="Compartir en Pocket" data-sharer="pocket" data-url="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="Compartir en Evernote" data-sharer="evernote" data-url="https://lluisfranco.github.io/es/dotnet-spain-conference-2015/" data-title="DotNet Spain Conference 2015"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/es/tags/csharp/">csharp</a>,&nbsp;<a href="/es/tags/net-framework/">net framework</a>,&nbsp;<a href="/es/tags/task/">Task</a>,&nbsp;<a href="/es/tags/parallel/">Parallel</a>,&nbsp;<a href="/es/tags/async/">Async</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Regresar</a></span>&nbsp;|&nbsp;<span><a href="/es/">Inicio</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/es/parallelseries07-problemas-de-concurrencia/" class="prev" rel="prev" title="Parallel Series 07 - Problemas de concurrencia"><i class="fas fa-angle-left fa-fw"></i>Parallel Series 07 - Problemas de concurrencia</a>
+            <a href="/es/dotnet-spain-conference-2016/" class="next" rel="next" title="DotNet Spain Conference 2016">DotNet Spain Conference 2016<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Volver arriba">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="Ver comentarios">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.stemmer.support.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.es.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copiar al portapapeles","maxShownLines":20},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/es/index.json","lunrLanguageCode":"es","maxResultLength":10,"noResultsFound":"No se encontraron resultados","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
