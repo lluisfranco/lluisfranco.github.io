@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>API - Tag - &gt;_lluis franco</title>
-        <link>https://lluisfranco.github.io/tags/api/</link>
+        <link>https://lluisfranco.com/tags/api/</link>
         <description>API - Tag - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 16 Apr 2014 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/tags/api/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 16 Apr 2014 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.com/tags/api/" rel="self" type="application/rss+xml" /><item>
     <title>Extract extra large icon from a file, folder or drive</title>
-    <link>https://lluisfranco.github.io/extract-icons-win32/</link>
+    <link>https://lluisfranco.com/extract-icons-win32/</link>
     <pubDate>Wed, 16 Apr 2014 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>https://lluisfranco.github.io/extract-icons-win32/</guid>
+    <guid>https://lluisfranco.com/extract-icons-win32/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/extra-large-icons.png" referrerpolicy="no-referrer">
             </div>Extracting system icons from Win32 Overwiew Hi, everyone! :)
@@ -17,10 +17,10 @@ In a recent project I was required to show a list of files with their associated
 If you only need local files and sizes of 32x32 píxels you can achieve this using the static method ExtractAssociatedIcon in the class System.]]></description>
 </item><item>
     <title>Check if current user is domain administrator</title>
-    <link>https://lluisfranco.github.io/check-current-user-is-domain-admin/</link>
+    <link>https://lluisfranco.com/check-current-user-is-domain-admin/</link>
     <pubDate>Mon, 13 Dec 2010 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>https://lluisfranco.github.io/check-current-user-is-domain-admin/</guid>
+    <guid>https://lluisfranco.com/check-current-user-is-domain-admin/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/sysadmin.png" referrerpolicy="no-referrer">
             </div>The scenario In business applications it’s very common checking if the current user is member of the ‘domain administrators’ role of your company. For example, recently I had to check if the current user has administrative privileges in order to show some advanced configuration options.

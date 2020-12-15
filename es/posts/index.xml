@@ -1,25 +1,25 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Todo Artículos - &gt;_lluis franco</title>
-        <link>https://lluisfranco.github.io/es/posts/</link>
+        <link>https://lluisfranco.com/es/posts/</link>
         <description>Todo Artículos | &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 19 Aug 2020 15:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/es/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 19 Aug 2020 15:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.com/es/posts/" rel="self" type="application/rss+xml" /><item>
     <title>Slimbook PROX review</title>
-    <link>https://lluisfranco.github.io/es/slimbook-prox-review/</link>
+    <link>https://lluisfranco.com/es/slimbook-prox-review/</link>
     <pubDate>Wed, 19 Aug 2020 15:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/slimbook-prox-review/</guid>
+    <guid>https://lluisfranco.com/es/slimbook-prox-review/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/SlimbookProx01.png" referrerpolicy="no-referrer">
             </div>Mi nuevo juguete No solía trabajar en casa desde antes del año 2000 (ha llovido :p), pero -como a muchos- todo eso cambió a partir del mes de marzo de 2020. Y la verdad, tengo que decir que fue todo un reto volver a tener la disciplina mental apropiada para trabajar en casa de nuevo después de tantos años.
 Y no me refiero a que técnicamente haya sido un reto ni mucho menos.]]></description>
 </item><item>
     <title>Despedida del programa Microsoft MVP</title>
-    <link>https://lluisfranco.github.io/es/despedida-del-programa-mvp/</link>
+    <link>https://lluisfranco.com/es/despedida-del-programa-mvp/</link>
     <pubDate>Tue, 27 Sep 2016 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/despedida-del-programa-mvp/</guid>
+    <guid>https://lluisfranco.com/es/despedida-del-programa-mvp/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/MVPfinal.png" referrerpolicy="no-referrer">
             </div>Todo termina :) Pues eso: Que todas las cosas empiezan y terminan. Es ley de vida.
@@ -27,20 +27,20 @@ Después de 13 años como Microsoft MVP, este año me despido del programa. Y qu
 Empecé a contribuir con la comunidad en 1997 en los antiguos newsgroups de desarrollo, después de haber recibido mucha ayuda durante al menos un par de años por parte de otros usuarios con más experiencia que yo.]]></description>
 </item><item>
     <title>GAPAND 2016 is over</title>
-    <link>https://lluisfranco.github.io/es/gapand-2016-is-over/</link>
+    <link>https://lluisfranco.com/es/gapand-2016-is-over/</link>
     <pubDate>Mon, 04 Jul 2016 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/gapand-2016-is-over/</guid>
+    <guid>https://lluisfranco.com/es/gapand-2016-is-over/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/GapAnd2016.png" referrerpolicy="no-referrer">
             </div>El GAPAND 2016 ha terminado :') Bueno,
 Otro año ha pasado, y otra edición más del GAPAND a la saca. No, si al final esto va a convertirse en un clásico y todo&hellip; bueno, eso el tiempo lo dirá. Lo que si os puedo asegurar es que ha sido la mejor edición hasta la fecha, ya que el feedback de la gente (que al fin y al cabo es la única métrica que me interesa) es, a falta de una palabra más ‘fisna’: COJONUDO :D]]></description>
 </item><item>
     <title>Video de mi sesión en la DotNet Spain 2016</title>
-    <link>https://lluisfranco.github.io/es/video-sesion-dotnet-spain-2016/</link>
+    <link>https://lluisfranco.com/es/video-sesion-dotnet-spain-2016/</link>
     <pubDate>Tue, 29 Mar 2016 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/video-sesion-dotnet-spain-2016/</guid>
+    <guid>https://lluisfranco.com/es/video-sesion-dotnet-spain-2016/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/DotNet2016Video.png" referrerpolicy="no-referrer">
             </div>Video de mi sesión Hola de nuevo,
@@ -49,10 +49,10 @@ En mi Canal de Youtube   En la página de Microsoft Channel9   Channel 9
 El vídeo dura una hora y veinte minutos aproximadamente y trata todos los contenidos de la sesión y la última demo con un poco más de profundidad.]]></description>
 </item><item>
     <title>Materiales de mi sesión en la DotNet Spain 2016</title>
-    <link>https://lluisfranco.github.io/es/materiales-sesion-dotnet-spain-2016/</link>
+    <link>https://lluisfranco.com/es/materiales-sesion-dotnet-spain-2016/</link>
     <pubDate>Fri, 04 Mar 2016 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/materiales-sesion-dotnet-spain-2016/</guid>
+    <guid>https://lluisfranco.com/es/materiales-sesion-dotnet-spain-2016/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/DotNet2016Materials.png" referrerpolicy="no-referrer">
             </div>Materiales de mi sesión Hola de nuevo,
@@ -62,40 +62,40 @@ Aquí van un par de ellas con sus respuestas, por si son de vuestro interés ;)
  Pues no, desde hace tiempo he sustituido el cmd por la estupenda ConEmu, que permite abrir distintos shells (PowerShell, PuTTY, mintty, GViM, etc) y distribuirlos como tabs o mosaicos.]]></description>
 </item><item>
     <title>DotNet Spain Conference 2016</title>
-    <link>https://lluisfranco.github.io/es/dotnet-spain-conference-2016/</link>
+    <link>https://lluisfranco.com/es/dotnet-spain-conference-2016/</link>
     <pubDate>Fri, 26 Feb 2016 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/dotnet-spain-conference-2016/</guid>
+    <guid>https://lluisfranco.com/es/dotnet-spain-conference-2016/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/DotNetSpainConf2016.png" referrerpolicy="no-referrer">
             </div>LA conferencia del año El pasado miércoles se celebró en Madrid el mayor evento del año en tecnologías de desarrollo Microsoft. Un evento al que han asistido más de 1.700 personas de forma presencial y otros 5.000 más por streaming. Y sólo puedo decir una cosa: ha sido una experiencia cojonuda a todos los niveles.
 Me he rencontrado con viejos amigos y he conocido otros nuevos, he podido asistir a algunas sesiones ‘pata negra’ de otros colegas, he visto y oído al nuevo jefe Satya Nadella, y para rematarlo he tenido la oportunidad de poner mi granito de arena con una sesión sobre ‘async best practices’ la cual, por el feedback recibido parece ser que ha gustado a mucha gente, así pues… ¿qué más se puede pedir?]]></description>
 </item><item>
     <title>DotNet Spain Conference 2015</title>
-    <link>https://lluisfranco.github.io/es/dotnet-spain-conference-2015/</link>
+    <link>https://lluisfranco.com/es/dotnet-spain-conference-2015/</link>
     <pubDate>Tue, 03 Mar 2015 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/dotnet-spain-conference-2015/</guid>
+    <guid>https://lluisfranco.com/es/dotnet-spain-conference-2015/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/DotNetSpainConf2016.png" referrerpolicy="no-referrer">
             </div>DotNet Conference 2015 Este fin de semana he tenido la oportunidad de participar en el mayor evento de la comunidad .NET en España hasta la fecha.
 Se ha realizado en la Universidad de Alcalá, con record de asistentes. Cosa que no me extraña viendo la cantidad de charlas y hands on lab que se han realizado en varios tracks en paralelo. La verdad es que ha sido un éxito a todos los niveles, y sólo puedo decir que va a ser difícil superarlo en futuras ediciones.]]></description>
 </item><item>
     <title>Parallel Series 07 - Problemas de concurrencia</title>
-    <link>https://lluisfranco.github.io/es/parallelseries07-problemas-de-concurrencia/</link>
+    <link>https://lluisfranco.com/es/parallelseries07-problemas-de-concurrencia/</link>
     <pubDate>Fri, 01 Mar 2013 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/parallelseries07-problemas-de-concurrencia/</guid>
+    <guid>https://lluisfranco.com/es/parallelseries07-problemas-de-concurrencia/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/Concurrence.png" referrerpolicy="no-referrer">
             </div>Ir al índice de la serie
 Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son secuenciales sino paralelos, es cada vez más posible encontrarnos con problemas de concurrencia al acceder a recursos compartidos. Conceptualmente hablando, esto es algo a los que los desarrolladores ya estamos acostumbrados cuando trabajamos con gestores de bases de datos como Oracle o SQL Server, ya que varios usuarios pueden acceder o modificar la información al mismo.]]></description>
 </item><item>
     <title>Parallel Series 06 - Tasks, la 8ª maravilla</title>
-    <link>https://lluisfranco.github.io/es/parallelseries06-task-class/</link>
+    <link>https://lluisfranco.com/es/parallelseries06-task-class/</link>
     <pubDate>Mon, 24 Sep 2012 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/parallelseries06-task-class/</guid>
+    <guid>https://lluisfranco.com/es/parallelseries06-task-class/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/Task01.png" referrerpolicy="no-referrer">
             </div>Ir al índice de la serie
@@ -103,10 +103,10 @@ The show must go on En los posts previos hemos hablado de PLINQ y de la clase Pa
 Durante muchos años los desarrolladores hemos tenido que lidiar -más ben pelearnos- con la multitarea y la ejecución de código asíncrono.]]></description>
 </item><item>
     <title>Programación funcional para el resto de nosotros</title>
-    <link>https://lluisfranco.github.io/es/functional-programming-for-the-rest-of-us/</link>
+    <link>https://lluisfranco.com/es/functional-programming-for-the-rest-of-us/</link>
     <pubDate>Fri, 10 Feb 2012 11:51:50 &#43;0200</pubDate>
     <author>Autor</author>
-    <guid>https://lluisfranco.github.io/es/functional-programming-for-the-rest-of-us/</guid>
+    <guid>https://lluisfranco.com/es/functional-programming-for-the-rest-of-us/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/functionalprogramming.png" referrerpolicy="no-referrer">
             </div>Ir al índice de la serie

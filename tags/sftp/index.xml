@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>SFTP - Tag - &gt;_lluis franco</title>
-        <link>https://lluisfranco.github.io/tags/sftp/</link>
+        <link>https://lluisfranco.com/tags/sftp/</link>
         <description>SFTP - Tag - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 29 Nov 2017 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/tags/sftp/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 29 Nov 2017 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.com/tags/sftp/" rel="self" type="application/rss+xml" /><item>
     <title>Connect via SFTP using SSH.NET</title>
-    <link>https://lluisfranco.github.io/connect-via-sftp-using-ssh.net/</link>
+    <link>https://lluisfranco.com/connect-via-sftp-using-ssh.net/</link>
     <pubDate>Wed, 29 Nov 2017 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>https://lluisfranco.github.io/connect-via-sftp-using-ssh.net/</guid>
+    <guid>https://lluisfranco.com/connect-via-sftp-using-ssh.net/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/ftp.png" referrerpolicy="no-referrer">
             </div>Overview In these times of APIs-everywhere, it may sound like an anachronism the use SFTP to connect to a remote server and get a list of files for exchanging information, but in the financial world (sadly) it’s more common than you think.

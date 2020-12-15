@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Domain - Tag - &gt;_lluis franco</title>
-        <link>https://lluisfranco.github.io/tags/domain/</link>
+        <link>https://lluisfranco.com/tags/domain/</link>
         <description>Domain - Tag - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 13 Dec 2010 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.github.io/tags/domain/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 13 Dec 2010 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.com/tags/domain/" rel="self" type="application/rss+xml" /><item>
     <title>Check if current user is domain administrator</title>
-    <link>https://lluisfranco.github.io/check-current-user-is-domain-admin/</link>
+    <link>https://lluisfranco.com/check-current-user-is-domain-admin/</link>
     <pubDate>Mon, 13 Dec 2010 11:51:50 &#43;0200</pubDate>
     <author>Author</author>
-    <guid>https://lluisfranco.github.io/check-current-user-is-domain-admin/</guid>
+    <guid>https://lluisfranco.com/check-current-user-is-domain-admin/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/sysadmin.png" referrerpolicy="no-referrer">
             </div>The scenario In business applications it’s very common checking if the current user is member of the ‘domain administrators’ role of your company. For example, recently I had to check if the current user has administrative privileges in order to show some advanced configuration options.
