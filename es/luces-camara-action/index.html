@@ -180,7 +180,7 @@ Magia sin delegados Los delegados de tipo Action son una de las pequeñas maravi
      <span class="n">doSomethingWithStringValue</span><span class="p">(</span><span class="n">saveToDatabase</span><span class="p">,</span> <span class="n">msg</span><span class="p">);</span>
      <span class="n">doSomethingWithStringValue</span><span class="p">(</span><span class="n">writeMessageToConsole</span><span class="p">,</span> <span class="n">msg</span><span class="p">);</span>
 <span class="p">}</span>
- 
+
 <span class="k">private</span> <span class="k">void</span> <span class="n">doSomethingWithStringValue</span><span class="p">(</span><span class="n">Action</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">actionToDo</span><span class="p">,</span> <span class="kt">string</span> <span class="k">value</span><span class="p">)</span>
 <span class="p">{</span>
      <span class="c1">//do several things with this value
@@ -189,20 +189,20 @@ Magia sin delegados Los delegados de tipo Action son una de las pequeñas maravi
      <span class="c1">//when finishing...
 </span><span class="c1"></span>     <span class="n">actionToDo</span><span class="p">(</span><span class="k">value</span><span class="p">);</span>
 <span class="p">}</span>
- 
+
 <span class="k">private</span> <span class="k">void</span> <span class="n">enqueueMessage</span><span class="p">(</span><span class="kt">string</span> <span class="k">value</span><span class="p">)</span>
 <span class="p">{</span>
      <span class="c1">//do something &amp; enqueue this value
 </span><span class="c1"></span>     <span class="n">Queue</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">messages</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Queue</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;();</span>
      <span class="n">messages</span><span class="p">.</span><span class="n">Enqueue</span><span class="p">(</span><span class="k">value</span><span class="p">);</span>
 <span class="p">}</span>
- 
+
 <span class="k">private</span> <span class="k">void</span> <span class="n">saveToDatabase</span><span class="p">(</span><span class="kt">string</span> <span class="k">value</span><span class="p">)</span>
 <span class="p">{</span>
      <span class="c1">//do something &amp; save to db this value
 </span><span class="c1"></span>     <span class="n">addLineToUserLog</span><span class="p">(</span><span class="k">value</span><span class="p">);</span>
 <span class="p">}</span>
- 
+
 <span class="k">private</span> <span class="k">void</span> <span class="n">writeMessageToConsole</span><span class="p">(</span><span class="kt">string</span> <span class="k">value</span><span class="p">)</span>
 <span class="p">{</span>
      <span class="c1">//do something &amp; output this value
@@ -263,7 +263,7 @@ Magia sin delegados Los delegados de tipo Action son una de las pequeñas maravi
     <span class="kt">int</span> <span class="n">mseconds</span> <span class="p">=</span> <span class="n">seconds</span> <span class="p">*</span> <span class="m">1000</span>
     <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="n">mseconds</span><span class="p">);</span>
 <span class="p">}</span>
- 
+
 <span class="n">Task</span><span class="p">.</span><span class="n">Factory</span><span class="p">.</span><span class="n">StartNew</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">doSomething</span><span class="p">(</span><span class="m">5</span><span class="p">));</span>
 </code></pre></td></tr></table>
 </div>
@@ -384,7 +384,7 @@ Magia sin delegados Los delegados de tipo Action son una de las pequeñas maravi
     <span class="p">{</span>
         <span class="n">saveToDatabase</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">s</span><span class="p">);</span>
     <span class="p">};</span>
- 
+
     <span class="kt">string</span> <span class="k">value</span> <span class="p">=</span> <span class="s">&#34;This is the value...&#34;</span><span class="p">;</span>
     <span class="kt">bool</span> <span class="n">usedetails</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
     <span class="n">myAction</span><span class="p">(</span><span class="k">value</span><span class="p">,</span> <span class="n">usedetails</span><span class="p">);</span> <span class="c1">//Aquí se llama a la acción y al método al que apunta

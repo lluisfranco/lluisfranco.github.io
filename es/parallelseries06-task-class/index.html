@@ -127,7 +127,7 @@ Durante muchos años los desarrolladores hemos tenido que lidiar -más ben pelea
   <ul>
     <li><a href="#the-show-must-go-on">The show must go on</a>
       <ul>
-        <li><a href="#task-al-rescate">Task al rescate!</a></li>
+        <li><a href="#task-al-rescate">Task al rescate</a></li>
         <li><a href="#actions-everywhere">Actions everywhere</a></li>
         <li><a href="#1-devolver-un-valor-desde-una-tarea">1) Devolver un valor desde una tarea…</a></li>
         <li><a href="#2-y-al-terminar-continuar-con-otra-tarea">2) …y al terminar continuar con otra tarea</a></li>
@@ -143,7 +143,7 @@ Durante muchos años los desarrolladores hemos tenido que lidiar -más ben pelea
 <h2 id="the-show-must-go-on">The show must go on</h2>
 <p>En los posts previos hemos hablado de <a href="/es/parallelseries04-plinq" rel="">PLINQ</a> y de la clase <a href="/es/parallelseries05-parallel-static-class" rel="">Parallel</a>, dos características que facilitan mucho la ejecución de datos en paralelo, sin embargo si alguien me preguntase cual es la característica que más me gusta de la Task Parallel Library lo tendría muy claro: El manejo de tareas asíncronas mediante la clase <a href="http://msdn.microsoft.com/en-us/library/system.threading.tasks.task.aspx" target="_blank" rel="noopener noreffer">Task</a>.</p>
 <p>Durante muchos años los desarrolladores hemos tenido que lidiar -más ben pelearnos- con la multitarea y la ejecución de código asíncrono. Ya dese las primeras versiones de C# podíamos crear hilos a mano mediante la clase Thread, pero el proceso distaba mucho de ser sencillo y además adolecía de cierta complejidad para manejar cancelaciones o actualizar la interfaz de usuario. Y aunque han habido intentos de mejora como la interfaz <a href="http://msdn.microsoft.com/en-us/library/system.iasyncresult.aspx" target="_blank" rel="noopener noreffer">IAsyncResult</a> también han aparecido engendros infumables como el maldito <a href="http://msdn.microsoft.com/en-us/library/system.componentmodel.backgroundworker.aspx" target="_blank" rel="noopener noreffer">BackgroundWorker</a> el cual es tan malo como hacerse cirugía cerebral con manoplas uno mismo.</p>
-<h3 id="task-al-rescate">Task al rescate!</h3>
+<h3 id="task-al-rescate">Task al rescate</h3>
 <p>Así que cuando apareció la TPL y la clase Task los desarrolladores encontramos por fin un método simple y cómodo para ejecutar código asíncrono y además en paralelo. Y esto es realmente muy importante ya que hoy en día en muchas aplicaciones (al menos las que están bien diseñadas) se ejecutan tareas en paralelo para acceder a recursos externos o ‘costosos’, bases de datos, y sobre todo para actualizaciones de la interfaz de usuario. De hecho es tan importante que será una de las mejoras más importantes en la siguiente versión de <a href="http://blogs.msdn.com/b/mvpawardprogram/archive/2012/03/26/introduction-of-new-features-in-c-5-0.aspx" target="_blank" rel="noopener noreffer">C# 5.0</a> de la cual hablaremos al final de la serie.</p>
 <figure>
     <img src="/images/posts/taskclass.png"/> <figcaption>
@@ -503,7 +503,7 @@ Durante muchos años los desarrolladores hemos tenido que lidiar -más ben pelea
     <span class="p">);</span>
 <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">500</span><span class="p">);</span>
 <span class="n">cs</span><span class="p">.</span><span class="n">Cancel</span><span class="p">();</span>
- 
+
 <span class="n">t</span><span class="p">.</span><span class="n">ContinueWith</span><span class="p">(</span><span class="n">task</span> <span class="p">=&gt;</span>
     <span class="p">{</span>
         <span class="k">switch</span> <span class="p">(</span><span class="n">task</span><span class="p">.</span><span class="n">Status</span><span class="p">)</span>

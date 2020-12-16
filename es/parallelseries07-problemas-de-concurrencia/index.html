@@ -26,7 +26,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/lluisfranco.com\/es\/parallelseries07-problemas-de-concurrencia\/"
-        },"genre": "posts","keywords": "csharp, net framework, Task, Parallel, Async","wordcount":  1730 ,
+        },"genre": "posts","keywords": "csharp, net framework, Task, Parallel, Async","wordcount":  1732 ,
         "url": "https:\/\/lluisfranco.com\/es\/parallelseries07-problemas-de-concurrencia\/","datePublished": "2013-03-01T11:51:50+02:00","dateModified": "2013-03-01T11:51:50+02:00","publisher": {
             "@type": "Organization",
             "name": "Lluis Franco"},"author": {
@@ -107,7 +107,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Parallel Series 07 - Problemas de concurrencia</h1><h2 class="single-subtitle">Cuando los threads luchan por acceder a los mismos recursos</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-category">incluido en <a href="/es/categories/development/"><i class="far fa-folder fa-fw"></i>Development</a>&nbsp;<a href="/es/categories/parallel-series/"><i class="far fa-folder fa-fw"></i>Parallel Series</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2013-03-01">2013-03-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1730 palabras&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2013-03-01">2013-03-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1732 palabras&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;9 minutos&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -131,7 +131,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
             <li><a href="#paso-2--crear-un-dictionary">Paso 2 – Crear un Dictionary</a></li>
             <li><a href="#paso-3--crear-100000-clientes-de-ejemplo">Paso 3 – Crear 100.000 clientes de ejemplo</a></li>
             <li><a href="#paso-4--definir-2-métodos-que-compitan-entre-si">Paso 4 – Definir 2 métodos que compitan entre si</a></li>
-            <li><a href="#paso-5---a-jugar">Paso 5 - A jugar!</a></li>
+            <li><a href="#paso-5---a-jugar-">Paso 5 - A jugar :)</a></li>
           </ul>
         </li>
         <li><a href="#la-nueva-clase-concurrentdictionary">La nueva clase ConcurrentDictionary</a></li>
@@ -140,7 +140,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
             <li><a href="#paso-1--cambiamos-dictionary-por-concurrentdictionary">Paso 1 – Cambiamos Dictionary por ConcurrentDictionary</a></li>
             <li><a href="#paso-2---creamos-100000-clientes-de-ejemplo">Paso 2 - Creamos 100.000 clientes de ejemplo</a></li>
             <li><a href="#paso-3---modificamos-los-2-métodos-que-compiten">Paso 3 - Modificamos los 2 métodos que compiten</a></li>
-            <li><a href="#paso-4---a-jugar-de-nuevo">Paso 4 - A jugar de nuevo!</a></li>
+            <li><a href="#paso-4---a-jugar-de-nuevo-d">Paso 4 - A jugar de nuevo :D</a></li>
           </ul>
         </li>
         <li><a href="#conclusión">Conclusión</a></li>
@@ -191,7 +191,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
     <span class="k">public</span> <span class="kt">int</span> <span class="n">CustomerId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
     <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
     <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
- 
+
     <span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Customer</span><span class="p">&gt;</span> <span class="n">GetSampleCustomers</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
     <span class="p">{</span>
         <span class="n">Random</span> <span class="n">r</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">(</span><span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">GetHashCode</span><span class="p">());</span>
@@ -261,12 +261,12 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">dic1</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="n">dic1</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">Age</span> <span class="p">&lt;</span> <span class="m">30</span><span class="p">)</span> <span class="n">dic1</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
 <span class="p">}</span>
- 
+
 <span class="k">private</span> <span class="k">void</span> <span class="n">UpdateItem1</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">dic1</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">id</span><span class="p">))</span> <span class="n">dic1</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">Age</span><span class="p">++;</span>
 <span class="p">}</span>
- 
+
 <span class="k">private</span> <span class="k">void</span> <span class="n">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">100</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
@@ -280,7 +280,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 </code></pre></td></tr></table>
 </div>
 </div>
-<h4 id="paso-5---a-jugar">Paso 5 - A jugar!</h4>
+<h4 id="paso-5---a-jugar-">Paso 5 - A jugar :)</h4>
 <p>Ejecutamos nuestra aplicación y si se produce una colisión puede pasar que obtengamos un bonito error como este, en el que básicamente se intenta acceder a un elemento de la colección que ya no existe (Si no se produce a la primera, repite la prueba hasta que lo veas).</p>
 <p>Y digo que puede pasar, pero no es seguro. Tal vez tengamos que repetir el proceso varias veces, y es que en un entorno en el que varios threads acceden a un recurso compartido nada nos asegura que se produzca el error. A veces pasa a la primera y a veces a la cuarta, pero hay que tener presente que cuando esté en producción siempre pasará en viernes por la tarde cinco minutos antes de empezar el fin de semana ;)</p>
 <figure>
@@ -361,7 +361,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
     <span class="n">Customer</span> <span class="n">c</span><span class="p">;</span>
     <span class="k">if</span><span class="p">(!</span><span class="n">dic2</span><span class="p">.</span><span class="n">TryRemove</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="k">out</span> <span class="n">c</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Error deleting!&#34;</span><span class="p">);</span>
 <span class="p">}</span>
- 
+
 <span class="k">private</span> <span class="k">void</span> <span class="n">UpdateItem2</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">Customer</span> <span class="n">c</span><span class="p">;</span>
@@ -371,7 +371,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
     <span class="p">}</span>
     <span class="k">else</span>
     <span class="p">{</span>
-        <span class="n">Customer</span> <span class="n">newc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="p">()</span> <span class="p">{</span> 
+        <span class="n">Customer</span> <span class="n">newc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="p">()</span> <span class="p">{</span>
             <span class="n">CustomerId</span> <span class="p">=</span> <span class="n">c</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="n">c</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="n">c</span><span class="p">.</span><span class="n">Age</span> <span class="p">};</span>
         <span class="n">newc</span><span class="p">.</span><span class="n">Age</span><span class="p">++;</span>
         <span class="k">if</span> <span class="p">(!</span><span class="n">dic2</span><span class="p">.</span><span class="n">TryUpdate</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">newc</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Error updating!&#34;</span><span class="p">);</span>
@@ -383,7 +383,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 <p>En el borrado usamos el método TryRemove que necesita el id del elemento a eliminar, y en caso que lo elimine con éxito, devuelve True y el objeto eliminado en el segundo parámetro out (de salida) del método. En caso que no lo elimine devuelve False y el valor default del objeto a eliminar en el segundo parámetro.</p>
 <p>La actualización es un poco más compleja, ya que primero debemos asegurarnos de que el elemento a modificar existe en la colección mediante el método TryGetValue, que básicamente funciona igual que el método TryDelete anterior. Una vez hemos comprobado que dicho objeto existe en la colección creamos una réplica del cliente, modificamos su edad y llamamos al método TryUpdate, el cual se encarga de la modificación.</p>
 <p>Es interesante notar que para que la modificación se realice correctamente debemos informar de la clave del objeto en la colección, el nuevo valor del objeto (en este caso la réplica del cliente a la que hemos modificado la edad) y un tercer parámetro que es el valor original del objeto, que es usado para comparar.</p>
-<h4 id="paso-4---a-jugar-de-nuevo">Paso 4 - A jugar de nuevo!</h4>
+<h4 id="paso-4---a-jugar-de-nuevo-d">Paso 4 - A jugar de nuevo :D</h4>
 <p>Ejecutamos y si vamos a la ventana de consola podremos observar el resultado:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">

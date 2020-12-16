@@ -28,3 +28,4 @@ A continución...
 En el [próximo post](/es/parallelseries02-un-poco-de-historia/) repasaremos la historia de la programación paralela y veremos cómo hemos llegado aquí.
 
 [Ir al índice de la serie](/es/parallelseries00-index)
+

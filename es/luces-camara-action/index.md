@@ -19,7 +19,7 @@ void test()
      doSomethingWithStringValue(saveToDatabase, msg);
      doSomethingWithStringValue(writeMessageToConsole, msg);
 }
- 
+
 private void doSomethingWithStringValue(Action<string> actionToDo, string value)
 {
      //do several things with this value
@@ -28,20 +28,20 @@ private void doSomethingWithStringValue(Action<string> actionToDo, string value)
      //when finishing...
      actionToDo(value);
 }
- 
+
 private void enqueueMessage(string value)
 {
      //do something & enqueue this value
      Queue<string> messages = new Queue<string>();
      messages.Enqueue(value);
 }
- 
+
 private void saveToDatabase(string value)
 {
      //do something & save to db this value
      addLineToUserLog(value);
 }
- 
+
 private void writeMessageToConsole(string value)
 {
      //do something & output this value
@@ -84,7 +84,7 @@ private void doSomething(int seconds)
     int mseconds = seconds * 1000
     Thread.Sleep(mseconds);
 }
- 
+
 Task.Factory.StartNew(() => doSomething(5));
 {{< / highlight >}}
 
@@ -154,7 +154,7 @@ void test()
     {
         saveToDatabase(v, s);
     };
- 
+
     string value = "This is the value...";
     bool usedetails = true;
     myAction(value, usedetails); //Aquí se llama a la acción y al método al que apunta
@@ -166,3 +166,4 @@ void test()
 Los delegados de tipo Action son muy útiles para simplificar el trabajo con delegados (ahora que lo pienso hace bastante tiempo que no los uso, ni para declarar eventos). Nos permiten especificar las acciones a realizar pudiendo llegar a tener hasta 16 parámetros -demasiados en mi opinión- y al igual que los método void no devuelven ningún valor. Si queremos lo mismo pero pudiendo retornar un resultado debemos utilizar su hermano Func<T, TResult> que es exactamente igual, pero en todas sus sobrecargas (y tiene tantas como Action) el último argumento representa el valor de retorno.
 
 [Ir al índice de la serie](/es/parallelseries00-index)
+

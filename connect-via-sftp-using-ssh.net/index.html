@@ -26,7 +26,7 @@ In my current project I’ve to connect to a remote server via Secure File Trans
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/lluisfranco.com\/connect-via-sftp-using-ssh.net\/"
-        },"genre": "posts","keywords": "csharp, net framework, SFTP, SSH.NET","wordcount":  564 ,
+        },"genre": "posts","keywords": "csharp, net framework, SFTP, SSH.NET","wordcount":  561 ,
         "url": "https:\/\/lluisfranco.com\/connect-via-sftp-using-ssh.net\/","datePublished": "2017-11-29T11:51:50+02:00","dateModified": "2017-11-29T11:51:50+02:00","publisher": {
             "@type": "Organization",
             "name": "Lluis Franco"},"author": {
@@ -107,7 +107,7 @@ In my current project I’ve to connect to a remote server via Secure File Trans
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Connect via SFTP using SSH.NET</h1><h2 class="single-subtitle">Secure FTP? Really?</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-category">included in <a href="/categories/development/"><i class="far fa-folder fa-fw"></i>Development</a>&nbsp;<a href="/categories/how-to/"><i class="far fa-folder fa-fw"></i>How To</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2017-11-29">2017-11-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;564 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2017-11-29">2017-11-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;561 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -125,7 +125,7 @@ In my current project I’ve to connect to a remote server via Secure File Trans
   <ul>
     <li><a href="#overview">Overview</a></li>
     <li><a href="#connecting-to-the-server">Connecting to the server</a></li>
-    <li><a href="#bonus--the-trick-">Bonus * the trick *</a></li>
+    <li><a href="#bonus-trick">Bonus (trick)</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h2 id="overview">Overview</h2>
@@ -276,7 +276,7 @@ In my current project I’ve to connect to a remote server via Secure File Trans
 <span class="err">Private-MAC:</span> <span class="err">d288fffe72914eb62ed60a7e50fd8ce775</span></code></pre></td></tr></table>
 </div>
 </div>
-<h2 id="bonus--the-trick-">Bonus * the trick *</h2>
+<h2 id="bonus-trick">Bonus (trick)</h2>
 <p>I’ve spent a lot of time before it works receiving a SSH exception “Invalid private key file”, but the same key file works fine when using the app Filezilla to connect, so #WhatTheHell is going on 😬</p>
 <p>Finally I realized this is because the private key must be compatible with SshNet, so we have to convert the private key using PuTTY key Generator (in my case, the same app we used to create the certificate). Once opened in PuTTY, just export your file key to OpenSSH and use this new ppk file instead of the previous one.</p>
 <figure>

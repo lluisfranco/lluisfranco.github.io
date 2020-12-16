@@ -3,7 +3,7 @@
 
 [Ir al índice de la serie](/es/parallelseries00-index)
 
-## LINQ power!
+## LINQ power
 
 Creo que estaremos todos de acuerdo en que LINQ ha supuesto una revolución en la forma de desarrollar, y ha hecho que muchos desarrolladores de otros lenguajes nos miren con cierto tono de envidia… E incluso que otras plataformas estén haciendo serios esfuerzos para incorporarlo en sus Frameworks :-)
 
@@ -161,7 +161,7 @@ Además existen otros casos en los que por cuestiones de rendimiento no es recom
 
 Próximamente veremos cómo utilizar la clase estática Parallel, optimizada para trabajar con procesos iterativos, esos típicos bucles que todas las aplicaciones tienen.
 
-## Video 
+## Video
 
 Aquí tienes un vídeo corto (15 minutos) sobre lo que acabamos de contar ;)
 
@@ -172,3 +172,4 @@ A continución...
 En el [próximo post](/es/parallelseries05-parallel-static-class) veremos cómo utilizar la clase estática Parallel, optimizada para trabajar con procesos iterativos, esos típicos bucles que todas las aplicaciones tienen.
 
 [Ir al índice de la serie](/es/parallelseries00-index)
+

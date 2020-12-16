@@ -32,7 +32,7 @@ public static IEnumerable<T> GetAllControls<T>(this Control @this) where T : Con
 }
 {{< / highlight >}}
 
-It looks cool, isn’t it? No loops, no ifs… only pure LINQ power! :-) 
+It looks cool, isn’t it? No loops, no ifs… only pure LINQ power! :-)
 
 Note that converting Controls property into an Enumerable allow us to use all those IEnumerable LINQ methods like [Select](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.select?view=netcore-3.1), [Where](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.where?view=netcore-3.1), [Union](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.union?view=netcore-3.1) or [SelectMany](https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.selectmany?view=netcore-3.1)... in just a single line of code! This is amazing, this is functional programming style!
 
@@ -63,7 +63,7 @@ this.GetAllControls<TextBox>().ForEach(p =>
 });
 {{< / highlight >}}
 
-
 HYEI, happy coding! :-)
 
 November 2010
+

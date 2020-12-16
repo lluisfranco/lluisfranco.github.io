@@ -127,7 +127,7 @@ Parallel Static Class Hoy quiero hablaros de la clase estática Parallel. Esta c
       <ul>
         <li><a href="#comprendiendo-las-acciones">Comprendiendo las acciones</a></li>
         <li><a href="#el-método-parallelfor">El método Parallel.For</a></li>
-        <li><a href="#so-lets-parallelize">So, let’s parallelize!</a></li>
+        <li><a href="#so-lets-parallelize">So, let’s parallelize</a></li>
         <li><a href="#el-método-parallelforeach">El método Parallel.ForEach</a></li>
         <li><a href="#explorando-más-opciones">Explorando más opciones</a></li>
       </ul>
@@ -185,7 +185,7 @@ Parallel Static Class Hoy quiero hablaros de la clase estática Parallel. Esta c
     <span class="k">else</span>
         <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;{0} no es primo&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
 <span class="p">}</span>
- 
+
 <span class="n">Parallel</span><span class="p">.</span><span class="n">For</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">100</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="p">=&gt;</span>
     <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">())</span>
@@ -197,7 +197,7 @@ Parallel Static Class Hoy quiero hablaros de la clase estática Parallel. Esta c
 </div>
 </div>
 <p>En ambos  casos tenemos una serie de líneas que deben ejecutarse 100 veces. Concretamente desde 0 hasta 99, ya que el elemento superior no se incluye en ninguno de los dos casos. Sólo se ve un poco extraño el uso del Action<T>, pero podéis pensar en que la variable int i del primer bucle for, aquí se transforma en la parte (i) a la izquierda de la expresión lambda (=&gt;). Y las acciones a ejecutar del primer for son exactamente iguales y van a la derecha de la expresión lambda.</p>
-<h3 id="so-lets-parallelize">So, let’s parallelize!</h3>
+<h3 id="so-lets-parallelize">So, let’s parallelize</h3>
 <p>Viéndolo de este modo debe resultar extremadamente sencillo transformar todos nuestros bucles de este modo, así que ¿debemos hacerlo? La respuesta es NO.</p>
 <p>En algunas ocasiones no vamos a obtener rendimiento por el hecho de paralelizar, ya que si el trabajo a realizar es mínimo, tardaremos más tiempo en dividir el trabajo en distintos threads, ejecutarlos y consolidar la información que en ejecutar la tarea sin paralelizar. También podría ser que nos encontrásemos un cuello de botella externo en un dispositivo de I/O, como un puerto, un servidor remoto o un socket.</p>
 <p>Otro claro ejemplo de esto son los bucles anidados. Es común anidar varias estructuras for o foreach para realizar ciertos algoritmos. En este caso el candidato a ser paralelizado siempre es el bucle exterior y no es necesario (de hecho sería contraproducente) paralelizar los bucles internos:</p>
@@ -347,7 +347,7 @@ Parallel Static Class Hoy quiero hablaros de la clase estática Parallel. Esta c
     <span class="n">clock</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
     <span class="k">this</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">clock</span><span class="p">.</span><span class="n">ElapsedMilliseconds</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;n2&#34;</span><span class="p">);</span>
 <span class="p">}</span>
- 
+
 <span class="k">void</span> <span class="n">dowork_cancel</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">CancellationTokenSource</span> <span class="n">cs</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>

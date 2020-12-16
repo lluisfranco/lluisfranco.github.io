@@ -1,7 +1,7 @@
 # Awarded MVP of the year
 
 
-## WoWoWo!
+## WoWoWo :O
 
 Surprised. Puzzled. Amazed. These are the words that define better my current feelings.
 
@@ -22,3 +22,4 @@ On the next March 2nd there will be an honorary dinner sponsored by S. Somasegar
 From here I’d like to congratulate the rest of the winners (there are 29 in all categories) and thank all my colleagues. Hey people, you’re great!
 
 Kind regards from Andorra,
+

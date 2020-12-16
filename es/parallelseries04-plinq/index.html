@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Parallel Series 04 - PLINQ - &gt;_lluis franco</title><meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Parallel Series 04 - PLINQ" />
 <meta property="og:description" content="Ir al índice de la serie
-LINQ power! Creo que estaremos todos de acuerdo en que LINQ ha supuesto una revolución en la forma de desarrollar, y ha hecho que muchos desarrolladores de otros lenguajes nos miren con cierto tono de envidia… E incluso que otras plataformas estén haciendo serios esfuerzos para incorporarlo en sus Frameworks :-)
+LINQ power Creo que estaremos todos de acuerdo en que LINQ ha supuesto una revolución en la forma de desarrollar, y ha hecho que muchos desarrolladores de otros lenguajes nos miren con cierto tono de envidia… E incluso que otras plataformas estén haciendo serios esfuerzos para incorporarlo en sus Frameworks :-)
 Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilidades gracias a PLINQ, que permite -de forma extremadamente sencilla- convertir cualquier consulta LINQ secuencial en una consulta paralelizable, permitiendo su segmentación y ejecución en los distintos cores en paralelo." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lluisfranco.com/es/parallelseries04-plinq/" />
@@ -16,7 +16,7 @@ Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilid
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Parallel Series 04 - PLINQ"/>
 <meta name="twitter:description" content="Ir al índice de la serie
-LINQ power! Creo que estaremos todos de acuerdo en que LINQ ha supuesto una revolución en la forma de desarrollar, y ha hecho que muchos desarrolladores de otros lenguajes nos miren con cierto tono de envidia… E incluso que otras plataformas estén haciendo serios esfuerzos para incorporarlo en sus Frameworks :-)
+LINQ power Creo que estaremos todos de acuerdo en que LINQ ha supuesto una revolución en la forma de desarrollar, y ha hecho que muchos desarrolladores de otros lenguajes nos miren con cierto tono de envidia… E incluso que otras plataformas estén haciendo serios esfuerzos para incorporarlo en sus Frameworks :-)
 Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilidades gracias a PLINQ, que permite -de forma extremadamente sencilla- convertir cualquier consulta LINQ secuencial en una consulta paralelizable, permitiendo su segmentación y ejecución en los distintos cores en paralelo."/>
 <meta name="application-name" content="&gt;_lluis franco">
 <meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.com/es/parallelseries04-plinq/" /><link rel="prev" href="https://lluisfranco.com/es/parallelseries03-conceptos-base/" /><link rel="next" href="https://lluisfranco.com/es/parallelseries05-parallel-static-class/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
@@ -125,7 +125,7 @@ Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilid
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#linq-power">LINQ power!</a>
+    <li><a href="#linq-power">LINQ power</a>
       <ul>
         <li><a href="#dónde-está-la-magia">¿Dónde está la magia?</a></li>
         <li><a href="#plinq-y-la-ordenación">PLINQ y la ordenación</a></li>
@@ -138,7 +138,7 @@ Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilid
   </ul>
 </nav></div>
             </div><div class="content" id="content"><p><a href="/es/parallelseries00-index" rel="">Ir al índice de la serie</a></p>
-<h2 id="linq-power">LINQ power!</h2>
+<h2 id="linq-power">LINQ power</h2>
 <p>Creo que estaremos todos de acuerdo en que LINQ ha supuesto una revolución en la forma de desarrollar, y ha hecho que muchos desarrolladores de otros lenguajes nos miren con cierto tono de envidia… E incluso que otras plataformas estén haciendo serios esfuerzos para incorporarlo en sus Frameworks :-)</p>
 <p>Ahora, con la llegada de la <a href="http://msdn.microsoft.com/en-us/library/dd460693.aspx" target="_blank" rel="noopener noreffer">Task Parallel Library</a>, se abre un mundo de posibilidades gracias a PLINQ, que permite -de forma extremadamente sencilla- convertir cualquier consulta LINQ secuencial en una consulta paralelizable, permitiendo su segmentación y ejecución en los distintos cores en paralelo.</p>
 <p>Es decir cualquier consulta LINQ, cómo la siguiente, en la que tenemos un array llamado numbers y un método IsPrime que devuelve un valor boolean en función de si un número es primo.</p>

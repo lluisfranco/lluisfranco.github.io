@@ -33,4 +33,3 @@ SELECT 'àéêöhello!' Collate SQL_Latin1_General_CP1253_CI_AI
 
 See you soon! :wink:
 
-

@@ -20,3 +20,4 @@ El vídeo dura una hora y veinte minutos aproximadamente y trata todos los conte
 Espero que os guste. Lo podéis ver online o descargar para más tarde.
 
 Muchas gracias [Isa](https://twitter.com/isabelcabezasm) por haber insistido, y al resto por el buen feedback! ;)
+

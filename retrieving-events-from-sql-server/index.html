@@ -181,16 +181,16 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 <span class="k">BEGIN</span>
 <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;1) Starting&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
 <span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
-</span><span class="c1"></span> 
+</span><span class="c1"></span>
 <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;2) Fetching data&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
 <span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:05&#39;</span><span class="p">;</span> <span class="c1">--Wait for 5 seconds
-</span><span class="c1"></span> 
+</span><span class="c1"></span>
 <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;3) Some other actions&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
 <span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
-</span><span class="c1"></span> 
+</span><span class="c1"></span>
 <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;4) Calculating&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
 <span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:02&#39;</span><span class="p">;</span> <span class="c1">--Wait for 2 seconds
-</span><span class="c1"></span> 
+</span><span class="c1"></span>
 <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;5) Finishing&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
 <span class="k">END</span></code></pre></td></tr></table>
 </div>
@@ -228,7 +228,7 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">SqlMessageEventArgs</span> 
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">SqlMessageEventArgs</span>
 <span class="p">{</span>
     <span class="k">public</span> <span class="kt">string</span> <span class="n">Message</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
     <span class="k">public</span> <span class="kt">int</span> <span class="n">Progress</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
@@ -374,16 +374,16 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 <span class="k">BEGIN</span>
 <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;1) Starting&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
 <span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
-</span><span class="c1"></span> 
+</span><span class="c1"></span>
 <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;2) Fetching data&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
 <span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:05&#39;</span><span class="p">;</span> <span class="c1">--Wait for 5 seconds
-</span><span class="c1"></span> 
+</span><span class="c1"></span>
 <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;3) Some other actions&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
 <span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
-</span><span class="c1"></span> 
+</span><span class="c1"></span>
 <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;4) Calculating&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
 <span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:02&#39;</span><span class="p">;</span> <span class="c1">--Wait for 2 seconds
-</span><span class="c1"></span> 
+</span><span class="c1"></span>
 <span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;5) Finishing&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
 <span class="k">END</span></code></pre></td></tr></table>
 </div>

@@ -28,7 +28,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/lluisfranco.com\/es\/functional-programming-for-the-rest-of-us\/"
-        },"genre": "posts","keywords": "Functional, Programming, Lambda, History","wordcount":  9708 ,
+        },"genre": "posts","keywords": "Functional, Programming, Lambda, History","wordcount":  9707 ,
         "url": "https:\/\/lluisfranco.com\/es\/functional-programming-for-the-rest-of-us\/","datePublished": "2012-02-10T11:51:50+02:00","dateModified": "2012-02-10T11:51:50+02:00","publisher": {
             "@type": "Organization",
             "name": "Lluis Franco"},"author": {
@@ -109,7 +109,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
             <div class="toc-content" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Programación funcional para el resto de nosotros</h1><h2 class="single-subtitle">El mejor artículo que vas a leer hoy (no es mío) xD</h2><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-category">incluido en <a href="/es/categories/development/"><i class="far fa-folder fa-fw"></i>Development</a>&nbsp;<a href="/es/categories/fundamentals/"><i class="far fa-folder fa-fw"></i>Fundamentals</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2012-02-10">2012-02-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;9708 palabras&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2012-02-10">2012-02-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;9707 palabras&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;46 minutos&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -425,7 +425,6 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
-</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">abstract</span> <span class="k">class</span> <span class="nc">ControladorMensajes</span>
@@ -437,11 +436,10 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
         <span class="c1">// ...
 </span><span class="c1"></span>        <span class="n">enviarMensaje</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
     <span class="p">}</span>
- 
     <span class="k">abstract</span> <span class="n">String</span> <span class="n">obtenerCodigoCliente</span><span class="p">();</span>
     <span class="c1">// ..
 </span><span class="c1"></span><span class="p">}</span>
- 
+
 <span class="k">class</span> <span class="nc">ControladorMensajes1</span> <span class="n">extends</span> <span class="n">ControladorMensajes</span>
 <span class="p">{</span>
     <span class="n">String</span> <span class="n">obtenerCodigoCliente</span><span class="p">()</span>
@@ -449,7 +447,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
         <span class="k">return</span> <span class="s">&#34;ABCD_123&#34;</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
- 
+
 <span class="k">class</span> <span class="nc">ControladorMensajes2</span> <span class="n">extends</span> <span class="n">ControladorMensajes</span>
 <span class="p">{</span>
     <span class="n">String</span> <span class="n">obtenerCodigoCliente</span><span class="p">()</span>
@@ -500,17 +498,17 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
     <span class="p">}</span>
     <span class="c1">// ...
 </span><span class="c1"></span><span class="p">}</span>
- 
+
 <span class="n">String</span> <span class="n">codigoCliente1</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="s">&#34;ABCD_123&#34;</span><span class="p">;</span>
 <span class="p">}</span>
- 
+
 <span class="n">String</span> <span class="n">codigoCliente2</span><span class="p">()</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="s">&#34;123_ABCD&#34;</span><span class="p">;</span>
 <span class="p">}</span>
- 
+
 <span class="n">ControladorMensajes</span> <span class="n">controlador</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ControladorMensajes</span><span class="p">();</span>
 <span class="n">controlador</span><span class="p">.</span><span class="n">controlarMensaje</span><span class="p">(</span><span class="n">unMsj</span><span class="p">,</span> <span class="n">codigoCliente1</span><span class="p">);</span>
 </code></pre></td></tr></table>
@@ -560,7 +558,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
         <span class="k">return</span> <span class="n">potencia</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
- 
+
 <span class="n">t_funcion_cuadrado</span> <span class="n">cuadrado</span> <span class="p">=</span> <span class="k">new</span> <span class="n">t_funcion_cuadrado</span><span class="p">();</span>
 </code></pre></td></tr></table>
 </div>
@@ -783,7 +781,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
     <span class="p">}</span>
     <span class="k">return</span> <span class="n">funcionPotencia</span><span class="p">;</span>
 <span class="p">}</span>
- 
+
 <span class="n">Funcion</span> <span class="n">cuadrado</span> <span class="p">=</span> <span class="n">hacerFuncionPotencia</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
 <span class="n">cuadrado</span><span class="p">(</span><span class="m">3</span><span class="p">)</span> <span class="p">;</span> <span class="c1">//Devuelve 9
 </span></code></pre></td></tr></table>
