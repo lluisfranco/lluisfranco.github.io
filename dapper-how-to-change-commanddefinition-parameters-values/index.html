@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Dapper: How to change CommandDefinition parameters values - &gt;_lluis franco</title><meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Dapper: How to change CommandDefinition parameters values" />
+<meta property="og:description" content="Overview In my current development I&rsquo;m using Dapper, a light ORM to access the database. Using Dapper is really easy and provides super-fast performance. Here&rsquo;s an example of use:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" />
+<meta property="article:published_time" content="2021-01-28T11:51:50+02:00" />
+<meta property="article:modified_time" content="2021-01-28T11:51:50+02:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dapper: How to change CommandDefinition parameters values"/>
+<meta name="twitter:description" content="Overview In my current development I&rsquo;m using Dapper, a light ORM to access the database. Using Dapper is really easy and provides super-fast performance. Here&rsquo;s an example of use:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken."/>
+<meta name="application-name" content="&gt;_lluis franco">
+<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" /><link rel="prev" href="https://lluisfranco.com/retrieving-events-from-sql-server/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Dapper: How to change CommandDefinition parameters values",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/lluisfranco.com\/dapper-how-to-change-commanddefinition-parameters-values\/"
+        },"genre": "posts","keywords": "csharp, net framework, Dapper, CommandDefinition, Parameters","wordcount":  744 ,
+        "url": "https:\/\/lluisfranco.com\/dapper-how-to-change-commanddefinition-parameters-values\/","datePublished": "2021-01-28T11:51:50+02:00","dateModified": "2021-01-28T11:51:50+02:00","publisher": {
+            "@type": "Organization",
+            "name": "Lluis Franco"},"author": {
+                "@type": "Person",
+                "name": "lluís"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="&gt;_lluis franco"><span class="header-title-pre"><i class='fas fa-terminal'></i></span>lluis franco</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
+                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/dapper-how-to-change-commanddefinition-parameters-values/" selected>English</option></select>
+                    </a><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="&gt;_lluis franco"><span class="header-title-pre"><i class='fas fa-terminal'></i></span>lluis franco</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/dapper-how-to-change-commanddefinition-parameters-values/" selected>English</option></select>
+                </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Dapper: How to change CommandDefinition parameters values</h1><h2 class="single-subtitle">Useful when working with Dapper and Commands :)</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-category">included in <a href="/categories/development/"><i class="far fa-folder fa-fw"></i>Development</a>&nbsp;<a href="/categories/how-to/"><i class="far fa-folder fa-fw"></i>How To</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-28">2021-01-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;744 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/posts/DapperLogo.png"
+        data-srcset="/images/posts/DapperLogo.png, /images/posts/DapperLogo.png 1.5x, /images/posts/DapperLogo.png 2x"
+        data-sizes="auto"
+        alt="/images/posts/DapperLogo.png"
+        title="/images/posts/DapperLogo.png" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#overview">Overview</a>
+      <ul>
+        <li><a href="#a-hypothetical-case">A hypothetical case</a></li>
+        <li><a href="#iterating-through-an-anonymous-object">Iterating through an anonymous object</a></li>
+        <li><a href="#modifying-the-anonymous-object">Modifying the anonymous object</a></li>
+        <li><a href="#putting-it-all-together">Putting it all together</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="overview">Overview</h2>
+<p>In my current development I&rsquo;m using Dapper, a light ORM to access the database. Using Dapper is really easy and provides super-fast performance. Here&rsquo;s an example of use:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;</span> <span class="n">GetSomeDataAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span>
+    <span class="n">DateTime</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">DateTime</span> <span class="n">endDate</span><span class="p">,</span>
+    <span class="n">CancellationTokenSource</span> <span class="n">sourceToken</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sourceToken</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="n">sourceToken</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CancellationTokenSource</span><span class="p">();</span>
+    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">con</span> <span class="p">=</span> <span class="n">CreateConnection</span><span class="p">())</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">@&#34;SELECT (your field list) FROM (your table/view/function))(
+</span><span class="s">                    @StartDate, @EndDate)&#34;</span><span class="p">;</span>
+        <span class="kt">var</span> <span class="n">command</span> <span class="p">=</span> <span class="n">CreateCommand</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="k">new</span>
+        <span class="p">{</span>
+            <span class="n">@StartDate</span> <span class="p">=</span> <span class="n">startDate</span><span class="p">,</span>
+            <span class="n">@EndDate</span> <span class="p">=</span> <span class="n">endDate</span>
+        <span class="p">},</span> <span class="n">cancellationToken</span><span class="p">:</span> <span class="n">sourceToken</span><span class="p">.</span><span class="n">Token</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="n">con</span><span class="p">.</span><span class="n">QueryCmdAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">command</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>In this code I&rsquo;m querying a table valued function that returns some data between two dates.
+Both parameters (startDate and endDate) are declared on the fly as anomynous types and used in the creation of a CommandDefinition object.</p>
+<p>The CreateCommand method is just an example, and would be used every time we need to create a command to access the database.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">CommandDefinition</span> <span class="n">CreateCommand</span><span class="p">(</span>
+    <span class="kt">string</span> <span class="n">commandText</span><span class="p">,</span> <span class="kt">object</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">IDbTransaction</span> <span class="n">transaction</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="kt">int?</span> <span class="n">commandTimeout</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">CommandType</span><span class="p">?</span> <span class="n">commandType</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">CommandFlags</span> <span class="n">flags</span> <span class="p">=</span> <span class="n">CommandFlags</span><span class="p">.</span><span class="n">Buffered</span><span class="p">,</span>
+    <span class="n">CancellationToken</span> <span class="n">cancellationToken</span> <span class="p">=</span> <span class="k">default</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//Here you can apply some custom code before the creation of the command definition
+</span><span class="c1"></span>    <span class="k">return</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span>
+        <span class="n">commandText</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">transaction</span><span class="p">,</span>
+        <span class="n">commandTimeout</span> <span class="p">??</span> <span class="n">SqlHelper</span><span class="p">.</span><span class="n">GetCommandTimeout</span><span class="p">(),</span>
+        <span class="n">commandType</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">cancellationToken</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="a-hypothetical-case">A hypothetical case</h3>
+<p>Now imagine you have to iterate through the parameters collection and do something, for example prevent invalid values in some parameters before calling the database. A typical case is in most databases the Date types doesn&rsquo;t match with the .NET Framework DateTime, and we want to prevent out of range exceptions:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-systemd" data-lang="systemd"><span class="err">The</span> <span class="err">SQL</span> <span class="err">Server</span> <span class="err">DateTime</span> <span class="err">type</span> <span class="err">range</span> <span class="err">is</span> <span class="err">from</span> <span class="err">January</span> <span class="err">1,</span> <span class="err">1753,</span> <span class="err">through</span> <span class="err">December</span> <span class="err">31,</span> <span class="err">9999</span>
+<span class="err">NET</span> <span class="err">Framework</span> <span class="err">DateTime</span> <span class="err">struct</span> <span class="err">range</span> <span class="err">is</span> <span class="err">from</span> <span class="err">January</span> <span class="err">1,</span> <span class="err">0001,</span> <span class="err">through</span> <span class="err">December</span> <span class="err">31,</span> <span class="err">9999</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>So if we send a DateTime parameter with value less than 1753/01/01 to the database we will receive an out of range exception. Wouldn&rsquo;t be nice if we check all datetime values before sending to the database?</p>
+<h3 id="iterating-through-an-anonymous-object">Iterating through an anonymous object</h3>
+<p>As far as I know the only way of iterate over an anonymous object is using reflection.</p>
+<figure>
+    <img src="/images/posts/ParametersAnonymousType.png"/> <figcaption>
+            <h4>Parameters is an Anonymous type</h4>
+        </figcaption>
+</figure>
+
+<p>Using reflection we can access to the properties of the parameters object.
+In that case we can check if the parameter property is a DateTime type, check the value and do whatever we need.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">paramsProperties</span> <span class="p">=</span> <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperties</span><span class="p">();</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">p</span> <span class="k">in</span> <span class="n">paramsProperties</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">PropertyType</span> <span class="p">==</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DateTime</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="n">DateTime</span> <span class="n">dateValue</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToDateTime</span><span class="p">(</span>
+            <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">GetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">));</span>
+        <span class="c1">//do something
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<h3 id="modifying-the-anonymous-object">Modifying the anonymous object</h3>
+<p>However, in c# anonymous types are immutable and we cannot change their value via reflection.</p>
+<p>Sadly, this code won&rsquo;t work:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">SetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">newValue</span><span class="p">));</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>There are different ways to solve that. For example we could use an ExpandoObject, but in this case we&rsquo;ll use a Dapper DynamicParameters object because when creating a CommandDefinition we can use an both, an object or a DynamicParameters.</p>
+<h3 id="putting-it-all-together">Putting it all together</h3>
+<p>So, to prevent SqlDateTime overflows we only need to iterate through the parameters properties using reflection, check these datetimes values and if the value is less that the minimal sql date, change it. Finally add the parameters to a DynamicParameters collection and that&rsquo;s all.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">DynamicParameters</span> <span class="n">GetDynamicParameters</span><span class="p">(</span><span class="kt">object</span> <span class="n">parameters</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">sqlMinDate</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">SqlTypes</span><span class="p">.</span><span class="n">SqlDateTime</span><span class="p">.</span><span class="n">MinValue</span><span class="p">;</span>
+    <span class="kt">var</span> <span class="n">newParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DynamicParameters</span><span class="p">();</span>
+    <span class="kt">var</span> <span class="n">paramsProperties</span> <span class="p">=</span> <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperties</span><span class="p">();</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">p</span> <span class="k">in</span> <span class="n">paramsProperties</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">PropertyType</span> <span class="p">==</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DateTime</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">DateTime</span> <span class="n">dateValue</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToDateTime</span><span class="p">(</span>
+                <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">GetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">));</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">dateValue</span> <span class="p">&lt;=</span> <span class="n">sqlMinDate</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span> <span class="n">dateValue</span> <span class="p">=</span> <span class="n">sqlMinDate</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+            <span class="n">newParameters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">dateValue</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+            <span class="n">newParameters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+                <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">GetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">newParameters</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>Now we can use the previous method in the CreateCommand method:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">CommandDefinition</span> <span class="n">CreateCommand</span><span class="p">(</span>
+    <span class="kt">string</span> <span class="n">commandText</span><span class="p">,</span> <span class="kt">object</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">IDbTransaction</span> <span class="n">transaction</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="kt">int?</span> <span class="n">commandTimeout</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">CommandType</span><span class="p">?</span> <span class="n">commandType</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">CommandFlags</span> <span class="n">flags</span> <span class="p">=</span> <span class="n">CommandFlags</span><span class="p">.</span><span class="n">Buffered</span><span class="p">,</span>
+    <span class="n">CancellationToken</span> <span class="n">cancellationToken</span> <span class="p">=</span> <span class="k">default</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">parameters</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="n">parameters</span> <span class="p">=</span> <span class="n">GetDynamicParameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span>
+        <span class="n">commandText</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">transaction</span><span class="p">,</span>
+        <span class="n">commandTimeout</span> <span class="p">??</span> <span class="n">SqlHelper</span><span class="p">.</span><span class="n">GetCommandTimeout</span><span class="p">(),</span>
+        <span class="n">commandType</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">cancellationToken</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+<p>This post is just a note to my future self :)</p>
+<p>Hope you enjoy it, and feel free to send me your thoughts about this solution.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-01-28</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/dapper-how-to-change-commanddefinition-parameters-values/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" data-title="Dapper: How to change CommandDefinition parameters values" data-via="lluisfranco" data-hashtags="csharp,net framework,Dapper,CommandDefinition,Parameters"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" data-hashtag="csharp"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" data-title="Dapper: How to change CommandDefinition parameters values" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" data-image="/images/posts/DapperLogo.png"><i class="fab fa-pinterest fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Instapaper" data-sharer="instapaper" data-url="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" data-title="Dapper: How to change CommandDefinition parameters values" data-description=""><i data-svg-src="/lib/simple-icons/icons/instapaper.min.svg"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" data-title="Dapper: How to change CommandDefinition parameters values"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/csharp/">csharp</a>,&nbsp;<a href="/tags/net-framework/">net framework</a>,&nbsp;<a href="/tags/dapper/">Dapper</a>,&nbsp;<a href="/tags/commanddefinition/">CommandDefinition</a>,&nbsp;<a href="/tags/parameters/">Parameters</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/retrieving-events-from-sql-server/" class="prev" rel="prev" title="Retrieving events from SQL Server"><i class="fas fa-angle-left fa-fw"></i>Retrieving events from SQL Server</a></div>
+</div>
+<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "lluisfrancoblog" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":20},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

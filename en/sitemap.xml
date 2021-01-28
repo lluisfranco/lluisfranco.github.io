@@ -2,6 +2,74 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://lluisfranco.com/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.com/es/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.com/"
+                    /></url><url>
+            <loc>https://lluisfranco.com/categories/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.com/es/categories/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.com/categories/"
+                    /></url><url>
+            <loc>https://lluisfranco.com/tags/commanddefinition/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/tags/csharp/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.com/es/tags/csharp/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.com/tags/csharp/"
+                    /></url><url>
+            <loc>https://lluisfranco.com/tags/dapper/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/categories/development/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.com/es/categories/development/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.com/categories/development/"
+                    /></url><url>
+            <loc>https://lluisfranco.com/categories/how-to/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/tags/net-framework/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.com/es/tags/net-framework/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.com/tags/net-framework/"
+                    /></url><url>
+            <loc>https://lluisfranco.com/tags/parameters/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/posts/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.com/es/posts/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.com/posts/"
+                    /></url><url>
+            <loc>https://lluisfranco.com/tags/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.com/es/tags/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.com/tags/"
+                    /></url><url>
             <loc>https://lluisfranco.com/about/</loc><lastmod>2020-05-01T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="es"
@@ -11,74 +79,10 @@
                     hreflang="en"
                     href="https://lluisfranco.com/about/"
                     /></url><url>
-            <loc>https://lluisfranco.com/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://lluisfranco.com/es/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://lluisfranco.com/"
-                    /></url><url>
-            <loc>https://lluisfranco.com/categories/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://lluisfranco.com/es/categories/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://lluisfranco.com/categories/"
-                    /></url><url>
-            <loc>https://lluisfranco.com/tags/csharp/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://lluisfranco.com/es/tags/csharp/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://lluisfranco.com/tags/csharp/"
-                    /></url><url>
-            <loc>https://lluisfranco.com/categories/development/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://lluisfranco.com/es/categories/development/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://lluisfranco.com/categories/development/"
-                    /></url><url>
             <loc>https://lluisfranco.com/tags/events/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.com/categories/how-to/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.com/tags/net-framework/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://lluisfranco.com/es/tags/net-framework/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://lluisfranco.com/tags/net-framework/"
-                    /></url><url>
-            <loc>https://lluisfranco.com/posts/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://lluisfranco.com/es/posts/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://lluisfranco.com/posts/"
-                    /></url><url>
             <loc>https://lluisfranco.com/retrieving-events-from-sql-server/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.com/tags/sql/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.com/tags/sql-server/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.com/tags/</loc><lastmod>2019-09-30T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://lluisfranco.com/es/tags/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://lluisfranco.com/tags/"
-                    /></url><url>
             <loc>https://lluisfranco.com/tags/adomd.net/</loc><lastmod>2017-12-12T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.com/tags/generics/</loc><lastmod>2017-12-12T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.com/getting-data-from-olap-cubes/</loc><lastmod>2017-12-12T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>

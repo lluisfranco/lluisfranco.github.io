@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Dapper - Tag - &gt;_lluis franco</title>
+        <link>https://lluisfranco.com/tags/dapper/</link>
+        <description>Dapper - Tag - &gt;_lluis franco</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Thu, 28 Jan 2021 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.com/tags/dapper/" rel="self" type="application/rss+xml" /><item>
+    <title>Dapper: How to change CommandDefinition parameters values</title>
+    <link>https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/</link>
+    <pubDate>Thu, 28 Jan 2021 11:51:50 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/DapperLogo.png" referrerpolicy="no-referrer">
+            </div>Overview In my current development I&rsquo;m using Dapper, a light ORM to access the database. Using Dapper is really easy and provides super-fast performance. Here&rsquo;s an example of use:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken.]]></description>
+</item></channel>
+</rss>
