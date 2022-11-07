@@ -9,9 +9,10 @@
 <meta property="og:description" content="Gettings all controls from a container v2 A better approach In my previous post I created a recursive function to retrieve all controls inside a form and its containers. Today, my colleague and friend Eduard Tomàs sent me another solution to the same topic based on LINQ. It’s simply and really, really pretty ❤️
 The power of LINQ Before starting, we need to solve this: LINQ works over IEnumerable, but Control." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/retrieve-all-controls-using-generics-ii/" />
+<meta property="og:url" content="https://lluisfranco.com/retrieve-all-controls-using-generics-ii/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2010-11-15T17:20:51+02:00" />
 <meta property="article:modified_time" content="2010-11-15T17:20:51+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Retrieve all controls using generics (II)"/>
 <meta name="twitter:description" content="Gettings all controls from a container v2 A better approach In my previous post I created a recursive function to retrieve all controls inside a form and its containers. Today, my colleague and friend Eduard Tomàs sent me another solution to the same topic based on LINQ. It’s simply and really, really pretty ❤️
@@ -139,25 +140,24 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
 <p>Before starting, we need to solve this: LINQ works over <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1?view=netcore-3.1" target="_blank" rel="noopener noreffer">IEnumerable<T></a>, but Control.Controls property returns a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.control.controlcollection?view=netcore-3.1" target="_blank" rel="noopener noreffer">ControlCollection</a> type. In fact, nowadays, since we have Generics this class has no sense (like other 1.000 similar classes) but remember that Generics doesn’t appeared until .NET Framework 2.0. So, our first step will be retrieve an IEnumerable<Control> from a ControlCollection property of a Control. This could be accomplished using an extensor method over the class ControlCollection:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Control</span><span class="p">&gt;</span> <span class="n">AsEnumerable</span><span class="p">(</span><span class="k">this</span> <span class="n">Control</span><span class="p">.</span><span class="n">ControlCollection</span> <span class="n">@this</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">control</span> <span class="k">in</span> <span class="n">@this</span><span class="p">)</span>
-        <span class="k">yield</span> <span class="k">return</span> <span class="p">(</span><span class="n">Control</span><span class="p">)</span><span class="n">control</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Control</span><span class="p">&gt;</span> <span class="n">AsEnumerable</span><span class="p">(</span><span class="k">this</span> <span class="n">Control</span><span class="p">.</span><span class="n">ControlCollection</span> <span class="n">@this</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">control</span> <span class="k">in</span> <span class="n">@this</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">yield</span> <span class="k">return</span> <span class="p">(</span><span class="n">Control</span><span class="p">)</span><span class="n">control</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Note that using this method we are able to transform CollectionControl to IEnumerable<Control> and get full access to the power of Linq. Now, let&rsquo;s create a method to retrieve all controls of a type:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -167,15 +167,14 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetAllControls</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">Control</span> <span class="n">@this</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="n">Control</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">@this</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">().</span><span class="n">Where</span><span class="p">(</span>
-        <span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">GetType</span><span class="p">()</span> <span class="p">==</span> <span class="k">typeof</span><span class="p">(</span><span class="n">T</span><span class="p">)).</span><span class="n">Select</span><span class="p">(</span>
-        <span class="n">y</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">y</span><span class="p">).</span><span class="n">Union</span><span class="p">(</span>
-        <span class="n">@this</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">().</span><span class="n">SelectMany</span><span class="p">(</span>
-            <span class="n">x</span> <span class="p">=&gt;</span> <span class="n">GetAllControls</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">x</span><span class="p">)).</span><span class="n">Select</span><span class="p">(</span><span class="n">y</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">y</span><span class="p">));</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetAllControls</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">Control</span> <span class="n">@this</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="n">Control</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">@this</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">().</span><span class="n">Where</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">GetType</span><span class="p">()</span> <span class="p">==</span> <span class="k">typeof</span><span class="p">(</span><span class="n">T</span><span class="p">)).</span><span class="n">Select</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">y</span><span class="p">).</span><span class="n">Union</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">@this</span><span class="p">.</span><span class="n">Controls</span><span class="p">.</span><span class="n">AsEnumerable</span><span class="p">().</span><span class="n">SelectMany</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">x</span> <span class="p">=&gt;</span> <span class="n">GetAllControls</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">x</span><span class="p">)).</span><span class="n">Select</span><span class="p">(</span><span class="n">y</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">y</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>It looks cool, isn’t it? No loops, no ifs… only pure LINQ power! :-)</p>
@@ -185,23 +184,22 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
 <p>Another difference present in LINQ solution is we are returning an IEnumerable, so we loose the ForEach method (because IEnumerable doesn’t implements this method). But building our own ForEach method is as trivial as:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">ForEach</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">@this</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">action</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">T</span> <span class="n">t</span> <span class="k">in</span> <span class="n">@this</span><span class="p">)</span> <span class="p">{</span> <span class="n">action</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="n">ForEach</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">@this</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">action</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span> <span class="p">(</span><span class="n">T</span> <span class="n">t</span> <span class="k">in</span> <span class="n">@this</span><span class="p">)</span> <span class="p">{</span> <span class="n">action</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Now, we&rsquo;ve all the necessary ingredients to get all controls and do whatever we need :D</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -212,16 +210,15 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">this</span><span class="p">.</span><span class="n">GetAllControls</span><span class="p">&lt;</span><span class="n">TextBox</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">);</span>
-
-<span class="k">this</span><span class="p">.</span><span class="n">GetAllControls</span><span class="p">&lt;</span><span class="n">TextBox</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span>
-<span class="p">{</span>
-    <span class="n">p</span><span class="p">.</span><span class="n">BackColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">LightGray</span><span class="p">;</span>
-    <span class="n">p</span><span class="p">.</span><span class="n">ForeColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">;</span>
-    <span class="n">p</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&#34;hello&#34;</span><span class="p">;</span>
-    <span class="n">p</span><span class="p">.</span><span class="n">TextAlign</span> <span class="p">=</span> <span class="n">HorizontalAlignment</span><span class="p">.</span><span class="n">Center</span><span class="p">;</span>
-<span class="p">});</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="n">GetAllControls</span><span class="p">&lt;</span><span class="n">TextBox</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="n">GetAllControls</span><span class="p">&lt;</span><span class="n">TextBox</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">BackColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">LightGray</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">ForeColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&#34;hello&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">TextAlign</span> <span class="p">=</span> <span class="n">HorizontalAlignment</span><span class="p">.</span><span class="n">Center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>HYEI, happy coding! :-)</p>
@@ -256,7 +253,7 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -275,7 +272,7 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

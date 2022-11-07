@@ -47,8 +47,8 @@ Otro año ha pasado, y otra edición más del GAPAND a la saca. No, si al final 
                 <img src="/images/posts/DotNet2016Video.png" referrerpolicy="no-referrer">
             </div>Video de mi sesión Hola de nuevo,
 Lo prometido es deuda, he subido a Channel9 un video sobre mi sesión de ‘async Best practices’ de la pasada #DotNetSpain2016 :)
-En mi Canal de Youtube   En la página de Microsoft Channel9   Channel 9   
-El vídeo dura una hora y veinte minutos aproximadamente y trata todos los contenidos de la sesión y la última demo con un poco más de profundidad.]]></description>
+En mi Canal de Youtube En la página de Microsoft Channel9 Channel 9 El vídeo dura una hora y veinte minutos aproximadamente y trata todos los contenidos de la sesión y la última demo con un poco más de profundidad.
+Espero que os guste.]]></description>
 </item><item>
     <title>Materiales de mi sesión en la DotNet Spain 2016</title>
     <link>https://lluisfranco.com/es/materiales-sesion-dotnet-spain-2016/</link>
@@ -60,8 +60,8 @@ El vídeo dura una hora y veinte minutos aproximadamente y trata todos los conte
             </div>Materiales de mi sesión Hola de nuevo,
 Durante los últimos días me ha contactado bastante gente haciéndome preguntas sobre mi sesión en la pasada DotNet Spain Conference.
 Aquí van un par de ellas con sus respuestas, por si son de vuestro interés ;)
-1 - Sobre la Consola  “Las demos eran un proyecto de consola, pero qué consola era esa? No es el clásico cmd de Windows, verdad?”
- Pues no, desde hace tiempo he sustituido el cmd por la estupenda ConEmu, que permite abrir distintos shells (PowerShell, PuTTY, mintty, GViM, etc) y distribuirlos como tabs o mosaicos.]]></description>
+1 - Sobre la Consola “Las demos eran un proyecto de consola, pero qué consola era esa? No es el clásico cmd de Windows, verdad?”
+Pues no, desde hace tiempo he sustituido el cmd por la estupenda ConEmu, que permite abrir distintos shells (PowerShell, PuTTY, mintty, GViM, etc) y distribuirlos como tabs o mosaicos.]]></description>
 </item><item>
     <title>DotNet Spain Conference 2016</title>
     <link>https://lluisfranco.com/es/dotnet-spain-conference-2016/</link>
@@ -113,6 +113,6 @@ Durante muchos años los desarrolladores hemos tenido que lidiar -más ben pelea
                 <img src="/images/posts/functionalprogramming.png" referrerpolicy="no-referrer">
             </div>Ir al índice de la serie
 Mi idea inicial Originalmente, en mi serie sobre la Task Parallel Library estaba pensando en incluir algún post sobre programación funcional, pero cuando encontré esta pequeña joya decidí pedir permiso a Luis para poder incluir una copia en mi blog, ya que ni en sueños podría yo haber escrito algo tan completo. Mis felicitaciones!
-Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo al excelente trabajo y consulta la versión traducida de Luis Mendoza, basado en el post original de Slava Akhmechet.]]></description>
+Nota Artículo reproducido con permiso del traductor original. Dale un vistazo al excelente trabajo y consulta la versión traducida de Luis Mendoza, basado en el post original de Slava Akhmechet.]]></description>
 </item></channel>
 </rss>

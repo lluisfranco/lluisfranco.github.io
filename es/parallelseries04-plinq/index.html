@@ -10,9 +10,10 @@
 LINQ power Creo que estaremos todos de acuerdo en que LINQ ha supuesto una revolución en la forma de desarrollar, y ha hecho que muchos desarrolladores de otros lenguajes nos miren con cierto tono de envidia… E incluso que otras plataformas estén haciendo serios esfuerzos para incorporarlo en sus Frameworks :-)
 Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilidades gracias a PLINQ, que permite -de forma extremadamente sencilla- convertir cualquier consulta LINQ secuencial en una consulta paralelizable, permitiendo su segmentación y ejecución en los distintos cores en paralelo." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/es/parallelseries04-plinq/" />
+<meta property="og:url" content="https://lluisfranco.com/es/parallelseries04-plinq/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2011-05-31T11:51:50+02:00" />
 <meta property="article:modified_time" content="2011-05-31T11:51:50+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Parallel Series 04 - PLINQ"/>
 <meta name="twitter:description" content="Ir al índice de la serie
@@ -145,7 +146,7 @@ Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilid
 <p>Suponiendo esta función que devuelve si un número es primo:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -161,53 +162,50 @@ Ahora, con la llegada de la Task Parallel Library, se abre un mundo de posibilid
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">IsPrime</span><span class="p">(</span><span class="k">this</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="c1">//1 = false, 2 = true, 3 = true...
-</span><span class="c1"></span><span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="p">&lt;=</span> <span class="m">1</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">((</span><span class="n">n</span> <span class="p">&amp;</span> <span class="m">1</span><span class="p">)</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="p">==</span> <span class="m">2</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-        <span class="k">else</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span> <span class="p">(</span><span class="n">i</span> <span class="p">*</span> <span class="n">i</span><span class="p">)</span> <span class="p">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="p">+=</span> <span class="m">2</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">((</span><span class="n">n</span> <span class="p">%</span> <span class="n">i</span><span class="p">)</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">n</span> <span class="p">!=</span> <span class="m">1</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">IsPrime</span><span class="p">(</span><span class="k">this</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="c1">//1 = false, 2 = true, 3 = true...</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="p">&lt;=</span> <span class="m">1</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">((</span><span class="n">n</span> <span class="p">&amp;</span> <span class="m">1</span><span class="p">)</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="p">==</span> <span class="m">2</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">3</span><span class="p">;</span> <span class="p">(</span><span class="n">i</span> <span class="p">*</span> <span class="n">i</span><span class="p">)</span> <span class="p">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="p">+=</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">((</span><span class="n">n</span> <span class="p">%</span> <span class="n">i</span><span class="p">)</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">n</span> <span class="p">!=</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Puede ser ejecutada con LINQ de este modo para que retorne sólo aquellos números que son primos:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">query</span> <span class="p">=</span>
-    <span class="k">from</span> <span class="n">n</span> <span class="k">in</span> <span class="n">numbers</span>
-    <span class="k">where</span> <span class="n">n</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">()</span>
-    <span class="k">select</span> <span class="n">n</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">query</span> <span class="p">=</span>
+</span></span><span class="line"><span class="cl">    <span class="k">from</span> <span class="n">n</span> <span class="k">in</span> <span class="n">numbers</span>
+</span></span><span class="line"><span class="cl">    <span class="k">where</span> <span class="n">n</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">select</span> <span class="n">n</span><span class="p">;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Y ésta ser paralelizada simplemente agregando <strong>AsParallel</strong> de este modo:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="hl"><span class="lnt">2
 </span></span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">query</span> <span class="p">=</span>
-<span class="hl">    <span class="k">from</span> <span class="n">n</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">()</span>
-</span>    <span class="k">where</span> <span class="n">n</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">()</span>
-    <span class="k">select</span> <span class="n">n</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">query</span> <span class="p">=</span>
+</span></span><span class="line hl"><span class="cl">    <span class="k">from</span> <span class="n">n</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">where</span> <span class="n">n</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">select</span> <span class="n">n</span><span class="p">;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Partiendo de que el array de números contiene los  primeros 10 millones de números enteros, y de que mi estación de trabajo actual tiene un procesador i7 con 8 cores, el resultado es abrumador:</p>
@@ -219,16 +217,14 @@ Nada mal, eh?</p>
 <p>Y además creo que lo hace de forma muy elegante :-)</p>
 <p>Como ya sabemos, las consultas LINQ se basan en <a href="http://msdn.microsoft.com/en-us/library/9eekhta0.aspx" target="_blank" rel="noopener noreffer">IEnumerable<T></a> (gracias Generics!) que expone un enumerador para recorrer los elementos de una secuencia de elementos de tipo T. Esto hace que todas las colecciones que puedan devolverse en este tipo de consultas (IOrderedEnumerable, IQueryable, etc.) implementen esta interfaz. Hasta aquí nada nuevo bajo el sol.</p>
 <p>Sin embargo, en la consulta PLINQ al utilizar el método extensor <a href="http://msdn.microsoft.com/en-us/library/dd413602.aspx" target="_blank" rel="noopener noreffer">AsParallel()</a> estamos transformando la secuencia de entrada de <a href="http://msdn.microsoft.com/en-us/library/9eekhta0.aspx" target="_blank" rel="noopener noreffer">IEnumerable<T></a> a <a href="http://msdn.microsoft.com/en-us/library/dd383736.aspx" target="_blank" rel="noopener noreffer">ParallelQuery <T></a> permitiendo la segmentación de los elementos de la secuencia y ejecutando cada uno de los segmentos en un thread distinto. Y por supuesto, repartiendo el trabajo en los diversos cores (si los hay).</p>
-<figure>
-    <img src="/images/posts/asparallel.png"/> <figcaption>
+<figure><img src="/images/posts/asparallel.png"/><figcaption>
             <h4>Segmentación en paralelo de la secuencia</h4>
         </figcaption>
 </figure>
 
 <p>La secuencia de entrada se particiona y se manda por fragmentos a distintos threads que invocan al método IsPrime devolviendo true (T) o false (F), y posteriormente los consolida en una secuencia de salida que puede ser consumida.</p>
 <p>No obstante, el hecho de paralelizar el trabajo no garantiza que el resultado sea devuelto en el mismo orden, ya que es posible que un thread termine antes que otro y devuelva su resultado parcial antes de lo esperado. Así que, si la ordenación de los datos de salida es importante tenemos que ir un paso más allá.</p>
-<figure>
-    <img src="/images/posts/asordered.png"/> <figcaption>
+<figure><img src="/images/posts/asordered.png"/><figcaption>
             <h4>Los primeros elementos deberían ser 2, 3, 5, 7… no 59 y 71 ¿?</h4>
         </figcaption>
 </figure>
@@ -238,21 +234,19 @@ Nada mal, eh?</p>
 <p>Una vez modificada la consulta:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="hl"><span class="lnt">2
 </span></span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">query</span> <span class="p">=</span>
-<span class="hl">    <span class="k">from</span> <span class="n">n</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">().</span><span class="n">AsOrdered</span><span class="p">()</span>
-</span>    <span class="k">where</span> <span class="n">n</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">()</span>
-    <span class="k">select</span> <span class="n">n</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">query</span> <span class="p">=</span>
+</span></span><span class="line hl"><span class="cl">    <span class="k">from</span> <span class="n">n</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">().</span><span class="n">AsOrdered</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">where</span> <span class="n">n</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">select</span> <span class="n">n</span><span class="p">;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<figure>
-    <img src="/images/posts/asordered2.png"/> <figcaption>
+<figure><img src="/images/posts/asordered2.png"/><figcaption>
             <h4>Ahora si están ordenados :)</h4>
         </figcaption>
 </figure>
@@ -262,7 +256,7 @@ Nada mal, eh?</p>
 <p>Es interesante notar que al especificar el grado de paralelización no estamos forzando a que se usen n particiones, sino que simplemente estamos especificando el valor máximo:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="hl"><span class="lnt">4
@@ -270,13 +264,12 @@ Nada mal, eh?</p>
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">cores</span> <span class="p">=</span> <span class="n">Environment</span><span class="p">.</span><span class="n">ProcessorCount</span><span class="p">;</span>
-<span class="kt">var</span> <span class="n">query</span> <span class="p">=</span>
-    <span class="k">from</span> <span class="n">n</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">().</span><span class="n">AsOrdered</span><span class="p">().</span>
-<span class="hl">        <span class="n">WithDegreeOfParallelism</span><span class="p">(</span><span class="n">cores</span> <span class="p">/</span> <span class="m">2</span><span class="p">)</span>
-</span>    <span class="k">where</span> <span class="n">n</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">()</span>
-    <span class="k">select</span> <span class="n">n</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">cores</span> <span class="p">=</span> <span class="n">Environment</span><span class="p">.</span><span class="n">ProcessorCount</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">query</span> <span class="p">=</span>
+</span></span><span class="line"><span class="cl">    <span class="k">from</span> <span class="n">n</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">().</span><span class="n">AsOrdered</span><span class="p">().</span>
+</span></span><span class="line hl"><span class="cl">        <span class="n">WithDegreeOfParallelism</span><span class="p">(</span><span class="n">cores</span> <span class="p">/</span> <span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">where</span> <span class="n">n</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">select</span> <span class="n">n</span><span class="p">;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>De este modo, al definir el grado de paralelización en la mitad del número de cores del procesador nos aseguramos que (por ejemplo) podremos tener un hilo que vaya creando elementos (productor) y otro hilo que vaya consumiendo dichos elementos (consumidor).</p>
@@ -286,25 +279,24 @@ Nada mal, eh?</p>
 <p>A continuación, vamos a modificar el código del ejemplo que hemos usado hasta ahora para simular un error y comprobar el funcionamiento de la cancelación de tareas en PLINQ. Para ello lo primero que vamos a hacer es crear una sobrecarga del método IsPrime, que reciba un parámetro de tipo CancellationTokenSource, para poder cancelar la tarea:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">IsPrime</span><span class="p">(</span><span class="k">this</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">CancellationTokenSource</span> <span class="n">cs</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="p">==</span> <span class="m">1000</span><span class="p">)</span> <span class="n">cs</span><span class="p">.</span><span class="n">Cancel</span><span class="p">();</span>
-    <span class="k">return</span> <span class="n">IsPrime</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">IsPrime</span><span class="p">(</span><span class="k">this</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">CancellationTokenSource</span> <span class="n">cs</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="p">==</span> <span class="m">1000</span><span class="p">)</span> <span class="n">cs</span><span class="p">.</span><span class="n">Cancel</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">IsPrime</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>A modo de ejemplo, cuando el número a calcular sea 1.000 cancelaremos la tarea, de modo que no sea necesario llegar a los 10 millones. De este modo, por un lado se lanzará una excepción y por otro el tiempo en ejecutar la consulta PLINQ será mucho menor.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -327,34 +319,32 @@ Nada mal, eh?</p>
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="n">plinq_cancellable</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">numbers</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">10000000</span><span class="p">);</span>
-    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cs</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CancellationTokenSource</span><span class="p">())</span>
-    <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">clock</span> <span class="p">=</span> <span class="n">Stopwatch</span><span class="p">.</span><span class="n">StartNew</span><span class="p">();</span>
-        <span class="kt">var</span> <span class="n">query</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">().</span><span class="n">AsOrdered</span><span class="p">().</span>
-            <span class="n">WithCancellation</span><span class="p">(</span><span class="n">cs</span><span class="p">.</span><span class="n">Token</span><span class="p">).</span>
-            <span class="n">Where</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">(</span><span class="n">cs</span><span class="p">));</span>
-        <span class="k">try</span>
-        <span class="p">{</span>
-<span class="hl">            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">query</span><span class="p">.</span><span class="n">ToArray</span><span class="p">();</span>
-</span>        <span class="p">}</span>
-        <span class="k">catch</span> <span class="p">(</span><span class="n">OperationCanceledException</span> <span class="n">ex</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="n">clock</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
-        <span class="k">this</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">clock</span><span class="p">.</span><span class="n">ElapsedMilliseconds</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;n2&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">void</span> <span class="n">plinq_cancellable</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">numbers</span> <span class="p">=</span> <span class="n">Enumerable</span><span class="p">.</span><span class="n">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">10000000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">cs</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CancellationTokenSource</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">clock</span> <span class="p">=</span> <span class="n">Stopwatch</span><span class="p">.</span><span class="n">StartNew</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">query</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">.</span><span class="n">AsParallel</span><span class="p">().</span><span class="n">AsOrdered</span><span class="p">().</span>
+</span></span><span class="line"><span class="cl">            <span class="n">WithCancellation</span><span class="p">(</span><span class="n">cs</span><span class="p">.</span><span class="n">Token</span><span class="p">).</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Where</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">IsPrime</span><span class="p">(</span><span class="n">cs</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="k">try</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line hl"><span class="cl">            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">query</span><span class="p">.</span><span class="n">ToArray</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">catch</span> <span class="p">(</span><span class="n">OperationCanceledException</span> <span class="n">ex</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">clock</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">this</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">clock</span><span class="p">.</span><span class="n">ElapsedMilliseconds</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">&#34;n2&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Por un lado tenemos que tener la precaución de envolver la consulta dentro de un bloque try-catch (en este caso sólo la llamada a ToArray() que es realmente cuando se ejecuta la consulta), y por el otro especificamos que la consulta puede ser cancelada mediante <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.threading.threadingtools.withcancellation?view=visualstudiosdk-2019" target="_blank" rel="noopener noreffer">WithCancellation</a>.</p>
 <p>A continuación creamos un objeto de tipo <a href="http://blogs.msdn.com/b/pfxteam/archive/2009/05/22/9635790.aspx" target="_blank" rel="noopener noreffer">CancellationTokenSource</a> para administrar la cancelación de esta consulta. Este objeto será el que finalmente pasemos al método IsPrime() y en caso que se cancele provocará que su propiedad <a href="http://msdn.microsoft.com/en-us/library/system.threading.cancellationtoken.iscancellationrequested.aspx" target="_blank" rel="noopener noreffer">IsCancellationRequested</a> devuelva true y que se produzca una bonita excepción de tipo <a href="http://msdn.microsoft.com/en-us/library/system.operationcanceledexception%28v=vs.80%29.aspx" target="_blank" rel="noopener noreffer">OperationCanceledException</a>.</p>
-<figure>
-    <img src="/images/posts/withcancellation.png"/> <figcaption>
+<figure><img src="/images/posts/withcancellation.png"/><figcaption>
             <h4>Al llegar a 1000... boom!</h4>
         </figcaption>
 </figure>
@@ -403,7 +393,7 @@ Nada mal, eh?</p>
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -422,7 +412,7 @@ Nada mal, eh?</p>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

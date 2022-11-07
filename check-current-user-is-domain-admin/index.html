@@ -9,9 +9,10 @@
 <meta property="og:description" content="The scenario In business applications it’s very common checking if the current user is member of the ‘domain administrators’ role of your company. For example, recently I had to check if the current user has administrative privileges in order to show some advanced configuration options.
 IsInRole To acomplish this we could use the IsInRole method from the WindowsPrincipal class. This method checks if an user is member of a Windows role and returns a bool value." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/check-current-user-is-domain-admin/" />
+<meta property="og:url" content="https://lluisfranco.com/check-current-user-is-domain-admin/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2010-12-13T11:51:50+02:00" />
 <meta property="article:modified_time" content="2010-12-13T11:51:50+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Check if current user is domain administrator"/>
 <meta name="twitter:description" content="The scenario In business applications it’s very common checking if the current user is member of the ‘domain administrators’ role of your company. For example, recently I had to check if the current user has administrative privileges in order to show some advanced configuration options.
@@ -143,13 +144,12 @@ IsInRole To acomplish this we could use the IsInRole method from the WindowsPrin
 <p>To check if current user is an administrator on the local computer we only need to do this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">wp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WindowsPrincipal</span><span class="p">(</span><span class="n">WindowsIdentity</span><span class="p">.</span><span class="n">GetCurrent</span><span class="p">());</span>
-<span class="k">return</span> <span class="n">wp</span><span class="p">.</span><span class="n">IsInRole</span><span class="p">(</span><span class="n">WindowsBuiltInRole</span><span class="p">.</span><span class="n">Administrator</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">wp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WindowsPrincipal</span><span class="p">(</span><span class="n">WindowsIdentity</span><span class="p">.</span><span class="n">GetCurrent</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="n">wp</span><span class="p">.</span><span class="n">IsInRole</span><span class="p">(</span><span class="n">WindowsBuiltInRole</span><span class="p">.</span><span class="n">Administrator</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Notice that it’s realy easy, but WindowsBuiltInrole enumeration only contains local roles. So, if we would check if our user is member of a domain group, we should find the role SID in our domain.</p>
@@ -157,19 +157,17 @@ IsInRole To acomplish this we could use the IsInRole method from the WindowsPrin
 <p>Let’s take a look at the following enumeration <a href="http://msdn.microsoft.com/en-us/library/system.security.principal.wellknownsidtype.aspx" target="_blank" rel="noopener noreffer">WellKnownSidType</a>, this enumeration provides commonly used security identifiers and that&rsquo;s exactly whan we want. Let’s try to use it in our code:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">wp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WindowsPrincipal</span><span class="p">(</span><span class="n">WindowsIdentity</span><span class="p">.</span><span class="n">GetCurrent</span><span class="p">());</span>
-<span class="kt">var</span> <span class="n">sid</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SecurityIdentifier</span><span class="p">(</span><span class="n">WellKnownSidType</span><span class="p">.</span><span class="n">AccountDomainAdminsSid</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
-<span class="k">return</span> <span class="n">wp</span><span class="p">.</span><span class="n">IsInRole</span><span class="p">(</span><span class="n">sid</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">wp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WindowsPrincipal</span><span class="p">(</span><span class="n">WindowsIdentity</span><span class="p">.</span><span class="n">GetCurrent</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">sid</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SecurityIdentifier</span><span class="p">(</span><span class="n">WellKnownSidType</span><span class="p">.</span><span class="n">AccountDomainAdminsSid</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> <span class="n">wp</span><span class="p">.</span><span class="n">IsInRole</span><span class="p">(</span><span class="n">sid</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<figure>
-    <img src="/images/posts/currentuserisdomainadminerror.png"/> <figcaption>
+<figure><img src="/images/posts/currentuserisdomainadminerror.png"/><figcaption>
             <h4>Boom!</h4>
         </figcaption>
 </figure>
@@ -179,7 +177,7 @@ IsInRole To acomplish this we could use the IsInRole method from the WindowsPrin
 <p>This domain SID <strong>is required for some WellKnownSidType values</strong> and we can get it using the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.directoryservices.directoryentry?view=dotnet-plat-ext-3.1" target="_blank" rel="noopener noreffer">DirectoryEntry</a> class from the assembly <a href="https://docs.microsoft.com/en-us/dotnet/api/system.directoryservices?view=dotnet-plat-ext-3.1" target="_blank" rel="noopener noreffer">System.DirectoryServices</a>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -189,15 +187,14 @@ IsInRole To acomplish this we could use the IsInRole method from the WindowsPrin
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">domain</span> <span class="p">=</span> <span class="n">Domain</span><span class="p">.</span><span class="n">GetDomain</span><span class="p">(</span><span class="k">new</span> <span class="n">DirectoryContext</span><span class="p">(</span>
-    <span class="n">DirectoryContextType</span><span class="p">.</span><span class="n">Domain</span><span class="p">,</span>
-    <span class="n">IPGlobalProperties</span><span class="p">.</span><span class="n">GetIPGlobalProperties</span><span class="p">().</span><span class="n">DomainName</span><span class="p">));</span>
-<span class="k">using</span> <span class="p">(</span><span class="n">DirectoryEntry</span> <span class="n">de</span> <span class="p">=</span> <span class="n">domain</span><span class="p">.</span><span class="n">GetDirectoryEntry</span><span class="p">())</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">domainSIdArray</span> <span class="p">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">[])</span><span class="n">de</span><span class="p">.</span><span class="n">Properties</span><span class="p">[</span><span class="s">&#34;objectSid&#34;</span><span class="p">].</span><span class="n">Value</span><span class="p">;</span>
-    <span class="kt">var</span> <span class="n">domainSId</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SecurityIdentifier</span><span class="p">(</span><span class="n">domainSIdArray</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">domain</span> <span class="p">=</span> <span class="n">Domain</span><span class="p">.</span><span class="n">GetDomain</span><span class="p">(</span><span class="k">new</span> <span class="n">DirectoryContext</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DirectoryContextType</span><span class="p">.</span><span class="n">Domain</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IPGlobalProperties</span><span class="p">.</span><span class="n">GetIPGlobalProperties</span><span class="p">().</span><span class="n">DomainName</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl"><span class="k">using</span> <span class="p">(</span><span class="n">DirectoryEntry</span> <span class="n">de</span> <span class="p">=</span> <span class="n">domain</span><span class="p">.</span><span class="n">GetDirectoryEntry</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">domainSIdArray</span> <span class="p">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">[])</span><span class="n">de</span><span class="p">.</span><span class="n">Properties</span><span class="p">[</span><span class="s">&#34;objectSid&#34;</span><span class="p">].</span><span class="n">Value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">domainSId</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SecurityIdentifier</span><span class="p">(</span><span class="n">domainSIdArray</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>First, we obtain a reference to the domain using the domain name. Then get of the value the property objectSid as a byte array, and finally  transform this value into a valid SecurityIdentifier which is what we need.</p>
@@ -205,7 +202,7 @@ IsInRole To acomplish this we could use the IsInRole method from the WindowsPrin
 <p>Putting it all together. Like my collegue and friend <a href="https://twitter.com/alegrebandolero" target="_blank" rel="noopener noreffer">@alegrebandolero</a> I’m also a fan of extension methods. So, let’s create an extension method for the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.security.principal.windowsidentity?view=dotnet-plat-ext-3.1" target="_blank" rel="noopener noreffer">WindowsIdentity</a> class:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -222,38 +219,36 @@ IsInRole To acomplish this we could use the IsInRole method from the WindowsPrin
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">IsDomainAdmin</span><span class="p">(</span><span class="k">this</span> <span class="n">WindowsIdentity</span> <span class="n">identity</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">domain</span> <span class="p">=</span> <span class="n">Domain</span><span class="p">.</span><span class="n">GetDomain</span><span class="p">(</span><span class="k">new</span> <span class="n">DirectoryContext</span><span class="p">(</span>
-        <span class="n">DirectoryContextType</span><span class="p">.</span><span class="n">Domain</span><span class="p">,</span>
-        <span class="n">IPGlobalProperties</span><span class="p">.</span><span class="n">GetIPGlobalProperties</span><span class="p">().</span><span class="n">DomainName</span><span class="p">));</span>
-    <span class="k">using</span> <span class="p">(</span><span class="n">DirectoryEntry</span> <span class="n">de</span> <span class="p">=</span> <span class="n">domain</span><span class="p">.</span><span class="n">GetDirectoryEntry</span><span class="p">())</span>
-    <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">domainSIdArray</span> <span class="p">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">[])</span><span class="n">de</span><span class="p">.</span><span class="n">Properties</span><span class="p">[</span><span class="s">&#34;objectSid&#34;</span><span class="p">].</span><span class="n">Value</span><span class="p">;</span>
-        <span class="kt">var</span> <span class="n">domainSId</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SecurityIdentifier</span><span class="p">(</span><span class="n">domainSIdArray</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
-        <span class="kt">var</span> <span class="n">domainAdminsSId</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SecurityIdentifier</span><span class="p">(</span>
-        <span class="n">WellKnownSidType</span><span class="p">.</span><span class="n">AccountDomainAdminsSid</span><span class="p">,</span> <span class="n">domainSId</span><span class="p">);</span>
-        <span class="kt">var</span> <span class="n">wp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WindowsPrincipal</span><span class="p">(</span><span class="n">identity</span><span class="p">);</span>
-        <span class="k">return</span> <span class="n">wp</span><span class="p">.</span><span class="n">IsInRole</span><span class="p">(</span><span class="n">domainAdminsSId</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="kt">bool</span> <span class="n">IsDomainAdmin</span><span class="p">(</span><span class="k">this</span> <span class="n">WindowsIdentity</span> <span class="n">identity</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">domain</span> <span class="p">=</span> <span class="n">Domain</span><span class="p">.</span><span class="n">GetDomain</span><span class="p">(</span><span class="k">new</span> <span class="n">DirectoryContext</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">DirectoryContextType</span><span class="p">.</span><span class="n">Domain</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IPGlobalProperties</span><span class="p">.</span><span class="n">GetIPGlobalProperties</span><span class="p">().</span><span class="n">DomainName</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="p">(</span><span class="n">DirectoryEntry</span> <span class="n">de</span> <span class="p">=</span> <span class="n">domain</span><span class="p">.</span><span class="n">GetDirectoryEntry</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">domainSIdArray</span> <span class="p">=</span> <span class="p">(</span><span class="kt">byte</span><span class="p">[])</span><span class="n">de</span><span class="p">.</span><span class="n">Properties</span><span class="p">[</span><span class="s">&#34;objectSid&#34;</span><span class="p">].</span><span class="n">Value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">domainSId</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SecurityIdentifier</span><span class="p">(</span><span class="n">domainSIdArray</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">domainAdminsSId</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SecurityIdentifier</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">WellKnownSidType</span><span class="p">.</span><span class="n">AccountDomainAdminsSid</span><span class="p">,</span> <span class="n">domainSId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">wp</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WindowsPrincipal</span><span class="p">(</span><span class="n">identity</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">wp</span><span class="p">.</span><span class="n">IsInRole</span><span class="p">(</span><span class="n">domainAdminsSId</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>That’s all. Now, use it as follows:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">if</span><span class="p">(</span><span class="n">WindowsIdentity</span><span class="p">.</span><span class="n">GetCurrent</span><span class="p">().</span><span class="n">IsDomainAdmin</span><span class="p">())</span>
-<span class="p">{</span>
-    <span class="c1">//some code here...
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">WindowsIdentity</span><span class="p">.</span><span class="n">GetCurrent</span><span class="p">().</span><span class="n">IsDomainAdmin</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//some code here...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <blockquote>
@@ -291,7 +286,7 @@ IsInRole To acomplish this we could use the IsInRole method from the WindowsPrin
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -310,7 +305,7 @@ IsInRole To acomplish this we could use the IsInRole method from the WindowsPrin
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

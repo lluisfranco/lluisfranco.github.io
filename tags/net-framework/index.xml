@@ -13,7 +13,7 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/DapperLogo.png" referrerpolicy="no-referrer">
             </div>Overview In my current development I&rsquo;m using Dapper, a light ORM to access the database. Using Dapper is really easy and provides super-fast performance. Here&rsquo;s an example of use:
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken.]]></description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken.]]></description>
 </item><item>
     <title>Retrieving events from SQL Server</title>
     <link>https://lluisfranco.com/retrieving-events-from-sql-server/</link>
@@ -55,7 +55,7 @@ In my current project I’ve to connect to a remote server via Secure File Trans
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/note.png" referrerpolicy="no-referrer">
             </div>Quick note How to remove diacritics (accents) from a C# string?
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public static string RemoveDiacritics(this string input) { var stFormD = input.Normalize(NormalizationForm.FormD); var len = stFormD.Length; var sb = new StringBuilder(); for (int i = 0; i &lt; len; i++) { var uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[i]); if (uc != System.Globalization.UnicodeCategory.NonSpacingMark) { sb.Append(stFormD[i]); } } return (sb.]]></description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public static string RemoveDiacritics(this string input) { var stFormD = input.Normalize(NormalizationForm.FormD); var len = stFormD.Length; var sb = new StringBuilder(); for (int i = 0; i &lt; len; i++) { var uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[i]); if (uc != System.Globalization.UnicodeCategory.NonSpacingMark) { sb.Append(stFormD[i]); } } return (sb.ToString().Normalize(NormalizationForm.FormC)); } Bonus track How to remove in TSQL (Microsoft SQL Server)]]></description>
 </item><item>
     <title>Extract extra large icon from a file, folder or drive</title>
     <link>https://lluisfranco.com/extract-icons-win32/</link>
@@ -96,8 +96,9 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/tshirt.png" referrerpolicy="no-referrer">
             </div>Gettings all controls from a container That&rsquo;s the question How many times have you ever heard something similar? :)
- How to clear the content of all the textboxes in a form?
- The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.]]></description>
+How to clear the content of all the textboxes in a form?
+The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.
+Generics and Extension methods Using generics it’s really easy!]]></description>
 </item><item>
     <title>Extended shortcodes</title>
     <link>https://lluisfranco.com/ztemplate-copy/</link>
@@ -106,9 +107,10 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
     <guid>https://lluisfranco.com/ztemplate-copy/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/note.png" referrerpolicy="no-referrer">
-            </div>Tables    Tables Are Cool     col 1 is left-aligned $1600   col 2 is centered $12   col 3 is right-aligned $1    Gist  Admonition admon samples
-This is a bug  A tip banner   Or This is a tip  A tip banner  
-Mermaid mermaid samples
-Flow  Gaant  git  pie  eCharts echarts samples]]></description>
+            </div>Tables Tables Are Cool col 1 is left-aligned $1600 col 2 is centered $12 col 3 is right-aligned $1 Gist Admonition admon samples
+This is a bug A tip banner Or This is a tip A tip banner Mermaid mermaid samples
+Flow Gaant git pie eCharts echarts samples
+Line chart
+Map]]></description>
 </item></channel>
 </rss>

@@ -10,9 +10,10 @@
 Un poco de historia La programación paralela no es nada nuevo. Ya estaba presente allá en mis tiempos de estudiante hace más de 20 años 😢 y hoy en día, desde la aparición del .Net Framework 4.0 está más viva que nunca gracias a la Task Parallel Library o TPL.
 No obstante, decir que la TPL sólo sirve para realizar tareas asíncronas es como decir que un smartphone sólo sirve para llamar por teléfono." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/es/parallelseries02-un-poco-de-historia/" />
+<meta property="og:url" content="https://lluisfranco.com/es/parallelseries02-un-poco-de-historia/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2011-01-21T11:51:50+02:00" />
 <meta property="article:modified_time" content="2011-01-21T11:51:50+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Parallel Series 02 - Un poco de historia"/>
 <meta name="twitter:description" content="Ir al índice de la serie
@@ -145,8 +146,7 @@ No obstante, decir que la TPL sólo sirve para realizar tareas asíncronas es co
 <p>Pero ¿qué sucede si sólo tenemos 100 escritorios y bolígrafos? Pues que los monos van a tener que hacer cola y esperar su turno, de modo que cuando uno de los monos termine o se canse de escribir, deberá ceder su turno al mono que espera, provocando por el camino algunas colas y enfados por parte de los monos, que son buenos trabajadores pero un poco particulares.</p>
 <p>Con todo, a menos que estalle una guerra siempre será más rápido que la primera opción, pero eso nos deja ya la primera conclusión: a más recursos (escritorios y bolígrafos) más rápido terminaremos la tarea. Y de paso vamos a tener que preocuparnos menos por gestionar los turnos y las esperas de los monos, con todo lo que conlleva.</p>
 <p>Porque como veremos más adelante, en muchas ocasiones cuando trabajamos con monos o con threads <strong>el tiempo de sincronización es primordial</strong>, y puede marcar la diferencia entre el éxito y el fracaso de nuestra aplicación.</p>
-<figure>
-    <img src="/images/posts/monkeys-coding.jpg"/> <figcaption>
+<figure><img src="/images/posts/monkeys-coding.jpg"/><figcaption>
             <h4>Monos programando</h4>
         </figcaption>
 </figure>
@@ -157,8 +157,7 @@ No obstante, decir que la TPL sólo sirve para realizar tareas asíncronas es co
 <p>La materia presenta efectos cuánticos que harían necesaria una tecnología diferente para seguir realizando cálculos a ese nivel</p>
 </blockquote>
 <p>La respuesta es sencilla, parece que la buena vida se termina. Si ha habido una constante en IT en los últimos 45 años, esa es la que describe la <a href="https://es.wikipedia.org/wiki/Ley_de_Moore" target="_blank" rel="noopener noreffer">ley de Moore</a>: En 1965 Gordon Moore, uno de los fundadores de Intel predijo que cada 2 años (18 meses al principio) se doblaría el número de componentes de un circuito integrado. Y se ha cumplido a rajatabla hasta hoy, aunque en los últimos años se están alcanzando ciertos límites que hacen que dicha ley no pueda seguir cumpliéndose.</p>
-<figure>
-    <img src="/images/posts/moorelaw01.png"/> <figcaption>
+<figure><img src="/images/posts/moorelaw01.png"/><figcaption>
             <h4>Ley de moore</h4>
         </figcaption>
 </figure>
@@ -166,8 +165,7 @@ No obstante, decir que la TPL sólo sirve para realizar tareas asíncronas es co
 <p>Simplificando un poco podríamos decir que existen un par de problemas: <strong>El escalado</strong> de frecuencia de los microprocesadores y <strong>el calor generado</strong> por los mismos. El primero de ellos hace referencia a la dificultad de seguir incrementando la velocidad de los microprocesadores, debido principalmente a que la tecnología utilizada para diseñarlos está actualmente cerca de los 32 nanómetros y el límite físico antes de que la materia experimente cambios, se calcula que está entre los 22 y los 18 nanómetros. Esta previsto alcanzar este límite aproximadamente en sólo dos o tres años, hacia 2014. A la vuelta de la esquina.</p>
 <p>Una vez alcanzado ese nivel de miniaturización, en palabras del científico <a href="http://es.wikipedia.org/wiki/Stephen_Hawking" target="_blank" rel="noopener noreffer">Stephen Hawking</a>: &ldquo;La materia presenta efectos cuánticos que harían necesaria una tecnología diferente para seguir realizando cálculos a ese nivel&rdquo;.</p>
 <p>El segundo de los problemas va ligado al primero, y es que en los últimos años el calor generado por los microprocesadores se ha ido incrementado exponencialmente, y en términos de densidad de potencia ya es igual al calor generado por la tobera de un cohete. Lo peor de todo ello es que incrementar la frecuencia sólo entre un 5 y 10 por ciento cada año, tiene un coste de casi doblar la temperatura.</p>
-<figure>
-    <img src="/images/posts/parallelproblemasmicros.png"/> <figcaption>
+<figure><img src="/images/posts/parallelproblemasmicros.png"/><figcaption>
             <h4>El futuro cercano</h4>
         </figcaption>
 </figure>
@@ -177,8 +175,7 @@ No obstante, decir que la TPL sólo sirve para realizar tareas asíncronas es co
 <p>Si por algo se ha caracterizado el ser humano es por su gran habilidad en resolver problemas (dejando aparte su nada desdeñable habilidad para provocarlos), de modo que ya hace unos años que se ha empezado a desarrollar y fabricar una de las soluciones a este problema.</p>
 <p>De hecho hoy en día se ha convertido en algo casi cotidiano: Se trata de fabricar procesadores con varios núcleos, que se repartan el trabajo -como los monos- consiguiendo así aumentar la velocidad. No por el hecho de ser cada vez más rápidos, si no por existir cada vez más recursos trabajando al mismo tiempo.</p>
 <p>Algo parecido -salvando las distancias- al cerebro humano, que en comparación con un ordenador es bastante más lento, pero su capacidad de procesamiento en paralelo gracias a sus millones de conexiones entre neuronas, no tiene rival con ningún otro elemento conocido en la naturaleza ni creado por el hombre.</p>
-<figure>
-    <img src="/images/posts/FinalFntasyInterface.png"/> <figcaption>
+<figure><img src="/images/posts/FinalFntasyInterface.png"/><figcaption>
             <h4>Que nos depara el futuro?</h4>
         </figcaption>
 </figure>
@@ -216,7 +213,7 @@ No obstante, decir que la TPL sólo sirve para realizar tareas asíncronas es co
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -235,7 +232,7 @@ No obstante, decir que la TPL sólo sirve para realizar tareas asíncronas es co
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

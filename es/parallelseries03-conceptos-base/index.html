@@ -10,9 +10,10 @@
 Elementos del sistema opertivo Cuando hablamos de programación paralela conviene tener bastante claros algunos conceptos a nivel de sistema operativo. En este apartado trataremos de aclarar estos términos, ya que más adelante los usaremos frecuentemente.
 Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo existe dentro del contexto de un proceso, aunque no todos los procesos se corresponden con aplicaciones visibles. Basta abrir el administrador de tareas para comprobar que la lista de procesos es bastante mayor a la de aplicaciones." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/es/parallelseries03-conceptos-base/" />
+<meta property="og:url" content="https://lluisfranco.com/es/parallelseries03-conceptos-base/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2011-03-03T11:51:50+02:00" />
 <meta property="article:modified_time" content="2011-03-03T11:51:50+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Parallel Series 03 - Conceptos base"/>
 <meta name="twitter:description" content="Ir al índice de la serie
@@ -143,15 +144,13 @@ Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo exis
 <p>Cuando hablamos de programación paralela conviene tener bastante claros algunos conceptos a nivel de sistema operativo. En este apartado trataremos de aclarar estos términos, ya que más adelante los usaremos frecuentemente.</p>
 <h3 id="procesos-processes">Procesos (Processes)</h3>
 <p>Toda aplicación ejecutándose en el sistema operativo existe dentro del contexto de un proceso, aunque no todos los procesos se corresponden con aplicaciones visibles. Basta abrir el administrador de tareas para comprobar que la lista de procesos es bastante mayor a la de aplicaciones. Eso es así porque pueden corresponderse a servicios, aplicaciones no visibles o porque algunas aplicaciones están diseñadas para crear varios procesos (hola <strong>+ponga aquí el nombre de su explorador favorito+</strong> 😄).</p>
-<figure>
-    <img src="/images/posts/processes.png"/> <figcaption>
+<figure><img src="/images/posts/processes.png"/><figcaption>
             <h4>Procesos de Windows en el Administrador de Tareas</h4>
         </figcaption>
 </figure>
 
 <p>Un proceso proporciona los recursos necesarios para ejecutar un programa. Contiene un espacio de memoria virtual, código ejecutable, un contexto de seguridad, un identificador de proceso único, variables de entorno, y al menos un thread de ejecución.</p>
-<figure>
-    <img src="/images/posts/process.png"/> <figcaption>
+<figure><img src="/images/posts/process.png"/><figcaption>
             <h4>Un proceso de Windows</h4>
         </figcaption>
 </figure>
@@ -160,8 +159,7 @@ Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo exis
 <p>Hacer llamadas entre procesos resulta complejo y muy costoso en términos de rendimiento debido a que deben usarse mecanismos especiales como pipes, sockets o llamadas RPC (Remote procedure call).</p>
 <h3 id="dominios-de-aplicación-net-appdomains">Dominios de aplicación .NET (AppDomains)</h3>
 <p>Al ser .NET una plataforma que ejecuta código administrado, los procesos que se crean al ejecutar éstas aplicaciones son un poco diferentes, ya que cuando se diseñó .NET una de las máximas preocupaciones fue la de tratar de mejorar el manejo de los procesos clásico o no administrados. Por ello se creó el concepto de dominio de aplicación, que podría definirse como un proceso lógico dentro del proceso del sistema operativo.</p>
-<figure>
-    <img src="/images/posts/appdomain.png"/> <figcaption>
+<figure><img src="/images/posts/appdomain.png"/><figcaption>
             <h4>Procesos en .NET Framework</h4>
         </figcaption>
 </figure>
@@ -172,8 +170,7 @@ Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo exis
 <p>Un thread es la entidad dentro de un proceso encargada de ejecutar el código. Todos los threads que contiene un proceso comparten los recursos y memoria virtual de éste, y mantienen controladores de excepciones, una prioridad de programación, almacenamiento local, y un identificador de thread único.</p>
 <p>Los threads son independientes a los dominios de aplicación, de forma que podemos pensar en ellos como elementos transversales que pueden saltar de un uno a otro a lo largo del tiempo. No existe ninguna correspondencia entre el número de threads y de dominios de aplicación.</p>
 <p>Por defecto, todos los procesos se crean con un thread por defecto llamado thread principal, aunque en las aplicaciones .NET se crean al menos dos, ya que es necesario un segundo thread para administrar el recolector de basura. No obstante cada proceso puede crear un número casi ilimitado de ellos, aunque en última instancia el sistema operativo siempre tiene la potestad de priorizar a la baja estos hilos o incluso congelarlos.</p>
-<figure>
-    <img src="/images/posts/thread.png"/> <figcaption>
+<figure><img src="/images/posts/thread.png"/><figcaption>
             <h4>Threads dentro de un proceso</h4>
         </figcaption>
 </figure>
@@ -182,23 +179,20 @@ Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo exis
 <p>Este tipo de multitarea tiene la ventaja frente a sus predecesores de que si un proceso deja de responder, el sistema no se colapsa y puede seguir respondiendo sin verse afectado por la caída del mismo. Esto en la práctica ha significado la casi desaparición de las llamadas BSOD (Blue Screen Of Death) causadas por este motivo.</p>
 <h3 id="multihilo-multithreading">Multihilo (Multithreading)</h3>
 <p>A la capacidad que tienen los procesos de crear distintos threads ejecutándose simultáneamente es a lo que llamamos Multithreading. Y nos ha permitido simular la multitarea en los ordenadores personales de la última década y media. Esto es así porque aunque físicamente sólo haya un microprocesador, en términos del sistema operativo éste cede un periodo de tiempo a cada thread de cada uno de los procesos cargados en el sistema, y al repetirse una y otra muy rápidaamente vez produce la sensación de que todas las aplicaciones se ejecutan al mismo tiempo, pero nada más lejos de la realidad. Al menos hasta hace poco.</p>
-<figure>
-    <img src="/images/posts/multithreading.png"/> <figcaption>
+<figure><img src="/images/posts/multithreading.png"/><figcaption>
             <h4>Threads ejecutándose en un core de procesdor</h4>
         </figcaption>
 </figure>
 
 <h3 id="paralelismo-parallelism">Paralelismo (Parallelism)</h3>
 <p>Con la aparición de los primeros microprocesadores con varios núcleos (cores), al fin se pudo ejecutar código en paralelo y obtener la tan deseada multitarea real, ya que distintos threads pueden ejecutarse en distintos cores al mismo tiempo. De modo que a más cores, más threads pueden ejecutarse y por consiguiente más código <strong>al mismo tiempo</strong>.</p>
-<figure>
-    <img src="/images/posts/parallelism2.png"/> <figcaption>
+<figure><img src="/images/posts/parallelism2.png"/><figcaption>
             <h4>Threads ejecutándose en varios cores a la vez</h4>
         </figcaption>
 </figure>
 
 <p>Hace apenas cuatro o cinco años de la aparición de los primeros dual core, sólo un poco más tarde aparecieron los quad core, y hoy en día es bastante habitual ver estaciones de trabajo con 8 y hasta 16 cores. En cuanto al futuro, nadie sabe al ritmo que evolucionará esta tecnología, pero los chicos de Intel hace más de dos años ya filtraron imágenes de un Windows Server con 256 cores. Incluso los súper ligeros procesadores para teléfonos y tablets basados en arquitectura ARM están empezando a lanzar modelos de dos y cuatro cores.</p>
-<figure>
-    <img src="/images/posts/256cores.png"/> <figcaption>
+<figure><img src="/images/posts/256cores.png"/><figcaption>
             <h4>Quién quiere uno de estos?</h4>
         </figcaption>
 </figure>
@@ -247,7 +241,7 @@ Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo exis
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -266,7 +260,7 @@ Procesos (Processes) Toda aplicación ejecutándose en el sistema operativo exis
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

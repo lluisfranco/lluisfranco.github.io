@@ -10,9 +10,10 @@
 In the past I’ve used different techniques to archive this, from SQL Assemblies for calling a SignalR server, to execute xp_cmdshell, and so many other esoteric ways.
 None of that solved the problem in an elegant way, but well, it worked… more or less…" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/retrieving-events-from-sql-server/" />
+<meta property="og:url" content="https://lluisfranco.com/retrieving-events-from-sql-server/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-09-30T11:51:50+02:00" />
 <meta property="article:modified_time" content="2019-09-30T11:51:50+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Retrieving events from SQL Server"/>
 <meta name="twitter:description" content="Overview When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.
@@ -142,8 +143,7 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 <p>None of that solved the problem in an elegant way, but well, it worked… more or less…</p>
 <h2 id="changing-the-point-of-view">Changing the point of view</h2>
 <p>Today I noticed the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection?view=netframework-4.8" target="_blank" rel="noopener noreffer">SqlConnection</a> class has an <a href="https://docs.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlconnection.infomessage?view=netframework-4.8" target="_blank" rel="noopener noreffer">InfoMessage</a> event, and it can be used for “Clients that want to process warnings or informational messages sent by the server” which is EXACTLY what I was looking for.</p>
-<figure>
-    <img src="/images/posts/sqlevents.gif"/> <figcaption>
+<figure><img src="/images/posts/sqlevents.gif"/><figcaption>
             <h4>Processing SQL events</h4>
         </figcaption>
 </figure>
@@ -157,7 +157,7 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 <h3 id="sql-script">SQL Script</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -176,29 +176,29 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">TestLongRunningSP</span><span class="p">]</span>
-<span class="k">AS</span>
-<span class="k">BEGIN</span>
-<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;1) Starting&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
-<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
-</span><span class="c1"></span>
-<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;2) Fetching data&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
-<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:05&#39;</span><span class="p">;</span> <span class="c1">--Wait for 5 seconds
-</span><span class="c1"></span>
-<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;3) Some other actions&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
-<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
-</span><span class="c1"></span>
-<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;4) Calculating&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
-<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:02&#39;</span><span class="p">;</span> <span class="c1">--Wait for 2 seconds
-</span><span class="c1"></span>
-<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;5) Finishing&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
-<span class="k">END</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">TestLongRunningSP</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">AS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">BEGIN</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;1) Starting&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">NOWAIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">WAITFOR</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">--Wait for 3 seconds
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;2) Fetching data&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">NOWAIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">WAITFOR</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="s1">&#39;00:00:05&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">--Wait for 5 seconds
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;3) Some other actions&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">NOWAIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">WAITFOR</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">--Wait for 3 seconds
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;4) Calculating&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">NOWAIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">WAITFOR</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="s1">&#39;00:00:02&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">--Wait for 2 seconds
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;5) Finishing&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">NOWAIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">END</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Thanks to RAISEERROR when executing this stored procedure we will show this output.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -207,13 +207,13 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-systemd" data-lang="systemd"><span class="err">1)</span> <span class="err">Starting</span>
-<span class="err">2)</span> <span class="err">Fetching</span> <span class="err">data</span>
-<span class="err">3)</span> <span class="err">Some</span> <span class="err">other</span> <span class="err">actions</span>
-<span class="err">4)</span> <span class="err">Calculating</span>
-<span class="err">5)</span> <span class="err">Finishing</span>
-
-<span class="err">Completion</span> <span class="err">time:</span> <span class="err">2019-09-30T09:33:28.4952150+02:00</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-systemd" data-lang="systemd"><span class="line"><span class="cl"><span class="err">1)</span> <span class="err">Starting</span>
+</span></span><span class="line"><span class="cl"><span class="err">2)</span> <span class="err">Fetching</span> <span class="err">data</span>
+</span></span><span class="line"><span class="cl"><span class="err">3)</span> <span class="err">Some</span> <span class="err">other</span> <span class="err">actions</span>
+</span></span><span class="line"><span class="cl"><span class="err">4)</span> <span class="err">Calculating</span>
+</span></span><span class="line"><span class="cl"><span class="err">5)</span> <span class="err">Finishing</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="err">Completion</span> <span class="err">time:</span> <span class="err">2019-09-30T09:33:28.4952150+02:00</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Now let’s create some C# code:</p>
@@ -221,26 +221,25 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 <p>First: A class to send the received messages from our repository to its consumer, which in this case the UI will be just a Windows Form (good old boys never die).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">SqlMessageEventArgs</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="kt">string</span> <span class="n">Message</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">Progress</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">SqlMessageEventArgs</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Message</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">Progress</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Notice the Progress property. We will use it later in the last part of the post, be patient 😏</p>
 <p>Second: A repository class that open a connection, execute the stored procedure and send messages using a ProcessMessage event. We must explicitly enable the connection to receive these errors and raise handling the InfoMessage event:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -266,36 +265,34 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">SqlServerRepo</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">event</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">SqlMessageEventArgs</span><span class="p">&gt;</span> <span class="n">ProcessMessage</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">internal</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">public</span> <span class="n">SynchronizationContext</span> <span class="n">SyncContext</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">internal</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">GetDataAsync</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">con</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnectionString</span><span class="p">))</span>
-        <span class="p">{</span>
-            <span class="n">con</span><span class="p">.</span><span class="n">FireInfoMessageEventOnUserErrors</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-            <span class="n">con</span><span class="p">.</span><span class="n">InfoMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span>
-                <span class="n">SyncContext</span><span class="p">.</span><span class="n">Post</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">ProcessMessage</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span>
-                <span class="n">s</span><span class="p">,</span> <span class="k">new</span> <span class="n">SqlMessageEventArgs</span>
-                <span class="p">{</span>
-                    <span class="n">Message</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">,</span>
-                <span class="p">}),</span> <span class="k">null</span><span class="p">);</span>
-            <span class="n">con</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
-            <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">&#34;EXEC dbo.TestLongRunningSP&#34;</span><span class="p">;</span>
-            <span class="kt">var</span> <span class="n">commandDefinition</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
-            <span class="k">await</span> <span class="n">con</span><span class="p">.</span><span class="n">ExecuteAsync</span><span class="p">(</span><span class="n">commandDefinition</span><span class="p">);</span>
-            <span class="n">con</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">SqlServerRepo</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">event</span> <span class="n">EventHandler</span><span class="p">&lt;</span><span class="n">SqlMessageEventArgs</span><span class="p">&gt;</span> <span class="n">ProcessMessage</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">ConnectionString</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">internal</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">SynchronizationContext</span> <span class="n">SyncContext</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">internal</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">GetDataAsync</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">con</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnectionString</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">con</span><span class="p">.</span><span class="n">FireInfoMessageEventOnUserErrors</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">con</span><span class="p">.</span><span class="n">InfoMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="n">SyncContext</span><span class="p">.</span><span class="n">Post</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">ProcessMessage</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">s</span><span class="p">,</span> <span class="k">new</span> <span class="n">SqlMessageEventArgs</span>
+</span></span><span class="line"><span class="cl">                <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">Message</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="p">}),</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">con</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">&#34;EXEC dbo.TestLongRunningSP&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">commandDefinition</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">await</span> <span class="n">con</span><span class="p">.</span><span class="n">ExecuteAsync</span><span class="p">(</span><span class="n">commandDefinition</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="n">con</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>When using async pattern the received messages come from a different thread and cannot be used to update the UI directly. For this reason I always recommend send to the Repo the current synchronization context and use this Context to post to the main thread.</p>
-<figure>
-    <img src="/images/posts/threaderror.png"/> <figcaption>
+<figure><img src="/images/posts/threaderror.png"/><figcaption>
             <h4>Cross thread exception when updating UI from a different thread.</h4>
         </figcaption>
 </figure>
@@ -303,7 +300,7 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 <p>Third: Finally let’s create a simple Windows Form with just a button, a progress bar and a list box).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -323,25 +320,24 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">const</span> <span class="kt">string</span> <span class="n">connectionstring</span> <span class="p">=</span>
-    <span class="s">&#34;Data Source=YOUR_SERVER;&#34;</span> <span class="p">+</span>
-    <span class="s">&#34;Initial Catalog=YOUR_DATABASE;&#34;</span> <span class="p">+</span>
-    <span class="s">&#34;Integrated Security=True;&#34;</span><span class="p">;</span>
-
-<span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="n">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">repo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlServerRepo</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="n">ConnectionString</span> <span class="p">=</span> <span class="n">connectionstring</span><span class="p">,</span>
-        <span class="n">SyncContext</span> <span class="p">=</span> <span class="n">SynchronizationContext</span><span class="p">.</span><span class="n">Current</span>
-    <span class="p">};</span>
-    <span class="n">repo</span><span class="p">.</span><span class="n">ProcessMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">ms</span><span class="p">,</span> <span class="n">me</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="n">listBoxLog</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&#34;{DateTime.Now} - {me.Message}&#34;</span><span class="p">);</span>
-    <span class="p">};</span>
-    <span class="k">await</span> <span class="n">repo</span><span class="p">.</span><span class="n">GetDataAsync</span><span class="p">();</span>
-    <span class="n">listBoxLog</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&#34;Finished Process!&#34;</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">string</span> <span class="n">connectionstring</span> <span class="p">=</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;Data Source=YOUR_SERVER;&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;Initial Catalog=YOUR_DATABASE;&#34;</span> <span class="p">+</span>
+</span></span><span class="line"><span class="cl">    <span class="s">&#34;Integrated Security=True;&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="n">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">repo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlServerRepo</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">ConnectionString</span> <span class="p">=</span> <span class="n">connectionstring</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">SyncContext</span> <span class="p">=</span> <span class="n">SynchronizationContext</span><span class="p">.</span><span class="n">Current</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">repo</span><span class="p">.</span><span class="n">ProcessMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">ms</span><span class="p">,</span> <span class="n">me</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">listBoxLog</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&#34;{DateTime.Now} - {me.Message}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">await</span> <span class="n">repo</span><span class="p">.</span><span class="n">GetDataAsync</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">listBoxLog</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&#34;Finished Process!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>This code creates the repo, pass the connection string and the current synchronization context, handles the ProcessMessage event and invoke the GetDataAsync method.</p>
@@ -350,7 +346,7 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 <p>What about the progress bar? Just use the state argument of the RAISERROR method on the SP like this:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -369,29 +365,29 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">TestLongRunningSP</span><span class="p">]</span>
-<span class="k">AS</span>
-<span class="k">BEGIN</span>
-<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;1) Starting&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
-<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
-</span><span class="c1"></span>
-<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;2) Fetching data&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
-<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:05&#39;</span><span class="p">;</span> <span class="c1">--Wait for 5 seconds
-</span><span class="c1"></span>
-<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;3) Some other actions&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">60</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
-<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span> <span class="c1">--Wait for 3 seconds
-</span><span class="c1"></span>
-<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;4) Calculating&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
-<span class="n">WAITFOR</span> <span class="n">DELAY</span> <span class="s1">&#39;00:00:02&#39;</span><span class="p">;</span> <span class="c1">--Wait for 2 seconds
-</span><span class="c1"></span>
-<span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;5) Finishing&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">WITH</span> <span class="n">NOWAIT</span><span class="p">;</span>
-<span class="k">END</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CREATE</span><span class="w"> </span><span class="k">PROCEDURE</span><span class="w"> </span><span class="p">[</span><span class="n">dbo</span><span class="p">].[</span><span class="n">TestLongRunningSP</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">AS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">BEGIN</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;1) Starting&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">NOWAIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">WAITFOR</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">--Wait for 3 seconds
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;2) Fetching data&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">NOWAIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">WAITFOR</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="s1">&#39;00:00:05&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">--Wait for 5 seconds
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;3) Some other actions&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">NOWAIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">WAITFOR</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="s1">&#39;00:00:03&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">--Wait for 3 seconds
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;4) Calculating&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">70</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">NOWAIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">WAITFOR</span><span class="w"> </span><span class="n">DELAY</span><span class="w"> </span><span class="s1">&#39;00:00:02&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">--Wait for 2 seconds
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">RAISERROR</span><span class="p">(</span><span class="s1">&#39;5) Finishing&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">NOWAIT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">END</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Then update the GetDataAsync method:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -412,42 +408,40 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 </span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">GetDataAsync</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">con</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnectionString</span><span class="p">))</span>
-    <span class="p">{</span>
-        <span class="n">con</span><span class="p">.</span><span class="n">FireInfoMessageEventOnUserErrors</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
-        <span class="n">con</span><span class="p">.</span><span class="n">InfoMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span>
-            <span class="n">SyncContext</span><span class="p">.</span><span class="n">Post</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">ProcessMessage</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span>
-            <span class="n">s</span><span class="p">,</span> <span class="k">new</span> <span class="n">SqlMessageEventArgs</span>
-            <span class="p">{</span>
-                <span class="n">Message</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">,</span>
-<span class="hl">                <span class="n">Progress</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Errors</span><span class="p">[</span><span class="m">0</span><span class="p">]?.</span><span class="n">State</span> <span class="p">??</span> <span class="m">0</span>
-</span>            <span class="p">}),</span> <span class="k">null</span><span class="p">);</span>
-        <span class="n">con</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
-        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">&#34;EXEC dbo.TestLongRunningSP&#34;</span><span class="p">;</span>
-        <span class="kt">var</span> <span class="n">commandDefinition</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
-        <span class="k">await</span> <span class="n">con</span><span class="p">.</span><span class="n">ExecuteAsync</span><span class="p">(</span><span class="n">commandDefinition</span><span class="p">);</span>
-        <span class="n">con</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="n">GetDataAsync</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">con</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SqlConnection</span><span class="p">(</span><span class="n">ConnectionString</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">con</span><span class="p">.</span><span class="n">FireInfoMessageEventOnUserErrors</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">con</span><span class="p">.</span><span class="n">InfoMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">SyncContext</span><span class="p">.</span><span class="n">Post</span><span class="p">(</span><span class="n">_</span> <span class="p">=&gt;</span> <span class="n">ProcessMessage</span><span class="p">?.</span><span class="n">Invoke</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">s</span><span class="p">,</span> <span class="k">new</span> <span class="n">SqlMessageEventArgs</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Message</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">,</span>
+</span></span><span class="line hl"><span class="cl">                <span class="n">Progress</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Errors</span><span class="p">[</span><span class="m">0</span><span class="p">]?.</span><span class="n">State</span> <span class="p">??</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}),</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">con</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">&#34;EXEC dbo.TestLongRunningSP&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">commandDefinition</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span><span class="n">sql</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">await</span> <span class="n">con</span><span class="p">.</span><span class="n">ExecuteAsync</span><span class="p">(</span><span class="n">commandDefinition</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">con</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>And finally the code in the form:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">repo</span><span class="p">.</span><span class="n">ProcessMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">ms</span><span class="p">,</span> <span class="n">me</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="n">listBoxLog</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&#34;{DateTime.Now} - {me.Message}&#34;</span><span class="p">);</span>
-    <span class="n">progressBar</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">me</span><span class="p">.</span><span class="n">Progress</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">repo</span><span class="p">.</span><span class="n">ProcessMessage</span> <span class="p">+=</span> <span class="p">(</span><span class="n">ms</span><span class="p">,</span> <span class="n">me</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">listBoxLog</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">$&#34;{DateTime.Now} - {me.Message}&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">progressBar</span><span class="p">.</span><span class="n">Value</span> <span class="p">=</span> <span class="n">me</span><span class="p">.</span><span class="n">Progress</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>And that’s all!</p>
@@ -482,7 +476,7 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -501,7 +495,7 @@ None of that solved the problem in an elegant way, but well, it worked… more o
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

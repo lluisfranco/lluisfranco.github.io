@@ -7,17 +7,20 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Retrieve all controls using generics (I) - &gt;_lluis franco</title><meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Retrieve all controls using generics (I)" />
 <meta property="og:description" content="Gettings all controls from a container That&rsquo;s the question How many times have you ever heard something similar? :)
- How to clear the content of all the textboxes in a form?
- The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control." />
+How to clear the content of all the textboxes in a form?
+The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.
+Generics and Extension methods Using generics it’s really easy!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/retrieve-all-controls-using-generics-i/" />
+<meta property="og:url" content="https://lluisfranco.com/retrieve-all-controls-using-generics-i/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2010-11-09T17:20:51+02:00" />
 <meta property="article:modified_time" content="2010-11-09T17:20:51+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Retrieve all controls using generics (I)"/>
 <meta name="twitter:description" content="Gettings all controls from a container That&rsquo;s the question How many times have you ever heard something similar? :)
- How to clear the content of all the textboxes in a form?
- The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control."/>
+How to clear the content of all the textboxes in a form?
+The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.
+Generics and Extension methods Using generics it’s really easy!"/>
 <meta name="application-name" content="&gt;_lluis franco">
 <meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.com/retrieve-all-controls-using-generics-i/" /><link rel="prev" href="https://lluisfranco.com/ztemplate-copy/" /><link rel="next" href="https://lluisfranco.com/retrieve-all-controls-using-generics-ii/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
@@ -151,7 +154,7 @@
 <h4 id="the-extensor-method">The extensor method</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -164,29 +167,27 @@
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetControls</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">Control</span> <span class="n">container</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="n">Control</span>
-<span class="p">{</span>
-    <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">controls</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="n">Control</span> <span class="n">c</span> <span class="k">in</span> <span class="n">container</span><span class="p">.</span><span class="n">Controls</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="k">is</span> <span class="n">T</span><span class="p">)</span>
-            <span class="n">controls</span><span class="p">.</span><span class="n">Add</span><span class="p">((</span><span class="n">T</span><span class="p">)</span><span class="n">c</span><span class="p">);</span>
-        <span class="n">controls</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="n">GetControls</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">c</span><span class="p">));</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">controls</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetControls</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">Control</span> <span class="n">container</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="n">Control</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">controls</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span> <span class="p">(</span><span class="n">Control</span> <span class="n">c</span> <span class="k">in</span> <span class="n">container</span><span class="p">.</span><span class="n">Controls</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="k">is</span> <span class="n">T</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">controls</span><span class="p">.</span><span class="n">Add</span><span class="p">((</span><span class="n">T</span><span class="p">)</span><span class="n">c</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">controls</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="n">GetControls</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">c</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">controls</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>This method retrieves the collection of Controls from a container calling it itself recursively, retrieving the content of all his containers.</p>
 <h4 id="how-to-use-it">How to use it?</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">this</span><span class="p">.</span><span class="n">GetControls</span><span class="p">&lt;</span><span class="n">TextBox</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="n">GetControls</span><span class="p">&lt;</span><span class="n">TextBox</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>We can  use the extensor method directly into a form because Form class inherits from ContainerControl, that inherits from ScrollableControl, and ScrollableControl from Control. Or, in other words, our Form will implement our extensor method.</p>
@@ -194,18 +195,17 @@
 <p>Moreover, if we want to retrieve only the controls into a container (GroupBox, Panel, TabControl or another that inherits from Control), you can call the method for this particular control.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">myPanel</span><span class="p">.</span><span class="n">GetControls</span><span class="p">&lt;</span><span class="n">Button</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">myPanel</span><span class="p">.</span><span class="n">GetControls</span><span class="p">&lt;</span><span class="n">Button</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h4 id="applying-several-actions">Applying several actions</h4>
 <p>In most cases, we would apply several actions to each control (not only one). In this case it’s quite easy: The only thing we have to do is create a method that receives a parameter of this type, and call it passing the control as an argument:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -216,22 +216,21 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">this</span><span class="p">.</span><span class="n">GetControls</span><span class="p">&lt;</span><span class="n">TextBox</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">ApplyFormat</span><span class="p">(</span><span class="n">p</span><span class="p">));</span>
-
-<span class="k">private</span> <span class="k">void</span> <span class="n">ApplyFormat</span><span class="p">(</span><span class="n">TextBox</span> <span class="n">text</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">text</span><span class="p">.</span><span class="n">BackColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">LightGray</span><span class="p">;</span>
-    <span class="n">text</span><span class="p">.</span><span class="n">ForeColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">;</span>
-    <span class="n">text</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&#34;hello&#34;</span><span class="p">;</span>
-    <span class="n">text</span><span class="p">.</span><span class="n">TextAlign</span> <span class="p">=</span> <span class="n">HorizontalAlignment</span><span class="p">.</span><span class="n">Center</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="n">GetControls</span><span class="p">&lt;</span><span class="n">TextBox</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">ApplyFormat</span><span class="p">(</span><span class="n">p</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">void</span> <span class="n">ApplyFormat</span><span class="p">(</span><span class="n">TextBox</span> <span class="n">text</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span><span class="p">.</span><span class="n">BackColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">LightGray</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span><span class="p">.</span><span class="n">ForeColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&#34;hello&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">text</span><span class="p">.</span><span class="n">TextAlign</span> <span class="p">=</span> <span class="n">HorizontalAlignment</span><span class="p">.</span><span class="n">Center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Or maybe, using an ‘action delegate’, both options are correct:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -240,14 +239,13 @@
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">this</span><span class="p">.</span><span class="n">GetControls</span><span class="p">&lt;</span><span class="n">TextBox</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span>
-<span class="p">{</span>
-    <span class="n">p</span><span class="p">.</span><span class="n">BackColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">LightGray</span><span class="p">;</span>
-    <span class="n">p</span><span class="p">.</span><span class="n">ForeColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">;</span>
-    <span class="n">p</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&#34;hello&#34;</span><span class="p">;</span>
-    <span class="n">p</span><span class="p">.</span><span class="n">TextAlign</span> <span class="p">=</span> <span class="n">HorizontalAlignment</span><span class="p">.</span><span class="n">Center</span><span class="p">;</span>
-<span class="p">});</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">this</span><span class="p">.</span><span class="n">GetControls</span><span class="p">&lt;</span><span class="n">TextBox</span><span class="p">&gt;().</span><span class="n">ForEach</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">BackColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">LightGray</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">ForeColor</span> <span class="p">=</span> <span class="n">Color</span><span class="p">.</span><span class="n">Red</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="s">&#34;hello&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">p</span><span class="p">.</span><span class="n">TextAlign</span> <span class="p">=</span> <span class="n">HorizontalAlignment</span><span class="p">.</span><span class="n">Center</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">});</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Happy coding! :-)</p>
@@ -282,7 +280,7 @@
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -301,7 +299,7 @@
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

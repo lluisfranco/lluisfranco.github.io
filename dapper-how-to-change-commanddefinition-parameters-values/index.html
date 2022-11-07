@@ -7,15 +7,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Dapper: How to change CommandDefinition parameters values - &gt;_lluis franco</title><meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Dapper: How to change CommandDefinition parameters values" />
 <meta property="og:description" content="Overview In my current development I&rsquo;m using Dapper, a light ORM to access the database. Using Dapper is really easy and provides super-fast performance. Here&rsquo;s an example of use:
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken." />
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" />
+<meta property="og:url" content="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-01-28T11:51:50+02:00" />
 <meta property="article:modified_time" content="2021-01-28T11:51:50+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dapper: How to change CommandDefinition parameters values"/>
 <meta name="twitter:description" content="Overview In my current development I&rsquo;m using Dapper, a light ORM to access the database. Using Dapper is really easy and provides super-fast performance. Here&rsquo;s an example of use:
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken."/>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken."/>
 <meta name="application-name" content="&gt;_lluis franco">
 <meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/" /><link rel="prev" href="https://lluisfranco.com/retrieving-events-from-sql-server/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
@@ -137,7 +138,7 @@
 <p>In my current development I&rsquo;m using Dapper, a light ORM to access the database. Using Dapper is really easy and provides super-fast performance. Here&rsquo;s an example of use:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -156,24 +157,23 @@
 </span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;</span> <span class="n">GetSomeDataAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span>
-    <span class="n">DateTime</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">DateTime</span> <span class="n">endDate</span><span class="p">,</span>
-    <span class="n">CancellationTokenSource</span> <span class="n">sourceToken</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">sourceToken</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="n">sourceToken</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CancellationTokenSource</span><span class="p">();</span>
-    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">con</span> <span class="p">=</span> <span class="n">CreateConnection</span><span class="p">())</span>
-    <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">@&#34;SELECT (your field list) FROM (your table/view/function))(
-</span><span class="s">                    @StartDate, @EndDate)&#34;</span><span class="p">;</span>
-        <span class="kt">var</span> <span class="n">command</span> <span class="p">=</span> <span class="n">CreateCommand</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="k">new</span>
-        <span class="p">{</span>
-            <span class="n">@StartDate</span> <span class="p">=</span> <span class="n">startDate</span><span class="p">,</span>
-            <span class="n">@EndDate</span> <span class="p">=</span> <span class="n">endDate</span>
-        <span class="p">},</span> <span class="n">cancellationToken</span><span class="p">:</span> <span class="n">sourceToken</span><span class="p">.</span><span class="n">Token</span><span class="p">);</span>
-        <span class="k">return</span> <span class="k">await</span> <span class="n">con</span><span class="p">.</span><span class="n">QueryCmdAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">command</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;</span> <span class="n">GetSomeDataAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DateTime</span> <span class="n">startDate</span><span class="p">,</span> <span class="n">DateTime</span> <span class="n">endDate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CancellationTokenSource</span> <span class="n">sourceToken</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">sourceToken</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="n">sourceToken</span> <span class="p">=</span> <span class="k">new</span> <span class="n">CancellationTokenSource</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">con</span> <span class="p">=</span> <span class="n">CreateConnection</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">sql</span> <span class="p">=</span> <span class="s">@&#34;SELECT (your field list) FROM (your table/view/function))(
+</span></span></span><span class="line"><span class="cl"><span class="s">                    @StartDate, @EndDate)&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">command</span> <span class="p">=</span> <span class="n">CreateCommand</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span> <span class="k">new</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">@StartDate</span> <span class="p">=</span> <span class="n">startDate</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">@EndDate</span> <span class="p">=</span> <span class="n">endDate</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span> <span class="n">cancellationToken</span><span class="p">:</span> <span class="n">sourceToken</span><span class="p">.</span><span class="n">Token</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">await</span> <span class="n">con</span><span class="p">.</span><span class="n">QueryCmdAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">command</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>In this code I&rsquo;m querying a table valued function that returns some data between two dates.
@@ -181,7 +181,7 @@ Both parameters (startDate and endDate) are declared on the fly as anomynous typ
 <p>The CreateCommand method is just an example, and would be used every time we need to create a command to access the database.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -197,40 +197,38 @@ Both parameters (startDate and endDate) are declared on the fly as anomynous typ
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">CommandDefinition</span> <span class="n">CreateCommand</span><span class="p">(</span>
-    <span class="kt">string</span> <span class="n">commandText</span><span class="p">,</span> <span class="kt">object</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">IDbTransaction</span> <span class="n">transaction</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
-    <span class="kt">int?</span> <span class="n">commandTimeout</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">CommandType</span><span class="p">?</span> <span class="n">commandType</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">CommandFlags</span> <span class="n">flags</span> <span class="p">=</span> <span class="n">CommandFlags</span><span class="p">.</span><span class="n">Buffered</span><span class="p">,</span>
-    <span class="n">CancellationToken</span> <span class="n">cancellationToken</span> <span class="p">=</span> <span class="k">default</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="c1">//Here you can apply some custom code before the creation of the command definition
-</span><span class="c1"></span>    <span class="k">return</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span>
-        <span class="n">commandText</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">transaction</span><span class="p">,</span>
-        <span class="n">commandTimeout</span> <span class="p">??</span> <span class="n">SqlHelper</span><span class="p">.</span><span class="n">GetCommandTimeout</span><span class="p">(),</span>
-        <span class="n">commandType</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">cancellationToken</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">CommandDefinition</span> <span class="n">CreateCommand</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">commandText</span><span class="p">,</span> <span class="kt">object</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IDbTransaction</span> <span class="n">transaction</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int?</span> <span class="n">commandTimeout</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CommandType</span><span class="p">?</span> <span class="n">commandType</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CommandFlags</span> <span class="n">flags</span> <span class="p">=</span> <span class="n">CommandFlags</span><span class="p">.</span><span class="n">Buffered</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CancellationToken</span> <span class="n">cancellationToken</span> <span class="p">=</span> <span class="k">default</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//Here you can apply some custom code before the creation of the command definition</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">commandText</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">transaction</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">commandTimeout</span> <span class="p">??</span> <span class="n">SqlHelper</span><span class="p">.</span><span class="n">GetCommandTimeout</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">commandType</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">cancellationToken</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="a-hypothetical-case">A hypothetical case</h3>
 <p>Now imagine you have to iterate through the parameters collection and do something, for example prevent invalid values in some parameters before calling the database. A typical case is in most databases the Date types doesn&rsquo;t match with the .NET Framework DateTime, and we want to prevent out of range exceptions:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-systemd" data-lang="systemd"><span class="err">The</span> <span class="err">SQL</span> <span class="err">Server</span> <span class="err">DateTime</span> <span class="err">type</span> <span class="err">range</span> <span class="err">is</span> <span class="err">from</span> <span class="err">January</span> <span class="err">1,</span> <span class="err">1753,</span> <span class="err">through</span> <span class="err">December</span> <span class="err">31,</span> <span class="err">9999</span>
-<span class="err">NET</span> <span class="err">Framework</span> <span class="err">DateTime</span> <span class="err">struct</span> <span class="err">range</span> <span class="err">is</span> <span class="err">from</span> <span class="err">January</span> <span class="err">1,</span> <span class="err">0001,</span> <span class="err">through</span> <span class="err">December</span> <span class="err">31,</span> <span class="err">9999</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-systemd" data-lang="systemd"><span class="line"><span class="cl"><span class="err">The</span> <span class="err">SQL</span> <span class="err">Server</span> <span class="err">DateTime</span> <span class="err">type</span> <span class="err">range</span> <span class="err">is</span> <span class="err">from</span> <span class="err">January</span> <span class="err">1,</span> <span class="err">1753,</span> <span class="err">through</span> <span class="err">December</span> <span class="err">31,</span> <span class="err">9999</span>
+</span></span><span class="line"><span class="cl"><span class="err">NET</span> <span class="err">Framework</span> <span class="err">DateTime</span> <span class="err">struct</span> <span class="err">range</span> <span class="err">is</span> <span class="err">from</span> <span class="err">January</span> <span class="err">1,</span> <span class="err">0001,</span> <span class="err">through</span> <span class="err">December</span> <span class="err">31,</span> <span class="err">9999</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>So if we send a DateTime parameter with value less than 1753/01/01 to the database we will receive an out of range exception. Wouldn&rsquo;t be nice if we check all datetime values before sending to the database?</p>
 <h3 id="iterating-through-an-anonymous-object">Iterating through an anonymous object</h3>
 <p>As far as I know the only way of iterate over an anonymous object is using reflection.</p>
-<figure>
-    <img src="/images/posts/ParametersAnonymousType.png"/> <figcaption>
+<figure><img src="/images/posts/ParametersAnonymousType.png"/><figcaption>
             <h4>Parameters is an Anonymous type</h4>
         </figcaption>
 </figure>
@@ -239,7 +237,7 @@ Both parameters (startDate and endDate) are declared on the fly as anomynous typ
 In that case we can check if the parameter property is a DateTime type, check the value and do whatever we need.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -251,17 +249,16 @@ In that case we can check if the parameter property is a DateTime type, check th
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">paramsProperties</span> <span class="p">=</span> <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperties</span><span class="p">();</span>
-<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">p</span> <span class="k">in</span> <span class="n">paramsProperties</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">PropertyType</span> <span class="p">==</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DateTime</span><span class="p">))</span>
-    <span class="p">{</span>
-        <span class="n">DateTime</span> <span class="n">dateValue</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToDateTime</span><span class="p">(</span>
-            <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">GetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">));</span>
-        <span class="c1">//do something
-</span><span class="c1"></span>    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">paramsProperties</span> <span class="p">=</span> <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperties</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">p</span> <span class="k">in</span> <span class="n">paramsProperties</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">PropertyType</span> <span class="p">==</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DateTime</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">DateTime</span> <span class="n">dateValue</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToDateTime</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">GetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//do something</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="modifying-the-anonymous-object">Modifying the anonymous object</h3>
@@ -269,11 +266,10 @@ In that case we can check if the parameter property is a DateTime type, check th
 <p>Sadly, this code won&rsquo;t work:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">SetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">newValue</span><span class="p">));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">SetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">newValue</span><span class="p">));</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>There are different ways to solve that. For example we could use an ExpandoObject, but in this case we&rsquo;ll use a Dapper DynamicParameters object because when creating a CommandDefinition we can use an both, an object or a DynamicParameters.</p>
@@ -281,7 +277,7 @@ In that case we can check if the parameter property is a DateTime type, check th
 <p>So, to prevent SqlDateTime overflows we only need to iterate through the parameters properties using reflection, check these datetimes values and if the value is less that the minimal sql date, change it. Finally add the parameters to a DynamicParameters collection and that&rsquo;s all.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -303,33 +299,32 @@ In that case we can check if the parameter property is a DateTime type, check th
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="n">DynamicParameters</span> <span class="n">GetDynamicParameters</span><span class="p">(</span><span class="kt">object</span> <span class="n">parameters</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">sqlMinDate</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">SqlTypes</span><span class="p">.</span><span class="n">SqlDateTime</span><span class="p">.</span><span class="n">MinValue</span><span class="p">;</span>
-    <span class="kt">var</span> <span class="n">newParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DynamicParameters</span><span class="p">();</span>
-    <span class="kt">var</span> <span class="n">paramsProperties</span> <span class="p">=</span> <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperties</span><span class="p">();</span>
-    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">p</span> <span class="k">in</span> <span class="n">paramsProperties</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">PropertyType</span> <span class="p">==</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DateTime</span><span class="p">))</span>
-        <span class="p">{</span>
-            <span class="n">DateTime</span> <span class="n">dateValue</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToDateTime</span><span class="p">(</span>
-                <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">GetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">));</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">dateValue</span> <span class="p">&lt;=</span> <span class="n">sqlMinDate</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span> <span class="n">dateValue</span> <span class="p">=</span> <span class="n">sqlMinDate</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
-            <span class="n">newParameters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">dateValue</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">else</span>
-            <span class="n">newParameters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
-                <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">GetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">));</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">newParameters</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="n">DynamicParameters</span> <span class="n">GetDynamicParameters</span><span class="p">(</span><span class="kt">object</span> <span class="n">parameters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">sqlMinDate</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Data</span><span class="p">.</span><span class="n">SqlTypes</span><span class="p">.</span><span class="n">SqlDateTime</span><span class="p">.</span><span class="n">MinValue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">newParameters</span> <span class="p">=</span> <span class="k">new</span> <span class="n">DynamicParameters</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">paramsProperties</span> <span class="p">=</span> <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperties</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">p</span> <span class="k">in</span> <span class="n">paramsProperties</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">PropertyType</span> <span class="p">==</span> <span class="k">typeof</span><span class="p">(</span><span class="n">DateTime</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">DateTime</span> <span class="n">dateValue</span> <span class="p">=</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ToDateTime</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">                <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">GetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">dateValue</span> <span class="p">&lt;=</span> <span class="n">sqlMinDate</span><span class="p">.</span><span class="n">Value</span><span class="p">)</span> <span class="n">dateValue</span> <span class="p">=</span> <span class="n">sqlMinDate</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">newParameters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">dateValue</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">newParameters</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">parameters</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">GetValue</span><span class="p">(</span><span class="n">parameters</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">newParameters</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Now we can use the previous method in the CreateCommand method:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -346,22 +341,21 @@ In that case we can check if the parameter property is a DateTime type, check th
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">CommandDefinition</span> <span class="n">CreateCommand</span><span class="p">(</span>
-    <span class="kt">string</span> <span class="n">commandText</span><span class="p">,</span> <span class="kt">object</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">IDbTransaction</span> <span class="n">transaction</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
-    <span class="kt">int?</span> <span class="n">commandTimeout</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">CommandType</span><span class="p">?</span> <span class="n">commandType</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
-    <span class="n">CommandFlags</span> <span class="n">flags</span> <span class="p">=</span> <span class="n">CommandFlags</span><span class="p">.</span><span class="n">Buffered</span><span class="p">,</span>
-    <span class="n">CancellationToken</span> <span class="n">cancellationToken</span> <span class="p">=</span> <span class="k">default</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">parameters</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
-        <span class="n">parameters</span> <span class="p">=</span> <span class="n">GetDynamicParameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">);</span>
-    <span class="k">return</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span>
-        <span class="n">commandText</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">transaction</span><span class="p">,</span>
-        <span class="n">commandTimeout</span> <span class="p">??</span> <span class="n">SqlHelper</span><span class="p">.</span><span class="n">GetCommandTimeout</span><span class="p">(),</span>
-        <span class="n">commandType</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">cancellationToken</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">CommandDefinition</span> <span class="n">CreateCommand</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">commandText</span><span class="p">,</span> <span class="kt">object</span> <span class="n">parameters</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IDbTransaction</span> <span class="n">transaction</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int?</span> <span class="n">commandTimeout</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CommandType</span><span class="p">?</span> <span class="n">commandType</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CommandFlags</span> <span class="n">flags</span> <span class="p">=</span> <span class="n">CommandFlags</span><span class="p">.</span><span class="n">Buffered</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">CancellationToken</span> <span class="n">cancellationToken</span> <span class="p">=</span> <span class="k">default</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">parameters</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">parameters</span> <span class="p">=</span> <span class="n">GetDynamicParameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="n">CommandDefinition</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">commandText</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">transaction</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">commandTimeout</span> <span class="p">??</span> <span class="n">SqlHelper</span><span class="p">.</span><span class="n">GetCommandTimeout</span><span class="p">(),</span>
+</span></span><span class="line"><span class="cl">        <span class="n">commandType</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">cancellationToken</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>This post is just a note to my future self :)</p>
@@ -395,7 +389,7 @@ In that case we can check if the parameter property is a DateTime type, check th
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -414,7 +408,7 @@ In that case we can check if the parameter property is a DateTime type, check th
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

@@ -10,9 +10,10 @@
 This library provides a set of classes (Connections, Commands and Readers) that allow developers to connect, query and get data from these multidimensional sources in the same way the classical ADO.NET library does.
 Maybe the easiest way to read data is using the class AdomdDataReader." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/getting-data-from-olap-cubes/" />
+<meta property="og:url" content="https://lluisfranco.com/getting-data-from-olap-cubes/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2017-12-12T11:51:50+02:00" />
 <meta property="article:modified_time" content="2017-12-12T11:51:50+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Getting data from OLAP cubes"/>
 <meta name="twitter:description" content="Overview Recently I had to read some data from different OLAP cubes and show this information in our application. This could be accomplished using ADOMD.NET client library, which is the multidimensional equivalent to the ADO.NET libraries.
@@ -139,7 +140,7 @@ Maybe the easiest way to read data is using the class AdomdDataReader."/>
 <p>Let’s see how it works before dig into the details:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="hl"><span class="lnt"> 4
@@ -163,34 +164,32 @@ Maybe the easiest way to read data is using the class AdomdDataReader."/>
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AdomdConnection</span><span class="p">(</span><span class="n">connectionString</span><span class="p">))</span>
-<span class="p">{</span>
-    <span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
-<span class="hl">    <span class="kt">var</span> <span class="n">commandText</span> <span class="p">=</span> <span class="s">@&#34;SELECT
-</span></span><span class="hl"><span class="s">                        {
-</span></span><span class="hl"><span class="s">                        [Measures].[Gains Period],
-</span></span><span class="hl"><span class="s">                        [Measures].[Gains YTD],
-</span></span><span class="hl"><span class="s">                        [Measures].[Amount]
-</span></span><span class="hl"><span class="s">                        } ON COLUMNS,
-</span></span><span class="hl"><span class="s">                        [Valuation Dates Accumulated].[Hierarchy].[Year].Members ON ROWS
-</span></span><span class="hl"><span class="s">                        FROM Accumulated
-</span></span><span class="hl"><span class="s">                        Where ({ @PortfolioId })&#34;</span><span class="p">;</span>
-</span>    <span class="kt">var</span> <span class="n">data</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">Query</span><span class="p">&lt;</span><span class="n">MyResultDTO</span><span class="p">&gt;(</span><span class="n">commandText</span><span class="p">,</span>
-        <span class="k">new</span> <span class="n">AdomdParameterMultipleValues</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span>
-        <span class="p">{</span>
-            <span class="n">ParameterName</span> <span class="p">=</span> <span class="s">&#34;@PortfolioId&#34;</span><span class="p">,</span>
-            <span class="n">MemberName</span> <span class="p">=</span> <span class="s">&#34;[Portfolios].[Port Code]&#34;</span><span class="p">,</span>
-            <span class="n">Values</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span> <span class="p">{</span> <span class="m">282</span><span class="p">,</span> <span class="m">185</span> <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">);</span>
-    <span class="n">conn</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">conn</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AdomdConnection</span><span class="p">(</span><span class="n">connectionString</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">conn</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+</span></span><span class="line hl"><span class="cl">    <span class="kt">var</span> <span class="n">commandText</span> <span class="p">=</span> <span class="s">@&#34;SELECT
+</span></span></span><span class="line hl"><span class="cl"><span class="s">                        {
+</span></span></span><span class="line hl"><span class="cl"><span class="s">                        [Measures].[Gains Period],
+</span></span></span><span class="line hl"><span class="cl"><span class="s">                        [Measures].[Gains YTD],
+</span></span></span><span class="line hl"><span class="cl"><span class="s">                        [Measures].[Amount]
+</span></span></span><span class="line hl"><span class="cl"><span class="s">                        } ON COLUMNS,
+</span></span></span><span class="line hl"><span class="cl"><span class="s">                        [Valuation Dates Accumulated].[Hierarchy].[Year].Members ON ROWS
+</span></span></span><span class="line hl"><span class="cl"><span class="s">                        FROM Accumulated
+</span></span></span><span class="line hl"><span class="cl"><span class="s">                        Where ({ @PortfolioId })&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">data</span> <span class="p">=</span> <span class="n">conn</span><span class="p">.</span><span class="n">Query</span><span class="p">&lt;</span><span class="n">MyResultDTO</span><span class="p">&gt;(</span><span class="n">commandText</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">new</span> <span class="n">AdomdParameterMultipleValues</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">ParameterName</span> <span class="p">=</span> <span class="s">&#34;@PortfolioId&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">MemberName</span> <span class="p">=</span> <span class="s">&#34;[Portfolios].[Port Code]&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="n">Values</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;()</span> <span class="p">{</span> <span class="m">282</span><span class="p">,</span> <span class="m">185</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">conn</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>First of all we have a SQL script (highligted lines above) that returns some sample data of 3 different measures year by year (gains in period, gains year-to-date and the amount of money).</p>
-<figure>
-    <img src="/images/posts/mddata.png"/> <figcaption>
+<figure><img src="/images/posts/mddata.png"/><figcaption>
             <h4>Sample data</h4>
         </figcaption>
 </figure>
@@ -198,7 +197,7 @@ Maybe the easiest way to read data is using the class AdomdDataReader."/>
 <p>Our goal here is translate these data into a generic List of our own DTO:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -213,20 +212,19 @@ Maybe the easiest way to read data is using the class AdomdDataReader."/>
 </span><span class="lnt">13
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">internal</span> <span class="k">class</span> <span class="nc">MyResultDTO</span>
-<span class="p">{</span>
-<span class="na">    [OLAPMemberNameAttribute(&#34;[Valuation Dates Accumulated]</span><span class="p">.[</span><span class="n">Hierarchy</span><span class="p">].[</span><span class="n">Year</span><span class="p">].[</span><span class="n">MEMBER_CAPTION</span><span class="p">]</span><span class="s">&#34;)]
-</span><span class="s"></span>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Year</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="na">    [OLAPMemberNameAttribute(&#34;[Measures]</span><span class="p">.[</span><span class="n">Gains</span> <span class="n">Period</span><span class="p">]</span><span class="s">&#34;)]
-</span><span class="s"></span>    <span class="k">public</span> <span class="kt">decimal?</span> <span class="n">GainsPeriod</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="na">
-</span><span class="na">    [OLAPMemberNameAttribute(&#34;[Measures]</span><span class="p">.[</span><span class="n">Gains</span> <span class="n">YTD</span><span class="p">]</span><span class="s">&#34;)]
-</span><span class="s"></span>    <span class="k">public</span> <span class="kt">decimal?</span> <span class="n">GainsYTD</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="na">
-</span><span class="na">    [OLAPMemberNameAttribute(&#34;[Measures]</span><span class="p">.[</span><span class="n">Amount</span><span class="p">]</span><span class="s">&#34;)]
-</span><span class="s"></span>    <span class="k">public</span> <span class="kt">decimal?</span> <span class="n">Amount</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">internal</span> <span class="k">class</span> <span class="nc">MyResultDTO</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [OLAPMemberNameAttribute(&#34;[Valuation Dates Accumulated]</span><span class="p">.[</span><span class="n">Hierarchy</span><span class="p">].[</span><span class="n">Year</span><span class="p">].[</span><span class="n">MEMBER_CAPTION</span><span class="p">]</span><span class="s">&#34;)]
+</span></span></span><span class="line"><span class="cl"><span class="s"></span>    <span class="k">public</span> <span class="kt">string</span> <span class="n">Year</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [OLAPMemberNameAttribute(&#34;[Measures]</span><span class="p">.[</span><span class="n">Gains</span> <span class="n">Period</span><span class="p">]</span><span class="s">&#34;)]
+</span></span></span><span class="line"><span class="cl"><span class="s"></span>    <span class="k">public</span> <span class="kt">decimal?</span> <span class="n">GainsPeriod</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [OLAPMemberNameAttribute(&#34;[Measures]</span><span class="p">.[</span><span class="n">Gains</span> <span class="n">YTD</span><span class="p">]</span><span class="s">&#34;)]
+</span></span></span><span class="line"><span class="cl"><span class="s"></span>    <span class="k">public</span> <span class="kt">decimal?</span> <span class="n">GainsYTD</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [OLAPMemberNameAttribute(&#34;[Measures]</span><span class="p">.[</span><span class="n">Amount</span><span class="p">]</span><span class="s">&#34;)]
+</span></span></span><span class="line"><span class="cl"><span class="s"></span>    <span class="k">public</span> <span class="kt">decimal?</span> <span class="n">Amount</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <blockquote>
@@ -234,7 +232,7 @@ Maybe the easiest way to read data is using the class AdomdDataReader."/>
 </blockquote>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -245,16 +243,15 @@ Maybe the easiest way to read data is using the class AdomdDataReader."/>
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">OLAPMemberNameAttribute</span> <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Attribute</span>
-<span class="p">{</span>
-    <span class="kt">string</span> <span class="n">_Description</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
-    <span class="k">public</span> <span class="n">OLAPMemberNameAttribute</span><span class="p">(</span><span class="kt">string</span> <span class="n">description</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">_Description</span> <span class="p">=</span> <span class="n">description</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_Description</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">OLAPMemberNameAttribute</span> <span class="p">:</span> <span class="n">System</span><span class="p">.</span><span class="n">Attribute</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">_Description</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">OLAPMemberNameAttribute</span><span class="p">(</span><span class="kt">string</span> <span class="n">description</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_Description</span> <span class="p">=</span> <span class="n">description</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Description</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_Description</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Notice that in C# properties can not contain spaces so we previously have to ‘map’ the DataReader column names into valid property names. The trick here is create an attribute for decorating each property with the equivalent column name in the reader.</p>
@@ -266,7 +263,7 @@ Maybe the easiest way to read data is using the class AdomdDataReader."/>
 </ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -276,22 +273,21 @@ Maybe the easiest way to read data is using the class AdomdDataReader."/>
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Query</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span>
-    <span class="k">this</span> <span class="n">AdomdConnection</span> <span class="n">conn</span><span class="p">,</span> <span class="kt">string</span> <span class="n">commandText</span><span class="p">,</span> <span class="k">params</span> <span class="kt">object</span><span class="p">[]</span> <span class="n">parameters</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">commandTextParameters</span> <span class="p">=</span> <span class="n">ReplaceCommandTextParameters</span><span class="p">(</span><span class="n">commandText</span><span class="p">,</span> <span class="n">parameters</span><span class="p">);</span>
-    <span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AdomdCommand</span><span class="p">(</span><span class="n">commandTextParameters</span><span class="p">,</span> <span class="n">conn</span><span class="p">);</span>
-    <span class="kt">var</span> <span class="n">dr</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">();</span>
-    <span class="k">return</span> <span class="n">dr</span><span class="p">.</span><span class="n">ToList</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">Query</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span>
+</span></span><span class="line"><span class="cl">    <span class="k">this</span> <span class="n">AdomdConnection</span> <span class="n">conn</span><span class="p">,</span> <span class="kt">string</span> <span class="n">commandText</span><span class="p">,</span> <span class="k">params</span> <span class="kt">object</span><span class="p">[]</span> <span class="n">parameters</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">commandTextParameters</span> <span class="p">=</span> <span class="n">ReplaceCommandTextParameters</span><span class="p">(</span><span class="n">commandText</span><span class="p">,</span> <span class="n">parameters</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">cmd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">AdomdCommand</span><span class="p">(</span><span class="n">commandTextParameters</span><span class="p">,</span> <span class="n">conn</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">dr</span> <span class="p">=</span> <span class="n">cmd</span><span class="p">.</span><span class="n">ExecuteReader</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">dr</span><span class="p">.</span><span class="n">ToList</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Now let&rsquo;s focus on the third point and create another extension method of the IDataReader interface. This method will transform the returned result set into a generics List<T></p>
 <p>OMG dude! Code on interfaces? Yes&hellip; I’ll burn in hell, I know it 😄</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -348,68 +344,66 @@ Maybe the easiest way to read data is using the class AdomdDataReader."/>
 </span><span class="lnt">55
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">ToList</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">IDataReader</span> <span class="n">dr</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
-    <span class="kt">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="k">default</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
-    <span class="k">while</span> <span class="p">(</span><span class="n">dr</span><span class="p">.</span><span class="n">Read</span><span class="p">())</span>
-    <span class="p">{</span>
-        <span class="n">obj</span> <span class="p">=</span> <span class="n">Activator</span><span class="p">.</span><span class="n">CreateInstance</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
-        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">prop</span> <span class="k">in</span> <span class="n">obj</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperties</span><span class="p">())</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">columnDescription</span> <span class="p">=</span> <span class="n">getPropertyDescription</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">existsDataReaderColumn</span><span class="p">(</span><span class="n">dr</span><span class="p">,</span> <span class="n">columnDescription</span><span class="p">))</span> <span class="n">copyColumnValueToProperty</span><span class="p">(</span><span class="n">dr</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">prop</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="n">list</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">list</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">static</span> <span class="k">void</span> <span class="n">copyColumnValueToProperty</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">IDataReader</span> <span class="n">dr</span><span class="p">,</span> <span class="n">T</span> <span class="n">obj</span><span class="p">,</span> <span class="n">PropertyInfo</span> <span class="n">prop</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">try</span>
-    <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">columnDescription</span> <span class="p">=</span> <span class="n">getPropertyDescription</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
-        <span class="kt">var</span> <span class="n">columnOrdinal</span> <span class="p">=</span> <span class="n">dr</span><span class="p">.</span><span class="n">GetOrdinal</span><span class="p">(</span><span class="n">columnDescription</span><span class="p">);</span>
-        <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="n">dr</span><span class="p">[</span><span class="n">columnOrdinal</span><span class="p">];</span>
-        <span class="kt">var</span> <span class="n">canBeNull</span> <span class="p">=</span> <span class="p">!</span><span class="n">prop</span><span class="p">.</span><span class="n">PropertyType</span><span class="p">.</span><span class="n">IsValueType</span> <span class="p">||</span> <span class="p">(</span><span class="n">Nullable</span><span class="p">.</span><span class="n">GetUnderlyingType</span><span class="p">(</span><span class="n">prop</span><span class="p">.</span><span class="n">PropertyType</span><span class="p">)</span> <span class="p">!=</span> <span class="k">null</span><span class="p">);</span>
-        <span class="kt">var</span> <span class="n">castToType</span> <span class="p">=</span> <span class="n">Nullable</span><span class="p">.</span><span class="n">GetUnderlyingType</span><span class="p">(</span><span class="n">prop</span><span class="p">.</span><span class="n">PropertyType</span><span class="p">)</span> <span class="p">??</span> <span class="n">prop</span><span class="p">.</span><span class="n">PropertyType</span><span class="p">;</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">canBeNull</span> <span class="p">&amp;&amp;</span> <span class="k">value</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
-            <span class="n">prop</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
-        <span class="k">else</span>
-            <span class="n">prop</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ChangeType</span><span class="p">(</span><span class="k">value</span><span class="p">,</span> <span class="n">castToType</span><span class="p">,</span> <span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">),</span> <span class="k">null</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">catch</span> <span class="p">{</span> <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">static</span> <span class="kt">bool</span> <span class="n">existsDataReaderColumn</span><span class="p">(</span><span class="n">IDataReader</span> <span class="n">dr</span><span class="p">,</span> <span class="kt">string</span> <span class="n">propertyName</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">try</span>
-    <span class="p">{</span>
-        <span class="kt">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">dr</span><span class="p">[</span><span class="n">propertyName</span><span class="p">];</span>
-        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">catch</span> <span class="p">{</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span> <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">private</span> <span class="k">static</span> <span class="kt">string</span> <span class="n">getPropertyDescription</span><span class="p">(</span><span class="kt">object</span> <span class="k">value</span><span class="p">,</span> <span class="kt">string</span> <span class="n">propname</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">propinfo</span> <span class="p">=</span> <span class="k">value</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">propname</span><span class="p">);</span>
-    <span class="kt">var</span> <span class="n">attributes</span> <span class="p">=</span>
-        <span class="p">(</span><span class="n">OLAPMemberNameAttribute</span><span class="p">[])</span><span class="n">propinfo</span><span class="p">.</span><span class="n">GetCustomAttributes</span><span class="p">(</span>
-        <span class="k">typeof</span><span class="p">(</span><span class="n">OLAPMemberNameAttribute</span><span class="p">),</span> <span class="k">false</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">attributes</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">attributes</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">attributes</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">Description</span><span class="p">;</span>
-    <span class="k">else</span>
-        <span class="k">return</span> <span class="k">value</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">ToList</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="k">this</span> <span class="n">IDataReader</span> <span class="n">dr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="k">default</span><span class="p">(</span><span class="n">T</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">dr</span><span class="p">.</span><span class="n">Read</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">obj</span> <span class="p">=</span> <span class="n">Activator</span><span class="p">.</span><span class="n">CreateInstance</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">prop</span> <span class="k">in</span> <span class="n">obj</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperties</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">var</span> <span class="n">columnDescription</span> <span class="p">=</span> <span class="n">getPropertyDescription</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="n">existsDataReaderColumn</span><span class="p">(</span><span class="n">dr</span><span class="p">,</span> <span class="n">columnDescription</span><span class="p">))</span> <span class="n">copyColumnValueToProperty</span><span class="p">(</span><span class="n">dr</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">prop</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">list</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">list</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="k">void</span> <span class="n">copyColumnValueToProperty</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">IDataReader</span> <span class="n">dr</span><span class="p">,</span> <span class="n">T</span> <span class="n">obj</span><span class="p">,</span> <span class="n">PropertyInfo</span> <span class="n">prop</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">columnDescription</span> <span class="p">=</span> <span class="n">getPropertyDescription</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">prop</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">columnOrdinal</span> <span class="p">=</span> <span class="n">dr</span><span class="p">.</span><span class="n">GetOrdinal</span><span class="p">(</span><span class="n">columnDescription</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="k">value</span> <span class="p">=</span> <span class="n">dr</span><span class="p">[</span><span class="n">columnOrdinal</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">canBeNull</span> <span class="p">=</span> <span class="p">!</span><span class="n">prop</span><span class="p">.</span><span class="n">PropertyType</span><span class="p">.</span><span class="n">IsValueType</span> <span class="p">||</span> <span class="p">(</span><span class="n">Nullable</span><span class="p">.</span><span class="n">GetUnderlyingType</span><span class="p">(</span><span class="n">prop</span><span class="p">.</span><span class="n">PropertyType</span><span class="p">)</span> <span class="p">!=</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">castToType</span> <span class="p">=</span> <span class="n">Nullable</span><span class="p">.</span><span class="n">GetUnderlyingType</span><span class="p">(</span><span class="n">prop</span><span class="p">.</span><span class="n">PropertyType</span><span class="p">)</span> <span class="p">??</span> <span class="n">prop</span><span class="p">.</span><span class="n">PropertyType</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">canBeNull</span> <span class="p">&amp;&amp;</span> <span class="k">value</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="n">prop</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">            <span class="n">prop</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">Convert</span><span class="p">.</span><span class="n">ChangeType</span><span class="p">(</span><span class="k">value</span><span class="p">,</span> <span class="n">castToType</span><span class="p">,</span> <span class="n">CultureInfo</span><span class="p">.</span><span class="n">InvariantCulture</span><span class="p">),</span> <span class="k">null</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">catch</span> <span class="p">{</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kt">bool</span> <span class="n">existsDataReaderColumn</span><span class="p">(</span><span class="n">IDataReader</span> <span class="n">dr</span><span class="p">,</span> <span class="kt">string</span> <span class="n">propertyName</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">try</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">var</span> <span class="n">obj</span> <span class="p">=</span> <span class="n">dr</span><span class="p">[</span><span class="n">propertyName</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">catch</span> <span class="p">{</span> <span class="k">return</span> <span class="k">false</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="kt">string</span> <span class="n">getPropertyDescription</span><span class="p">(</span><span class="kt">object</span> <span class="k">value</span><span class="p">,</span> <span class="kt">string</span> <span class="n">propname</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">propinfo</span> <span class="p">=</span> <span class="k">value</span><span class="p">.</span><span class="n">GetType</span><span class="p">().</span><span class="n">GetProperty</span><span class="p">(</span><span class="n">propname</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">attributes</span> <span class="p">=</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="n">OLAPMemberNameAttribute</span><span class="p">[])</span><span class="n">propinfo</span><span class="p">.</span><span class="n">GetCustomAttributes</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="k">typeof</span><span class="p">(</span><span class="n">OLAPMemberNameAttribute</span><span class="p">),</span> <span class="k">false</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">attributes</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">attributes</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">attributes</span><span class="p">[</span><span class="m">0</span><span class="p">].</span><span class="n">Description</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="k">value</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>As you can see the method iterates over the reader’s data and uses reflection to create an object per each row.
 Then map each column’s value to a property and add the new object to the returned collection (*). Easy!</p>
-<figure>
-    <img src="/images/posts/adomd_result.png"/> <figcaption>
+<figure><img src="/images/posts/adomd_result.png"/><figcaption>
             <h4>Returned data as List&lt;T&gt;</h4>
         </figcaption>
 </figure>
@@ -446,7 +440,7 @@ Then map each column’s value to a property and add the new object to the retur
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -465,7 +459,7 @@ Then map each column’s value to a property and add the new object to the retur
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

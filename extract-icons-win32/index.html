@@ -10,9 +10,10 @@
 In a recent project I was required to show a list of files with their associated icons. It doesn&rsquo;t sounds quite difficult, and in fact it is not. Except if you have to deal with files in network paths or you want to get different icons sizes, apart the typical 32×32. And well, that was the case :(fas fa-grin-beam-sweat):
 If you only need local files and sizes of 32x32 píxels you can achieve this using the static method ExtractAssociatedIcon in the class System." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/extract-icons-win32/" />
+<meta property="og:url" content="https://lluisfranco.com/extract-icons-win32/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2014-04-16T11:51:50+02:00" />
 <meta property="article:modified_time" content="2014-04-16T11:51:50+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Extract extra large icon from a file, folder or drive"/>
 <meta name="twitter:description" content="Extracting system icons from Win32 Overwiew Hi, everyone! :)
@@ -146,22 +147,21 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
 <p>From a file path and the desired size we wanna retrieve the associated icon.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="hl"><span class="lnt">3
 </span></span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">filename</span> <span class="p">=</span> <span class="s">&#34;\\myNetworkResource\Folder\SampleDocument.pdf&#34;</span><span class="p">;</span>
-<span class="kt">var</span> <span class="n">size</span> <span class="p">=</span> <span class="n">IconSizeEnum</span><span class="p">.</span><span class="n">ExtraLargeIcon</span><span class="p">;</span>
-<span class="hl"><span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">GetFileImageFromPath</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">filename</span> <span class="p">=</span> <span class="s">&#34;\\myNetworkResource\Folder\SampleDocument.pdf&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">size</span> <span class="p">=</span> <span class="n">IconSizeEnum</span><span class="p">.</span><span class="n">ExtraLargeIcon</span><span class="p">;</span>
+</span></span><span class="line hl"><span class="cl"><span class="kt">var</span> <span class="n">image</span> <span class="p">=</span> <span class="n">GetFileImageFromPath</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="the-ingredients">The ingredients</h3>
 <p>Here are declared all the functions and types we need to use. You can simply paste all this code into a class.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -281,125 +281,124 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
 </span><span class="lnt">118
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="na">[ComImportAttribute()]</span>
-<span class="na">[GuidAttribute(&#34;46EB5926-582E-4017-9FDF-E8998DAA0950&#34;)]</span>
-<span class="na">[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]</span>
-<span class="k">private</span> <span class="k">interface</span> <span class="n">IImageList</span>
-<span class="p">{</span>
-<span class="na">    [PreserveSig]</span>
-    <span class="kt">int</span> <span class="n">Add</span><span class="p">(</span>
-        <span class="n">IntPtr</span> <span class="n">hbmImage</span><span class="p">,</span>
-        <span class="n">IntPtr</span> <span class="n">hbmMask</span><span class="p">,</span>
-        <span class="k">ref</span> <span class="kt">int</span> <span class="n">pi</span><span class="p">);</span>
-<span class="na">
-</span><span class="na">    [PreserveSig]</span>
-    <span class="kt">int</span> <span class="n">ReplaceIcon</span><span class="p">(</span>
-        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
-        <span class="n">IntPtr</span> <span class="n">hicon</span><span class="p">,</span>
-        <span class="k">ref</span> <span class="kt">int</span> <span class="n">pi</span><span class="p">);</span>
-<span class="na">
-</span><span class="na">    [PreserveSig]</span>
-    <span class="kt">int</span> <span class="n">SetOverlayImage</span><span class="p">(</span>
-        <span class="kt">int</span> <span class="n">iImage</span><span class="p">,</span>
-        <span class="kt">int</span> <span class="n">iOverlay</span><span class="p">);</span>
-<span class="na">
-</span><span class="na">    [PreserveSig]</span>
-    <span class="kt">int</span> <span class="n">Replace</span><span class="p">(</span>
-        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
-        <span class="n">IntPtr</span> <span class="n">hbmImage</span><span class="p">,</span>
-        <span class="n">IntPtr</span> <span class="n">hbmMask</span><span class="p">);</span>
-<span class="na">
-</span><span class="na">    [PreserveSig]</span>
-    <span class="kt">int</span> <span class="n">AddMasked</span><span class="p">(</span>
-        <span class="n">IntPtr</span> <span class="n">hbmImage</span><span class="p">,</span>
-        <span class="kt">int</span> <span class="n">crMask</span><span class="p">,</span>
-        <span class="k">ref</span> <span class="kt">int</span> <span class="n">pi</span><span class="p">);</span>
-<span class="na">
-</span><span class="na">    [PreserveSig]</span>
-    <span class="kt">int</span> <span class="n">Draw</span><span class="p">(</span>
-        <span class="k">ref</span> <span class="n">IMAGELISTDRAWPARAMS</span> <span class="n">pimldp</span><span class="p">);</span>
-<span class="na">
-</span><span class="na">    [PreserveSig]</span>
-    <span class="kt">int</span> <span class="n">Remove</span><span class="p">(</span>
-        <span class="kt">int</span> <span class="n">i</span><span class="p">);</span>
-<span class="na">
-</span><span class="na">    [PreserveSig]</span>
-    <span class="kt">int</span> <span class="n">GetIcon</span><span class="p">(</span>
-        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
-        <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span>
-        <span class="k">ref</span> <span class="n">IntPtr</span> <span class="n">picon</span><span class="p">);</span>
-<span class="p">};</span>
-<span class="k">private</span> <span class="k">struct</span> <span class="nc">IMAGELISTDRAWPARAMS</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">cbSize</span><span class="p">;</span>
-    <span class="k">public</span> <span class="n">IntPtr</span> <span class="n">himl</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
-    <span class="k">public</span> <span class="n">IntPtr</span> <span class="n">hdcDst</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">cx</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">cy</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">xBitmap</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">yBitmap</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">rgbBk</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">rgbFg</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">fStyle</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">dwRop</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">fState</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">Frame</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">crEffect</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">private</span> <span class="k">struct</span> <span class="nc">SHFILEINFO</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="n">IntPtr</span> <span class="n">hIcon</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">iIcon</span><span class="p">;</span>
-    <span class="k">public</span> <span class="kt">uint</span> <span class="n">dwAttributes</span><span class="p">;</span>
-<span class="na">    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 254)]</span>
-    <span class="k">public</span> <span class="kt">string</span> <span class="n">szDisplayName</span><span class="p">;</span>
-<span class="na">    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]</span>
-    <span class="k">public</span> <span class="kt">string</span> <span class="n">szTypeName</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">SHGFI_SMALLICON</span> <span class="p">=</span> <span class="m">0</span><span class="n">x1</span><span class="p">;</span>
-<span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">SHGFI_LARGEICON</span> <span class="p">=</span> <span class="m">0</span><span class="n">x0</span><span class="p">;</span>
-<span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">SHIL_JUMBO</span> <span class="p">=</span> <span class="m">0</span><span class="n">x4</span><span class="p">;</span>
-<span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">SHIL_EXTRALARGE</span> <span class="p">=</span> <span class="m">0</span><span class="n">x2</span><span class="p">;</span>
-<span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">WM_CLOSE</span> <span class="p">=</span> <span class="m">0</span><span class="n">x0010</span><span class="p">;</span>
-
-<span class="k">public</span> <span class="k">enum</span> <span class="n">IconSizeEnum</span>
-<span class="p">{</span>
-    <span class="n">SmallIcon16</span> <span class="p">=</span> <span class="n">SHGFI_SMALLICON</span><span class="p">,</span>
-    <span class="n">MediumIcon32</span> <span class="p">=</span> <span class="n">SHGFI_LARGEICON</span><span class="p">,</span>
-    <span class="n">LargeIcon48</span> <span class="p">=</span> <span class="n">SHIL_EXTRALARGE</span><span class="p">,</span>
-    <span class="n">ExtraLargeIcon</span> <span class="p">=</span> <span class="n">SHIL_JUMBO</span>
-<span class="p">}</span>
-<span class="na">
-</span><span class="na">[DllImport(&#34;user32&#34;)]</span>
-<span class="k">private</span> <span class="k">static</span> <span class="k">extern</span>
-    <span class="n">IntPtr</span> <span class="n">SendMessage</span><span class="p">(</span>
-    <span class="n">IntPtr</span> <span class="n">handle</span><span class="p">,</span>
-    <span class="kt">int</span> <span class="n">Msg</span><span class="p">,</span>
-    <span class="n">IntPtr</span> <span class="n">wParam</span><span class="p">,</span>
-    <span class="n">IntPtr</span> <span class="n">lParam</span><span class="p">);</span>
-<span class="na">
-</span><span class="na">[DllImport(&#34;shell32.dll&#34;)]</span>
-<span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">int</span> <span class="n">SHGetImageList</span><span class="p">(</span>
-    <span class="kt">int</span> <span class="n">iImageList</span><span class="p">,</span>
-    <span class="k">ref</span> <span class="n">Guid</span> <span class="n">riid</span><span class="p">,</span>
-    <span class="k">out</span> <span class="n">IImageList</span> <span class="n">ppv</span><span class="p">);</span>
-<span class="na">
-</span><span class="na">[DllImport(&#34;Shell32.dll&#34;)]</span>
-<span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">int</span> <span class="n">SHGetFileInfo</span><span class="p">(</span>
-    <span class="kt">string</span> <span class="n">pszPath</span><span class="p">,</span>
-    <span class="kt">int</span> <span class="n">dwFileAttributes</span><span class="p">,</span>
-    <span class="k">ref</span> <span class="n">SHFILEINFO</span> <span class="n">psfi</span><span class="p">,</span>
-    <span class="kt">int</span> <span class="n">cbFileInfo</span><span class="p">,</span>
-    <span class="kt">uint</span> <span class="n">uFlags</span><span class="p">);</span>
-<span class="na">
-</span><span class="na">[DllImport(&#34;user32&#34;)]</span>
-<span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">int</span> <span class="n">DestroyIcon</span><span class="p">(</span>
-    <span class="n">IntPtr</span> <span class="n">hIcon</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="na">[ComImportAttribute()]</span>
+</span></span><span class="line"><span class="cl"><span class="na">[GuidAttribute(&#34;46EB5926-582E-4017-9FDF-E8998DAA0950&#34;)]</span>
+</span></span><span class="line"><span class="cl"><span class="na">[InterfaceTypeAttribute(ComInterfaceType.InterfaceIsIUnknown)]</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">interface</span> <span class="nc">IImageList</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [PreserveSig]</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">Add</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IntPtr</span> <span class="n">hbmImage</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IntPtr</span> <span class="n">hbmMask</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">ref</span> <span class="kt">int</span> <span class="n">pi</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [PreserveSig]</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">ReplaceIcon</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IntPtr</span> <span class="n">hicon</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">ref</span> <span class="kt">int</span> <span class="n">pi</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [PreserveSig]</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">SetOverlayImage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">iImage</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">iOverlay</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [PreserveSig]</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">Replace</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IntPtr</span> <span class="n">hbmImage</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IntPtr</span> <span class="n">hbmMask</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [PreserveSig]</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">AddMasked</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">IntPtr</span> <span class="n">hbmImage</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">crMask</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">ref</span> <span class="kt">int</span> <span class="n">pi</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [PreserveSig]</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">Draw</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="k">ref</span> <span class="n">IMAGELISTDRAWPARAMS</span> <span class="n">pimldp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [PreserveSig]</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">Remove</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">    [PreserveSig]</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">GetIcon</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">i</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">flags</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="k">ref</span> <span class="n">IntPtr</span> <span class="n">picon</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">struct</span> <span class="nc">IMAGELISTDRAWPARAMS</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">cbSize</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">IntPtr</span> <span class="n">himl</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">IntPtr</span> <span class="n">hdcDst</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">cx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">cy</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">xBitmap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">yBitmap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">rgbBk</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">rgbFg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">fStyle</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">dwRop</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">fState</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">Frame</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">crEffect</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">struct</span> <span class="nc">SHFILEINFO</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="n">IntPtr</span> <span class="n">hIcon</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">iIcon</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">uint</span> <span class="n">dwAttributes</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 254)]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">szDisplayName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="na">    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">szTypeName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">SHGFI_SMALLICON</span> <span class="p">=</span> <span class="m">0x1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">SHGFI_LARGEICON</span> <span class="p">=</span> <span class="m">0x0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">SHIL_JUMBO</span> <span class="p">=</span> <span class="m">0x4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">SHIL_EXTRALARGE</span> <span class="p">=</span> <span class="m">0x2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">WM_CLOSE</span> <span class="p">=</span> <span class="m">0x0010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">public</span> <span class="k">enum</span> <span class="n">IconSizeEnum</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SmallIcon16</span> <span class="p">=</span> <span class="n">SHGFI_SMALLICON</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MediumIcon32</span> <span class="p">=</span> <span class="n">SHGFI_LARGEICON</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LargeIcon48</span> <span class="p">=</span> <span class="n">SHIL_EXTRALARGE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ExtraLargeIcon</span> <span class="p">=</span> <span class="n">SHIL_JUMBO</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">[DllImport(&#34;user32&#34;)]</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="k">extern</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IntPtr</span> <span class="n">SendMessage</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IntPtr</span> <span class="n">handle</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">Msg</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IntPtr</span> <span class="n">wParam</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IntPtr</span> <span class="n">lParam</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">[DllImport(&#34;shell32.dll&#34;)]</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">int</span> <span class="n">SHGetImageList</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">iImageList</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">ref</span> <span class="n">Guid</span> <span class="n">riid</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">out</span> <span class="n">IImageList</span> <span class="n">ppv</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">[DllImport(&#34;Shell32.dll&#34;)]</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">int</span> <span class="n">SHGetFileInfo</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">pszPath</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">dwFileAttributes</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">ref</span> <span class="n">SHFILEINFO</span> <span class="n">psfi</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">cbFileInfo</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint</span> <span class="n">uFlags</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="na">
+</span></span></span><span class="line"><span class="cl"><span class="na">[DllImport(&#34;user32&#34;)]</span>
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="k">extern</span> <span class="kt">int</span> <span class="n">DestroyIcon</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IntPtr</span> <span class="n">hIcon</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="putting-it-all-together">Putting it all together</h3>
@@ -407,7 +406,7 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
 Here’s the tricky part:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -467,65 +466,64 @@ Here’s the tricky part:</p>
 </span><span class="lnt">58
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">static</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Bitmap</span> <span class="n">GetFileImageFromPath</span><span class="p">(</span>
-    <span class="kt">string</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">IconSizeEnum</span> <span class="n">iconsize</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">IntPtr</span> <span class="n">hIcon</span> <span class="p">=</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Directory</span><span class="p">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">))</span>
-        <span class="n">hIcon</span> <span class="p">=</span> <span class="n">GetIconHandleFromFolderPath</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">iconsize</span><span class="p">);</span>
-    <span class="k">else</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">))</span>
-            <span class="n">hIcon</span> <span class="p">=</span> <span class="n">GetIconHandleFromFilePath</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">iconsize</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">GetBitmapFromIconHandle</span><span class="p">(</span><span class="n">hIcon</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">private</span> <span class="k">static</span> <span class="n">IntPtr</span> <span class="n">GetIconHandleFromFilePath</span><span class="p">(</span><span class="kt">string</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">IconSizeEnum</span> <span class="n">iconsize</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">shinfo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SHFILEINFO</span><span class="p">();</span>
-    <span class="k">const</span> <span class="kt">uint</span> <span class="n">SHGFI_SYSICONINDEX</span> <span class="p">=</span> <span class="m">0</span><span class="n">x4000</span><span class="p">;</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">FILE_ATTRIBUTE_NORMAL</span> <span class="p">=</span> <span class="m">0</span><span class="n">x80</span><span class="p">;</span>
-    <span class="kt">uint</span> <span class="n">flags</span> <span class="p">=</span> <span class="n">SHGFI_SYSICONINDEX</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">GetIconHandleFromFilePathWithFlags</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">iconsize</span><span class="p">,</span> <span class="k">ref</span> <span class="n">shinfo</span><span class="p">,</span> <span class="n">FILE_ATTRIBUTE_NORMAL</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">private</span> <span class="k">static</span> <span class="n">IntPtr</span> <span class="n">GetIconHandleFromFolderPath</span><span class="p">(</span><span class="kt">string</span> <span class="n">folderpath</span><span class="p">,</span> <span class="n">IconSizeEnum</span> <span class="n">iconsize</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">var</span> <span class="n">shinfo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SHFILEINFO</span><span class="p">();</span>
-
-    <span class="k">const</span> <span class="kt">uint</span> <span class="n">SHGFI_ICON</span> <span class="p">=</span> <span class="m">0</span><span class="n">x000000100</span><span class="p">;</span>
-    <span class="k">const</span> <span class="kt">uint</span> <span class="n">SHGFI_USEFILEATTRIBUTES</span> <span class="p">=</span> <span class="m">0</span><span class="n">x000000010</span><span class="p">;</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">FILE_ATTRIBUTE_DIRECTORY</span> <span class="p">=</span> <span class="m">0</span><span class="n">x00000010</span><span class="p">;</span>
-    <span class="kt">uint</span> <span class="n">flags</span> <span class="p">=</span> <span class="n">SHGFI_ICON</span> <span class="p">|</span> <span class="n">SHGFI_USEFILEATTRIBUTES</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">GetIconHandleFromFilePathWithFlags</span><span class="p">(</span><span class="n">folderpath</span><span class="p">,</span> <span class="n">iconsize</span><span class="p">,</span> <span class="k">ref</span> <span class="n">shinfo</span><span class="p">,</span> <span class="n">FILE_ATTRIBUTE_DIRECTORY</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">private</span> <span class="k">static</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Bitmap</span> <span class="n">GetBitmapFromIconHandle</span><span class="p">(</span><span class="n">IntPtr</span> <span class="n">hIcon</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">hIcon</span> <span class="p">==</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">)</span> <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
-    <span class="kt">var</span> <span class="n">myIcon</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Icon</span><span class="p">.</span><span class="n">FromHandle</span><span class="p">(</span><span class="n">hIcon</span><span class="p">);</span>
-    <span class="kt">var</span> <span class="n">bitmap</span> <span class="p">=</span> <span class="n">myIcon</span><span class="p">.</span><span class="n">ToBitmap</span><span class="p">();</span>
-    <span class="n">myIcon</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
-    <span class="n">DestroyIcon</span><span class="p">(</span><span class="n">hIcon</span><span class="p">);</span>
-    <span class="n">SendMessage</span><span class="p">(</span><span class="n">hIcon</span><span class="p">,</span> <span class="n">WM_CLOSE</span><span class="p">,</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">,</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">bitmap</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">private</span> <span class="k">static</span> <span class="n">IntPtr</span> <span class="n">GetIconHandleFromFilePathWithFlags</span><span class="p">(</span>
-    <span class="kt">string</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">IconSizeEnum</span> <span class="n">iconsize</span><span class="p">,</span>
-    <span class="k">ref</span> <span class="n">SHFILEINFO</span> <span class="n">shinfo</span><span class="p">,</span> <span class="kt">int</span> <span class="n">fileAttributeFlag</span><span class="p">,</span> <span class="kt">uint</span> <span class="n">flags</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">const</span> <span class="kt">int</span> <span class="n">ILD_TRANSPARENT</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
-    <span class="kt">var</span> <span class="n">retval</span> <span class="p">=</span> <span class="n">SHGetFileInfo</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">fileAttributeFlag</span><span class="p">,</span> <span class="k">ref</span> <span class="n">shinfo</span><span class="p">,</span> <span class="n">Marshal</span><span class="p">.</span><span class="n">SizeOf</span><span class="p">(</span><span class="n">shinfo</span><span class="p">),</span> <span class="n">flags</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">retval</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">throw</span> <span class="p">(</span><span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">FileNotFoundException</span><span class="p">());</span>
-    <span class="kt">var</span> <span class="n">iconIndex</span> <span class="p">=</span> <span class="n">shinfo</span><span class="p">.</span><span class="n">iIcon</span><span class="p">;</span>
-    <span class="kt">var</span> <span class="n">iImageListGuid</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Guid</span><span class="p">(</span><span class="s">&#34;46EB5926-582E-4017-9FDF-E8998DAA0950&#34;</span><span class="p">);</span>
-    <span class="n">IImageList</span> <span class="n">iml</span><span class="p">;</span>
-    <span class="kt">var</span> <span class="n">hres</span> <span class="p">=</span> <span class="n">SHGetImageList</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">iconsize</span><span class="p">,</span> <span class="k">ref</span> <span class="n">iImageListGuid</span><span class="p">,</span> <span class="k">out</span> <span class="n">iml</span><span class="p">);</span>
-    <span class="kt">var</span> <span class="n">hIcon</span> <span class="p">=</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">;</span>
-    <span class="n">hres</span> <span class="p">=</span> <span class="n">iml</span><span class="p">.</span><span class="n">GetIcon</span><span class="p">(</span><span class="n">iconIndex</span><span class="p">,</span> <span class="n">ILD_TRANSPARENT</span><span class="p">,</span> <span class="k">ref</span> <span class="n">hIcon</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">hIcon</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">static</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Bitmap</span> <span class="n">GetFileImageFromPath</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">IconSizeEnum</span> <span class="n">iconsize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IntPtr</span> <span class="n">hIcon</span> <span class="p">=</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">Directory</span><span class="p">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="n">hIcon</span> <span class="p">=</span> <span class="n">GetIconHandleFromFolderPath</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">iconsize</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="n">Exists</span><span class="p">(</span><span class="n">filepath</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">            <span class="n">hIcon</span> <span class="p">=</span> <span class="n">GetIconHandleFromFilePath</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">iconsize</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">GetBitmapFromIconHandle</span><span class="p">(</span><span class="n">hIcon</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="n">IntPtr</span> <span class="n">GetIconHandleFromFilePath</span><span class="p">(</span><span class="kt">string</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">IconSizeEnum</span> <span class="n">iconsize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">shinfo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SHFILEINFO</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint</span> <span class="n">SHGFI_SYSICONINDEX</span> <span class="p">=</span> <span class="m">0x4000</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">int</span> <span class="n">FILE_ATTRIBUTE_NORMAL</span> <span class="p">=</span> <span class="m">0x80</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint</span> <span class="n">flags</span> <span class="p">=</span> <span class="n">SHGFI_SYSICONINDEX</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">GetIconHandleFromFilePathWithFlags</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">iconsize</span><span class="p">,</span> <span class="k">ref</span> <span class="n">shinfo</span><span class="p">,</span> <span class="n">FILE_ATTRIBUTE_NORMAL</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="n">IntPtr</span> <span class="n">GetIconHandleFromFolderPath</span><span class="p">(</span><span class="kt">string</span> <span class="n">folderpath</span><span class="p">,</span> <span class="n">IconSizeEnum</span> <span class="n">iconsize</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">shinfo</span> <span class="p">=</span> <span class="k">new</span> <span class="n">SHFILEINFO</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint</span> <span class="n">SHGFI_ICON</span> <span class="p">=</span> <span class="m">0x000000100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">uint</span> <span class="n">SHGFI_USEFILEATTRIBUTES</span> <span class="p">=</span> <span class="m">0x000000010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">int</span> <span class="n">FILE_ATTRIBUTE_DIRECTORY</span> <span class="p">=</span> <span class="m">0x00000010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint</span> <span class="n">flags</span> <span class="p">=</span> <span class="n">SHGFI_ICON</span> <span class="p">|</span> <span class="n">SHGFI_USEFILEATTRIBUTES</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">GetIconHandleFromFilePathWithFlags</span><span class="p">(</span><span class="n">folderpath</span><span class="p">,</span> <span class="n">iconsize</span><span class="p">,</span> <span class="k">ref</span> <span class="n">shinfo</span><span class="p">,</span> <span class="n">FILE_ATTRIBUTE_DIRECTORY</span><span class="p">,</span> <span class="n">flags</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Bitmap</span> <span class="n">GetBitmapFromIconHandle</span><span class="p">(</span><span class="n">IntPtr</span> <span class="n">hIcon</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">hIcon</span> <span class="p">==</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">)</span> <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">myIcon</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Drawing</span><span class="p">.</span><span class="n">Icon</span><span class="p">.</span><span class="n">FromHandle</span><span class="p">(</span><span class="n">hIcon</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">bitmap</span> <span class="p">=</span> <span class="n">myIcon</span><span class="p">.</span><span class="n">ToBitmap</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">myIcon</span><span class="p">.</span><span class="n">Dispose</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">DestroyIcon</span><span class="p">(</span><span class="n">hIcon</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SendMessage</span><span class="p">(</span><span class="n">hIcon</span><span class="p">,</span> <span class="n">WM_CLOSE</span><span class="p">,</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">,</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">bitmap</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">static</span> <span class="n">IntPtr</span> <span class="n">GetIconHandleFromFilePathWithFlags</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">string</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">IconSizeEnum</span> <span class="n">iconsize</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="k">ref</span> <span class="n">SHFILEINFO</span> <span class="n">shinfo</span><span class="p">,</span> <span class="kt">int</span> <span class="n">fileAttributeFlag</span><span class="p">,</span> <span class="kt">uint</span> <span class="n">flags</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">const</span> <span class="kt">int</span> <span class="n">ILD_TRANSPARENT</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">retval</span> <span class="p">=</span> <span class="n">SHGetFileInfo</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">fileAttributeFlag</span><span class="p">,</span> <span class="k">ref</span> <span class="n">shinfo</span><span class="p">,</span> <span class="n">Marshal</span><span class="p">.</span><span class="n">SizeOf</span><span class="p">(</span><span class="n">shinfo</span><span class="p">),</span> <span class="n">flags</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">retval</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">throw</span> <span class="p">(</span><span class="k">new</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">FileNotFoundException</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">iconIndex</span> <span class="p">=</span> <span class="n">shinfo</span><span class="p">.</span><span class="n">iIcon</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">iImageListGuid</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Guid</span><span class="p">(</span><span class="s">&#34;46EB5926-582E-4017-9FDF-E8998DAA0950&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IImageList</span> <span class="n">iml</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">hres</span> <span class="p">=</span> <span class="n">SHGetImageList</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">iconsize</span><span class="p">,</span> <span class="k">ref</span> <span class="n">iImageListGuid</span><span class="p">,</span> <span class="k">out</span> <span class="n">iml</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">var</span> <span class="n">hIcon</span> <span class="p">=</span> <span class="n">IntPtr</span><span class="p">.</span><span class="n">Zero</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hres</span> <span class="p">=</span> <span class="n">iml</span><span class="p">.</span><span class="n">GetIcon</span><span class="p">(</span><span class="n">iconIndex</span><span class="p">,</span> <span class="n">ILD_TRANSPARENT</span><span class="p">,</span> <span class="k">ref</span> <span class="n">hIcon</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">hIcon</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>First, we need to call to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb762179%28v=vs.85%29.aspx" target="_blank" rel="noopener noreffer">SHGetFileInfo</a> function that receives a reference to a structure of type <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb759792%28v=vs.85%29.aspx" target="_blank" rel="noopener noreffer">SHFILEINFO</a>, which contains the index of the icon image within the system image list. We will use this index later.</p>
@@ -538,7 +536,7 @@ Here’s the tricky part:</p>
 <p>For better use I’ve also created an enumeration IconSizeEnum (see types declaration) with the different flags values as well:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -547,20 +545,19 @@ Here’s the tricky part:</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">enum</span> <span class="n">IconSizeEnum</span>
-<span class="p">{</span>
-    <span class="n">SmallIcon16</span> <span class="p">=</span> <span class="n">SHGFI_SMALLICON</span><span class="p">,</span>
-    <span class="n">MediumIcon32</span> <span class="p">=</span> <span class="n">SHGFI_LARGEICON</span><span class="p">,</span>
-    <span class="n">LargeIcon48</span> <span class="p">=</span> <span class="n">SHIL_EXTRALARGE</span><span class="p">,</span>
-    <span class="n">ExtraLargeIcon</span> <span class="p">=</span> <span class="n">SHIL_JUMBO</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">enum</span> <span class="n">IconSizeEnum</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SmallIcon16</span> <span class="p">=</span> <span class="n">SHGFI_SMALLICON</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">MediumIcon32</span> <span class="p">=</span> <span class="n">SHGFI_LARGEICON</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">LargeIcon48</span> <span class="p">=</span> <span class="n">SHIL_EXTRALARGE</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ExtraLargeIcon</span> <span class="p">=</span> <span class="n">SHIL_JUMBO</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<p>Finally, create a new Form and add a PictureBox named &lsquo;pictureBox1&rsquo; a label called &lsquo;labelFilePath&rsquo; and a Button, and into the Button&rsquo;s click event handler use this code:</p>
+<p>Finally, create a new Form and add a PictureBox named &lsquo;pictureBox1&rsquo; a label called &rsquo;labelFilePath&rsquo; and a Button, and into the Button&rsquo;s click event handler use this code:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -569,14 +566,13 @@ Here’s the tricky part:</p>
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">var</span> <span class="n">size</span> <span class="p">=</span> <span class="n">IconSizeEnum</span><span class="p">.</span><span class="n">ExtraLargeIcon</span><span class="p">;</span>
-<span class="kt">var</span> <span class="n">ofd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">OpenFileDialog</span><span class="p">();</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">ofd</span><span class="p">.</span><span class="n">ShowDialog</span><span class="p">()</span> <span class="p">==</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">DialogResult</span><span class="p">.</span><span class="n">OK</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">labelFilePath</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">ofd</span><span class="p">.</span><span class="n">FileName</span><span class="p">;</span>
-    <span class="n">pictureBox1</span><span class="p">.</span><span class="n">Image</span> <span class="p">=</span> <span class="n">YourClassNameHere</span><span class="p">.</span><span class="n">GetFileImageFromPath</span><span class="p">(</span><span class="n">ofd</span><span class="p">.</span><span class="n">FileName</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">size</span> <span class="p">=</span> <span class="n">IconSizeEnum</span><span class="p">.</span><span class="n">ExtraLargeIcon</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">var</span> <span class="n">ofd</span> <span class="p">=</span> <span class="k">new</span> <span class="n">OpenFileDialog</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="n">ofd</span><span class="p">.</span><span class="n">ShowDialog</span><span class="p">()</span> <span class="p">==</span> <span class="n">System</span><span class="p">.</span><span class="n">Windows</span><span class="p">.</span><span class="n">Forms</span><span class="p">.</span><span class="n">DialogResult</span><span class="p">.</span><span class="n">OK</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">labelFilePath</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="n">ofd</span><span class="p">.</span><span class="n">FileName</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pictureBox1</span><span class="p">.</span><span class="n">Image</span> <span class="p">=</span> <span class="n">YourClassNameHere</span><span class="p">.</span><span class="n">GetFileImageFromPath</span><span class="p">(</span><span class="n">ofd</span><span class="p">.</span><span class="n">FileName</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <blockquote>
@@ -613,7 +609,7 @@ Here’s the tricky part:</p>
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -632,7 +628,7 @@ Here’s the tricky part:</p>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

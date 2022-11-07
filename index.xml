@@ -15,7 +15,7 @@
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/DapperLogo.png" referrerpolicy="no-referrer">
             </div>Overview In my current development I&rsquo;m using Dapper, a light ORM to access the database. Using Dapper is really easy and provides super-fast performance. Here&rsquo;s an example of use:
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17  public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken.]]></description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken.]]></description>
 </item><item>
     <title>Retrieving events from SQL Server</title>
     <link>https://lluisfranco.com/retrieving-events-from-sql-server/</link>
@@ -57,7 +57,7 @@ In my current project I’ve to connect to a remote server via Secure File Trans
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/note.png" referrerpolicy="no-referrer">
             </div>Quick note How to remove diacritics (accents) from a C# string?
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15  public static string RemoveDiacritics(this string input) { var stFormD = input.Normalize(NormalizationForm.FormD); var len = stFormD.Length; var sb = new StringBuilder(); for (int i = 0; i &lt; len; i++) { var uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[i]); if (uc != System.Globalization.UnicodeCategory.NonSpacingMark) { sb.Append(stFormD[i]); } } return (sb.]]></description>
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public static string RemoveDiacritics(this string input) { var stFormD = input.Normalize(NormalizationForm.FormD); var len = stFormD.Length; var sb = new StringBuilder(); for (int i = 0; i &lt; len; i++) { var uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[i]); if (uc != System.Globalization.UnicodeCategory.NonSpacingMark) { sb.Append(stFormD[i]); } } return (sb.ToString().Normalize(NormalizationForm.FormC)); } Bonus track How to remove in TSQL (Microsoft SQL Server)]]></description>
 </item><item>
     <title>Extract extra large icon from a file, folder or drive</title>
     <link>https://lluisfranco.com/extract-icons-win32/</link>
@@ -89,8 +89,8 @@ About Lluís Franco Born in Barcelona (Spain) with more than 20 years of experie
                 <img src="/images/posts/MVPoftheyear2011.png" referrerpolicy="no-referrer">
             </div>WoWoWo :O Surprised. Puzzled. Amazed. These are the words that define better my current feelings.
 However, while writing these lines I’m just realizing I have a blissful smile, or maybe just a stupid smile. Why? Because I just received an email from Lisa Feigenbaum (Microsoft Community Program Manager) with this message:
- “Congratulations on being awarded C# MVP of the Year based on your contributions in 2011!”
- That’s amazing, and sincerely, totally unexpected]]></description>
+“Congratulations on being awarded C# MVP of the Year based on your contributions in 2011!”
+That’s amazing, and sincerely, totally unexpected]]></description>
 </item><item>
     <title>Functional Programming For The Rest of Us</title>
     <link>https://lluisfranco.com/functional-programming-for-the-rest-of-us/</link>

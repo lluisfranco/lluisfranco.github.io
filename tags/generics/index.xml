@@ -34,7 +34,8 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/tshirt.png" referrerpolicy="no-referrer">
             </div>Gettings all controls from a container That&rsquo;s the question How many times have you ever heard something similar? :)
- How to clear the content of all the textboxes in a form?
- The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.]]></description>
+How to clear the content of all the textboxes in a form?
+The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.
+Generics and Extension methods Using generics it’s really easy!]]></description>
 </item></channel>
 </rss>

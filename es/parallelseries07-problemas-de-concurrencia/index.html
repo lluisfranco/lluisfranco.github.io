@@ -9,9 +9,10 @@
 <meta property="og:description" content="Ir al índice de la serie
 Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son secuenciales sino paralelos, es cada vez más posible encontrarnos con problemas de concurrencia al acceder a recursos compartidos. Conceptualmente hablando, esto es algo a los que los desarrolladores ya estamos acostumbrados cuando trabajamos con gestores de bases de datos como Oracle o SQL Server, ya que varios usuarios pueden acceder o modificar la información al mismo." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/es/parallelseries07-problemas-de-concurrencia/" />
+<meta property="og:url" content="https://lluisfranco.com/es/parallelseries07-problemas-de-concurrencia/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2013-03-01T11:51:50+02:00" />
 <meta property="article:modified_time" content="2013-03-01T11:51:50+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Parallel Series 07 - Problemas de concurrencia"/>
 <meta name="twitter:description" content="Ir al índice de la serie
@@ -162,7 +163,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 <h4 id="paso-1--definir-una-clase-customer">Paso 1 – Definir una Clase Customer</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -186,56 +187,53 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 </span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Customer</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">CustomerId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-    <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
-
-    <span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Customer</span><span class="p">&gt;</span> <span class="n">GetSampleCustomers</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="n">Random</span> <span class="n">r</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">(</span><span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">GetHashCode</span><span class="p">());</span>
-        <span class="n">List</span><span class="p">&lt;</span><span class="n">Customer</span><span class="p">&gt;</span> <span class="n">customers</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Customer</span><span class="p">&gt;();</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
-        <span class="p">{</span>
-            <span class="n">customers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Customer</span><span class="p">()</span>
-            <span class="p">{</span>
-                <span class="n">CustomerId</span> <span class="p">=</span> <span class="n">i</span><span class="p">,</span>
-                <span class="n">Name</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;Customer {0}&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
-                <span class="n">Age</span> <span class="p">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="m">20</span><span class="p">,</span> <span class="m">80</span><span class="p">)</span>
-            <span class="p">});</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="n">customers</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">public</span> <span class="k">class</span> <span class="nc">Customer</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">CustomerId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">public</span> <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Customer</span><span class="p">&gt;</span> <span class="n">GetSampleCustomers</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Random</span> <span class="n">r</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">(</span><span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">GetHashCode</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="n">List</span><span class="p">&lt;</span><span class="n">Customer</span><span class="p">&gt;</span> <span class="n">customers</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Customer</span><span class="p">&gt;();</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">customers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">Customer</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">            <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="n">CustomerId</span> <span class="p">=</span> <span class="n">i</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Name</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&#34;Customer {0}&#34;</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl">                <span class="n">Age</span> <span class="p">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="m">20</span><span class="p">,</span> <span class="m">80</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="p">});</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">customers</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h4 id="paso-2--crear-un-dictionary">Paso 2 – Crear un Dictionary</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">Customer</span><span class="p">&gt;</span> <span class="n">dic1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">Customer</span><span class="p">&gt;();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">Customer</span><span class="p">&gt;</span> <span class="n">dic1</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="n">Customer</span><span class="p">&gt;();</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h4 id="paso-3--crear-100000-clientes-de-ejemplo">Paso 3 – Crear 100.000 clientes de ejemplo</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">dic1</span> <span class="p">=</span> <span class="n">Customer</span><span class="p">.</span><span class="n">GetSampleCustomers</span><span class="p">(</span><span class="m">100000</span><span class="p">).</span><span class="n">ToDictionary</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">dic1</span> <span class="p">=</span> <span class="n">Customer</span><span class="p">.</span><span class="n">GetSampleCustomers</span><span class="p">(</span><span class="m">100000</span><span class="p">).</span><span class="n">ToDictionary</span><span class="p">(</span><span class="n">p</span> <span class="p">=&gt;</span> <span class="n">p</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h4 id="paso-4--definir-2-métodos-que-compitan-entre-si">Paso 4 – Definir 2 métodos que compitan entre si</h4>
 <p>Ahora, vamos a complicar un poco más el ejemplo y crearemos dos métodos que simulen el borrado y la actualización de los objetos que contiene la colección. Luego llamaremos a éstos métodos para 100 objetos aleatorios de forma paralela para ver que efectos se producen</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -257,48 +255,44 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="n">DeleteItem1</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">dic1</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="n">dic1</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">Age</span> <span class="p">&lt;</span> <span class="m">30</span><span class="p">)</span> <span class="n">dic1</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">private</span> <span class="k">void</span> <span class="n">UpdateItem1</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">dic1</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">id</span><span class="p">))</span> <span class="n">dic1</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">Age</span><span class="p">++;</span>
-<span class="p">}</span>
-
-<span class="k">private</span> <span class="k">void</span> <span class="n">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">100</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
-    <span class="p">{</span>
-        <span class="n">Random</span> <span class="n">r</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">(</span><span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">GetHashCode</span><span class="p">());</span>
-        <span class="kt">int</span> <span class="n">id</span> <span class="p">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">dic1</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
-        <span class="n">Task</span><span class="p">.</span><span class="n">Factory</span><span class="p">.</span><span class="n">StartNew</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">DeleteItem1</span><span class="p">(</span><span class="n">id</span><span class="p">));</span>
-        <span class="n">Task</span><span class="p">.</span><span class="n">Factory</span><span class="p">.</span><span class="n">StartNew</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">UpdateItem1</span><span class="p">(</span><span class="n">id</span><span class="p">));</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">void</span> <span class="n">DeleteItem1</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">dic1</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="p">&amp;&amp;</span> <span class="n">dic1</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">Age</span> <span class="p">&lt;</span> <span class="m">30</span><span class="p">)</span> <span class="n">dic1</span><span class="p">.</span><span class="n">Remove</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">void</span> <span class="n">UpdateItem1</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">dic1</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">id</span><span class="p">))</span> <span class="n">dic1</span><span class="p">[</span><span class="n">id</span><span class="p">].</span><span class="n">Age</span><span class="p">++;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">void</span> <span class="n">button1_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">100</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Random</span> <span class="n">r</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Random</span><span class="p">(</span><span class="n">Guid</span><span class="p">.</span><span class="n">NewGuid</span><span class="p">().</span><span class="n">GetHashCode</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">int</span> <span class="n">id</span> <span class="p">=</span> <span class="n">r</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">dic1</span><span class="p">.</span><span class="n">Count</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Task</span><span class="p">.</span><span class="n">Factory</span><span class="p">.</span><span class="n">StartNew</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">DeleteItem1</span><span class="p">(</span><span class="n">id</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Task</span><span class="p">.</span><span class="n">Factory</span><span class="p">.</span><span class="n">StartNew</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">UpdateItem1</span><span class="p">(</span><span class="n">id</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h4 id="paso-5---a-jugar-">Paso 5 - A jugar :)</h4>
 <p>Ejecutamos nuestra aplicación y si se produce una colisión puede pasar que obtengamos un bonito error como este, en el que básicamente se intenta acceder a un elemento de la colección que ya no existe (Si no se produce a la primera, repite la prueba hasta que lo veas).</p>
 <p>Y digo que puede pasar, pero no es seguro. Tal vez tengamos que repetir el proceso varias veces, y es que en un entorno en el que varios threads acceden a un recurso compartido nada nos asegura que se produzca el error. A veces pasa a la primera y a veces a la cuarta, pero hay que tener presente que cuando esté en producción siempre pasará en viernes por la tarde cinco minutos antes de empezar el fin de semana ;)</p>
-<figure>
-    <img src="/images/posts/ExceptionKeyNotFoundInCollection.png"/> <figcaption>
+<figure><img src="/images/posts/ExceptionKeyNotFoundInCollection.png"/><figcaption>
             <h4>Error al intentar acceder a una cliente que ya no existe</h4>
         </figcaption>
 </figure>
 
 <p>Concretamente en la línea que incrementa la edad del cliente:</p>
-<figure>
-    <img src="/images/posts/ExceptionKeyNotFoundInCollectionCode.png"/> <figcaption>
+<figure><img src="/images/posts/ExceptionKeyNotFoundInCollectionCode.png"/><figcaption>
             <h4>¿Pero cómo puede pasar esto?</h4>
         </figcaption>
 </figure>
 
 <p>Analicemos el porqué del error: ¿cómo es posible que no encuentre el elemento en la colección si precisamente en la línea anterior verificamos su existencia? Pues ahí está la gracia, que lo verificamos en la línea anterior. A nosotros -pobres developers- nos parece que la línea anterior en la que verificamos si existe y la línea siguiente en la que lo eliminamos van seguidas una detrás de otra, pero realmente <strong>en un entorno asíncrono hay todo un mundo entre ambas</strong>. Y eso es porque ambas líneas se ejecutan de forma separada, sin ningún tipo de bloqueo, no existe Transaccionalidad al estilo de las bases de datos, de modo que mientras el primer thread verifica que existe ese elemento en la colección y lo borra, llega el segundo thread y… ZASCA! Lo elimina.</p>
-<figure>
-    <img src="/images/posts/ConcurrentCollections_Dictionary.png"/> <figcaption>
+<figure><img src="/images/posts/ConcurrentCollections_Dictionary.png"/><figcaption>
             <h4>Esta es la explicación...</h4>
         </figcaption>
 </figure>
@@ -310,30 +304,28 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 <h4 id="paso-1--cambiamos-dictionary-por-concurrentdictionary">Paso 1 – Cambiamos Dictionary por ConcurrentDictionary</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">ConcurrentDictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">Customer</span><span class="p">&gt;</span> <span class="n">dic2</span> <span class="p">=</span>
-    <span class="k">new</span> <span class="n">ConcurrentDictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">Customer</span><span class="p">&gt;();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">ConcurrentDictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">Customer</span><span class="p">&gt;</span> <span class="n">dic2</span> <span class="p">=</span>
+</span></span><span class="line"><span class="cl">    <span class="k">new</span> <span class="n">ConcurrentDictionary</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">Customer</span><span class="p">&gt;();</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h4 id="paso-2---creamos-100000-clientes-de-ejemplo">Paso 2 - Creamos 100.000 clientes de ejemplo</h4>
 <p>Al igual que hacíamos antes. Aquí podemos ver la primera diferencia, ya que usamos uno de los nuevos métodos TryXXX:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">Customer</span><span class="p">.</span><span class="n">GetSampleCustomers</span><span class="p">(</span><span class="m">100000</span><span class="p">).</span><span class="n">ForEach</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">dic2</span><span class="p">.</span><span class="n">TryAdd</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">,</span> <span class="n">c</span><span class="p">));</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">Customer</span><span class="p">.</span><span class="n">GetSampleCustomers</span><span class="p">(</span><span class="m">100000</span><span class="p">).</span><span class="n">ForEach</span><span class="p">(</span><span class="n">c</span> <span class="p">=&gt;</span> <span class="n">dic2</span><span class="p">.</span><span class="n">TryAdd</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">,</span> <span class="n">c</span><span class="p">));</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h4 id="paso-3---modificamos-los-2-métodos-que-compiten">Paso 3 - Modificamos los 2 métodos que compiten</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -356,28 +348,27 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 </span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">void</span> <span class="n">DeleteItem2</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">Customer</span> <span class="n">c</span><span class="p">;</span>
-    <span class="k">if</span><span class="p">(!</span><span class="n">dic2</span><span class="p">.</span><span class="n">TryRemove</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="k">out</span> <span class="n">c</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Error deleting!&#34;</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="k">private</span> <span class="k">void</span> <span class="n">UpdateItem2</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">Customer</span> <span class="n">c</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(!</span><span class="n">dic2</span><span class="p">.</span><span class="n">TryGetValue</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="k">out</span> <span class="n">c</span><span class="p">))</span>
-    <span class="p">{</span>
-        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Error getting value&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="n">Customer</span> <span class="n">newc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="p">()</span> <span class="p">{</span>
-            <span class="n">CustomerId</span> <span class="p">=</span> <span class="n">c</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="n">c</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="n">c</span><span class="p">.</span><span class="n">Age</span> <span class="p">};</span>
-        <span class="n">newc</span><span class="p">.</span><span class="n">Age</span><span class="p">++;</span>
-        <span class="k">if</span> <span class="p">(!</span><span class="n">dic2</span><span class="p">.</span><span class="n">TryUpdate</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">newc</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Error updating!&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">private</span> <span class="k">void</span> <span class="n">DeleteItem2</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Customer</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(!</span><span class="n">dic2</span><span class="p">.</span><span class="n">TryRemove</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="k">out</span> <span class="n">c</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Error deleting!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span> <span class="k">void</span> <span class="n">UpdateItem2</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Customer</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(!</span><span class="n">dic2</span><span class="p">.</span><span class="n">TryGetValue</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="k">out</span> <span class="n">c</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Error getting value&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Customer</span> <span class="n">newc</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">CustomerId</span> <span class="p">=</span> <span class="n">c</span><span class="p">.</span><span class="n">CustomerId</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="n">c</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">Age</span> <span class="p">=</span> <span class="n">c</span><span class="p">.</span><span class="n">Age</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">        <span class="n">newc</span><span class="p">.</span><span class="n">Age</span><span class="p">++;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(!</span><span class="n">dic2</span><span class="p">.</span><span class="n">TryUpdate</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">newc</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span> <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&#34;Error updating!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>En el borrado usamos el método TryRemove que necesita el id del elemento a eliminar, y en caso que lo elimine con éxito, devuelve True y el objeto eliminado en el segundo parámetro out (de salida) del método. En caso que no lo elimine devuelve False y el valor default del objeto a eliminar en el segundo parámetro.</p>
@@ -387,7 +378,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 <p>Ejecutamos y si vamos a la ventana de consola podremos observar el resultado:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -397,21 +388,21 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-systemd" data-lang="systemd"><span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
-<span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
-<span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
-<span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
-<span class="err">Error</span> <span class="err">updating!</span>
-<span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
-<span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
-<span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-systemd" data-lang="systemd"><span class="line"><span class="cl"><span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
+</span></span><span class="line"><span class="cl"><span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
+</span></span><span class="line"><span class="cl"><span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
+</span></span><span class="line"><span class="cl"><span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
+</span></span><span class="line"><span class="cl"><span class="err">Error</span> <span class="err">updating!</span>
+</span></span><span class="line"><span class="cl"><span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
+</span></span><span class="line"><span class="cl"><span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span>
+</span></span><span class="line"><span class="cl"><span class="err">Error</span> <span class="err">getting</span> <span class="err">value</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>En la mayoría de los casos, obtenemos un error de lectura porque el elemento ya ha sido eliminado de la colección, pero en algunos casos el error se producirá en el método TryUpdate. Eso significa que la llamada a TryGetValue encuentra el elemento, pero cuando lo vamos a modificar éste ya no existe en la colección. Perfecto! :)</p>
 <h3 id="conclusión">Conclusión</h3>
 <p>La ventaja de usar colecciones específicas en entornos multithreading es clara: Garantizan que el acceso a los recursos compartidos sea transaccional, al más puro estilo de las bases de datos. De acuerdo que su programación sea un poco más compleja, pero no tiene nada que ver con lo que se tenía que hacer antiguamente cuando no existía la TPL.</p>
 <p>Por otro lado, el uso de estas colecciones debe hacerse sólo en aquelos casos en los que se accede a recursos compartidos, ya que si no, por un lado estamos complicando nuestro codigo y por otro lado un ConcurrentDictionary no es tan eficiente como lo és un Dictionary, sobre todo en entornos más de escritura que de lectura. Tenéis un post muy detallado al respecto del gran James (aka Black Rabbit) respecto a la diferencia de performance:</p>
-<p><a href="http://geekswithblogs.net/BlackRabbitCoder/archive/2010/06/09/c-4-the-curious-concurrentdictionary.aspx">http://geekswithblogs.net/BlackRabbitCoder/archive/2010/06/09/c-4-the-curious-concurrentdictionary.aspx</a></p>
+<p><a href="http://geekswithblogs.net/BlackRabbitCoder/archive/2010/06/09/c-4-the-curious-concurrentdictionary.aspx" target="_blank" rel="noopener noreffer">http://geekswithblogs.net/BlackRabbitCoder/archive/2010/06/09/c-4-the-curious-concurrentdictionary.aspx</a></p>
 <p>Espero sacar tiempo para otro post en el que explicar otras colecciones de este namespace, como las ‘BlockingCollection’ o las ‘’ConcurrentBag’, que son colecciones más especializadas. La primera está optimizada para escenarios dónde el mismo thread produce y consume objetos, mientras que la segunda ha sido especialmente diseñada para escenarios de productor-consumidor.</p>
 <p><a href="/es/parallelseries00-index" rel="">Ir al índice de la serie</a></p>
 </div><div class="post-footer" id="post-footer">
@@ -444,7 +435,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -463,7 +454,7 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 

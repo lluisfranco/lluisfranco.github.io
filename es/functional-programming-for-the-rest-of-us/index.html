@@ -8,16 +8,17 @@
         <title>Programación funcional para el resto de nosotros - &gt;_lluis franco</title><meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Programación funcional para el resto de nosotros" />
 <meta property="og:description" content="Ir al índice de la serie
 Mi idea inicial Originalmente, en mi serie sobre la Task Parallel Library estaba pensando en incluir algún post sobre programación funcional, pero cuando encontré esta pequeña joya decidí pedir permiso a Luis para poder incluir una copia en mi blog, ya que ni en sueños podría yo haber escrito algo tan completo. Mis felicitaciones!
-Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo al excelente trabajo y consulta la versión traducida de Luis Mendoza, basado en el post original de Slava Akhmechet." />
+Nota Artículo reproducido con permiso del traductor original. Dale un vistazo al excelente trabajo y consulta la versión traducida de Luis Mendoza, basado en el post original de Slava Akhmechet." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lluisfranco.com/es/functional-programming-for-the-rest-of-us/" />
+<meta property="og:url" content="https://lluisfranco.com/es/functional-programming-for-the-rest-of-us/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2012-02-10T11:51:50+02:00" />
 <meta property="article:modified_time" content="2012-02-10T11:51:50+02:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Programación funcional para el resto de nosotros"/>
 <meta name="twitter:description" content="Ir al índice de la serie
 Mi idea inicial Originalmente, en mi serie sobre la Task Parallel Library estaba pensando en incluir algún post sobre programación funcional, pero cuando encontré esta pequeña joya decidí pedir permiso a Luis para poder incluir una copia en mi blog, ya que ni en sueños podría yo haber escrito algo tan completo. Mis felicitaciones!
-Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo al excelente trabajo y consulta la versión traducida de Luis Mendoza, basado en el post original de Slava Akhmechet."/>
+Nota Artículo reproducido con permiso del traductor original. Dale un vistazo al excelente trabajo y consulta la versión traducida de Luis Mendoza, basado en el post original de Slava Akhmechet."/>
 <meta name="application-name" content="&gt;_lluis franco">
 <meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.com/es/functional-programming-for-the-rest-of-us/" /><link rel="prev" href="https://lluisfranco.com/es/luces-camara-action/" /><link rel="next" href="https://lluisfranco.com/es/parallelseries06-task-class/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
@@ -200,13 +201,12 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>El cálculo lambda fue creado para investigar problemas relacionados con cálculo. La programación funcional, por tanto, trata principalmente con cálculo, y, ¡sorpresa!, lo hace mediante funciones. La función es la unidad básica en programación funcional. Las funciones son usadas para prácticamente todo, aun para los cálculos más simples. Hasta las variables son reemplazadas con funciones. En programación funcional las variables son simplemente accesos directos a expresiones (para no tener que escribir todo en una misma línea). No pueden ser modificadas. Todas las variables pueden ser asignadas solo una vez. En términos de Java esto significa que cada variable es declarada como final (o const si hablamos de C++). No hay variables mutables en FP:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">final</span> <span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
-<span class="n">final</span> <span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="n">i</span> <span class="p">+</span> <span class="m">3</span><span class="p">;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">final</span> <span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">5</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">final</span> <span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="n">i</span> <span class="p">+</span> <span class="m">3</span><span class="p">;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Dado que cada variable en FP es final, podemos llegar a dos conclusiones interesantes. Primero, que no tiene sentido escribir la palabra clave final y segundo, que no tiene sentido llamar a las variables, pues… variables. Haremos estas dos modificaciones a Java: cada variable declarada en nuestro Java funcional sera final por default, y nos referiremos a las variables como símbolos.</p>
@@ -214,7 +214,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>En realidad los programas funcionales pueden mantener un estado, pero no usan las variables para eso. Usan funciones. El estado es mantenido en los parámetros de la función, en la pila. Si deseas mantener un estado para modificarlo posteriormente, escribes una función recursiva. Como ejemplo, escribamos una función que devuelva una cadena de carácteres de Java al revés. Recuerda que cada variable (más bien, cada símbolo) es final por default (Es interesante notar que las cadenas de Java son inmutables de todas formas. Es aun más interesante explorar las razones de esta falsedad, pero nos distraeríamos de nuestro objetivo).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -227,18 +227,17 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">String</span> <span class="n">al_reves</span><span class="p">(</span><span class="n">String</span> <span class="n">arg</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">arg</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">arg</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">else</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">al_reves</span><span class="p">(</span> <span class="n">arg</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">arg</span><span class="p">.</span><span class="n">length</span><span class="p">())</span> <span class="p">+</span> <span class="n">arg</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">));</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">al_reves</span><span class="p">(</span><span class="n">String</span> <span class="n">arg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">arg</span><span class="p">.</span><span class="n">length</span><span class="p">()</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">arg</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">al_reves</span><span class="p">(</span> <span class="n">arg</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="n">arg</span><span class="p">.</span><span class="n">length</span><span class="p">())</span> <span class="p">+</span> <span class="n">arg</span><span class="p">.</span><span class="n">substring</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">1</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Esta función es lenta porque se llama a sí misma repetidamente (Muchos de los compiladores de lenguajes funcionales optimizan las funciones recursivas transformandolas en sus contrapartes iterativas siempre que sea posible. A eso se le llama optimización de llamadas a la inversa o Tail recursion). Es una devoradora de memoria porque repetidamente asigna memoria a los objetos. Pero está escrita en estilo funcional. Quizá te preguntes porque alguien querría un programa de esta forma. Bueno, estaba a punto de decírtelo.</p>
@@ -257,15 +256,14 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>La historia de la concurrencia no termina aquí. Si tu aplicación es inherentemente de un solo hilo, el compilador puede aun optimizar programas funcionales para correr en múltiples CPUs. Hecha un vistazo al siguiente fragmento de código:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">String</span> <span class="n">s1</span> <span class="p">=</span> <span class="n">unaOperacionMuyLarga1</span><span class="p">();</span>
-<span class="n">String</span> <span class="n">s2</span> <span class="p">=</span> <span class="n">unaOperacionMuyLarga2</span><span class="p">();</span>
-<span class="n">String</span> <span class="n">s3</span> <span class="p">=</span> <span class="n">concatenar</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">s1</span> <span class="p">=</span> <span class="n">unaOperacionMuyLarga1</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">s2</span> <span class="p">=</span> <span class="n">unaOperacionMuyLarga2</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">s3</span> <span class="p">=</span> <span class="n">concatenar</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>En un lenguaje funcional el compilador puede analizar el código, clasificar las funciones que crean las cadenas s1 y s2 como potenciales consumidoras de tiempo, y ejecutarlas concurrentemente. Esto es imposible de hacer en un lenguaje imperativo porque cada función puede modificar el estado externo y la siguiente función a ejecutarse quizá dependa de ello. En los lenguajes funcionales el análisis automático de funciones para encontrar buenos candidatos para ejecución concurrente es tan trivial como reducir funciones a funciones inline en C++. ¡Así de fácil! En este sentido, los programas en estilo funcional son “a prueba del futuro” (por mucho que odie las expresiones de moda, esta vez hare una excepción). Los creadores de hardware ya no pueden hacer que las CPUs sean más rápidas. En su lugar, incrementan el número de núcleos y atribuyen el cuádruple de aumento de velocidad a a la concurrencia. Por supuesto, convenientemente olvidan mencionar que solo obtendremos beneficios de eso si el software que usamos esta listo para ser paralelizable. Esto apenas es cierto en una pequeña fracción del software imperativo, pero es verdad en el 100% del software funcional, porque los programas funcionales son paralelizables recién salidos de la caja.</p>
@@ -281,23 +279,22 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>Una función en un lenguaje funcional es diferente de una función en C o en Java. Es un superconjunto (es decir, puede hacer todo lo que una función Java puede hacer, y más). Crearemos una función de la misma manera que lo hacemos en C.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">suma</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">i</span> <span class="p">+</span> <span class="n">j</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">suma</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">i</span> <span class="p">+</span> <span class="n">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Sin embargo, este trozo de código difiere del equivalente en C. Extendamos nuestro compilador Java para soportar esta nueva notación de la que hablo. Cuando escribamos algo como lo anterior, nuestro compilador lo convertirá en el fragmento de código Java siguiente (no olvides que todo es final):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -307,15 +304,14 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">t_funcion_suma</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">suma</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">i</span> <span class="p">+</span> <span class="n">j</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="n">t_funcion_suma</span> <span class="n">suma</span> <span class="p">=</span> <span class="k">new</span> <span class="n">t_funcion_suma</span><span class="p">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">t_funcion_suma</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">suma</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">i</span> <span class="p">+</span> <span class="n">j</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">t_funcion_suma</span> <span class="n">suma</span> <span class="p">=</span> <span class="k">new</span> <span class="n">t_funcion_suma</span><span class="p">();</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>El símbolo suma no es realmente una función. Es la instancia de una pequeña clase con una sola función miembro. Por eso, podemos pasar suma en nuestro código como un argumento para otras funciones. Podemos asignarla a otro símbolo. Podemos crear instancias de t_funcion_suma en tiempo de ejecución y serán eliminadas por el recolector de basura cuando ya no se necesiten. Esto hace de las funciones objetos de primera clase, no distintos de los enteros o las cadenas. Las funciones que operan sobre otras funciones (o sea, que aceptan funciones como argumentos) son llamadas funciones de orden superior (higher order functions). No dejes que dicho término te intimide. No es diferente de las clases Java que operan sobre otras (podemos pasar instancias de una clase a otra). Podríamos llamarlas “clases de orden superior”, pero a nadie le importa porque no hay una fuerte comunidad académica detrás de Java.</p>
@@ -323,7 +319,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>Supón que tenemos la pieza de código Java del Listado siguiente, que recibe un mensaje, lo transforma de varias maneras, y lo reenvía a otro servidor.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -336,24 +332,23 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">ControladorMensajes</span>
-<span class="p">{</span>
-    <span class="k">void</span> <span class="n">controlarMensaje</span><span class="p">(</span><span class="n">Mensaje</span> <span class="n">msg</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// ...
-</span><span class="c1"></span>        <span class="n">msg</span><span class="p">.</span><span class="n">configurarCodigoCliente</span><span class="p">(</span><span class="s">&#34;ABCD_123&#34;</span><span class="p">);</span>
-        <span class="c1">// ...
-</span><span class="c1"></span>        <span class="n">enviarMensaje</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="c1">// ...
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ControladorMensajes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">controlarMensaje</span><span class="p">(</span><span class="n">Mensaje</span> <span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">        <span class="n">msg</span><span class="p">.</span><span class="n">configurarCodigoCliente</span><span class="p">(</span><span class="s">&#34;ABCD_123&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">        <span class="n">enviarMensaje</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Ahora imagina que nuestro sistema ha cambiado y que tenemos que encaminar mensajes a dos servidores en lugar de uno. Todo es manejado de la misma forma a excepción del código del cliente (el segundo servidor lo quiere en un formato diferente). ¿Cómo abordamos la situación? Revisaríamos donde es enviado el mensaje y elegiríamos entre los códigos del cliente para elegir el correcto, como se muestra en el Listado siguiente:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -373,31 +368,30 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">ControladorMensajes</span>
-<span class="p">{</span>
-    <span class="k">void</span> <span class="n">controlarMensaje</span><span class="p">(</span><span class="n">Mensaje</span> <span class="n">msg</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// ...
-</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">obtenerDestino</span><span class="p">().</span><span class="k">equals</span><span class="p">(</span><span class="s">&#34;server1&#34;</span><span class="p">))</span>
-        <span class="p">{</span>
-            <span class="n">msg</span><span class="p">.</span><span class="n">configurarCodigoCliente</span><span class="p">(</span><span class="s">&#34;ABCD_123&#34;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="k">else</span>
-        <span class="p">{</span>
-            <span class="n">msg</span><span class="p">.</span><span class="n">configurarCodigoCliente</span><span class="p">(</span><span class="s">&#34;123_ABCD&#34;</span><span class="p">);</span>
-        <span class="p">}</span>
-        <span class="c1">// ...
-</span><span class="c1"></span>        <span class="n">enviarMensaje</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="c1">// ...
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ControladorMensajes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">controlarMensaje</span><span class="p">(</span><span class="n">Mensaje</span> <span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">obtenerDestino</span><span class="p">().</span><span class="k">equals</span><span class="p">(</span><span class="s">&#34;server1&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">msg</span><span class="p">.</span><span class="n">configurarCodigoCliente</span><span class="p">(</span><span class="s">&#34;ABCD_123&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="n">msg</span><span class="p">.</span><span class="n">configurarCodigoCliente</span><span class="p">(</span><span class="s">&#34;123_ABCD&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">        <span class="n">enviarMensaje</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Sin embargo esta solución no es escalable. Si se agregaran más servidores nuestra función crecería linealmente y actualizarla sería una pesadilla. Una solución de enfoque orientado a objetos es hacer ControladorMensajes una clase base y especializarla con el código de cada cliente en las clases derivadas:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -427,41 +421,40 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">28
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">abstract</span> <span class="k">class</span> <span class="nc">ControladorMensajes</span>
-<span class="p">{</span>
-    <span class="k">void</span> <span class="n">controlarMensaje</span><span class="p">(</span><span class="n">Mensaje</span> <span class="n">msg</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="c1">// ...
-</span><span class="c1"></span>        <span class="n">msg</span><span class="p">.</span><span class="n">configurarCodigoCliente</span><span class="p">(</span><span class="n">obtenerCodigoCliente</span><span class="p">());</span>
-        <span class="c1">// ...
-</span><span class="c1"></span>        <span class="n">enviarMensaje</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">abstract</span> <span class="n">String</span> <span class="n">obtenerCodigoCliente</span><span class="p">();</span>
-    <span class="c1">// ..
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="k">class</span> <span class="nc">ControladorMensajes1</span> <span class="n">extends</span> <span class="n">ControladorMensajes</span>
-<span class="p">{</span>
-    <span class="n">String</span> <span class="n">obtenerCodigoCliente</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="s">&#34;ABCD_123&#34;</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">class</span> <span class="nc">ControladorMensajes2</span> <span class="n">extends</span> <span class="n">ControladorMensajes</span>
-<span class="p">{</span>
-    <span class="n">String</span> <span class="n">obtenerCodigoCliente</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span><span class="s">&#34;123_ABCD&#34;</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">abstract</span> <span class="k">class</span> <span class="nc">ControladorMensajes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">controlarMensaje</span><span class="p">(</span><span class="n">Mensaje</span> <span class="n">msg</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">        <span class="n">msg</span><span class="p">.</span><span class="n">configurarCodigoCliente</span><span class="p">(</span><span class="n">obtenerCodigoCliente</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">        <span class="n">enviarMensaje</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">abstract</span> <span class="n">String</span> <span class="n">obtenerCodigoCliente</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ..</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ControladorMensajes1</span> <span class="n">extends</span> <span class="n">ControladorMensajes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">obtenerCodigoCliente</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="s">&#34;ABCD_123&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ControladorMensajes2</span> <span class="n">extends</span> <span class="n">ControladorMensajes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span> <span class="n">obtenerCodigoCliente</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span><span class="s">&#34;123_ABCD&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Ahora podemos instanciar una clase apropiada para cada servidor. Añadir más servidores es ahora más escalable. Aun así, es mucho código para una modificación tan simple. ¡Tuvimos que crear dos nuevos tipos solo para soportar distintos tipos de códigos de clientes! Ahora, hagamos la misma cosa en nuestro lenguaje que soporta funciones de orden superior:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -487,31 +480,30 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">ControladorMensajes</span>
-<span class="p">{</span>
-    <span class="k">void</span> <span class="n">controlarMensaje</span><span class="p">(</span><span class="n">Mensaje</span> <span class="n">msj</span><span class="p">,</span> <span class="n">Function</span> <span class="n">codigoCliente</span><span class="p">)</span>
-    <span class="p">{</span>
-    <span class="c1">// ...
-</span><span class="c1"></span>    <span class="n">Mensaje</span> <span class="n">msj1</span> <span class="p">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">configurarCodigoCliente</span><span class="p">(</span><span class="n">codigoCliente</span><span class="p">());</span>
-    <span class="c1">// ...
-</span><span class="c1"></span>    <span class="n">enviarMensaje</span><span class="p">(</span><span class="n">msj1</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="c1">// ...
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="n">String</span> <span class="n">codigoCliente1</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="s">&#34;ABCD_123&#34;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">String</span> <span class="n">codigoCliente2</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="s">&#34;123_ABCD&#34;</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">ControladorMensajes</span> <span class="n">controlador</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ControladorMensajes</span><span class="p">();</span>
-<span class="n">controlador</span><span class="p">.</span><span class="n">controlarMensaje</span><span class="p">(</span><span class="n">unMsj</span><span class="p">,</span> <span class="n">codigoCliente1</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">ControladorMensajes</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">void</span> <span class="n">controlarMensaje</span><span class="p">(</span><span class="n">Mensaje</span> <span class="n">msj</span><span class="p">,</span> <span class="n">Function</span> <span class="n">codigoCliente</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Mensaje</span> <span class="n">msj1</span> <span class="p">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">configurarCodigoCliente</span><span class="p">(</span><span class="n">codigoCliente</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl">    <span class="n">enviarMensaje</span><span class="p">(</span><span class="n">msj1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">codigoCliente1</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s">&#34;ABCD_123&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">codigoCliente2</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s">&#34;123_ABCD&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ControladorMensajes</span> <span class="n">controlador</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ControladorMensajes</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">controlador</span><span class="p">.</span><span class="n">controlarMensaje</span><span class="p">(</span><span class="n">unMsj</span><span class="p">,</span> <span class="n">codigoCliente1</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>En este caso, no creamos tipos nuevos, ni tuvimos que lidiar con jerarquías de clases. Simplemente pasamos la función apropiada como parámetro. Conseguimos lo mismo que con la contraparte orientada a objetos, pero con varias ventajas adicionales. No nos restringimos a jerarquías de clases: podremos pasar nuevas funciones en tiempo de ejecución y cambiarlas en cualquier momento con un mayor grado de granularidad y menos código. ¡El compilador ha escrito código orientado a objetos “aglutinante” para nosotros! Además, tenemos todos los otros beneficios de FP. Por supuesto, las abstracciones provistas por los lenguajes funcionales no terminan aquí. Las funciones de orden superior son solo el principio.</p>
@@ -521,26 +513,25 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>El patrón de Adaptador es mejor conocido cuando se aplica a la unidad de abstracción por default en Java (una clase). En lenguajes funcionales este patrón es aplicado a funciones. Dicho patrón toma una interfaz y la transforma en otra interfaz que alguien más espera. Aquí hay un ejemplo de un patrón de Adaptador:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">potencia</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">);</span>
-<span class="kt">int</span> <span class="n">cuadrado</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">potencia</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">potencia</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">cuadrado</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">potencia</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>El código arriba mostrado adapta una interfaz de una función que eleva un entero a un exponente entero, a una interfaz de la función que eleva al cuadrado un entero. En círculos académicos esta técnica trivial es llamada currying (en honor a Haskell Curry, quien realizó las acrobacias matemáticas necesarias para formalizar esto). Dado que las funciones en FP son pasadas como argumentos (opuesto a las clases), currying es usado a menudo para adaptar funciones a una interfaz que alguien más espera. Dado que la interfaz de las funciones son sus argumentos, la técnica currying es usada para reducir el número de argumentos (como en el ejemplo anterior).</p>
 <p>Los lenguajes funcionales vienen con esta técnica incorporada. No necesitas crear manualmente una función que envuelva a la otra, el lenguaje mismo lo hará por ti. Como antes, extendamos nuestro lenguaje para incorporar esta técnica.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -551,16 +542,15 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">t_funcion_cuadrado</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">cuadrado</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">potencia</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="n">t_funcion_cuadrado</span> <span class="n">cuadrado</span> <span class="p">=</span> <span class="k">new</span> <span class="n">t_funcion_cuadrado</span><span class="p">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">t_funcion_cuadrado</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">cuadrado</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">potencia</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="m">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">t_funcion_cuadrado</span> <span class="n">cuadrado</span> <span class="p">=</span> <span class="k">new</span> <span class="n">t_funcion_cuadrado</span><span class="p">();</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Como puedes ver, de forma simple creamos una envoltura de la función original. En FP currying es solo eso (una forma fácil de y rápida de crear envolturas de otras funciones). Tu te concentras en tu trabajo, ¡y el compilador escribe el código apropiado para ti! ¿Cuando usar currying? Es fácil de responder. Cada vez que quieras usar el patrón de Adaptador (una envoltura).</p>
@@ -568,15 +558,14 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>La evaluación tardía (o perezosa) es un técnica interesantes que se vuelve posible una vez que adoptamos una filosofía funcional. Ya habíamos visto el fragmento de código del listado cuando hablamos sobre concurrencia:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">String</span> <span class="n">s1</span> <span class="p">=</span> <span class="n">unaOperacionMuyLarga1</span><span class="p">();</span>
-<span class="n">String</span> <span class="n">s2</span> <span class="p">=</span> <span class="n">unaOperacionMuyLarga2</span><span class="p">();</span>
-<span class="n">String</span> <span class="n">s3</span> <span class="p">=</span> <span class="n">concatenar</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">String</span> <span class="n">s1</span> <span class="p">=</span> <span class="n">unaOperacionMuyLarga1</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">s2</span> <span class="p">=</span> <span class="n">unaOperacionMuyLarga2</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">String</span> <span class="n">s3</span> <span class="p">=</span> <span class="n">concatenar</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>En un lenguaje imperativo el orden de evaluación queda claro. Dado que cada función pudiera afectar o depender del estado externo, es necesario ejecutarlas en orden: primero <strong>unaOperacionMuyLarga1</strong>, luego <strong>unaOperacionMuyLarga2</strong>, seguida de <strong>concatenar</strong>. No así en un lenguaje funcional.</p>
@@ -588,33 +577,31 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>La evaluación tardía provee un nivel superior de abstracción que permite implementar cosas que de otra forma serían imposibles. Por ejemplo, considere implementar la estructura de control del listado siguiente:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">aMenosQue</span><span class="p">(</span><span class="n">stock</span><span class="p">.</span><span class="n">esEuropeo</span><span class="p">())</span>
-<span class="p">{</span>
-    <span class="n">enviarASEC</span><span class="p">(</span><span class="n">stock</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">aMenosQue</span><span class="p">(</span><span class="n">stock</span><span class="p">.</span><span class="n">esEuropeo</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">enviarASEC</span><span class="p">(</span><span class="n">stock</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Deseamos ejecutar <strong>eviarASEC</strong> a menos que el stock sea europeo. ¿Cómo podríamos implementar <strong>aMenosQue</strong>? Sin evaluación tardía, necesitaríamos alguna tipo de macro, pero en un lenguaje como Haskell no. ¡Podemos implementar <strong>aMenosQue</strong> como una función:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">void</span> <span class="n">aMenosQue</span><span class="p">(</span><span class="n">boolean</span> <span class="n">condicion</span><span class="p">,</span> <span class="n">List</span> <span class="n">codigo</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(!</span><span class="n">condicion</span><span class="p">)</span> <span class="n">codigo</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">void</span> <span class="n">aMenosQue</span><span class="p">(</span><span class="n">boolean</span> <span class="n">condicion</span><span class="p">,</span> <span class="n">List</span> <span class="n">codigo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(!</span><span class="n">condicion</span><span class="p">)</span> <span class="n">codigo</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Nota que codigo nunca es evaluado si la condición es verdadera. No podemos hacer los mismo en un lenguaje de evaluación estricta porque los argumentos serían evaluados antes de entrar en <strong>aMenosQue</strong>.</p>
@@ -624,13 +611,12 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>Por supuesto, no todo es miel sobre hojuelas. La evaluación tardía implica también desventajas. La principal es que, pues, es tardía (o perezosa). Muchos de los problemas del mundo real requieren evaluación estricta. Por ejemplo, considera el siguiente listado:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;Por favor ingresa tu nombre: &#34;</span><span class="p">);</span>
-<span class="n">System</span><span class="p">.</span><span class="k">in</span><span class="p">.</span><span class="n">readLine</span><span class="p">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;Por favor ingresa tu nombre: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="p">.</span><span class="k">in</span><span class="p">.</span><span class="n">readLine</span><span class="p">();</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>¡En un lenguaje de evaluación tardía no hay garantía de que la primera línea se ejecutará antes de la segunda! Esto significa que no podemos hacer operaciones de E/S, ni usar funciones nativas de ninguna forma útil (puesto que necesitan ser llamadas en orden, dado que dependen de efectos colaterales), ¡ni interactuar con el mundo exterior! Si hiciéramos que las primitivas fueran ejecutadas en un orden específico, perderíamos los beneficios de poder ver nuestro código desde un punto de vista matemático (con lo que se irían también todos los beneficios de la programación funcional). Afortunadamente, no todo está perdido. Los matemáticos han trabajado y desarrollado algunos trucos para asegurarse de que porciones del código sean ejecutadas en un orden particular en un ambiente funcional. ¡Tenemos lo mejor de los dos mundos! Estas técnicas incluyen continuaciones, monads, y escritura singular. En este artículo solo veremos las continuaciones. Dejaremos las otras dos para otra ocasión. Es interesante que las continuaciones son útiles para más cosas que permitir un orden particular de evaluación. Hablaremos de esto también.</p>
@@ -639,46 +625,42 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>Cuando aprendimos sobre funciones, solo aprendimos la verdad a medias, pues asumimos falsamente que las funciones deben regresar su valor de retorno a quien la llamó. En este sentido, las continuaciones son una generalización de las funciones. Una función no necesita regresar a quien la llamó, y más bien puede ir a cualquier otra parte del programa. Una “continuación” es un parámetro opcional que le dice a la función donde debe continuar la ejecución del programa. La descripción quizá suene más complicada de lo que parece. Mira el fragmento de código del listado siguiente:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="n">suma</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span>
-<span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="n">cuadrado</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="n">suma</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="n">cuadrado</span><span class="p">(</span><span class="n">i</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>La función suma devuelve 15, valor que es asignado al símbolo i, en el lugar donde suma fue llamado. Después el valor de i es usado para llamar cuadrado. Note que un compilador de evaluación tardía no puede reacomodar estas líneas de código pues la segunda línea depende de la evaluación correcta de la primera. Podemos reescribir este bloque de código usando el Estilo de Pase de Continuación o CPS (por las siglas en inglés para Continuation Pass Style), donde la función suma no regresa a quien la llamó sino entrega su resultado a la función cuadrado.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="n">suma</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="n">cuadrado</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">j</span> <span class="p">=</span> <span class="n">suma</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="m">10</span><span class="p">,</span> <span class="n">cuadrado</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>En este caso a suma se le pasa otro parámetro, una función a la que suma debe llamar cuando haya terminado su trabajo. En este caso, cuadrado es la continuación de suma. En ambos casos j será igual a 225.</p>
 <p>Aquí encontramos el primer truco para forzar a nuestro lenguaje de evaluación tardía a evaluar dos expresiones en orden. Considera el fragmento de código de E/S del listado siguiente (muy familiar por cierto):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;Por favor ingresa tu nombre: &#34;</span><span class="p">);</span>
-<span class="n">System</span><span class="p">.</span><span class="k">in</span><span class="p">.</span><span class="n">readLine</span><span class="p">();</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;Por favor ingresa tu nombre: &#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">System</span><span class="p">.</span><span class="k">in</span><span class="p">.</span><span class="n">readLine</span><span class="p">();</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Estas dos líneas no dependen una de la otra, por lo que el compilador tiene libertad para reacomodarlas como desee. Sin embargo, si reescribimos esto en CPS (Estilo de Pase de Continuación), ¡entonces habrá una dependencia y el compilador se verá forzado a evaluar las dos líneas en orden!</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;Por favor ingresa tu nombre: &#34;</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="k">in</span><span class="p">.</span><span class="n">readLine</span><span class="p">);</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">&#34;Por favor ingresa tu nombre: &#34;</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="k">in</span><span class="p">.</span><span class="n">readLine</span><span class="p">);</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>En este caso println necesita llamar a readLine con su resultado, y devolver el resultado de readLine. Esto nos permite asegurarnos de que de que las dos líneas serán ejecutadas en el orden deseado y que readLine será evaluada (porque toda la expresión depende del último valor como resultado). En el caso de la función println devuelve void, pero si devolviera cualquier valor abstracto que readLine acepte, ¡entonces nuestro problema queda solucionado! Por supuesto, encadenar funciones de esta forma se vuelve pronto en algo ilegible, pero no tiene por qué ser así. Podemos añadir un poco de azúcar sintáctica al lenguaje, de tal forma que nos permita simplemente escribir las expresiones en orden, y que el compilador encadene las llamadas por nosotros automáticamente. ¡Ahora podemos evaluar las expresiones en el orden que queramos sin perder ninguno de los beneficios de FP (incluyendo al habilidad de razonar sobre nuestro programas matemáticamente)! Si aun te resulta confuso, recuerda que una función es solo una instancia de una clase con una solo método. Reescribe las dos líneas de tal forma que println y readLine sean instancias de clases y lo entenderás más claramente.</p>
@@ -694,7 +676,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>Echemos un vistazo a la coincidencia de patrones mediante un ejemplo. El listado siguiente muestra la función Fibonacci en Java:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -702,19 +684,18 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="m">1</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="p">==</span> <span class="m">1</span><span class="p">)</span> <span class="k">return</span> <span class="m">1</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">-</span><span class="m">2</span><span class="p">)</span> <span class="p">+</span> <span class="n">fin</span><span class="p">(</span><span class="n">n</span><span class="p">-</span><span class="m">1</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span> <span class="k">return</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="p">==</span> <span class="m">1</span><span class="p">)</span> <span class="k">return</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">-</span><span class="m">2</span><span class="p">)</span> <span class="p">+</span> <span class="n">fin</span><span class="p">(</span><span class="n">n</span><span class="p">-</span><span class="m">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>El listado siguiente muestra la función Fibonacci en nuestro lenguaje derivado de Java con soporte para coincidencia de patrones.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -728,30 +709,28 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">fib</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="m">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kt">int</span> <span class="n">fib</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="m">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="kt">int</span> <span class="n">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">-</span><span class="m">2</span><span class="p">)</span> <span class="p">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">-</span><span class="m">1</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">fib</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">fib</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="m">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">fib</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">-</span><span class="m">2</span><span class="p">)</span> <span class="p">+</span> <span class="n">fib</span><span class="p">(</span><span class="n">n</span><span class="p">-</span><span class="m">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>¿Cual es la diferencia? Que el compilador implementa la bifurcación por nosotros. ¿Cual es la gran cosa con esto? Ninguna. Alguien notó que un gran número de funciones contienen muchas sentencias switch complicadas (esto es particularmente cierto en los programas funcionales) y decidió que sería una buena idea abstraerlo de esta forma. Dividimos la función en muchas, y ponemos patrones en lugar de algunos de los argumentos (algo parecido a la sobrecarga de funciones). Cuando la función es llamada, el compilador compara los argumentos con las definiciones en tiempo de ejecución y elige la correcta. Esto se hace usualmente eligiendo la definición más específica. Por ejemplo, int fib(int n) podría ser llamada siendo n igual a 1, pero en este caso int fib(1) es más específica.</p>
 <p>La coincidencia de patrones es usualmente más compleja de la que se observa en estos ejemplos. Por ejemplo, un sistema avanzado de coincidencia de patrones nos permitiría hacer lo siguiente:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="kt">int</span> <span class="n">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="m">10</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span> <span class="kt">int</span> <span class="n">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span> <span class="p">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="m">10</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span> <span class="kt">int</span> <span class="n">f</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>¿Cuando resulta útil usar coincidencia de patrones? !`En un gran número de situaciones! Cada vez que tengas una compleja estructura de ifs anidados, la coincidencia de patrones puede hacer un mejor trabajo con menos código de tu parte. Una función que viene a la mente es la función estándar WndProc que todas las aplicaciones Win32 deben proveer (y esto a menudo se hace mediante abstracciones). Usualmente un sistema de coincidencia de patrones puede examinar tanto colecciones como valores simples. Por ejemplo, si pasas un arreglo (array) a tu función, podrías elegir entre los arreglos cuyo primer elemento sea 1 y el tercero sea mayor que 3.</p>
@@ -760,7 +739,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <p>Hasta ahora hemos discutido características de lenguajes funcionales “puros” (lenguajes que implementan el cálculo lambda y que no entran en conflicto con los formalismos de Church). Sin embargo, muchas de las características de los lenguajes funcionales son útiles fuera del ámbito del cálculo lambda. Mientras que la implementación de un sistema axiomático es útil pues nos permite pensar en nuestros programas desde el punto de vista matemático, quizá esto no siempre sea práctico. Muchos de los lenguajes eligen incorporar algunos elementos funcionales sin adherirse estrictamente a la doctrina funcional. Muchos de esos lenguajes (como Common Lisp) no requieren que todas las variables sean finales (puedes modificarlas en cualquier momento). Además, no requieren que las funciones dependan sólo de sus argumentos (las funciones pueden acceder al estado externo). Pero incluyen características funcionales (como las funciones de orden superior). El paso de funciones en un lenguaje “impuro” es un poco diferente que hacerlo en los confines del cálculo lambda, y precisa una interesante característica a veces llamada cierre léxico. Veamos el código de ejemplo del listado siguiente. Recuerda, en este caso las variables no son finales y las funciones pueden referirse a variables fuera de su ámbito:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -773,24 +752,23 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">Function</span> <span class="n">crearFuncionPotencia</span><span class="p">(</span><span class="kt">int</span> <span class="n">potencia</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">funcionPotencia</span><span class="p">(</span><span class="kt">int</span> <span class="k">base</span><span class="p">)</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="n">elevar</span><span class="p">(</span><span class="k">base</span><span class="p">,</span> <span class="n">potencia</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">funcionPotencia</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="n">Funcion</span> <span class="n">cuadrado</span> <span class="p">=</span> <span class="n">hacerFuncionPotencia</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
-<span class="n">cuadrado</span><span class="p">(</span><span class="m">3</span><span class="p">)</span> <span class="p">;</span> <span class="c1">//Devuelve 9
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">Function</span> <span class="n">crearFuncionPotencia</span><span class="p">(</span><span class="kt">int</span> <span class="n">potencia</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">funcionPotencia</span><span class="p">(</span><span class="kt">int</span> <span class="k">base</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">elevar</span><span class="p">(</span><span class="k">base</span><span class="p">,</span> <span class="n">potencia</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">funcionPotencia</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Funcion</span> <span class="n">cuadrado</span> <span class="p">=</span> <span class="n">hacerFuncionPotencia</span><span class="p">(</span><span class="m">2</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">cuadrado</span><span class="p">(</span><span class="m">3</span><span class="p">)</span> <span class="p">;</span> <span class="c1">//Devuelve 9</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>La función <strong>crearFuncionPotencia</strong> devuelve una función que toma un único argumento y que lo eleva a cierta potencia. ¿Que sucede cuando evaluamos cuadrado(3)? La variable potencia ya no está en el ámbito de funcionPotencia porque <strong>crearFuncionPotencia</strong> ya ha terminado y lo que había en la pila ya no está. ¿Cómo puede funcionar cuadrado entonces? El lenguaje debe, de alguna forma, guardar el valor de potencia para que cuadrado funcione. ¿Que pasaría si creáramos otra función llamada cubo que elevara a la tercera potencia? En tiempo de ejecución existen dos copias de potencia, una por cada función generada usando <strong>crearFuncionPotencia</strong>. Al fenómeno de guardar estos valores se les llama cierres. Los cierres no guardan solo argumentos de la función anfitriona. Por ejemplo, un cierre puede tomar esta forma:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -808,42 +786,40 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="n">Function</span> <span class="n">crearIncrementador</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="kt">int</span> <span class="n">n</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
-    <span class="kt">int</span> <span class="n">incremento</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="p">++</span><span class="n">n</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-<span class="n">Function</span> <span class="n">inc1</span> <span class="p">=</span> <span class="n">crearIncrementador</span><span class="p">();</span>
-<span class="n">Function</span> <span class="n">inc2</span> <span class="p">=</span> <span class="n">crearIncrementador</span><span class="p">();</span>
-<span class="n">inc1</span><span class="p">();</span> <span class="c1">// devuelve 1
-</span><span class="c1"></span><span class="n">inc1</span><span class="p">();</span> <span class="c1">// devuelve 2
-</span><span class="c1"></span><span class="n">inc1</span><span class="p">();</span> <span class="c1">// devuelve 3
-</span><span class="c1"></span><span class="n">inc2</span><span class="p">();</span> <span class="c1">// devuelve 1
-</span><span class="c1"></span><span class="n">inc2</span><span class="p">();</span> <span class="c1">// devuelve 2
-</span><span class="c1"></span><span class="n">inc2</span><span class="p">();</span> <span class="c1">// devuelve 3
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">Function</span> <span class="n">crearIncrementador</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">n</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">incremento</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">++</span><span class="n">n</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">Function</span> <span class="n">inc1</span> <span class="p">=</span> <span class="n">crearIncrementador</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">Function</span> <span class="n">inc2</span> <span class="p">=</span> <span class="n">crearIncrementador</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="n">inc1</span><span class="p">();</span> <span class="c1">// devuelve 1</span>
+</span></span><span class="line"><span class="cl"><span class="n">inc1</span><span class="p">();</span> <span class="c1">// devuelve 2</span>
+</span></span><span class="line"><span class="cl"><span class="n">inc1</span><span class="p">();</span> <span class="c1">// devuelve 3</span>
+</span></span><span class="line"><span class="cl"><span class="n">inc2</span><span class="p">();</span> <span class="c1">// devuelve 1</span>
+</span></span><span class="line"><span class="cl"><span class="n">inc2</span><span class="p">();</span> <span class="c1">// devuelve 2</span>
+</span></span><span class="line"><span class="cl"><span class="n">inc2</span><span class="p">();</span> <span class="c1">// devuelve 3</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>En tiempo de ejecución se guarda el valor de n, para que los incrementadores puedan accesarlo. Más que eso, guarda varias copias de n, una por cada incrementador, aunque se suponga que desaparecerían cuando crearIncrementador retorne. ¿En que se convierte este código al compilar? ¿Cómo funcionan los cierres detrás del telón? Afortunadamente, tenemos un pase para los camerinos.</p>
 <p>Un poco de sentido común nos ayudará. La primera observación que hacemos es que las variables locales no están limitadas a reglas simples de resolución de ámbito y pueden tener un tiempo de vida indeterminado. La conclusión obvia es que no están guardadas en la pila (más bien están guardadas en el montículo. Esto no es más lento que guardas valores en la pila, pues una vez que introduces el recolector de basura, la asignación de memoria se vuelve una operación O(1)). Un cierre, entonces, es implementado justo como cualquiera de las funciones antes vistas, a excepción de que tiene referencias adicionales a las variables en el ámbito de su anfitrión.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-csharp" data-lang="csharp"><span class="k">class</span> <span class="nc">t_alguna_funcion</span>
-<span class="p">{</span>
-    <span class="n">SymbolTable</span> <span class="n">ambientePadre</span><span class="p">;</span>
-    <span class="c1">// ...
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">t_alguna_funcion</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">SymbolTable</span> <span class="n">ambientePadre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// ...</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>Cuando un cierre hace referencia a una variable que no está en el ámbito local, entonces consulta esta referencia en el ámbito del padre (o función anfitriona). ¡Eso es todo! Los cierres hacen que los mundos funcional y orientado a objetos estén más cerca. Cada vez que creas una clase que mantiene algún estado y lo pasa a algún otro lugar, piensa en los cierres. Un cierre es solamente un objeto que crea “variables miembro” al vuelo al tomarlas de su ámbito, ¡para que no tengas que hacerlo tu!</p>
@@ -882,7 +858,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -901,7 +877,7 @@ Nota  Artículo reproducido con permiso del traductor original. Dale un vistazo 
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
