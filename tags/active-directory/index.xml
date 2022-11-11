@@ -8,11 +8,12 @@
     <title>Check if current user is domain administrator</title>
     <link>https://lluisfranco.com/check-current-user-is-domain-admin/</link>
     <pubDate>Mon, 13 Dec 2010 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/check-current-user-is-domain-admin/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/sysadmin.png" referrerpolicy="no-referrer">
             </div>The scenario In business applications it’s very common checking if the current user is member of the ‘domain administrators’ role of your company. For example, recently I had to check if the current user has administrative privileges in order to show some advanced configuration options.
 IsInRole To acomplish this we could use the IsInRole method from the WindowsPrincipal class. This method checks if an user is member of a Windows role and returns a bool value.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

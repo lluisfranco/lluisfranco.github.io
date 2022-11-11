@@ -8,12 +8,13 @@
     <title>Getting data from OLAP cubes</title>
     <link>https://lluisfranco.com/getting-data-from-olap-cubes/</link>
     <pubDate>Tue, 12 Dec 2017 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/getting-data-from-olap-cubes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/olap.png" referrerpolicy="no-referrer">
             </div>Overview Recently I had to read some data from different OLAP cubes and show this information in our application. This could be accomplished using ADOMD.NET client library, which is the multidimensional equivalent to the ADO.NET libraries.
 This library provides a set of classes (Connections, Commands and Readers) that allow developers to connect, query and get data from these multidimensional sources in the same way the classical ADO.NET library does.
 Maybe the easiest way to read data is using the class AdomdDataReader.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

@@ -8,11 +8,12 @@
     <title>Retrieve all controls using generics (II)</title>
     <link>https://lluisfranco.com/retrieve-all-controls-using-generics-ii/</link>
     <pubDate>Mon, 15 Nov 2010 17:20:51 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/retrieve-all-controls-using-generics-ii/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/tshirt2.png" referrerpolicy="no-referrer">
             </div>Gettings all controls from a container v2 A better approach In my previous post I created a recursive function to retrieve all controls inside a form and its containers. Today, my colleague and friend Eduard Tomàs sent me another solution to the same topic based on LINQ. It’s simply and really, really pretty ❤️
 The power of LINQ Before starting, we need to solve this: LINQ works over IEnumerable, but Control.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>

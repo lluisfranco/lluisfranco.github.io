@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Extract extra large icon from a file, folder or drive - &gt;_lluis franco</title><meta name="Description" content="home/lluisfranco/code/tips/"><meta property="og:title" content="Extract extra large icon from a file, folder or drive" />
 <meta property="og:description" content="Extracting system icons from Win32 Overwiew Hi, everyone! :)
 In a recent project I was required to show a list of files with their associated icons. It doesn&rsquo;t sounds quite difficult, and in fact it is not. Except if you have to deal with files in network paths or you want to get different icons sizes, apart the typical 32×32. And well, that was the case :(fas fa-grin-beam-sweat):
@@ -12,7 +11,7 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lluisfranco.com/extract-icons-win32/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2014-04-16T11:51:50+02:00" />
-<meta property="article:modified_time" content="2014-04-16T11:51:50+02:00" />
+<meta property="article:modified_time" content="2014-04-16T11:51:50+02:00" /><meta property="og:site_name" content="My cool site" />
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Extract extra large icon from a file, folder or drive"/>
@@ -20,7 +19,9 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
 In a recent project I was required to show a list of files with their associated icons. It doesn&rsquo;t sounds quite difficult, and in fact it is not. Except if you have to deal with files in network paths or you want to get different icons sizes, apart the typical 32×32. And well, that was the case :(fas fa-grin-beam-sweat):
 If you only need local files and sizes of 32x32 píxels you can achieve this using the static method ExtractAssociatedIcon in the class System."/>
 <meta name="application-name" content="&gt;_lluis franco">
-<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.com/extract-icons-win32/" /><link rel="prev" href="https://lluisfranco.com/mvp-site-interview/" /><link rel="next" href="https://lluisfranco.com/remove-diacritics-in-strings/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="&gt;_lluis franco"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/images/myAvatar.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lluisfranco.com/extract-icons-win32/" /><link rel="prev" href="https://lluisfranco.com/mvp-site-interview/" /><link rel="next" href="https://lluisfranco.com/remove-diacritics-in-strings/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -38,7 +39,7 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
             },"description": ""
     }
     </script></head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
@@ -46,23 +47,23 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
             <a href="/" title="&gt;_lluis franco"><span class="header-title-pre"><i class='fas fa-terminal'></i></span>lluis franco</a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item language" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
-                        <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/extract-icons-win32/" selected>English</option></select>
-                    </a><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
-                            <i class="fas fa-search fa-fw"></i>
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
-                            <i class="fas fa-times-circle fa-fw"></i>
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fas fa-adjust fa-fw"></i>
-                </a>
-            </div>
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/extract-icons-win32/" selected>English</option></select>
+                </a></div>
         </div>
     </div>
 </header><header class="mobile" id="header-mobile">
@@ -79,39 +80,38 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
                     <div class="search mobile" id="search-mobile">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
-                            <i class="fas fa-search fa-fw"></i>
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
                         </a>
                         <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
-                            <i class="fas fa-times-circle fa-fw"></i>
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
                         </a>
                         <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
                         </span>
                     </div>
                     <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
                 </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
-                <i class="fas fa-adjust fa-fw"></i>
-            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">English<i class="fas fa-chevron-right fa-fw"></i>
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
                     <select class="language-select" onchange="location = this.value;"><option value="/extract-icons-win32/" selected>English</option></select>
                 </a></div>
     </div>
-</header>
-<div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div>
-<main class="main">
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Extract extra large icon from a file, folder or drive</h1><h2 class="single-subtitle">Including network paths! :)</h2><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>lluís</a></span>&nbsp;<span class="post-category">included in <a href="/categories/development/"><i class="far fa-folder fa-fw"></i>Development</a>&nbsp;<a href="/categories/how-to/"><i class="far fa-folder fa-fw"></i>How To</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2014-04-16">2014-04-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1144 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Extract extra large icon from a file, folder or drive</h1><h2 class="single-subtitle">Including network paths! :)</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>lluís</a></span>&nbsp;<span class="post-category">included in <a href="/categories/development/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Development</a>&nbsp;<a href="/categories/how-to/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>How To</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2014-04-16">2014-04-16</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1144 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -119,10 +119,10 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
         data-srcset="/images/posts/extra-large-icons.png, /images/posts/extra-large-icons.png 1.5x, /images/posts/extra-large-icons.png 2x"
         data-sizes="auto"
         alt="/images/posts/extra-large-icons.png"
-        title="/images/posts/extra-large-icons.png" /></div><div class="details toc" id="toc-static"  kept="">
+        title="/images/posts/extra-large-icons.png" /></div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
@@ -139,9 +139,9 @@ If you only need local files and sizes of 32x32 píxels you can achieve this usi
             </div><div class="content" id="content"><h2 id="extracting-system-icons-from-win32">Extracting system icons from Win32</h2>
 <h3 id="overwiew">Overwiew</h3>
 <p>Hi, everyone! :)</p>
-<p>In a recent project I was required to show a list of files with their associated icons. It doesn&rsquo;t sounds quite difficult, and in fact it is not. Except if you have to deal with files in network paths or you want to get different icons sizes, apart the typical 32×32. And well, that was the case <i class="fas fa-grin-beam-sweat"></i></p>
-<p>If you only need local files and sizes of 32x32 píxels you can achieve this using the static method <a href="http://msdn.microsoft.com/en-us/library/vstudio/system.drawing.icon.extractassociatedicon" target="_blank" rel="noopener noreffer">ExtractAssociatedIcon</a> in the class System.Drawing.Icon, but sadly this method doesn’t work with UNC (Universal Naming Convention) paths nor return other sizes that 32×32 pixels.</p>
-<p>I had to show four different icons sizes including the extra-large icon also called “jumbo”, so I had to some functions and structures from the Win32 API. Of course, if anyone knows a better way to do it, please contact with me ASAP <i class="fas fa-grin-wink"></i></p>
+<p>In a recent project I was required to show a list of files with their associated icons. It doesn&rsquo;t sounds quite difficult, and in fact it is not. Except if you have to deal with files in network paths or you want to get different icons sizes, apart the typical 32×32. And well, that was the case <i class="fas fa-grin-beam-sweat" aria-hidden="true"></i></p>
+<p>If you only need local files and sizes of 32x32 píxels you can achieve this using the static method <a href="http://msdn.microsoft.com/en-us/library/vstudio/system.drawing.icon.extractassociatedicon" target="_blank" rel="noopener noreffer ">ExtractAssociatedIcon</a> in the class System.Drawing.Icon, but sadly this method doesn’t work with UNC (Universal Naming Convention) paths nor return other sizes that 32×32 pixels.</p>
+<p>I had to show four different icons sizes including the extra-large icon also called “jumbo”, so I had to some functions and structures from the Win32 API. Of course, if anyone knows a better way to do it, please contact with me ASAP <i class="fas fa-grin-wink" aria-hidden="true"></i></p>
 <h3 id="show-me-the-final-code">Show me the (final) code</h3>
 <p>Today I prefer to start from the end so before starting, let’s take a look to the final code:</p>
 <p>From a file path and the desired size we wanna retrieve the associated icon.</p>
@@ -526,9 +526,9 @@ Here’s the tricky part:</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<p>First, we need to call to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb762179%28v=vs.85%29.aspx" target="_blank" rel="noopener noreffer">SHGetFileInfo</a> function that receives a reference to a structure of type <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb759792%28v=vs.85%29.aspx" target="_blank" rel="noopener noreffer">SHFILEINFO</a>, which contains the index of the icon image within the system image list. We will use this index later.</p>
-<p>Then we’ve to perform a second call to the <a href="http://www.pinvoke.net/default.aspx/shell32.shgetimagelist" target="_blank" rel="noopener noreffer">SHGetImageList</a> function that receives an output parameter with an <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb761490%28v=vs.85%29.aspx" target="_blank" rel="noopener noreffer">IImageList</a> structure, which is modified within the function.</p>
-<p>Once we have that COM interface, we only need to call its <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb761463%28v=vs.85%29.aspx" target="_blank" rel="noopener noreffer">GetIcon</a> method, passing a parameter with the desired size, and obtaining a handle to the icon by reference.</p>
+<p>First, we need to call to <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb762179%28v=vs.85%29.aspx" target="_blank" rel="noopener noreffer ">SHGetFileInfo</a> function that receives a reference to a structure of type <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb759792%28v=vs.85%29.aspx" target="_blank" rel="noopener noreffer ">SHFILEINFO</a>, which contains the index of the icon image within the system image list. We will use this index later.</p>
+<p>Then we’ve to perform a second call to the <a href="http://www.pinvoke.net/default.aspx/shell32.shgetimagelist" target="_blank" rel="noopener noreffer ">SHGetImageList</a> function that receives an output parameter with an <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb761490%28v=vs.85%29.aspx" target="_blank" rel="noopener noreffer ">IImageList</a> structure, which is modified within the function.</p>
+<p>Once we have that COM interface, we only need to call its <a href="http://msdn.microsoft.com/en-us/library/windows/desktop/bb761463%28v=vs.85%29.aspx" target="_blank" rel="noopener noreffer ">GetIcon</a> method, passing a parameter with the desired size, and obtaining a handle to the icon by reference.</p>
 <p>Finally, using the handle we can create an Icon and then convert it to a Bitmap or BitmapSource:</p>
 <blockquote>
 <p>Tip: Don’t forget to destroy the resources (Icon) when working with the Win32 API!</p>
@@ -584,28 +584,26 @@ Here’s the tricky part:</p>
         <div class="post-info-line">
             <div class="post-info-mod">
                 <span>Updated on 2014-04-16</span>
-            </div>
-            <div class="post-info-license"></div>
-        </div>
+            </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
                             <a class="link-to-markdown" href="/extract-icons-win32/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://lluisfranco.com/extract-icons-win32/" data-title="Extract extra large icon from a file, folder or drive" data-via="lluisfranco" data-hashtags="csharp,net framework,API,Win32"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://lluisfranco.com/extract-icons-win32/" data-hashtag="csharp"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://lluisfranco.com/extract-icons-win32/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://lluisfranco.com/extract-icons-win32/" data-title="Extract extra large icon from a file, folder or drive" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="https://lluisfranco.com/extract-icons-win32/" data-image="/images/posts/extra-large-icons.png"><i class="fab fa-pinterest fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://lluisfranco.com/extract-icons-win32/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Instapaper" data-sharer="instapaper" data-url="https://lluisfranco.com/extract-icons-win32/" data-title="Extract extra large icon from a file, folder or drive" data-description=""><i data-svg-src="/lib/simple-icons/icons/instapaper.min.svg"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://lluisfranco.com/extract-icons-win32/"><i class="fab fa-get-pocket fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://lluisfranco.com/extract-icons-win32/" data-title="Extract extra large icon from a file, folder or drive"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://lluisfranco.com/extract-icons-win32/" data-title="Extract extra large icon from a file, folder or drive" data-via="lluisfranco" data-hashtags="csharp,net framework,API,Win32"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://lluisfranco.com/extract-icons-win32/" data-hashtag="csharp"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://lluisfranco.com/extract-icons-win32/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://lluisfranco.com/extract-icons-win32/" data-title="Extract extra large icon from a file, folder or drive" data-web><i class="fab fa-whatsapp fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="https://lluisfranco.com/extract-icons-win32/" data-image="/images/posts/extra-large-icons.png"><i class="fab fa-pinterest fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://lluisfranco.com/extract-icons-win32/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Instapaper" data-sharer="instapaper" data-url="https://lluisfranco.com/extract-icons-win32/" data-title="Extract extra large icon from a file, folder or drive" data-description=""><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/instapaper.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Pocket" data-sharer="pocket" data-url="https://lluisfranco.com/extract-icons-win32/"><i class="fab fa-get-pocket fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="https://lluisfranco.com/extract-icons-win32/" data-title="Extract extra large icon from a file, folder or drive"><i class="fab fa-evernote fa-fw" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/csharp/">csharp</a>,&nbsp;<a href="/tags/net-framework/">net framework</a>,&nbsp;<a href="/tags/api/">API</a>,&nbsp;<a href="/tags/win32/">Win32</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/csharp/">csharp</a>,&nbsp;<a href="/tags/net-framework/">net framework</a>,&nbsp;<a href="/tags/api/">API</a>,&nbsp;<a href="/tags/win32/">Win32</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/mvp-site-interview/" class="prev" rel="prev" title="MVP site interview"><i class="fas fa-angle-left fa-fw"></i>MVP site interview</a>
-            <a href="/remove-diacritics-in-strings/" class="next" rel="next" title="Remove diacritics (accents) in strings">Remove diacritics (accents) in strings<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/mvp-site-interview/" class="prev" rel="prev" title="MVP site interview"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>MVP site interview</a>
+            <a href="/remove-diacritics-in-strings/" class="next" rel="next" title="Remove diacritics (accents) in strings">Remove diacritics (accents) in strings<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 <div id="disqus_thread"></div>
 <script type="application/javascript">
@@ -628,15 +626,15 @@ Here’s the tricky part:</p>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><div id="comments"></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/about/" target="_blank">lluís</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
         <a rel="me" href="https://mastodon.social/@lluisfranco">My Mastodon ;)</a>
     </footer></div>
 
         <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fas fa-arrow-up fa-fw"></i>
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
-                <i class="fas fa-comment fa-fw"></i>
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":20},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":20},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
 </html>

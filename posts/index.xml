@@ -8,80 +8,87 @@
     <title>Dapper: How to change CommandDefinition parameters values</title>
     <link>https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/</link>
     <pubDate>Thu, 28 Jan 2021 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/DapperLogo.png" referrerpolicy="no-referrer">
             </div>Overview In my current development I&rsquo;m using Dapper, a light ORM to access the database. Using Dapper is really easy and provides super-fast performance. Here&rsquo;s an example of use:
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 public async Task&lt;List&lt;T&gt;&gt; GetSomeDataAsync&lt;T&gt;( DateTime startDate, DateTime endDate, CancellationTokenSource sourceToken = null) { if (sourceToken == null) sourceToken = new CancellationTokenSource(); using (var con = CreateConnection()) { var sql = @&#34;SELECT (your field list) FROM (your table/view/function))( @StartDate, @EndDate)&#34;; var command = CreateCommand(sql, new { @StartDate = startDate, @EndDate = endDate }, cancellationToken: sourceToken.]]></description>
-</item><item>
+</item>
+<item>
     <title>Retrieving events from SQL Server</title>
     <link>https://lluisfranco.com/retrieving-events-from-sql-server/</link>
     <pubDate>Mon, 30 Sep 2019 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/retrieving-events-from-sql-server/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/sqlserver.png" referrerpolicy="no-referrer">
             </div>Overview When executing some long-running server side processes on a SQL Server (Stored procedures or functions) would be nice to get progress messages, and why not, a percent value in order to show a progress bar in our application.
 In the past I’ve used different techniques to archive this, from SQL Assemblies for calling a SignalR server, to execute xp_cmdshell, and so many other esoteric ways.
 None of that solved the problem in an elegant way, but well, it worked… more or less…]]></description>
-</item><item>
+</item>
+<item>
     <title>Getting data from OLAP cubes</title>
     <link>https://lluisfranco.com/getting-data-from-olap-cubes/</link>
     <pubDate>Tue, 12 Dec 2017 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/getting-data-from-olap-cubes/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/olap.png" referrerpolicy="no-referrer">
             </div>Overview Recently I had to read some data from different OLAP cubes and show this information in our application. This could be accomplished using ADOMD.NET client library, which is the multidimensional equivalent to the ADO.NET libraries.
 This library provides a set of classes (Connections, Commands and Readers) that allow developers to connect, query and get data from these multidimensional sources in the same way the classical ADO.NET library does.
 Maybe the easiest way to read data is using the class AdomdDataReader.]]></description>
-</item><item>
+</item>
+<item>
     <title>Connect via SFTP using SSH.NET</title>
     <link>https://lluisfranco.com/connect-via-sftp-using-ssh.net/</link>
     <pubDate>Wed, 29 Nov 2017 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/connect-via-sftp-using-ssh.net/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/ftp.png" referrerpolicy="no-referrer">
             </div>Overview In these times of APIs-everywhere, it may sound like an anachronism the use SFTP to connect to a remote server and get a list of files for exchanging information, but in the financial world (sadly) it’s more common than you think.
 In my current project I’ve to connect to a remote server via Secure File Transfer Protocol (aka SFTP) using a user name, a RSA private key and a phassphrase.]]></description>
-</item><item>
+</item>
+<item>
     <title>Remove diacritics (accents) in strings</title>
     <link>https://lluisfranco.com/remove-diacritics-in-strings/</link>
     <pubDate>Thu, 26 Jun 2014 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/remove-diacritics-in-strings/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/note.png" referrerpolicy="no-referrer">
             </div>Quick note How to remove diacritics (accents) from a C# string?
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public static string RemoveDiacritics(this string input) { var stFormD = input.Normalize(NormalizationForm.FormD); var len = stFormD.Length; var sb = new StringBuilder(); for (int i = 0; i &lt; len; i++) { var uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[i]); if (uc != System.Globalization.UnicodeCategory.NonSpacingMark) { sb.Append(stFormD[i]); } } return (sb.ToString().Normalize(NormalizationForm.FormC)); } Bonus track How to remove in TSQL (Microsoft SQL Server)]]></description>
-</item><item>
+</item>
+<item>
     <title>Extract extra large icon from a file, folder or drive</title>
     <link>https://lluisfranco.com/extract-icons-win32/</link>
     <pubDate>Wed, 16 Apr 2014 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/extract-icons-win32/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/extra-large-icons.png" referrerpolicy="no-referrer">
             </div>Extracting system icons from Win32 Overwiew Hi, everyone! :)
-In a recent project I was required to show a list of files with their associated icons. It doesn&rsquo;t sounds quite difficult, and in fact it is not. Except if you have to deal with files in network paths or you want to get different icons sizes, apart the typical 32×32. And well, that was the case <i class="fas fa-grin-beam-sweat"></i>
+In a recent project I was required to show a list of files with their associated icons. It doesn&rsquo;t sounds quite difficult, and in fact it is not. Except if you have to deal with files in network paths or you want to get different icons sizes, apart the typical 32×32. And well, that was the case <i class="fas fa-grin-beam-sweat" aria-hidden="true"></i>
 If you only need local files and sizes of 32x32 píxels you can achieve this using the static method ExtractAssociatedIcon in the class System.]]></description>
-</item><item>
+</item>
+<item>
     <title>MVP site interview</title>
     <link>https://lluisfranco.com/mvp-site-interview/</link>
     <pubDate>Wed, 31 Oct 2012 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/mvp-site-interview/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/mvpoftheyear.png" referrerpolicy="no-referrer">
             </div>My 5 minutes of glory 😂 Yesterday the guys of MS published my brief interview MVP site. However, it is not the full version, that I copy here.
 About Lluís Franco Born in Barcelona (Spain) with more than 20 years of experience in the software development sector, now lives in Andorra for the past 15 years with his family. Lluis holds a number of Microsoft official certifications such as MCP and MCTS and has been recognized as MVP for the past 10 years due to his active participation and moderation in the MSDN forums since 1997.]]></description>
-</item><item>
+</item>
+<item>
     <title>Awarded MVP of the year</title>
     <link>https://lluisfranco.com/awarded-mvp-of-the-year/</link>
     <pubDate>Thu, 16 Feb 2012 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/awarded-mvp-of-the-year/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/MVPoftheyear2011.png" referrerpolicy="no-referrer">
@@ -89,20 +96,22 @@ About Lluís Franco Born in Barcelona (Spain) with more than 20 years of experie
 However, while writing these lines I’m just realizing I have a blissful smile, or maybe just a stupid smile. Why? Because I just received an email from Lisa Feigenbaum (Microsoft Community Program Manager) with this message:
 “Congratulations on being awarded C# MVP of the Year based on your contributions in 2011!”
 That’s amazing, and sincerely, totally unexpected]]></description>
-</item><item>
+</item>
+<item>
     <title>Functional Programming For The Rest of Us</title>
     <link>https://lluisfranco.com/functional-programming-for-the-rest-of-us/</link>
     <pubDate>Fri, 10 Feb 2012 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/functional-programming-for-the-rest-of-us/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/functionalprogramming.png" referrerpolicy="no-referrer">
             </div>Introduction Programmers are procrastinators. Get in, get some coffee, check the mailbox, read the RSS feeds, read the news, check out latest articles on techie websites, browse through political discussions on the designated sections of the programming forums. Rinse and repeat to make sure nothing is missed. Go to lunch. Come back, stare at the IDE for a few minutes. Check the mailbox. Get some coffee. Before you know it, the day is over.]]></description>
-</item><item>
+</item>
+<item>
     <title>Macbook Pro - Series 3400 series chipset problems?</title>
     <link>https://lluisfranco.com/macbook-pro-series-3400-series-chipset-problems/</link>
     <pubDate>Thu, 07 Apr 2011 11:51:50 &#43;0200</pubDate>
-    <author>Author</author>
+    <author>lluís</author>
     <guid>https://lluisfranco.com/macbook-pro-series-3400-series-chipset-problems/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/apple.png" referrerpolicy="no-referrer">
@@ -110,5 +119,6 @@ That’s amazing, and sincerely, totally unexpected]]></description>
 Today a quick post, just a note:
 If you bought a MacBook Pro and using Boot Camp for running Windows, you may be possible experiment some chipset problems. In my particular case with USB and bluetooth devices (Wireless Notebook Presenter 8000), and a couple of window-freezed.
 Also, in some ocasions Windows threw an error: &ldquo;Intel 5 Series/3400 Series Chipset Family USB Universal Host Controller – 3B3B (and 3B36) has a driver problem&rdquo;.]]></description>
-</item></channel>
+</item>
+</channel>
 </rss>
