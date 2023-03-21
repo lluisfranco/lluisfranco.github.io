@@ -4,7 +4,19 @@
         <link>https://lluisfranco.com/es/posts/</link>
         <description>Todos los Artículos | &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 19 Aug 2020 15:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.com/es/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Mon, 21 Mar 2022 13:42:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.com/es/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Enable CORS on Azure App Service</title>
+    <link>https://lluisfranco.com/es/enable-cors-on-azure-app-service/</link>
+    <pubDate>Mon, 21 Mar 2022 13:42:50 &#43;0200</pubDate>
+    <author>lluís</author>
+    <guid>https://lluisfranco.com/es/enable-cors-on-azure-app-service/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/AzureCloudShellCover.png" referrerpolicy="no-referrer">
+            </div>Error accediendo a API en Azure (CORS not enabled) Esta mañana estaba haciendo unas pruebas accediendo a una API (mia) que tengo en Azure.
+Suelo utilizar esta API para hacer pruebas, y en esta ocasión estaba probando cuatro cosas de una app realizada en React. En el momento de hacer un fetch he visto que no podía acceder porque me tiraba un típico error de CORS:
+Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at https://la-url-de-la-app]]></description>
+</item>
+<item>
     <title>Slimbook PROX review</title>
     <link>https://lluisfranco.com/es/slimbook-prox-review/</link>
     <pubDate>Wed, 19 Aug 2020 15:51:50 &#43;0200</pubDate>
@@ -109,18 +121,6 @@ Las nuevas Concurrent Collections En un mundo en el que los procesos ya no son s
             </div>Ir al índice de la serie
 The show must go on En los posts previos hemos hablado de PLINQ y de la clase Parallel, dos características que facilitan mucho la ejecución de datos en paralelo, sin embargo si alguien me preguntase cual es la característica que más me gusta de la Task Parallel Library lo tendría muy claro: El manejo de tareas asíncronas mediante la clase Task.
 Durante muchos años los desarrolladores hemos tenido que lidiar -más ben pelearnos- con la multitarea y la ejecución de código asíncrono.]]></description>
-</item>
-<item>
-    <title>Programación funcional para el resto de nosotros</title>
-    <link>https://lluisfranco.com/es/functional-programming-for-the-rest-of-us/</link>
-    <pubDate>Fri, 10 Feb 2012 11:51:50 &#43;0200</pubDate>
-    <author>lluís</author>
-    <guid>https://lluisfranco.com/es/functional-programming-for-the-rest-of-us/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/posts/functionalprogramming.png" referrerpolicy="no-referrer">
-            </div>Ir al índice de la serie
-Mi idea inicial Originalmente, en mi serie sobre la Task Parallel Library estaba pensando en incluir algún post sobre programación funcional, pero cuando encontré esta pequeña joya decidí pedir permiso a Luis para poder incluir una copia en mi blog, ya que ni en sueños podría yo haber escrito algo tan completo. Mis felicitaciones!
-Nota Artículo reproducido con permiso del traductor original. Dale un vistazo al excelente trabajo y consulta la versión traducida de Luis Mendoza, basado en el post original de Slava Akhmechet.]]></description>
 </item>
 </channel>
 </rss>

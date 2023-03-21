@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://lluisfranco.com/es/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://lluisfranco.com/es/</loc><lastmod>2022-03-21T13:42:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://lluisfranco.com/"
@@ -11,7 +11,17 @@
                     hreflang="es"
                     href="https://lluisfranco.com/es/"
                     /></url><url>
-            <loc>https://lluisfranco.com/es/categories/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://lluisfranco.com/es/tags/api/</loc><lastmod>2022-03-21T13:42:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://lluisfranco.com/tags/api/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="es"
+                    href="https://lluisfranco.com/es/tags/api/"
+                    /></url><url>
+            <loc>https://lluisfranco.com/es/categories/azure/</loc><lastmod>2022-03-21T13:42:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.com/es/categories/</loc><lastmod>2022-03-21T13:42:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://lluisfranco.com/categories/"
@@ -20,7 +30,9 @@
                     hreflang="es"
                     href="https://lluisfranco.com/es/categories/"
                     /></url><url>
-            <loc>https://lluisfranco.com/es/posts/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://lluisfranco.com/es/tags/cors/</loc><lastmod>2022-03-21T13:42:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.com/es/enable-cors-on-azure-app-service/</loc><lastmod>2022-03-21T13:42:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.com/es/posts/</loc><lastmod>2022-03-21T13:42:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://lluisfranco.com/posts/"
@@ -29,11 +41,7 @@
                     hreflang="es"
                     href="https://lluisfranco.com/es/posts/"
                     /></url><url>
-            <loc>https://lluisfranco.com/es/tags/prox/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.com/es/categories/review/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.com/es/tags/slimbook/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.com/es/slimbook-prox-review/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.com/es/tags/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://lluisfranco.com/es/tags/</loc><lastmod>2022-03-21T13:42:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="https://lluisfranco.com/tags/"
@@ -42,6 +50,19 @@
                     hreflang="es"
                     href="https://lluisfranco.com/es/tags/"
                     /></url><url>
+            <loc>https://lluisfranco.com/es/tags/tip/</loc><lastmod>2022-03-21T13:42:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="https://lluisfranco.com/tags/tip/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="es"
+                    href="https://lluisfranco.com/es/tags/tip/"
+                    /></url><url>
+            <loc>https://lluisfranco.com/es/tags/prox/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.com/es/categories/review/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.com/es/tags/slimbook/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://lluisfranco.com/es/slimbook-prox-review/</loc><lastmod>2020-08-19T15:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.com/es/about/</loc><lastmod>2020-05-01T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
