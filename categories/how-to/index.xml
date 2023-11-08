@@ -4,7 +4,20 @@
         <link>https://lluisfranco.com/categories/how-to/</link>
         <description>How To - Category - &gt;_lluis franco</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Thu, 28 Jan 2021 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.com/categories/how-to/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 08 Nov 2023 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.com/categories/how-to/" rel="self" type="application/rss+xml" /><item>
+    <title>Disable keyring password on boot in Linux Mint</title>
+    <link>https://lluisfranco.com/disable-keyring-password-on-boot-in-linux-mint/</link>
+    <pubDate>Wed, 08 Nov 2023 11:51:50 &#43;0200</pubDate>
+    <author>lluís</author>
+    <guid>https://lluisfranco.com/disable-keyring-password-on-boot-in-linux-mint/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/LinuxMintBootKeyring.png" referrerpolicy="no-referrer">
+            </div>Overview I use Linux Mint in my Slimbook laptop and one of my favorite tools is Slimbook Face, which allows me to login using face recognition. Configure it it&rsquo;s super easy and I can login using my pretty face, moreover, I can also SUDO 🤩
+Slimbook Face tool But from time to time, when loging an anoying message appears 🤦
+ENTER PASSWORD TO UNLOCK YOUR LOGIN KEYRING
+What the hell is that?]]></description>
+</item>
+<item>
     <title>Dapper: How to change CommandDefinition parameters values</title>
     <link>https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/</link>
     <pubDate>Thu, 28 Jan 2021 11:51:50 &#43;0200</pubDate>
@@ -107,20 +120,6 @@ The power of LINQ Before starting, we need to solve this: LINQ works over IEnume
 How to clear the content of all the textboxes in a form?
 The question may vary a littles bit but it&rsquo;s always related to obtain all controls of a determined type (Button TextBox, etc) in a form or maybe in another type of container like a Panel or user control.
 Generics and Extension methods Using generics it’s really easy!]]></description>
-</item>
-<item>
-    <title>Extended shortcodes</title>
-    <link>https://lluisfranco.com/ztemplate-copy/</link>
-    <pubDate>Sat, 26 Jun 1999 11:51:50 &#43;0200</pubDate>
-    <author>lluís</author>
-    <guid>https://lluisfranco.com/ztemplate-copy/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/posts/note.png" referrerpolicy="no-referrer">
-            </div>Tables Tables Are Cool col 1 is left-aligned $1600 col 2 is centered $12 col 3 is right-aligned $1 Gist Admonition admon samples
-This is a bug A tip banner Or This is a tip A tip banner Mermaid mermaid samples
-Flow Gaant git pie eCharts echarts samples
-Line chart
-Map]]></description>
 </item>
 </channel>
 </rss>

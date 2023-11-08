@@ -1,0 +1,21 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Keyring - Tag - &gt;_lluis franco</title>
+        <link>https://lluisfranco.com/tags/keyring/</link>
+        <description>Keyring - Tag - &gt;_lluis franco</description>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 08 Nov 2023 11:51:50 &#43;0200</lastBuildDate><atom:link href="https://lluisfranco.com/tags/keyring/" rel="self" type="application/rss+xml" /><item>
+    <title>Disable keyring password on boot in Linux Mint</title>
+    <link>https://lluisfranco.com/disable-keyring-password-on-boot-in-linux-mint/</link>
+    <pubDate>Wed, 08 Nov 2023 11:51:50 &#43;0200</pubDate>
+    <author>lluís</author>
+    <guid>https://lluisfranco.com/disable-keyring-password-on-boot-in-linux-mint/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/LinuxMintBootKeyring.png" referrerpolicy="no-referrer">
+            </div>Overview I use Linux Mint in my Slimbook laptop and one of my favorite tools is Slimbook Face, which allows me to login using face recognition. Configure it it&rsquo;s super easy and I can login using my pretty face, moreover, I can also SUDO 🤩
+Slimbook Face tool But from time to time, when loging an anoying message appears 🤦
+ENTER PASSWORD TO UNLOCK YOUR LOGIN KEYRING
+What the hell is that?]]></description>
+</item>
+</channel>
+</rss>

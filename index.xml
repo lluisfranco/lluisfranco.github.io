@@ -4,9 +4,22 @@
         <link>https://lluisfranco.com/</link>
         <description>home/lluisfranco/code/tips/</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>hello@lluisfranco.com (lluís)</managingEditor>
-            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Thu, 28 Jan 2021 11:51:50 &#43;0200</lastBuildDate>
+            <webMaster>hello@lluisfranco.com (lluís)</webMaster><lastBuildDate>Wed, 08 Nov 2023 11:51:50 &#43;0200</lastBuildDate>
             <atom:link href="https://lluisfranco.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Disable keyring password on boot in Linux Mint</title>
+    <link>https://lluisfranco.com/disable-keyring-password-on-boot-in-linux-mint/</link>
+    <pubDate>Wed, 08 Nov 2023 11:51:50 &#43;0200</pubDate>
+    <author>lluís</author>
+    <guid>https://lluisfranco.com/disable-keyring-password-on-boot-in-linux-mint/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/posts/LinuxMintBootKeyring.png" referrerpolicy="no-referrer">
+            </div>Overview I use Linux Mint in my Slimbook laptop and one of my favorite tools is Slimbook Face, which allows me to login using face recognition. Configure it it&rsquo;s super easy and I can login using my pretty face, moreover, I can also SUDO 🤩
+Slimbook Face tool But from time to time, when loging an anoying message appears 🤦
+ENTER PASSWORD TO UNLOCK YOUR LOGIN KEYRING
+What the hell is that?]]></description>
+</item>
+<item>
     <title>Dapper: How to change CommandDefinition parameters values</title>
     <link>https://lluisfranco.com/dapper-how-to-change-commanddefinition-parameters-values/</link>
     <pubDate>Thu, 28 Jan 2021 11:51:50 &#43;0200</pubDate>
@@ -108,19 +121,6 @@ That’s amazing, and sincerely, totally unexpected]]></description>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/posts/functionalprogramming.png" referrerpolicy="no-referrer">
             </div>Introduction Programmers are procrastinators. Get in, get some coffee, check the mailbox, read the RSS feeds, read the news, check out latest articles on techie websites, browse through political discussions on the designated sections of the programming forums. Rinse and repeat to make sure nothing is missed. Go to lunch. Come back, stare at the IDE for a few minutes. Check the mailbox. Get some coffee. Before you know it, the day is over.]]></description>
-</item>
-<item>
-    <title>Macbook Pro - Series 3400 series chipset problems?</title>
-    <link>https://lluisfranco.com/macbook-pro-series-3400-series-chipset-problems/</link>
-    <pubDate>Thu, 07 Apr 2011 11:51:50 &#43;0200</pubDate>
-    <author>lluís</author>
-    <guid>https://lluisfranco.com/macbook-pro-series-3400-series-chipset-problems/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/posts/apple.png" referrerpolicy="no-referrer">
-            </div>The issue After a long time&hellip; here we go again!
-Today a quick post, just a note:
-If you bought a MacBook Pro and using Boot Camp for running Windows, you may be possible experiment some chipset problems. In my particular case with USB and bluetooth devices (Wireless Notebook Presenter 8000), and a couple of window-freezed.
-Also, in some ocasions Windows threw an error: &ldquo;Intel 5 Series/3400 Series Chipset Family USB Universal Host Controller – 3B3B (and 3B36) has a driver problem&rdquo;.]]></description>
 </item>
 </channel>
 </rss>

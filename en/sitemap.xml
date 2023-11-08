@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://lluisfranco.com/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://lluisfranco.com/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="es"
                         href="https://lluisfranco.com/es/"
@@ -11,7 +11,8 @@
                     hreflang="en"
                     href="https://lluisfranco.com/"
                     /></url><url>
-            <loc>https://lluisfranco.com/categories/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://lluisfranco.com/tags/boot/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/categories/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="es"
                         href="https://lluisfranco.com/es/categories/"
@@ -19,6 +20,32 @@
                     rel="alternate"
                     hreflang="en"
                     href="https://lluisfranco.com/categories/"
+                    /></url><url>
+            <loc>https://lluisfranco.com/tags/disable/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/disable-keyring-password-on-boot-in-linux-mint/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/categories/how-to/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/tags/keyring/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/categories/linux/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/tags/linux-mint/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/tags/note2self/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/tags/os/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://lluisfranco.com/posts/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.com/es/posts/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.com/posts/"
+                    /></url><url>
+            <loc>https://lluisfranco.com/tags/</loc><lastmod>2023-11-08T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="es"
+                        href="https://lluisfranco.com/es/tags/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="en"
+                    href="https://lluisfranco.com/tags/"
                     /></url><url>
             <loc>https://lluisfranco.com/tags/commanddefinition/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.com/tags/csharp/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
@@ -41,7 +68,6 @@
                     hreflang="en"
                     href="https://lluisfranco.com/categories/development/"
                     /></url><url>
-            <loc>https://lluisfranco.com/categories/how-to/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://lluisfranco.com/tags/net-framework/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="es"
@@ -52,24 +78,6 @@
                     href="https://lluisfranco.com/tags/net-framework/"
                     /></url><url>
             <loc>https://lluisfranco.com/tags/parameters/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://lluisfranco.com/posts/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://lluisfranco.com/es/posts/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://lluisfranco.com/posts/"
-                    /></url><url>
-            <loc>https://lluisfranco.com/tags/</loc><lastmod>2021-01-28T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="es"
-                        href="https://lluisfranco.com/es/tags/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="en"
-                    href="https://lluisfranco.com/tags/"
-                    /></url><url>
             <loc>https://lluisfranco.com/about/</loc><lastmod>2020-05-01T11:51:50&#43;02:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="es"
